@@ -6,15 +6,13 @@
 	default = matching
 
 [color]
-	status = auto
-	branch = auto
+	ui = auto # covers diff = true, status = auto, branch = auto
+	interactive = auto
 
 [gui]
 
 [core]
-	autocrlf = false
-	safecrlf = true
-	autcrlf = false
+	pager = less -r
 
 [alias]
 	co = checkout
@@ -26,6 +24,8 @@
 	dump = cat-file -p
 	sub = submodule
 	pom = push origin master
+	revert = checkout
+	d = diff --color-words
 
 [github]
 	user = bgold09
