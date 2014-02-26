@@ -1,26 +1,32 @@
+[user]
+	name = Brian Golden
+	email = brian.golden09@gmail.com
+
+[push]
+	default = matching
+
+[color]
+	status = auto
+	branch = auto
+
+[gui]
+
 [core]
-	pager = less -r
+	autocrlf = false
+	safecrlf = true
+	autcrlf = false
 
 [alias]
 	co = checkout
 	ci = commit
 	st = status
 	br = branch
-	sub = submodule
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
-	revert = checkout 
-	d = diff --color-words
-
-[color]
-	ui = auto # covers diff = true, status = auto, branch = auto
-	interactive = auto
-
-[user]
-	name = Brian Golden
-	email = brian.golden09@gmail.com
+	sub = submodule
+	pom = push origin master
 
 [github]
 	user = bgold09
-	token
+	token = ee29880cd163e87fbba0639d13fb4374
