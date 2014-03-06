@@ -232,3 +232,6 @@ alias nowdate='date +"%d-%m-%Y"'
 # Debian things
 alias apt-get="sudo apt-get"
 alias update='sudo apt-get update && sudo apt-get update'
+
+## python ##
+export PYTHONSTARTUP=".pythonstartup.py"
