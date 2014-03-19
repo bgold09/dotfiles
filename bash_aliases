@@ -63,6 +63,9 @@ alias vi=vim
 alias svi='sudo vi'
 alias edit='vim'
 
+# git 
+alias g=git
+
 # ssh connections
 alias gd='ssh -t goodermuth@ssh.goodermuth.com -p 11992 "cd dev/websites/himalaya ; bash"'
 alias pi='ssh -t brian@brianjgolden.com "bash"'
@@ -77,4 +80,3 @@ alias nowdate='date +"%d-%m-%Y"'
 # Debian things
 alias apt-get="sudo apt-get"
 alias update='sudo apt-get update && sudo apt-get update'
-
