@@ -3,7 +3,7 @@
 set -e
 
 # files to link in home directory
-declare -a files=('bashrc' 'gitconfig' 'pythonrc.py')
+declare -a files=('bashrc' 'gitconfig' 'pythonrc.py' 'bash_aliases')
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 
 mkdir $backup_dir
