@@ -166,4 +166,4 @@ if [ -f "${HOME}/.bash_aliases" ]; then
 fi
 
 ## python ##
-export PYTHONSTARTUP=".pythonstartup.py"
+export PYTHONSTARTUP=".pythonrc.py"
