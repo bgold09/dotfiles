@@ -37,8 +37,21 @@ alias la='ls -A'                                # all but . and ..
 alias l='ls -CF'                                #
 
 # navigation, directories
-alias ..='cd ..'
 alias mkdir='mkdir -pv'                         # make parent dirs, verbose
+updir() {
+	if [ -z $1 ]; then
+		cd ..
+	else
+		dir=''
+		for i in `seq 1 $1`;
+		do
+
+			dir=../$dir
+		done
+		cd $dir
+	fi
+}
+alias ..=updir
 
 # files
 # don't delete / or prompt if deleting >= 3 files
@@ -64,3 +77,4 @@ alias nowdate='date +"%d-%m-%Y"'
 # Debian things
 alias apt-get="sudo apt-get"
 alias update='sudo apt-get update && sudo apt-get update'
+
