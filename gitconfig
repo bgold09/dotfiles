@@ -15,8 +15,10 @@
 	pager = less -r
 
 [alias]
+	a = add
 	co = checkout
 	ci = commit
+	cm = commit -m 
 	st = status
 	br = branch
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
