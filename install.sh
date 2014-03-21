@@ -3,7 +3,7 @@
 set -e
 
 # files to link in home directory
-declare -a files=('bashrc' 'gitconfig' 'pythonrc.py' 'bash_aliases')
+declare -a files=('gitconfig' 'pythonrc.py')
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 current=`pwd`
 
@@ -40,22 +40,21 @@ function place_files() {
 
 function list_files() {
 	printf -- "  .%s\n" "${files[@]}"
-	for directory in "`ls -d */`"
-	do
+	for directory in */ ; do
+		cd $current/$directory 
 		if [ -e install.sh ]; then
-			$directory./install.sh -l 
+			./install.sh -l 
 		fi
+		cd $current
 	done
 }
 
 echo The following files will be overwritten by this script:
 list_files
-read -p "Would you like to proceed? (y/n) " -n 1
-echo 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+read -r -p "Would you like to proceed? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	place_files
 	echo run \`source ~/.bashrc\' to reload your bashrc file
 fi
 
-unset place_files
-unset backup_files
+exit 0
