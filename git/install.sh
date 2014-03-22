@@ -2,8 +2,8 @@
 
 set -e
 
-name='bash'
-declare -a files=('bashrc' 'bash_aliases')
+name='git'
+declare -a files=('gitconfig')
 
 list_files() {
 	echo "from $name config:"
@@ -13,7 +13,7 @@ list_files() {
 place_files() {
 	for file in "${files[@]}"; do
 		rm -f $HOME/.$file
-		ln $file $HOME/.$file
+		ln -v $file $HOME/.$file
 	done
 }
 
@@ -25,5 +25,5 @@ if [[ ! -z $1 ]]; then
 fi
 
 echo installing $name configration...
-place_files
+place_files $files
 echo $name confguration installed

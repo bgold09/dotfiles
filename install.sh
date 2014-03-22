@@ -3,7 +3,7 @@
 set -e
 
 # files to link in home directory
-declare -a files=('gitconfig' 'pythonrc.py')
+declare -a files=()
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 current=`pwd`
 
@@ -18,28 +18,27 @@ function backup_files() {
 }
 
 function place_files() {
-	for file in "${files[@]}"
-	do
-		rm -f $HOME/.$file
-		ln $file $HOME/.$file
-	done
+	# for file in "${files[@]}"
+	# do
+	# 	rm -f $HOME/.$file
+	# 	ln $file $HOME/.$file
+	# done
 	# look for directories of config files
 	# each must contain an installation script called `install.sh' and 
 	#   have a "-l" option for listing files that will be replaced/linked
-	for directory in "`ls -d */`"
-	do
+	for directory in */ ; do
 		cd $current/$directory
 		if [ ! -e install.sh ]; then
 			echo "WARNING: no \`install.sh\' found for directory $directory"
 		else
 			./install.sh
 		fi
+		cd $current
 	done
-	cd $current
 }
 
 function list_files() {
-	printf -- "  .%s\n" "${files[@]}"
+# 	printf -- "  .%s\n" "${files[@]}"
 	for directory in */ ; do
 		cd $current/$directory 
 		if [ -e install.sh ]; then

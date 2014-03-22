@@ -2,8 +2,8 @@
 
 set -e
 
-name='bash'
-declare -a files=('bashrc' 'bash_aliases')
+name='python'
+declare -a files=('pythonrc.py')
 
 list_files() {
 	echo "from $name config:"
