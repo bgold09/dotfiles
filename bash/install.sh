@@ -3,7 +3,7 @@
 set -e
 
 name='bash'
-declare -a files=('bashrc' 'bash_aliases')
+declare -a files=('bashrc' 'bash_aliases' 'bash_functions') 
 
 list_files() {
 	echo "from $name config:"
