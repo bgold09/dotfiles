@@ -15,6 +15,11 @@ fi
 
 alias cd=cd_func
 
+## completion ##
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
 ## prompt ##
 force_color_prompt=yes
 
