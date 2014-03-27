@@ -64,7 +64,6 @@ last_two_dirs() {
 	if [  $curr == $HOME ]; then
 		echo "~"
 	else
-		pwd | sed "s|$HOME|~|g" | rev | awk -F / '{print $1, $2}' \
-		    | rev | sed s_\ _/_
+		pwd | sed "s|$HOME|~|g" | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/\ /\//'
 	fi
 }
