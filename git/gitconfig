@@ -29,7 +29,3 @@
 	pom = push origin master
 	revert = checkout
 	d = diff --color-words
-
-[github]
-	user = bgold09
-	token = ee29880cd163e87fbba0639d13fb4374
