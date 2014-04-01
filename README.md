@@ -1,10 +1,11 @@
 # dotfiles
 
-These are my dotfiles, which includes configurations for [bash][1], [vim][2] and [git][3].
+These are my dotfiles, which includes configurations for [bash], [vim], [git] and [python].
 
-[1]: https://www.gnu.org/software/bash/bash.html
-[2]: http://www.vim.org
-[3]: http://git-scm.com 
+[bash]: https://www.gnu.org/software/bash/bash.html
+[vim]: http://www.vim.org
+[git]: http://git-scm.com 
+[python]: http://www.python.org
 
 ## Installation
 
