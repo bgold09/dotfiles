@@ -1,27 +1,17 @@
-# base-files version 4.1-1
+# bash configuration
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-## functions ##
-if [ -f "${HOME}/.bash_functions" ]; then
-  source "${HOME}/.bash_functions"
-fi
-
-## aliases ##
-if [ -f "${HOME}/.bash_aliases" ]; then
-  source "${HOME}/.bash_aliases"
-fi
-
-alias cd=cd_func
+for file in ~/.{bash_prompt,bash_aliases,bash_functions}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
 ## completion ##
 if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
-
-## prompt ##
-source $HOME/.bash_prompt
 
 ## history ##
 # Don't put duplicate lines in the history.

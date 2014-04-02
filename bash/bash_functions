@@ -57,6 +57,8 @@ cd_func ()
   return 0
 }
 
+alias cd=cd_func
+
 # finds the last two directories in the current working 
 # directory (expands $HOME to '~')
 last_two_dirs() {
