@@ -11,6 +11,8 @@ unset file
 ## completion ##
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
+## local config ##
+[ -f $HOME/.localrc ] && source $HOME/.localrc
 
 ## history ##
 # Don't put duplicate lines in the history.
