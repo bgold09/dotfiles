@@ -9,9 +9,8 @@ done
 unset file
 
 ## completion ##
-if [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-fi
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+
 
 ## history ##
 # Don't put duplicate lines in the history.
