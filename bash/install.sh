@@ -3,7 +3,7 @@
 set -e
 
 name='bash'
-declare -a files=('bashrc' 'bash_aliases' 'bash_functions' 'bash_prompt') 
+declare -a files=('bash_aliases' 'bash_functions' 'bash_prompt') 
 
 list_files() {
 	echo "from $name config:"
@@ -11,10 +11,14 @@ list_files() {
 }
 
 place_files() {
+	mkdir -p $HOME/.bash
 	for file in "${files[@]}"; do
-		rm -f $HOME/.$file
-		ln $file $HOME/.$file
+		rm -f $HOME/.bash/$file
+		ln $file $HOME/.bash/$file
 	done
+
+	rm -f $HOME/.bashrc
+	ln bashrc $HOME/.bashrc
 }
 
 if [[ ! -z $1 ]]; then
