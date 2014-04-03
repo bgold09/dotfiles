@@ -11,14 +11,8 @@ list_files() {
 }
 
 place_files() {
-	mkdir -p $HOME/.bash
-	for file in "${files[@]}"; do
-		rm -f $HOME/.bash/$file
-		ln $file $HOME/.bash/$file
-	done
-
-	rm -f $HOME/.bashrc
-	ln bashrc $HOME/.bashrc
+	rm -f $HOME/.bash
+	ln -s `pwd` $HOME/.bash
 }
 
 if [[ ! -z $1 ]]; then
