@@ -14,6 +14,10 @@ for file in completions/*; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
+# make git alias 'g' work with completion
+complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
+	|| complete -o default -o nospace -F _git g
+
 ## local config ##
 [ -f $HOME/.localrc ] && source $HOME/.localrc
 
