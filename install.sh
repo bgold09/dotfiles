@@ -5,7 +5,9 @@ set -e
 # files to link in home directory
 declare -a files=()
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
-current=`pwd`
+current="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+declare -a DIRS=('git' 'python')
+declare -a DIRSINSTALL=('bash' 'dotvim')
 
 function backup_files() {
 	mkdir $backup_dir
@@ -18,38 +20,34 @@ function backup_files() {
 }
 
 function place_files() {
-	# for file in "${files[@]}"
-	# do
-	# 	rm -f $HOME/.$file
-	# 	ln $file $HOME/.$file
-	# done
-	# look for directories of config files
-	# each must contain an installation script called `install.sh' and 
-	#   have a "-l" option for listing files that will be replaced/linked
-	for directory in */ ; do
-		cd $current/$directory
-		if [ ! -e install.sh ]; then
-			echo "WARNING: no \`install.sh\' found for directory $directory"
+	# directories with installation scripts
+	for directory in "${DIRSINSTALL[@]}" ; do
+		if [ ! -e $current/$directory/install.sh ]; then
+			echo "WARNING: no \`install.sh\' found for directory $current/$directory"
 		else
-			./install.sh
+			$current/$directory/install.sh
 		fi
-		cd $current
+	done
+
+	# directories without installation scripts, files/directories only
+	# no special installation behavior needed
+	for directory in "${DIRS[@]}" ; do
+		for file in $current/$directory ; do
+			if [ -f $file ] && [ -r $file ]; then
+				rm -f $HOME/.$(basename $file)
+				ln $file $HOME/.$(basename $file)
+			elif [ -d $file ]; then
+				for f in $file/* ; do
+					rm -f $HOME/.$(basename $f)
+					ln -s $f $HOME/.$(basename $f)
+				done
+			fi
+		done
 	done
 }
 
-function list_files() {
-# 	printf -- "  .%s\n" "${files[@]}"
-	for directory in */ ; do
-		cd $current/$directory 
-		if [ -e install.sh ]; then
-			./install.sh -l 
-		fi
-		cd $current
-	done
-}
-
-echo The following files will be overwritten by this script:
-list_files
+echo The following configurations will be overwritten by this script:
+echo "  bash, git, python, vim"
 read -r -p "Would you like to proceed? [y/N] " response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	place_files

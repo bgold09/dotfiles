@@ -2,26 +2,18 @@
 
 set -e
 
+curr="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 name='bash'
 declare -a files=('aliases' 'functions' 'prompt') 
 
-list_files() {
-	echo "from $name config:"
-	printf -- "  .%s\n" "${files[@]}"
-}
-
 place_files() {
 	rm -f $HOME/.bash
-	ln -s `pwd` $HOME/.bash
+	ln -s $curr $HOME/.bash
+	rm -f $HOME/.bashrc 
+	ln $curr/bashrc $HOME/.bashrc
 }
-
-if [[ ! -z $1 ]]; then
-	if [ $1 == "-l" ]; then
-		list_files 
-		exit 0
-	fi
-fi
 
 echo installing $name configration...
 place_files
 echo $name confguration installed
+exit 0
