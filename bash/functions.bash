@@ -69,3 +69,8 @@ last_two_dirs() {
 		pwd | sed "s|$HOME|~|g" | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/\ /\//'
 	fi
 }
+
+# get the path to the script currently being executed
+procloc() {
+	echo "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+}
