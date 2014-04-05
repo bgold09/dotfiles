@@ -70,5 +70,6 @@ alias now='date +"%T"'
 alias nowdate='date +"%d-%m-%Y"'
 
 # Debian things
-alias apt-get="sudo apt-get"
+alias apt-get='sudo apt-get'
+alias install='sudo apt-get install'
 alias update='sudo apt-get update && sudo apt-get update'
