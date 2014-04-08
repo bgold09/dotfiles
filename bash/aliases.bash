@@ -43,6 +43,7 @@ alias edit='vim'
 alias g=git
 alias gs='git status'
 alias gc='git commit -m'
+alias ga='git add'
 
 # misc
 alias whence='type -a'             # where, of a sort
