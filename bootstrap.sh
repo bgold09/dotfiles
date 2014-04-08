@@ -22,7 +22,7 @@ function backup_files() {
 
 function place_files() {
 	# Find the installers and run them
-	find . -name install.sh | while read installer; do 
+	find . -mindepth 2 -name install.sh | while read installer; do 
 		sh -c "${installer}"
 	done
 }
@@ -124,12 +124,12 @@ dependencies_needed() {
 		echo "Install these, then run this script again."
 		exit 1
 	fi
-
 }
 
 bootstrap() {
 	install_dependencies
 	place_files
+	echo run \`source ~/.bashrc\' to reload your bashrc file
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -139,7 +139,6 @@ else
 	read -r -p "Would you like to proceed? [y/N] " response
 	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 		bootstrap
-		echo run \`source ~/.bashrc\' to reload your bashrc file
 	fi
 fi
 
