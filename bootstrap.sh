@@ -34,8 +34,8 @@ function e_arrow() { echo -e " \033[1;33m➜\033[0m $@"; }
 
 install_dependencies() {
 	e_header "Installing dependencies..."
-	if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-		install_dependencies_ubuntu
+	if [ "$(type -P apt-get)" ]; then
+		install_dependencies_debian
 	elif [[ "$OSTYPE" =~ ^darwin ]]; then
 		install_dependencies_osx
 	else 
@@ -44,7 +44,7 @@ install_dependencies() {
 	fi
 }
 
-install_dependencies_ubuntu() {
+install_dependencies_debian() {
 	install_cmd="sudo apt-get -y install"
 	version="$(lsb_release -r | cut -f2)"
 
@@ -60,7 +60,8 @@ install_dependencies_ubuntu() {
 		e_success "ctags-exuberant installed"
 	fi
 
-	if [ ! "$(type -P ag)" ]; then
+	# install the_silver_searcher if on a Ubuntu system
+	if [[ ! "$(type -P ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
 		e_arrow "Installing ag (the_silver_searcher)..."
 		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
 			$install_cmd silversearcher-ag
