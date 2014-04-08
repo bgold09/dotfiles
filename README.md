@@ -15,9 +15,9 @@ Clone this repository and submodules:
 git clone --recursive https://github.com/bgold09/dotfiles.git ~/.dotfiles 
 ```
 
-Install the configuration (create symlinks):
+Install the configuration (create links):
 
 ```sh
 cd ~/.dotfiles
-./install.sh
+./bootstrap.sh
 ```
