@@ -5,13 +5,11 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 curr="$(pwd)"
-name='bash'
+name='git'
 
 place_files() {
-	rm -f $HOME/.bash
-	ln -s $curr $HOME/.bash
-	rm -f $HOME/.bashrc 
-	ln bashrc $HOME/.bashrc
+	rm -f $HOME/.gitconfig
+	ln gitconfig $HOME/.gitconfig
 }
 
 function e_header() { echo -e "\033[1m$@\033[0m"; }

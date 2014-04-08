@@ -8,8 +8,8 @@ current="$(pwd)"
 
 # files to link in home directory
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
-declare -a DIRS=('git' 'python')
-declare -a DIRSINSTALL=('bash' 'dotvim')
+declare -a DIRS=()
+declare -a DIRSINSTALL=('bash' 'dotvim' 'git' 'python')
 
 function backup_files() {
 	mkdir $backup_dir
@@ -55,6 +55,7 @@ function e_error() { echo -e " \033[1;31m✖\033[0m $@"; }
 function e_arrow() { echo -e " \033[1;33m➜\033[0m $@"; }
 
 install_dependencies() {
+	e_header "Installing dependencies..."
 	if [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
 		install_dependencies_ubuntu
 	elif [[ "$OSTYPE" =~ ^darwin ]]; then
@@ -70,24 +71,24 @@ install_dependencies_ubuntu() {
 	version="$(lsb_release -r | cut -f2)"
 
 	if [ ! "$(type -P git)" ]; then
-		e_header "Installing git..."
+		e_arrow "Installing git..."
 		$install_cmd git-core
 		e_success "git installed"
 	fi
 
 	if [ ! "$(type -P ctags-exuberant)" ]; then
-		e_header "Installing ctags-exuberant..."
+		e_arrow "Installing ctags-exuberant..."
 		$install_cmd ctags-exuberant
 		e_success "ctags-exuberant installed"
 	fi
 
 	if [ ! "$(type -P ag)" ]; then
-		e_header "Installing ag (the_silver_searcher)..."
+		e_arrow "Installing ag (the_silver_searcher)..."
 		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
 			$install_cmd silversearcher-ag
 		else
 			for pkg in "automake" "pkg-config" "libpcre3-dev" "zlib1g-dev" "liblzma-dev"; do 
-				e_header "Installing $pkg..."
+				e_arrow "Installing $pkg..."
 				$install_cmd $pkg
 				e_success "$pkg installed"
 			done
@@ -111,13 +112,13 @@ install_dependencies_osx() {
 	fi
 
 	if [ ! "$(type -P ctags-exuberant)" ]; then
-		e_header "Installing ctags-exuberant..."
+		e_arrow "Installing ctags-exuberant..."
 		$install_cmd ctags-exuberant
 		e_success "ctags-exuberant installed"
 	fi
 
 	if [ ! "$(type -P ag)" ]; then
-		e_header "Installing ag (the_silver_searcher)..."
+		e_arrow "Installing ag (the_silver_searcher)..."
 		$install_cmd the_silver_searcher
 		e_success "ag (the_silver_searcher) installed"
 	fi

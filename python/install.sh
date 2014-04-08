@@ -5,13 +5,11 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 curr="$(pwd)"
-name='bash'
+name='python'
 
 place_files() {
-	rm -f $HOME/.bash
-	ln -s $curr $HOME/.bash
-	rm -f $HOME/.bashrc 
-	ln bashrc $HOME/.bashrc
+	rm -f $HOME/.pythonrc.py
+	ln pythonrc.py $HOME/.pythonrc.py
 }
 
 function e_header() { echo -e "\033[1m$@\033[0m"; }
