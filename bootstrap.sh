@@ -8,7 +8,6 @@ current="$(pwd)"
 
 # files to link in home directory
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
-declare -a DIRS=()
 declare -a DIRSINSTALL=('bash' 'dotvim' 'git' 'python')
 
 function backup_files() {
@@ -22,32 +21,11 @@ function backup_files() {
 }
 
 function place_files() {
-	# directories with installation scripts
-	for directory in "${DIRSINSTALL[@]}" ; do
-		if [ ! -e $current/$directory/install.sh ]; then
-			echo "WARNING: no \`install.sh\' found for directory $current/$directory"
-		else
-			$current/$directory/install.sh
-		fi
-	done
-
-	# directories without installation scripts, files/directories only
-	# no special installation behavior needed
-	for directory in "${DIRS[@]}" ; do
-		for file in $current/$directory ; do
-			if [ -f $file ] && [ -r $file ]; then
-				rm -f $HOME/.$(basename $file)
-				ln $file $HOME/.$(basename $file)
-			elif [ -d $file ]; then
-				for f in $file/* ; do
-					rm -f $HOME/.$(basename $f)
-					ln -s $f $HOME/.$(basename $f)
-				done
-			fi
-		done
+	# Find the installers and run them
+	find . -name install.sh | while read installer; do 
+		sh -c "${installer}"
 	done
 }
-
 # Logging
 function e_header() { echo -e "\033[1m$@\033[0m"; }
 function e_success() { echo -e " \033[1;32m✔\033[0m $@"; }
