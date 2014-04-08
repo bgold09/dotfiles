@@ -88,6 +88,12 @@ install_dependencies_osx() {
 		e_error "XCode or the Command Line Tools for XCode must be installed first"
 		exit 1
 	fi
+	
+	if [ ! "$(type -P brew)" ]; then
+		e_arrow "Installing Homebrew (OSX package manager)"
+		ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+		e_success "Homebrew installed"
+	fi
 
 	if [ ! "$(type -P ctags-exuberant)" ]; then
 		e_arrow "Installing ctags-exuberant..."
