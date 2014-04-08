@@ -8,8 +8,7 @@ curr="$(pwd)"
 name='git'
 
 place_files() {
-	rm -f $HOME/.gitconfig
-	ln gitconfig $HOME/.gitconfig
+	ln -f gitconfig $HOME/.gitconfig
 }
 
 function e_header() { echo -e "\033[1m$@\033[0m"; }

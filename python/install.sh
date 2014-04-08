@@ -8,8 +8,7 @@ curr="$(pwd)"
 name='python'
 
 place_files() {
-	rm -f $HOME/.pythonrc.py
-	ln pythonrc.py $HOME/.pythonrc.py
+	ln -f pythonrc.py $HOME/.pythonrc.py
 }
 
 function e_header() { echo -e "\033[1m$@\033[0m"; }
