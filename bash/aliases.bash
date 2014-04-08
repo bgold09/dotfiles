@@ -9,14 +9,8 @@ alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # enable color support of ls and add aliases
-if [ "$TERM" != "dumb" ]; then
-	eval "`dircolors -b`"
-	alias ls='ls --color=auto'
-	alias dir='ls --color=auto --format=vertical'
-	alias vdir='ls --color=auto --format=long'
-fi
-
-# Some shortcuts for different directory listings
+eval "`dircolors -b`"
+alias ls='ls --color=auto -hBG'
 # alias ls='ls -hF --color=tty'                 # classify files in colour
 alias ll='ls -l'                                # long list
 alias la='ls -A'                                # all but . and ..
@@ -30,19 +24,6 @@ if [ ! -x "$(which tree 2>/dev/null)" ]; then
 fi
 
 alias mkdir='mkdir -pv'                         # make parent dirs, verbose
-
-updir() {
-	if [ -z $1 ]; then
-		cd ..
-	else
-		dir=''
-		for i in `seq 1 $1`; do
-			dir=../$dir
-		done
-		cd $dir
-	fi
-}
-alias ..=updir
 
 # files
 # don't delete / or prompt if deleting >= 3 files
