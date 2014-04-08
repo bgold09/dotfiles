@@ -7,7 +7,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 current="$(pwd)"
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 
-function backup_files() {
+backup_files() {
 	mkdir $backup_dir
 	for file in "${files[@]}"
 	do
@@ -17,17 +17,17 @@ function backup_files() {
 	done
 }
 
-function place_files() {
+run_install() {
 	# Find the installers and run them
 	find . -mindepth 2 -name install.sh | while read installer; do 
 		sh -c "${installer}"
 	done
 }
 # Logging
-function e_header() { echo -e "\033[1m$@\033[0m"; }
-function e_success() { echo -e " \033[1;32m✔\033[0m $@"; }
-function e_error() { echo -e " \033[1;31m✖\033[0m $@"; }
-function e_arrow() { echo -e " \033[1;33m➜\033[0m $@"; }
+e_header() { echo -e "\033[1m$@\033[0m"; }
+e_success() { echo -e " \033[1;32m✔\033[0m $@"; }
+e_error() { echo -e " \033[1;31m✖\033[0m $@"; }
+e_arrow() { echo -e " \033[1;33m➜\033[0m $@"; }
 
 install_dependencies() {
 	e_header "Installing dependencies..."
@@ -126,8 +126,8 @@ dependencies_needed() {
 
 bootstrap() {
 	[ -z "$DEP" ] && install_dependencies
-	place_files
-	echo run \`source ~/.bashrc\' to reload your bashrc file
+	run_install
+	echo "run \`source ~/.bashrc' to reload your bashrc file"
 }
 
 usage() {
