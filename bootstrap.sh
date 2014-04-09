@@ -132,7 +132,7 @@ bootstrap() {
 
 usage() {
 	cat << EOF
-Usage: $0 [OPTION]..."
+Usage: $0 [OPTION]...
 Install configurations for bash, git, python and git.
 
 -d    install without checking dependencies
