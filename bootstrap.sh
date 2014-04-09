@@ -5,10 +5,7 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 current="$(pwd)"
-
-# files to link in home directory
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
-declare -a DIRSINSTALL=('bash' 'dotvim' 'git' 'python')
 
 function backup_files() {
 	mkdir $backup_dir
@@ -128,12 +125,45 @@ dependencies_needed() {
 }
 
 bootstrap() {
-	install_dependencies
+	[ -z "$DEP" ] && install_dependencies
 	place_files
 	echo run \`source ~/.bashrc\' to reload your bashrc file
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+usage() {
+	cat << EOF
+Usage: $0 [OPTION]..."
+Install configurations for bash, git, python and git.
+
+-d    install without checking dependencies
+-f    run install without prompting
+-h    display this help and exit
+EOF
+
+	exit 0
+}
+
+# Parse command line arguments
+while getopts "dfh" o; do
+	case "${o}" in 
+		d)
+			DEP=1
+			;;
+		f)
+			FORCE=1
+			;;
+		h)
+			usage
+			;;
+		*)
+			usage
+			;;
+	esac
+done
+
+shift $((OPTIND-1))
+
+if [ -n "$FORCE" ]; then
 	bootstrap
 else 
 	echo This script may overwrite files in your home directory.
