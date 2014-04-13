@@ -3,14 +3,19 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-for file in ~/.bash/{prompt,aliases,functions}.bash; do
+for file in ~/.bash/{prompt,functions}.bash; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
 
-## completion ##
+## Completion ##
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 for file in completions/*; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
+## Aliases ##
+for file in aliases/*; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
@@ -18,12 +23,12 @@ done
 complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
 	|| complete -o default -o nospace -F _git g
 
-## local config ##
+## Local Config ##
 [ -f $HOME/.localrc ] && source $HOME/.localrc
 
-## history ##
+## History ##
 # Don't put duplicate lines in the history.
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
-## python ##
+## Python ##
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
