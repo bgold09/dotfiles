@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-DOTFILES_REPO="$(pwd)"
+export DOTFILES_REPO="$(pwd)"
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 
 source $DOTFILES_REPO/script/helpers.bash
