@@ -4,8 +4,10 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-current="$(pwd)"
+DOTFILES_REPO="$(pwd)"
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
+
+source $DOTFILES_REPO/script/helpers.bash
 
 backup_files() {
 	mkdir $backup_dir
@@ -23,11 +25,6 @@ run_install() {
 		sh -c "${installer}"
 	done
 }
-# Logging
-e_header() { echo -e "\033[1m$@\033[0m"; }
-e_success() { echo -e " \033[1;32m✔\033[0m $@"; }
-e_error() { echo -e " \033[1;31m✖\033[0m $@"; }
-e_arrow() { echo -e " \033[1;33m➜\033[0m $@"; }
 
 install_dependencies() {
 	e_header "Installing dependencies..."
@@ -127,7 +124,7 @@ dependencies_needed() {
 bootstrap() {
 	[ -z "$DEP" ] && install_dependencies
 	run_install
-	echo "run \`source ~/.bashrc' to reload your bashrc file"
+	echo "Run \`source ~/.bashrc' to reload your bashrc file"
 }
 
 usage() {
@@ -160,7 +157,6 @@ while getopts "dfh" o; do
 			;;
 	esac
 done
-
 shift $((OPTIND-1))
 
 if [ -n "$FORCE" ]; then
