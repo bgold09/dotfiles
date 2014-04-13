@@ -3,7 +3,7 @@
 set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
-source $DOTFILES_REPO/script/helpers.bash
+source $DOTFILES_REPO/system/helpers.bash
 
 curr="$(pwd)"
 name='bash'
