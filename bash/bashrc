@@ -10,12 +10,12 @@ unset file
 
 ## Completion ##
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-for file in completions/*; do
+for file in $HOME/.bash/completions/*; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
 ## Aliases ##
-for file in aliases/*; do
+for file in $HOME/.bash/aliases/*; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
