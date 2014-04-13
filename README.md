@@ -29,3 +29,14 @@ Install the configuration (create links):
 cd ~/.dotfiles
 ./bootstrap.sh
 ```
+
+## Thanks to...
+
+* [Ben Alman](http://benalman.com/) for his [dotfiles repository](https://github.com/cowboy/dotfiles) and [spark tool] (https://github.com/holman/spark)
+* [Zach Holman](http://benalman.com/) for his [dotfiles repository](https://github.com/holman/dotfiles)
+* Brett Smith for [dtrx](http://brettcsmith.org/2007/dtrx)
+
+## License
+
+Copyright (c) 2014 Brian Golden
+Licensed under the MIT license. 
