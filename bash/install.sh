@@ -13,6 +13,8 @@ place_files() {
 	ln -s $curr $HOME/.bash
 	rm -f $HOME/.bashrc 
 	ln bashrc $HOME/.bashrc
+	rm -f $HOME/.bash_profile
+	ln bash_profile $HOME/.bash_profile
 }
 
 e_header "Installing $name configration..."
