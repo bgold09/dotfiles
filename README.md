@@ -9,6 +9,14 @@ These are my dotfiles, which includes configurations for [bash], [vim], [git] an
 
 ## Installation
 
+### Quick installation:
+
+```sh
+curl --fsSL https://github.com/bgold09/dotfiles.git | sh
+```
+
+### Using Git and the bootstrap script
+
 Clone this repository and submodules:
 
 ```sh
