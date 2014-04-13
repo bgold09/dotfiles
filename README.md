@@ -12,7 +12,7 @@ These are my dotfiles, which includes configurations for [bash], [vim], [git] an
 ### Quick installation:
 
 ```sh
-curl --fsSL https://github.com/bgold09/dotfiles.git | sh
+curl --fsSL https://github.com/bgold09/dotfiles/master/install.sh | sh
 ```
 
 ### Using Git and the bootstrap script
