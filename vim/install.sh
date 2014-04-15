@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 curr="$(pwd)"
-name="vim"
+name="$(basename $(pwd))"
 
 place_files() {
 	ln -f vimrc $HOME/.vimrc

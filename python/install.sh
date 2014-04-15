@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 source $DOTFILES_REPO/system/helpers.bash
 
 curr="$(pwd)"
-name='python'
+name="$(basename $(pwd))"
 
 place_files() {
 	ln -f pythonrc.py $HOME/.pythonrc.py

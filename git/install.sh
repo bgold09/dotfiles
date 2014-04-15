@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 source $DOTFILES_REPO/system/helpers.bash
 
 curr="$(pwd)"
-name='git'
+name="$(basename $(pwd))"
 
 place_files() {
 	ln -f gitconfig $HOME/.gitconfig
