@@ -19,7 +19,7 @@ place_files() {
 	ln profile $HOME/.profile
 }
 
-e_header "Installing $name configration..."
+info "Installing $name configration..."
 place_files
-e_success "$name confguration installed"
+success "$name confguration installed"
 exit 0
