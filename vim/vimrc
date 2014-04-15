@@ -1,0 +1,193 @@
+" Author: Brian Golden
+
+"#### environment ####" {{{ 
+" Identify platform {{{ 
+	silent function! OSX()
+		return has('macunix')
+	endfunction
+	silent function! LINUX()
+		return has('unix') && !has('macunix')
+			\ && !has('win32unix')
+	endfunction
+	silent function! WINDOWS()
+		return (has('win16') || has('win32') || has('win64'))
+	endfunction
+"}}}
+	set nocompatible
+	if !WINDOWS() 
+		set shell=/bin/sh
+	endif
+" }}}
+
+" #### Pathogen plugin manager #### {{{
+	source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+	let g:pathogen_disabled = []
+
+	if !executable('ag') 
+		call add(g:pathogen_disabled, 'ag')
+	endif
+
+	if !executable('ctags-exuberant')
+		call add(g:pathogen_disabled, 'tagbar')
+	endif
+
+	if v:version < '703' || !has('python')
+		call add(g:pathogen_disabled, 'gundo')
+	endif
+
+	call pathogen#infect('bundle/{}')
+	call pathogen#helptags()
+" }}}
+
+"#### general ####" {{{
+	set history=700
+	syntax on
+	set autoread
+	let mapleader=","
+	let g:mapleader=","
+	" fast saving
+	nmap <leader>w :w<cr>
+	nmap <silent> <leader>ev :e $MYVIMRC<CR>
+	nmap <silent> <leader>sv :so $MYVIMRC<CR>
+	if has('persistent_undo') " {{{
+		silent !mkdir ~/.vim/backups > /dev/null 2>&1
+		set undodir=~/.vim/backups
+		set undofile
+	endif
+	" }}}
+" }}}
+
+"#### user interface ####" {{{
+	set nu
+	set backspace=indent,eol,start
+	set whichwrap+=<,>,h,l
+	set lazyredraw
+	set noerrorbells
+	set novisualbell
+	if has('cmdline_info')
+		set ruler
+		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+	endif
+" }}}
+
+"#### formatting ####" {{{
+	set splitright    " puts new vsplit windows to the right of the current 
+	set splitbelow    " puts new split windows below the current
+	set autoindent    " indent at the same level as previous line
+" }}}
+
+"#### search ####" {{{
+	set ignorecase
+	set smartcase
+	set incsearch
+	set hlsearch
+	" Use <C-L> to clear the highlighting of :set hlsearch.
+	if maparg('<C-L>', 'n') ==# ''
+		nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+	endif
+" }}} 
+
+"#### files & colors ####" {{{
+	filetype plugin on
+	filetype indent on
+	autocmd Filetype html setlocal ts=2 sts=2 sw=2
+	autocmd FileType pl set syntax=prolog
+	set ffs=unix,dos,mac
+	hi Comment ctermfg=LightBlue 
+" }}}
+
+"#### motion & navigation ####" {{{
+	set mouse=a
+	set mousehide
+	set virtualedit=onemore
+	set scrolloff=3
+	"http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+	" Restore cursor to file position in previous editing session
+	" To disable this, add the following: 
+	" let g:spf13_no_restore_cursor = 1
+	if !exists('g:spf13_no_restore_cursor') " {{{
+		function! ResCur()
+			if line("'\"") <= line("$")
+				normal! g`"
+				return 1
+			endif
+		endfunction
+
+		augroup resCur
+			autocmd!
+			autocmd BufWinEnter * call ResCur()
+		augroup END
+	endif
+	" }}}
+" }}}
+
+"#### completion ####" {{{
+	set wildmenu
+	set wildmode=list:longest,full
+	set wildignore=*.o,*~,*.pyc
+	set wildignore+=*vim/backups
+	set wildignore+=*.png,*.jpg,*.gif
+	set omnifunc=syntaxcomplete#Complete
+	" close preview after selection is made
+	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" }}}
+
+"#### tabs & indentation ####" {{{
+	set smarttab
+	set ai        " auto indent
+	set si        " smart indent
+	set wrap      " wrap lines
+" }}}
+
+" #### folding ####" {{{
+set foldenable
+set foldlevelstart=10      " open most folds by default
+set foldnestmax=10
+set foldmethod=indent      " fold based on indent level
+set modelines=1
+" space opens/closes folds
+nnoremap <space> za
+" }}}
+
+"#### backups ####" {{{
+	set backupdir=~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp
+	set directory=~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp
+ " }}}
+
+"#### plugin settings ####" {{{
+" ag {{{
+	if executable('ag')
+		nnoremap <leader>a :Ag
+	endif
+" }}}
+" CtrlP {{{
+	let g:ctrlp_match_window = 'bottom,order:ttb'
+	if executable('ag')
+		let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+	endif
+"}}}
+" Gundo {{{ 
+	if v:version >= '703' || has('python')
+		nnoremap <leader>u :GundoToggle<CR>
+	endif
+" }}}
+" NERDTree {{{
+	map <C-n> :NERDTreeToggle<CR>
+" }}}
+" SuperTab {{{
+	let g:SuperTabDefaultCompletionType = 'context'
+" }}}
+" Tagbar {{{
+	if executable('ctags-exuberant')
+		let g:tagbar_usearrows = 1
+		nnoremap <leader>l :TagbarToggle<CR>
+	endif
+" }}}
+" Yankstack {{{
+	nmap <leader>p <Plug>yankstack_substitute_older_paste
+	nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" }}}
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
