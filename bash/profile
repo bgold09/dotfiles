@@ -23,3 +23,5 @@ fi
 
 PATH=$PATH:$HOME/dotfiles/bin
 export EDITOR="/usr/bin/vim"
+
+export DOTFILES_REPO="$HOME/dotfiles"
