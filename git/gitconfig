@@ -30,6 +30,10 @@
 	pom = push origin master
 	revert = checkout
 	d = diff --color-words
-	
-[url "git://github.com/"]
+
+[url "git@github.com:"]
 	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+	insteadOf = "github:"
