@@ -14,7 +14,7 @@ place_files() {
 	ln -s $curr $HOME/.vim
 }
 
-info "Installing $name configration..."
+info "Installing $name configuration..."
 place_files
-success "$name confguration installed"
+success "$name configuration installed"
 exit 0

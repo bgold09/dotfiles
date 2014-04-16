@@ -9,9 +9,9 @@ curr="$(pwd)"
 name="$(basename $(pwd))"
 
 if [[ "$OSTYPE" =~ ^darwinm ]]; then
-	info "Installing $name configration..."
+	info "Installing $name configuration..."
 	./osx
-	success "$name confguration installed"
+	success "$name configuration installed"
 fi
 
 exit 0

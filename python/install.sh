@@ -12,7 +12,7 @@ place_files() {
 	ln -f pythonrc.py $HOME/.pythonrc.py
 }
 
-info "Installing $name configration..."
+info "Installing $name configuration..."
 place_files
-success "$name confguration installed"
+success "$name configuration installed"
 exit 0
