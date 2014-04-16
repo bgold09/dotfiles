@@ -1,11 +1,12 @@
 # dotfiles
 
-These are my dotfiles, which includes configurations for [bash], [vim], [git] and [python].
+These are my dotfiles, which includes configurations for [bash], [vim], [git], [python] and [tmux].
 
 [bash]: https://www.gnu.org/software/bash/bash.html
 [vim]: http://www.vim.org
 [git]: http://git-scm.com 
 [python]: http://www.python.org
+[tmux]: http://tmux.sourceforge.net
 
 ## Installation
 
@@ -35,8 +36,10 @@ cd ~/.dotfiles
 ## What's Inside
 
 * ```bash``` - aliases, completion, prompt and other tweaks
-* ```git``` - nice gitconfig
+* ```git``` - nice gitconfig and global gitignore
+* ```osx``` - set sensible defaults for OS X
 * ```python``` - tab completion for the interpreter, history, command editing
+* ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins:
     * [ag.vim] - vim plugin for the [silver_searcher]
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
