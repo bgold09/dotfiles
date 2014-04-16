@@ -10,12 +10,16 @@ if [ -n "$force_color_prompt" ]; then
 		color_prompt=
 	fi
 fi
- 
+
 if [ "$color_prompt" = yes ]; then
 	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(last_two_dirs)\[\033[00m\] \$ '
 else 
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:$(last_two_dirs) \$ '
 fi
 unset force_color_prompt color_prompt
+
+if [ $(uname -o) = "Cygwin" ]; then 
+	PS1='\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[33m\] \W\[\e[0m\] \$ '
+fi
 
 export PS1
