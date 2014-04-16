@@ -29,3 +29,6 @@
 	pom = push origin master
 	revert = checkout
 	d = diff --color-words
+	
+[url "git://github.com/"]
+	insteadOf = "gh:"
