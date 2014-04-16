@@ -6,7 +6,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 backup_dir="$HOME/dotfiles-backup-`date +%s`"
 
-source $DOTFILES_REPO/system/helpers.bash
+source $DOTFILES_REPO/script/helpers.bash
 
 backup_files() {
 	mkdir $backup_dir
