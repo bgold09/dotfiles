@@ -12,6 +12,7 @@
 [gui]
 
 [core]
+	editor = vim
 	pager = less -r
 
 [alias]
