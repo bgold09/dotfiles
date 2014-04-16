@@ -20,7 +20,7 @@ backup_files() {
 
 run_install() {
 	# Find the installers and run them
-	find . -mindepth 2 -name install.sh | while read installer; do 
+	find . -mindepth 2 -name install.sh | sort | while read installer; do 
 		sh -c "${installer}"
 	done
 }
