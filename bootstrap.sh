@@ -41,17 +41,12 @@ install_dependencies_debian() {
 	install_cmd="sudo apt-get -y install"
 	version="$(lsb_release -r | cut -f2)"
 
-	if [ ! "$(type -P git)" ]; then
-		e_arrow "Installing git..."
-		$install_cmd git-core
-		e_success "git installed"
-	fi
+	declare -A deps
+	deps[git]=git-core
+	deps[ctags-exuberant]=ctags-exuberant
+	deps[tmux]=tmux
 
-	if [ ! "$(type -P ctags-exuberant)" ]; then
-		e_arrow "Installing ctags-exuberant..."
-		$install_cmd ctags-exuberant
-		e_success "ctags-exuberant installed"
-	fi
+	install_dependencies_list "$install_cmd" "$(declare -p deps)"
 
 	# install the_silver_searcher if on a Ubuntu system
 	if [[ ! "$(type -P ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
@@ -89,17 +84,25 @@ install_dependencies_osx() {
 		e_success "Homebrew installed"
 	fi
 
-	if [ ! "$(type -P ctags-exuberant)" ]; then
-		e_arrow "Installing ctags-exuberant..."
-		$install_cmd ctags-exuberant
-		e_success "ctags-exuberant installed"
-	fi
+	declare -A deps
+	deps[ctags-exuberant]=ctags-exuberant
+	deps[ag]=the_silver_searcher
+	deps[tmux]=tmux
+	
+	install_dependencies_list "$install_cmd" "$(declare -p deps)"
+}
 
-	if [ ! "$(type -P ag)" ]; then
-		e_arrow "Installing ag (the_silver_searcher)..."
-		$install_cmd the_silver_searcher
-		e_success "ag (the_silver_searcher) installed"
-	fi
+install_dependencies_list() {
+	install_cmd="$1"
+	eval "declare -A deps="${2#*=}
+	for key in "${!deps[@]}"; do 
+		if [ ! "$(type -P $key)" ]; then
+			e_arrow "Installing $key..."
+			$install_cmd ${deps[$key]}
+			e_success "$key installed"
+		fi
+	done
+	
 }
 
 dependencies_needed() {
