@@ -6,7 +6,7 @@
 	default = matching
 
 [color]
-	ui = auto # covers diff = true, status = auto, branch = auto
+	ui = auto            # covers diff = true, status = auto, branch = auto
 	interactive = auto
 
 [gui]
@@ -17,21 +17,48 @@
 	excludesfile = ~/.git/gitignore
 
 [alias]
+	# add
 	a = add
-	co = checkout
-	ci = commit
-	cm = commit -m 
-	st = status
-	s = status
+
+	# branch
 	br = branch
-	h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+	# cat-file
 	type = cat-file -t
 	dump = cat-file -p
-	sub = submodule
-	pom = push origin master
-	revert = checkout
+
+	# checkout
+	co = checkout
+	nb = checkout -b   # create and switch to new branch
+
+	# commit	
+	ci = commit
+	cm = commit -m
+
+	# diff
 	d = diff --color-words
+	last = diff HEAD^
+
+	# log
+	h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+	# pull
+	pl = pull
+
+	# push
+	pom = push origin master
+
+	# remote
+	r = remote -v
+
+	# status
+	st = status
+	s = status
+
+	# submodule
+	sub = submodule
+	sa = submodule add
 
 [url "git@github.com:"]
 	insteadOf = "gh:"
