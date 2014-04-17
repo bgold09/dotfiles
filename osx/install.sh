@@ -8,10 +8,13 @@ source $DOTFILES_REPO/script/helpers.bash
 curr="$(pwd)"
 name="$(basename $(pwd))"
 
+info "Installing $name configuration..."
 if [[ "$OSTYPE" =~ ^darwinm ]]; then
-	info "Installing $name configuration..."
 	./osx
 	success "$name configuration installed"
+else
+	fail "not on an OS X system"
 fi
+
 
 exit 0
