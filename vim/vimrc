@@ -138,6 +138,7 @@
 	set ai        " auto indent
 	set si        " smart indent
 	set wrap      " wrap lines
+	map <leader>n :set wrap!<CR>
 " }}}
 
 " #### folding ####" {{{
