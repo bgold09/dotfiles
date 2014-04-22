@@ -43,6 +43,7 @@ cd ~/.dotfiles
 * ```vim``` - a lot of vimrc tweaks, including the following plugins:
     * [ag.vim] - vim plugin for the [silver_searcher]
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
+    * [DetectIndent] - detect the indentation settings for an open file
     * [fugitive] - git wrapper
     * [Gundo] - visualization of the vim undo tree
     * [matchit] - match '%' to more than just single characters
@@ -57,6 +58,7 @@ cd ~/.dotfiles
 [ag.vim]: https://github.com/rking/ag.vim
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [CtrlP]: https://github.com/kien/ctrlp.vim
+[DetectIndent]: https://github.com/ciaranm/detectindent
 [fugitive]: https://github.com/tpope/vim-fugitive
 [Gundo]: https://github.com/sjl/gundo.vim
 [matchit]: https://github.com/tmhedberg/matchit
