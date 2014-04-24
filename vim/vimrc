@@ -20,7 +20,7 @@
 " }}}
 
 " #### Pathogen plugin manager #### {{{
-	source ~/.vim/bundle/pathogen/autoload/pathogen.vim
+	runtime bundle/pathogen/autoload/pathogen.vim
 	let g:pathogen_disabled = []
 
 	if !executable('ag') 
