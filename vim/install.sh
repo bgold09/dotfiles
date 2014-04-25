@@ -9,7 +9,8 @@ curr="$(pwd)"
 name="$(basename $(pwd))"
 
 place_files() {
-	ln -f vimrc $HOME/.vimrc
+	rm $HOME/.vimrc
+	ln vimrc $HOME/.vimrc
 	rm -f $HOME/.vim         # remove any symlink to vim config directory
 	ln -s $curr $HOME/.vim
 }
