@@ -128,6 +128,7 @@ bootstrap() {
 	[ -z "$DEP" ] && install_dependencies
 	run_install
 	echo "Run \`source ~/.bashrc' to reload your bashrc file"
+	echo Some changes may require a restart to take effect
 }
 
 usage() {
