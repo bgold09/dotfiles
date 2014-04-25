@@ -49,6 +49,7 @@ cd ~/.dotfiles
     * [matchit] - match '%' to more than just single characters
     * [NERDTree] - directory tree explorer
     * [pathogen] - runtimepath & plugin manager
+    * [solarized] - precision colorscheme
     * [supertab] - allows you to use &lt;Tab&gt; for insert completion
     * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
@@ -64,6 +65,7 @@ cd ~/.dotfiles
 [matchit]: https://github.com/tmhedberg/matchit
 [NERDTree]: https://github.com/scrooloose/nerdtree
 [pathogen]: https://github.com/tpope/vim-pathogen
+[solarized]: https://github.com/altercation/vim-colors-solarized
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
