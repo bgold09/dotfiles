@@ -36,9 +36,12 @@ cd ~/.dotfiles
 ## What's Inside
 
 * ```bash``` - aliases, completion, prompt and other tweaks
+* ```bin``` - any executables here will be added to your ```$PATH``` and be available anywhere
 * ```git``` - nice gitconfig and global gitignore
 * ```osx``` - set sensible defaults for OS X
 * ```python``` - tab completion for the interpreter, history, command editing
+* ```script``` - helpers for installation of these dotfiles
+* ```system``` - files here will not be linked in ```home```
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins:
     * [ag.vim] - vim plugin for the [silver_searcher]
@@ -55,6 +58,7 @@ cd ~/.dotfiles
     * [Tagbar] - browse tags in source code
     * [tComment] - provides easy to use, file-type sensible comments
     * [yankstack] - provides a history of yank buffers
+* ```windows``` - Windows-specific configurations (Mintty)
 
 [ag.vim]: https://github.com/rking/ag.vim
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
@@ -71,12 +75,6 @@ cd ~/.dotfiles
 [Tagbar]: https://github.com/majutsushi/tagbar
 [tComment]: https://github.com/tomtom/tcomment_vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
-
-## Components
-
-There are a few special directories in the repository:
-* ```bin``` - any executables here will be added to your ```$PATH``` and be available anywhere
-* ```system``` - files here will not be linked in ```home```
 
 ## Thanks to...
 
