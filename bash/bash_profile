@@ -3,5 +3,3 @@ if [ -f ~/.bashrc ]; then
 fi
 
 export PATH=$PATH:$HOME/dotfiles/bin
-export EDITOR="/usr/bin/vim"
-export DOTFILES_REPO="$HOME/dotfiles"
