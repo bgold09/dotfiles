@@ -29,6 +29,9 @@ alias wget='wget -c'
 alias df='df -h'
 alias du='du -h'
 
+# less pager
+alias less='less -R'
+
 # misc
 alias whence='type -a'             # where, of a sort
 alias mount='mount | column -t'
