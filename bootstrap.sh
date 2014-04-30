@@ -69,6 +69,8 @@ install_dependencies_debian() {
 		fi
 		e_success "ag (the_silver_searcher) installed"
 	fi
+
+	install_pip
 }
 
 install_dependencies_osx() {
@@ -91,6 +93,17 @@ install_dependencies_osx() {
 	deps[tmux]=tmux
 	
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
+
+	install_pip
+}
+
+install_pip() {
+	if [ ! "$(type -P pip)" ]; then
+		e_arrow "Installing pip (Python package manager)..."
+		wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+		mv get-pip.py /tmp
+		sudo python /tmp/get-pip.py
+	fi
 }
 
 install_dependencies_list() {
