@@ -93,11 +93,13 @@
 	autocmd Filetype html setlocal ts=2 sts=2 sw=2
 	autocmd FileType pl set syntax=prolog
 	set ffs=unix,dos,mac
-	set t_Co=16
-	set background=dark
-	let g:solarized_termcolors=256
-	let g:solarized_termtrans=1
-	colorscheme solarized
+	if $SOLARIZED == 'on'
+		set t_Co=16
+		set background=dark
+		let g:solarized_termcolors=256
+		let g:solarized_termtrans=1
+		colorscheme solarized
+	endif
 " }}}
 
 "#### motion & navigation ####" {{{

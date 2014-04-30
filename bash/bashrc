@@ -33,6 +33,6 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 ## Python ##
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 
-## Colors ##
-# Comment this if solarized scheme is not installed
-eval `dircolors $HOME/.dircolors`
+## Directory Colors ##
+[ -n $SOLARIZED ] && [ -r "$HOME/.dircolors" ] \
+	&& eval `dircolors $HOME/.dircolors`
