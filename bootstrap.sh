@@ -71,6 +71,7 @@ install_dependencies_debian() {
 	fi
 
 	install_pip
+	install_python_packages
 }
 
 install_dependencies_osx() {
@@ -93,8 +94,6 @@ install_dependencies_osx() {
 	deps[tmux]=tmux
 	
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
-
-	install_pip
 }
 
 install_pip() {
@@ -104,6 +103,17 @@ install_pip() {
 		mv get-pip.py /tmp
 		sudo python /tmp/get-pip.py
 	fi
+}
+
+install_python_packages() {
+	declare -a pkgs=('git-up')
+	for pkg in "${pkgs[@]}"; do 
+		if [ -z "$(pip show $pkg)" ]; then
+			e_arrow "Installing python package $pkg..."
+			sudo pip install $pkg
+			e_success "Python package $pkg installed"
+		fi
+	done
 }
 
 install_dependencies_list() {
