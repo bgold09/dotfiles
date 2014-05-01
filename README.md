@@ -34,8 +34,8 @@ cd ~/.dotfiles
 ```
 
 ### Completing the configuration
-* Install the [solarized]() colorscheme for your terminal emulator of choice.
-* Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
+* Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
+* Add the following line to your ``` localrc```: ```export SOLARIZED='on'```
 
 ## What's Inside
 
