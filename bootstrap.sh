@@ -39,18 +39,20 @@ install_dependencies() {
 }
 
 install_dependencies_debian() {
-	install_cmd="sudo apt-get -y install"
-	version="$(lsb_release -r | cut -f2)"
+	install_cmd="sudo apt-get -y -q install"
 
 	declare -A deps
 	deps[git]=git-core
 	deps[ctags-exuberant]=ctags-exuberant
 	deps[tmux]=tmux
+	deps[pip]=python-pip
 
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
+	install_python_packages
 
 	# install the_silver_searcher if on a Ubuntu system
 	if [[ ! "$(type -P ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+		version="$(lsb_release -r | cut -f2)"
 		e_arrow "Installing ag (the_silver_searcher)..."
 		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
 			$install_cmd silversearcher-ag
@@ -69,9 +71,6 @@ install_dependencies_debian() {
 		fi
 		e_success "ag (the_silver_searcher) installed"
 	fi
-
-	install_pip
-	install_python_packages
 }
 
 install_dependencies_osx() {
@@ -96,21 +95,12 @@ install_dependencies_osx() {
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
 }
 
-install_pip() {
-	if [ ! "$(type -P pip)" ]; then
-		e_arrow "Installing pip (Python package manager)..."
-		wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-		mv get-pip.py /tmp
-		sudo python /tmp/get-pip.py
-	fi
-}
-
 install_python_packages() {
 	declare -a pkgs=('git-up')
 	for pkg in "${pkgs[@]}"; do 
 		if [ -z "$(pip show $pkg)" ]; then
 			e_arrow "Installing python package $pkg..."
-			sudo pip install $pkg
+			sudo pip install --quiet $pkg
 			e_success "Python package $pkg installed"
 		fi
 	done
@@ -126,7 +116,6 @@ install_dependencies_list() {
 			e_success "$key installed"
 		fi
 	done
-	
 }
 
 dependencies_needed() {
@@ -150,8 +139,8 @@ dependencies_needed() {
 bootstrap() {
 	[ -z "$DEP" ] && install_dependencies
 	run_install
-	echo "Run \`source ~/.bashrc' to reload your bashrc file"
-	echo Some changes may require a restart to take effect
+	echo "Run \`source ~/.bashrc' to reload your bashrc file."
+	echo Some changes may require a restart to take effect.
 }
 
 usage() {
