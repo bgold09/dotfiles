@@ -11,6 +11,8 @@ alias ll='ls -l'                                # long list
 alias la='ls -A'                                # all but . and ..
 alias l='ls -CF'
 alias lla='ls -la'
+alias ld='ls -l --color | less'
+alias lda='ls -la --color | less'
 
 # navigation, directories
 # Tree
