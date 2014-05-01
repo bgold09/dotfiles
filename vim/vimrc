@@ -204,4 +204,16 @@ nnoremap <space> za
 " }}}
 " }}}
 
+"#### functions ####" {{{
+	" Highlight characters past 80 characters
+	function ToggleColorColumn()
+		if &colorcolumn == ""
+			execute "set colorcolumn=" . join(range(81, 335), ',')
+		else
+			set colorcolumn=
+		endif
+	endfunction
+	nmap <leader>k :call ToggleColorColumn()<CR>
+"}}}
+
 " vim:foldmethod=marker:foldlevel=0
