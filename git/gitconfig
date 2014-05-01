@@ -13,7 +13,7 @@
 
 [core]
 	editor = vim
-	pager = less -r
+	pager = less -R
 	excludesfile = ~/.git/gitignore
 
 [alias]
@@ -51,6 +51,10 @@
 
 	# remote
 	r = remote -v
+
+	# reset
+	u = reset HEAD
+	unstage = reset HEAD
 
 	# status
 	st = status
