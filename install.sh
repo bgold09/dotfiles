@@ -4,6 +4,6 @@ set -e
 
 echo 'Cloning and installing dotfiles...'
 
-git clone --recursive https://github.com/bgold09/dotfiles.git
-cd dotfiles
-sudo bash bootstrap.sh
+git clone --recursive https://github.com/bgold09/dotfiles.git $HOME/.dotfiles
+cd $HOME/.dotfiles
+sudo ./bootstrap.sh
