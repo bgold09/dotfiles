@@ -24,6 +24,9 @@ run_install() {
 	find . -mindepth 2 -name install.sh | sort | while read installer; do 
 		sh -c "${installer}"
 	done
+
+	[ -r $HOME/bin ] && unlink $HOME/bin
+	ln -s bin $HOME/bin
 }
 
 install_dependencies() {

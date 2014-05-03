@@ -15,8 +15,6 @@ place_files() {
 	ln bashrc $HOME/.bashrc
 	rm -f $HOME/.bash_profile
 	ln bash_profile $HOME/.bash_profile
-	rm -f $HOME/.profile
-	ln profile $HOME/.profile
 }
 
 info "Installing $name configuration..."
