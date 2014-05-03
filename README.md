@@ -1,12 +1,6 @@
 # dotfiles
 
-These are my dotfiles, which includes configurations for [bash], [vim], [git], [python] and [tmux].
-
-[bash]: https://www.gnu.org/software/bash/bash.html
-[vim]: http://www.vim.org
-[git]: http://git-scm.com 
-[python]: http://www.python.org
-[tmux]: http://tmux.sourceforge.net
+These are my dotfiles, which includes configurations for [bash](https://www.gnu.org/software/bash/bash.html), [vim](http://vim.org), [git](http://git-scm.org), [python](http://python.org) and [tmux](http://tmux.sourceforge.net).
 
 ## Installation
 
@@ -35,7 +29,7 @@ cd ~/.dotfiles
 
 ### Completing the configuration
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
-* Add the following line to your ``` localrc```: ```export SOLARIZED='on'```
+* Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
 
 ## What's Inside
 
@@ -92,4 +86,5 @@ cd ~/.dotfiles
 ## License
 
 Copyright (c) 2014 Brian Golden
+
 Licensed under the MIT license. 
