@@ -40,8 +40,8 @@
 	last = diff HEAD^
 
 	# log
-	h = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	h = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
+	hist = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 
 	# pull
 	pl = pull
