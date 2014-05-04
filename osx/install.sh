@@ -13,7 +13,7 @@ if [[ "$OSTYPE" =~ ^darwinm ]]; then
 	./osx
 	success "$name configuration installed"
 else
-	fail "not on an OS X system"
+	warn "not on an OS X system"
 fi
 
 

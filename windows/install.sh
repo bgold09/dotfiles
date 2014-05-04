@@ -19,7 +19,7 @@ if [ $(uname -o) = "Cygwin" ]; then
 	place_files
 	success "$name configuration installed"
 else 
-	fail "not on a Windows system"
+	warn "not on a Windows system"
 fi
 
 exit 0
