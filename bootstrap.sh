@@ -26,7 +26,7 @@ run_install() {
 	done
 
 	[ -r $HOME/bin ] && unlink $HOME/bin
-	ln -s bin $HOME/bin
+	ln -s $DOTFILES_REPO/bin $HOME/bin
 }
 
 install_dependencies() {
