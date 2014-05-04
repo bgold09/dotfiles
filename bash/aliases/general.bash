@@ -4,7 +4,7 @@ alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 
 # enable color support of ls and add aliases
-eval "`dircolors -b`"
+if [[ ! "$OSTYPE" =~ ^darwin ]]; then eval "`dircolors -b`"; fi
 alias ls='ls --color=auto -hBG'
 # alias ls='ls -hF --color=tty'                 # classify files in colour
 alias ll='ls -l'                                # long list

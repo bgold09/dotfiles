@@ -34,5 +34,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 
 ## Directory Colors ##
-[ -n $SOLARIZED ] && [ -r "$HOME/.dircolors" ] \
-	&& eval `dircolors $HOME/.dircolors`
+if [[ ! "$OSTYPE" =~ ^darwin ]]; then
+	[ -n $SOLARIZED ] && [ -r "$HOME/.dircolors" ] && \
+		eval `dircolors $HOME/.dircolors`
+fi
