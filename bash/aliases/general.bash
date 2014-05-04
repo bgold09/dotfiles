@@ -48,6 +48,9 @@ alias du='du -h'
 ## Less
 alias less='less -R'
 
+## Sudo
+alias sudo='sudo '    # allow aliases to be sudo'ed
+
 ## Misc
 alias whence='type -a'             # where, of a sort
 alias mount='mount | column -t'
