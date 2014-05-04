@@ -18,7 +18,7 @@ else
 fi
 unset force_color_prompt color_prompt
 
-if [ $(uname -o) = "Cygwin" ]; then 
+if [[ $(uname -s) =~ "^CYGWIN.*" ]]; then 
 	PS1='\[\e]0;\w\a\]\[\e[32m\]\u@\h\[\e[33m\] \W\[\e[0m\] \$ '
 fi
 
