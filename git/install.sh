@@ -10,6 +10,8 @@ name="$(basename $(pwd))"
 
 place_files() {
 	ln -f gitconfig $HOME/.gitconfig
+	rm -f $HOME/.gitfiles
+	ln -s $curr $HOME/.gitfiles
 }
 
 info "Installing $name configuration..."
