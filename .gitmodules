@@ -44,3 +44,6 @@
 [submodule "vim/bundle/closetag"]
 	path = vim/bundle/closetag
 	url = https://github.com/docunext/closetag.vim.git
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = https://github.com/raimondi/delimitmate.git

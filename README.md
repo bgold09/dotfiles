@@ -43,7 +43,9 @@ cd ~/.dotfiles
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins:
     * [ag.vim] - vim plugin for the [silver_searcher]
+    * [closetag] - close open HTML/XML tags
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
+    * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
     * [fugitive] - git wrapper
     * [Gundo] - visualization of the vim undo tree
@@ -60,7 +62,9 @@ cd ~/.dotfiles
 
 [ag.vim]: https://github.com/rking/ag.vim
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
+[closetag]: https://github.com/vim-scripts/closetag.vim
 [CtrlP]: https://github.com/kien/ctrlp.vim
+[delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
 [fugitive]: https://github.com/tpope/vim-fugitive
 [Gundo]: https://github.com/sjl/gundo.vim
