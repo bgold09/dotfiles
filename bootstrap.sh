@@ -4,25 +4,18 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-backup_dir="$HOME/dotfiles-backup-`date +%s`"
-
 export DOTFILES_REPO="$(pwd)"
 source $DOTFILES_REPO/script/helpers.bash
 
-backup_files() {
-	mkdir $backup_dir
-	for file in "${files[@]}"
-	do
-		if [ -e $HOME/.$file ]; then
-			cp -v $HOME/.$file $backup_dir/$file # > /dev/null 2>&1
-		fi
-	done
-}
-
 run_install() {
+	if [ -n "$BACKUP" ]; then
+		backup_dir="$HOME/dotfiles-backup-$(date +%s)"
+		mkdir $backup_dir
+	fi
+
 	# Find the installers and run them
 	find . -mindepth 2 -name install.sh | sort | while read installer; do 
-		sh -c "${installer}"
+		sh -c "${installer} $backup_dir"
 	done
 
 	[ -r $HOME/bin ] && unlink $HOME/bin
@@ -142,6 +135,11 @@ dependencies_needed() {
 bootstrap() {
 	[ -z "$DEP" ] && install_dependencies
 	run_install
+
+	if [ -n "$BACKUP" ]; then
+		echo "A backup of your previous config files has been made in $backup_dir"
+	fi
+
 	echo "Run \`source ~/.bashrc' to reload your bashrc file."
 	echo Some changes may require a restart to take effect.
 }
@@ -151,6 +149,7 @@ usage() {
 Usage: $0 [OPTION]...
 Install configurations for bash, git, python and git.
 
+-b    create a backup of current config files in home directory
 -d    install without checking dependencies
 -f    run install without prompting
 -h    display this help and exit
@@ -160,8 +159,11 @@ EOF
 }
 
 # Parse command line arguments
-while getopts "dfh" o; do
+while getopts "bdfh" o; do
 	case "${o}" in 
+		b)
+			BACKUP=1
+			;;
 		d)
 			DEP=1
 			;;

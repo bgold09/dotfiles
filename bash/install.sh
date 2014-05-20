@@ -9,6 +9,16 @@ curr="$(pwd)"
 name="$(basename $(pwd))"
 
 place_files() {
+	if [ -n "$1" ]; then
+		backup="$1/$name"
+		mkdir $backup
+		[ -e "$HOME/.bashrc" ] && cp ~/.bashrc $backup/bashrc
+		[ -e "$HOME/.bash_profile" ] && cp ~/.bash_profile $backup/bash_profile
+		if [ -e "$HOME/.bash" ]; then 
+			mkdir $backup/bash-files && cp ~/.bash/* $backup/bash-files
+		fi
+	fi
+
 	rm -f $HOME/.bash
 	ln -s $curr $HOME/.bash
 	rm -f $HOME/.bashrc 
@@ -18,6 +28,6 @@ place_files() {
 }
 
 info "Installing $name configuration..."
-place_files
+place_files $1
 success "$name configuration installed"
 exit 0

@@ -9,12 +9,15 @@ curr="$(pwd)"
 name="$(basename $(pwd))"
 
 place_files() {
-	rm -f $HOME/.tmux
-	ln -s $curr $HOME/.tmux
+	if [ -n "$1" ]; then
+		mkdir "$1/$name"
+		[ -e "$HOME/.tmux.conf" ] && cp $HOME/.tmux.conf $1/$name
+	fi
+	
 	ln -f tmux.conf $HOME/.tmux.conf
 }
 
 info "Installing $name configuration..."
-place_files
+place_files $1
 success "$name configuration installed"
 exit 0

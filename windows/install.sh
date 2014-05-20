@@ -9,7 +9,12 @@ curr="$(pwd)"
 name="$(basename $(pwd))"
 
 place_files() {
+	[ -n "$1" ] && mkdir "$1/$name"
+
 	for file in $(ls -I 'install.sh'); do
+		if [ -n "$1" ] && [ -e "$HOME/.$file" ] ; then
+			cp $file "$1/$name/$file"
+		fi
 		ln -f $file $HOME/.$file
 	done
 }
