@@ -19,7 +19,7 @@ alias ..=updir
 # To use it, uncomment it, source this file and try 'cd --'.
 # acd_func 1.0.5, 10-nov-2004
 # Petar Marinov, http:/geocities.com/h2428, this is public domain
-cd_func ()
+cd_func()
 {
 	local x2 the_new_dir adir index
 	local -i cnt
@@ -70,11 +70,13 @@ alias cd=cd_func
 # finds the last two directories in the current working 
 # directory (expands $HOME to '~')
 last_two_dirs() {
-	curr=`pwd`
-	if [  $curr == $HOME ]; then
+	if [ "$(pwd)" == $HOME ]; then
 		echo "~"
 	else
-		pwd | sed "s|$HOME|~|g" | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/\ /\//'
+		t="$(pwd | sed -e "s|$HOME|~|g")"
+		p1="$(echo "$t" | awk -F\/ '{print $(NF-1)}')"
+		p2="$(echo "$t" | awk -F\/ '{print $(NF)}')"
+		echo "$p1/$p2"
 	fi
 }
 
