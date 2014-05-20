@@ -15,7 +15,7 @@ place_files() {
 		[ -e "$HOME/.bashrc" ] && cp ~/.bashrc $backup/bashrc
 		[ -e "$HOME/.bash_profile" ] && cp ~/.bash_profile $backup/bash_profile
 		if [ -e "$HOME/.bash" ]; then 
-			mkdir $backup/bash-files && cp ~/.bash/* $backup/bash-files
+			mkdir $backup/bash-files && cp -r ~/.bash/* $backup/bash-files
 		fi
 	fi
 

@@ -4,7 +4,9 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-export DOTFILES_REPO="$(pwd)"
+if [ -z "$DOTFILES_REPO" ]; then
+	export DOTFILES_REPO="$(pwd)"
+fi
 source $DOTFILES_REPO/script/helpers.bash
 
 run_install() {
@@ -18,7 +20,19 @@ run_install() {
 		sh -c "${installer} $backup_dir"
 	done
 
-	[ -r $HOME/bin ] && unlink $HOME/bin
+	if [ -r $HOME/bin ]; then
+		if [ -n "$BACKUP" ]; then
+			mkdir $backup_dir/bin
+			cp -r $HOME/bin/* $backup_dir/bin/
+		fi
+		
+		if [ -h "$HOME/bin" ]; then
+			unlink $HOME/bin
+		elif [ -d "$HOME/bin" ]; then
+			rm -rf $HOME/bin
+		fi
+	fi
+
 	ln -s $DOTFILES_REPO/bin $HOME/bin
 }
 
