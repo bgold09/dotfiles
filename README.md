@@ -27,6 +27,12 @@ cd ~/.dotfiles
 ./bootstrap.sh
 ```
 
+Each run of the bootstrap may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
+
+```sh
+vim +PluginInstall +qall
+```
+
 ### Completing the configuration
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
@@ -51,12 +57,12 @@ cd ~/.dotfiles
     * [Gundo] - visualization of the vim undo tree
     * [matchit] - match '%' to more than just single characters
     * [NERDTree] - directory tree explorer
-    * [pathogen] - runtimepath & plugin manager
     * [solarized] - precision colorscheme
     * [supertab] - allows you to use &lt;Tab&gt; for insert completion
     * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
     * [tComment] - provides easy to use, file-type sensible comments
+    * [Vundle] - runtimepath & plugin manager
     * [yankstack] - provides a history of yank buffers
 * ```windows``` - Windows-specific configurations (Mintty)
 
@@ -70,12 +76,12 @@ cd ~/.dotfiles
 [Gundo]: https://github.com/sjl/gundo.vim
 [matchit]: https://github.com/tmhedberg/matchit
 [NERDTree]: https://github.com/scrooloose/nerdtree
-[pathogen]: https://github.com/tpope/vim-pathogen
 [solarized]: https://github.com/altercation/vim-colors-solarized
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
 [tComment]: https://github.com/tomtom/tcomment_vim
+[Vundle]: https://github.com/gmarik/vundle.vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
 
 ## Thanks to...
