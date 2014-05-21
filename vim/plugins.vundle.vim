@@ -2,7 +2,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
