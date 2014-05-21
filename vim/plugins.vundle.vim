@@ -19,7 +19,7 @@ if executable('ctags-exuberant')
 	Plugin 'majutsushi/tagbar'
 endif
 
-if v:version < '703' || !has('python')
+if v:version >= '703' || has('python')
 	Plugin 'sjl/gundo.vim'
 endif
 
