@@ -147,9 +147,8 @@ dependencies_needed() {
 }
 
 update_repo() {
-	echo hello updating
 	info "Updating the repository..."
-        #
+        
 	git pull origin master > /dev/null 2>&1
 	if [ ! $? -eq 0 ]; then
 	 	fail "Something went wrong updating the repository"
@@ -189,6 +188,7 @@ Install configurations for bash, git, python and git.
 -d    install without checking dependencies
 -f    run install without prompting
 -h    display this help and exit
+-u    update the repository before installing
 EOF
 
 	exit 0
