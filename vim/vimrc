@@ -14,8 +14,13 @@
 	endfunction
 "}}}
 	set nocompatible
-	if !WINDOWS() 
+	if !WINDOWS()
 		set shell=/bin/sh
+	endif
+
+	" Use '.vim' instead of '.vimfiles' on Windows 
+	if WINDOWS()
+		set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
 	endif
 " }}}
 
