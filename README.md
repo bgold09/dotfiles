@@ -14,20 +14,20 @@ curl --fsSL https://raw.github.com/bgold09/dotfiles/master/install.sh | sh
 
 ### Using Git and the bootstrap script
 
-Clone this repository and submodules:
+Clone this repository:
 
 ```sh
-git clone --recursive https://github.com/bgold09/dotfiles.git ~/.dotfiles 
+git clone https://github.com/bgold09/dotfiles.git ~/.dotfiles 
 ```
 
-Install the configuration (create links):
+Install the configuration:
 
 ```sh
 cd ~/.dotfiles
 ./bootstrap.sh
 ```
 
-Each run of the bootstrap may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
+Each run of the [bootstrap script](https://github.com/bgold09/dotfiles/blob/master/bootstrap.sh) may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
 
 ```sh
 vim +PluginInstall +qall
