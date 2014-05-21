@@ -35,12 +35,6 @@
 	set history=700
 	syntax on
 	set autoread
-	let mapleader=","
-	let g:mapleader=","
-	" fast saving
-	nmap <leader>w :w<cr>
-	nmap <silent> <leader>ev :e $MYVIMRC<CR>
-	nmap <silent> <leader>sv :so $MYVIMRC<CR>
 	if has('persistent_undo') " {{{
 		silent !mkdir ~/.vim/backups > /dev/null 2>&1
 		set undodir=~/.vim/backups
@@ -84,7 +78,7 @@
 	autocmd Filetype html setlocal ts=2 sts=2 sw=2
 	autocmd FileType pl set syntax=prolog
 	set ffs=unix,dos,mac
-	if $SOLARIZED == 'on'
+	if $SOLARIZED == 'on' && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
 		set t_Co=16
 		set background=dark
 		let g:solarized_termcolors=256
@@ -160,6 +154,29 @@ nnoremap <space> za
 	set directory=~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp
  " }}}
 
+"#### key (re)mappings ####" {{{
+	let mapleader=","
+	let g:mapleader=","
+	" fast saving
+	nmap <leader>w :w<cr>
+	nmap <silent> <leader>ev :e $MYVIMRC<CR>
+	nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+	if has("user_commands")
+		command! -bang -nargs=* -complete=file W w<bang> <args>
+		command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+		command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+		command! -bang Q q<bang>
+	endif
+
+	" For when you forget to sudo
+	cmap w!! w !sudo tee % > /dev/null
+
+	" Display all lines with keyword under the cursor, 
+	" ask which to jump to
+	nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+"}}}
+
 "#### plugin settings ####" {{{
 " ag {{{
 	if executable('ag')
@@ -172,9 +189,26 @@ nnoremap <space> za
 " }}}
 " CtrlP {{{
 	let g:ctrlp_match_window = 'bottom,order:ttb'
-	if executable('ag')
-		let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+	if WINDOWS()
+		let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+	elseif executable('ag')
+		let s:ctrlp_fallback = 'ag %s -l --nocolor --hidden -g ""'
+	else
+		let s:ctrlp_fallback = 'find %s -type f'
 	endif
+
+	let g:ctrlp_user_command = {
+		\ 'types': {
+			\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+			\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+		\ },
+		\ 'fallback': s:ctrlp_fallback	
+	\ }
+"}}}
+" Fugitive {{{
+	nnoremap <silent> <leader>gs :Gstatus<CR>
+	nnoremap <silent> <leader>gd :Gdiff<CR>
+	nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
 " Gundo {{{ 
 	if v:version >= '703' || has('python')
