@@ -23,7 +23,16 @@ place_files() {
 	ln -s $curr $HOME/.vim
 }
 
+vundle_clone() {
+	[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+
+	if [ ! -e "$HOME/.vim/bundle/vundle"]; then
+		git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
+	fi
+}
+
 info "Installing $name configuration..."
 place_files $1
+vundle_clone
 success "$name configuration installed"
 exit 0
