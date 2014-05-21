@@ -146,7 +146,28 @@ dependencies_needed() {
 	fi
 }
 
+update_repo() {
+	echo hello updating
+	info "Updating the repository..."
+        #
+	git pull origin master > /dev/null 2>&1
+	if [ ! $? -eq 0 ]; then
+	 	fail "Something went wrong updating the repository"
+	 	exit 1
+	fi
+	
+	cd "$DOTFILES_REPO/vim/bundle/vundle" && git pull origin master > /dev/null 2>&1
+	if [ ! $? -eq 0 ]; then
+		fail "Something went wrong updating the repository"
+	 	exit 1
+	fi
+	cd $DOTFILES_REPO
+        
+	success "Repository updated to latest version"
+}
+
 bootstrap() {
+	[ -n "$UPDATE" ] && update_repo
 	[ -z "$DEP" ] && install_dependencies
 	run_install
 
@@ -174,7 +195,7 @@ EOF
 }
 
 # Parse command line arguments
-while getopts "bdfh" o; do
+while getopts "bdfhu" o; do
 	case "${o}" in 
 		b)
 			BACKUP=1
@@ -187,6 +208,9 @@ while getopts "bdfh" o; do
 			;;
 		h)
 			usage
+			;;
+		u)
+			UPDATE=1
 			;;
 		*)
 			usage
