@@ -26,7 +26,7 @@ place_files() {
 vundle_clone() {
 	[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
 
-	if [ ! -e "$HOME/.vim/bundle/vundle"]; then
+	if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
 		git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
 	fi
 }
