@@ -15,7 +15,7 @@ place_files() {
 		[ -e "~/.pythonrc.py" ] && cp ~/.pythonrc.py $backup/pythonrc.py
 	fi
 
-	ln -f pythonrc.py $HOME/.pythonrc.py
+	ln -fs "$(readlink -f pythonrc.py)" $HOME/.pythonrc.py
 }
 
 info "Installing $name configuration..."

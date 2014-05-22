@@ -15,7 +15,8 @@ place_files() {
 		if [ -n "$1" ] && [ -e "$HOME/.$file" ] ; then
 			cp $file "$1/$name/$file"
 		fi
-		ln -f $file $HOME/.$file
+
+		ln -fs "$(readlink -f $file)" $HOME/.$file
 	done
 }
 

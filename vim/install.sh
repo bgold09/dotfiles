@@ -17,9 +17,9 @@ place_files() {
 			mkdir $backup/vim-files && cp -r ~/.vim/* $backup/vim-files
 		fi
 	fi
-	rm -f $HOME/.vimrc
-	ln vimrc $HOME/.vimrc
-	rm -f $HOME/.vim         # remove any symlink to vim config directory
+
+	ln -fs "$(readlink -f vimrc)" $HOME/.vimrc
+	rm -rf $HOME/.vim         # remove any symlink to vim config directory
 	ln -s $curr $HOME/.vim
 }
 

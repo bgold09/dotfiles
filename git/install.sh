@@ -18,8 +18,8 @@ place_files() {
 		fi
 	fi
 
-	ln -f gitconfig $HOME/.gitconfig
-	rm -f $HOME/.gitfiles
+	ln -fs "$(readlink -f gitconfig)" $HOME/.gitconfig
+	rm -rf $HOME/.gitfiles
 	ln -s $curr $HOME/.gitfiles
 }
 

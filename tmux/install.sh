@@ -14,7 +14,7 @@ place_files() {
 		[ -e "$HOME/.tmux.conf" ] && cp $HOME/.tmux.conf $1/$name
 	fi
 	
-	ln -f tmux.conf $HOME/.tmux.conf
+	ln -fs "$(readlink -f tmux.conf)" $HOME/.tmux.conf
 }
 
 info "Installing $name configuration..."

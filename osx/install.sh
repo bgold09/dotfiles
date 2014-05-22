@@ -16,5 +16,4 @@ else
 	warn "not on an OS X system"
 fi
 
-
 exit 0
