@@ -157,7 +157,7 @@ update_repo() {
 	
 	cd "$DOTFILES_REPO/vim/bundle/vundle" && git pull origin master > /dev/null 2>&1
 	if [ ! $? -eq 0 ]; then
-		fail "Something went wrong updating the repository"
+		fail "Something went wrong updating the repo (update vundle)"
 	 	exit 1
 	fi
 	cd $DOTFILES_REPO
