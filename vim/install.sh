@@ -27,7 +27,11 @@ vundle_clone() {
 	[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
 
 	if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-		git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle"
+		git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle" >> /dev/null 2>&1
+		if [ ! $? -eq 0 ]; then
+			fail "vim install failed, unable to clone vundle"
+			exit 1
+		fi
 	fi
 }
 
