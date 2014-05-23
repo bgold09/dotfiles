@@ -35,6 +35,8 @@
 	set history=700
 	syntax on
 	set autoread
+	let mapleader=","
+	let g:mapleader=","
 	if has('persistent_undo') " {{{
 		silent !mkdir ~/.vim/backups > /dev/null 2>&1
 		set undodir=~/.vim/backups
@@ -136,7 +138,7 @@
 	set ai        " auto indent
 	set si        " smart indent
 	set wrap      " wrap lines
-	map <leader>n :set wrap!<CR>
+	nmap <leader>n :set wrap!<CR>
 " }}}
 
 " #### folding ####" {{{
@@ -155,8 +157,6 @@ nnoremap <space> za
  " }}}
 
 "#### key (re)mappings ####" {{{
-	let mapleader=","
-	let g:mapleader=","
 	" fast saving
 	nmap <leader>w :w<cr>
 	nmap <silent> <leader>ev :e $MYVIMRC<CR>
