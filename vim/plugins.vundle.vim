@@ -1,5 +1,5 @@
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
@@ -26,3 +26,5 @@ endif
 if executable('ag') 
 	Plugin 'rking/ag.vim'
 endif
+
+call vundle#end()
