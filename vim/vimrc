@@ -26,8 +26,8 @@
 
 " #### Vundle plugin manager #### {{{
 	filetype plugin off
-	if filereadable(expand("~/.vim/plugins.vundle.vim"))
-		source ~/.vim/plugins.vundle.vim
+	if filereadable(expand("~/.vim/plugins.vim"))
+		source ~/.vim/plugins.vim
 	endif
 " }}}
 

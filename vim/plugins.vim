@@ -1,3 +1,12 @@
+" Add an UnBundle function 
+function! UnBundle(arg, ...)
+	let bundle = vundle#config#init_bundle(a:arg, a:000)
+	call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+endfunction
+
+com! -nargs=+ UnBundle
+\ call UnBundle(<args>)
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
@@ -25,6 +34,11 @@ endif
 
 if executable('ag') 
 	Plugin 'rking/ag.vim'
+endif
+
+" Add or unbundle plugins in a local plugin config 
+if filereadable(expand("~/.plugins.local.vim"))
+	source ~/.plugins.local.vim
 endif
 
 call vundle#end()
