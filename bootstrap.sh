@@ -10,25 +10,33 @@ fi
 source $DOTFILES_REPO/script/helpers.bash
 
 run_install() {
+	local backup_dir
 	if [ -n "$BACKUP" ]; then
 		backup_dir="$HOME/dotfiles-backup-$(date +%s)"
 		mkdir $backup_dir
 	fi
 
+	local exclude=0
 	if [ -e "$HOME/.bootstrap.exclusions" ]; then
 		declare -a exclusions
 		readarray -t exclusions < "$HOME/.bootstrap.exclusions"
+		exclude=1
 	fi
 
 	# Find the installers and run them
 	find . -mindepth 2 -name install.sh | sort | while read installer; do 
-		local name="$(echo "$installer" | cut -d'/' -f 2)"
-		if [ ! "$(array_contains "$name" "$(declare -p exclusions)")" ]; then
+		if [ $exclude -eq 0 ]; then
 			sh -c "${installer} $backup_dir"
-		else
-			warn "Skipping $name installation"
+		else 
+			local name="$(echo "$installer" | cut -d'/' -f 2)"
+			if [ ! "$(array_contains "$name" "$(declare -p exclusions)")" ]; then
+				sh -c "${installer} $backup_dir"
+			else
+				warn "Skipping $name installation"
+			fi
 		fi
 	done
+	unset exclusions
 
 	if [ -r $HOME/bin ]; then
 		if [ -n "$BACKUP" ]; then
@@ -72,7 +80,7 @@ install_dependencies() {
 }
 
 install_dependencies_debian() {
-	install_cmd="sudo apt-get -y -q install"
+	local install_cmd="sudo apt-get -y -q install"
 
 	declare -A deps
 	deps[git]=git-core
@@ -85,7 +93,7 @@ install_dependencies_debian() {
 
 	# install the_silver_searcher if on a Ubuntu system
 	if [[ ! "$(type -P ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-		version="$(lsb_release -r | cut -f2)"
+		local version="$(lsb_release -r | cut -f2)"
 		e_arrow "Installing ag (the_silver_searcher)..."
 		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
 			$install_cmd silversearcher-ag
@@ -107,7 +115,7 @@ install_dependencies_debian() {
 }
 
 install_dependencies_osx() {
-	install_cmd="brew install"
+	local install_cmd="brew install"
 
 	if [ ! "$(type -P gcc)" ]; then
 		e_error "XCode or the Command Line Tools for XCode must be installed first"
@@ -140,7 +148,7 @@ install_python_packages() {
 }
 
 install_dependencies_list() {
-	install_cmd="$1"
+	local install_cmd="$1"
 	eval "declare -A deps="${2#*=}
 	for key in "${!deps[@]}"; do 
 		if [ ! "$(type -P $key)" ]; then
@@ -152,8 +160,8 @@ install_dependencies_list() {
 }
 
 dependencies_needed() {
-	fail=
-	pkgs=
+	local fail=
+	local pkgs=
 	for pkg in "git" "ctags-exuberant"; do
 		if [ ! "$(type -P $pkg)" ]; then
 			fail=1
