@@ -84,6 +84,13 @@ vim +PluginInstall +qall
 [Vundle]: https://github.com/gmarik/vundle.vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
 
+## Customization
+
+To customize your installation, create any of the following files in your home directory and make the desired changes:
+* ```.bootstrap.exclusions```: add the names of any configurations you would like to skip during installation (one per line)
+* ```.localrc```: configure bash; add/remove aliases, define functions, etc. 
+* ```.plugins.local.vim```: add Vundle ```Plugin``` lines to add more vim plugins, or use the ```UnBundle``` command defined in [```plugins.vim```](https://github.com/bgold09/dotfiles/blob/master/vim/plugins.vim) to disable plugins 
+
 ## Thanks to...
 
 * [Ben Alman](http://benalman.com/) for his [dotfiles repository](https://github.com/cowboy/dotfiles) and [spark tool] (https://github.com/holman/spark)

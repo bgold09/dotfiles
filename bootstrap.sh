@@ -15,9 +15,19 @@ run_install() {
 		mkdir $backup_dir
 	fi
 
+	if [ -e "$HOME/.bootstrap.exclusions" ]; then
+		declare -a exclusions
+		readarray -t exclusions < "$HOME/.bootstrap.exclusions"
+	fi
+
 	# Find the installers and run them
 	find . -mindepth 2 -name install.sh | sort | while read installer; do 
-		sh -c "${installer} $backup_dir"
+		local name="$(echo "$installer" | cut -d'/' -f 2)"
+		if [ ! "$(array_contains "$name" "$(declare -p exclusions)")" ]; then
+			sh -c "${installer} $backup_dir"
+		else
+			warn "Skipping $name installation"
+		fi
 	done
 
 	if [ -r $HOME/bin ]; then
@@ -34,6 +44,19 @@ run_install() {
 	fi
 
 	ln -s $DOTFILES_REPO/bin $HOME/bin
+}
+
+array_contains() {
+	local search="$1"
+	eval "declare -a array="${2#*=}
+	local found=
+	for name in "${array[@]}"; do 
+		if [[ $name == $search ]]; then
+			echo 1
+			found=1
+			return
+		fi
+	done
 }
 
 install_dependencies() {
