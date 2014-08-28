@@ -10,19 +10,20 @@ com! -nargs=+ UnBundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'ervandew/supertab'
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'tpope/vim-surround'
-Plugin 'tmhedberg/matchit'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ciaranm/detectindent'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ciaranm/detectindent'
 Plugin 'docunext/closetag.vim'
+Plugin 'ervandew/supertab'
+Plugin 'gmarik/vundle'
+Plugin 'kien/ctrlp.vim'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'pprovost/vim-ps1'
 Plugin 'raimondi/delimitmate'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/matchit'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 
 if executable('ctags-exuberant')
 	Plugin 'majutsushi/tagbar'
