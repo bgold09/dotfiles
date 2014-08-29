@@ -80,3 +80,8 @@ last_two_dirs() {
 	fi
 }
 
+# Open Notepad++ on a windows machine
+npp() {
+	/cygdrive/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe $(cygpath -w -- "$@")
+}
+if [ $(uname -o) != "Cygwin" ]; then unset -f npp; fi
