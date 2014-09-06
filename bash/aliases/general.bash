@@ -21,6 +21,7 @@ alias l='ls -CF'
 alias lla='ls -la'
 alias ld="ls -l ${colorflag} | less"
 alias lda="ls -la ${colorflag} | less"
+alias lf="ls -l ${colorflag} | egrep '^d'"
 
 ## Navigation, directories
 # Tree
