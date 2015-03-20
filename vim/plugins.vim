@@ -11,6 +11,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
 Plugin 'ciaranm/detectindent'
 Plugin 'docunext/closetag.vim'
 Plugin 'ervandew/supertab'
