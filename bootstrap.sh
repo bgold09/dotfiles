@@ -84,7 +84,7 @@ install_dependencies_debian() {
 
 	declare -A deps
 	deps[git]=git-core
-	deps[ctags-exuberant]=ctags-exuberant
+	deps[ctags-exuberant]=exuberant-ctags
 	deps[tmux]=tmux
 	deps[pip]=python-pip
 
