@@ -188,7 +188,7 @@
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme = 'solarized'
 	set laststatus=2
-	set timeoutlen=50
+	set timeoutlen=1000 ttimeoutlen=0
 " }}} 
 " ag {{{
 	if executable('ag')
