@@ -1,3 +1,7 @@
+silent function! WINDOWS()
+	return (has('win16') || has('win32') || has('win64'))
+endfunction
+
 " Add an UnBundle function 
 function! UnBundle(arg, ...)
 	let bundle = vundle#config#init_bundle(a:arg, a:000)
@@ -7,7 +11,13 @@ endfunction
 com! -nargs=+ UnBundle
 \ call UnBundle(<args>)
 
-set rtp+=~/.vim/bundle/vundle/
+
+set rtp+=$HOME/.vim/bundle/vundle
+if WINDOWS()
+	set rtp+=$HOME/vimfiles/bundle/vundle
+	let path="~/vimfiles/bundle"
+endif
+
 call vundle#begin()
 
 Plugin 'altercation/vim-colors-solarized'
