@@ -35,6 +35,7 @@ vim +PluginInstall +qall
 
 ### Completing the configuration
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
+* Install the [patched Consolas font for Powerline/Airline](https://github.com/eugeii/consolas-powerline-vim).
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
 
 ## What's Inside
@@ -48,6 +49,7 @@ vim +PluginInstall +qall
 * ```system``` - files here will not be linked in ```home```
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins:
+    * [airline] - statusline/tabline for vim
     * [ag.vim] - vim plugin for the [silver_searcher]
     * [closetag] - close open HTML/XML tags
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
@@ -57,6 +59,7 @@ vim +PluginInstall +qall
     * [Gundo] - visualization of the vim undo tree
     * [matchit] - match '%' to more than just single characters
     * [NERDTree] - directory tree explorer
+    * [ps1] - PowerShell syntax highlighting for vim
     * [solarized] - precision colorscheme
     * [supertab] - allows you to use &lt;Tab&gt; for insert completion
     * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
@@ -66,6 +69,7 @@ vim +PluginInstall +qall
     * [yankstack] - provides a history of yank buffers
 * ```windows``` - Windows-specific configurations (Mintty)
 
+[airline]: https://github.com/bling/vim-airline
 [ag.vim]: https://github.com/rking/ag.vim
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [closetag]: https://github.com/vim-scripts/closetag.vim
@@ -76,6 +80,7 @@ vim +PluginInstall +qall
 [Gundo]: https://github.com/sjl/gundo.vim
 [matchit]: https://github.com/tmhedberg/matchit
 [NERDTree]: https://github.com/scrooloose/nerdtree
+[ps1]: https://github.com/pprovost/vim-ps1
 [solarized]: https://github.com/altercation/vim-colors-solarized
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
