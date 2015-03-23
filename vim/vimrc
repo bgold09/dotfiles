@@ -43,11 +43,6 @@
 		set undofile
 	endif
 	" }}}
-	
-	augroup reload_vimrc
-		autocmd!
-		autocmd BufWritePost $MYVIMRC source $MYVIMRC
-	augroup END
 " }}}
 
 "#### user interface ####" {{{
@@ -189,6 +184,17 @@
 	let g:airline_theme = 'solarized'
 	set laststatus=2
 	set timeoutlen=1000 ttimeoutlen=0
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
+	let g:airline_symbols.space= "\ua0"
+	let g:airline_left_sep = "\u2b80" "use double quotes here
+	let g:airline_left_alt_sep = "\u2b81"
+	let g:airline_right_sep = "\u2b82"
+	let g:airline_right_alt_sep = "\u2b83"
+	let g:airline_symbols.branch = "\u2b60"
+	let g:airline_symbols.readonly = "\u2b64"
+	let g:airline_symbols.linenr = "\u2b61"
 " }}} 
 " ag {{{
 	if executable('ag')
