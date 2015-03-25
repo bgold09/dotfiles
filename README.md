@@ -37,6 +37,7 @@ vim +PluginInstall +qall
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
 * Install the [patched Consolas font for Powerline/Airline](https://github.com/eugeii/consolas-powerline-vim).
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
+* If you plan to use gVim for Windows, install [git](http://git-scm.org) and choose the option 'Use Git from the Windows Command Prompt' during installation.
 
 ## What's Inside
 
