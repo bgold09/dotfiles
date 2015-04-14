@@ -52,7 +52,7 @@
 "#### user interface ####" {{{
 	set nu
 	set backspace=indent,eol,start
-	set whichwrap+=<,>,h,l
+	set whichwrap+=<,>,h,l,b,s,h,[,]
 	set lazyredraw
 	set noerrorbells
 	set novisualbell
@@ -104,6 +104,10 @@
 		autocmd FileType python setlocal tabstop=4
 		autocmd FileType python setlocal expandtab
 	augroup END
+
+	" set the cursor to the first line of the buffer 
+	" when editing a git commit msg
+	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " }}}
 
 "#### motion & navigation ####" {{{
@@ -111,24 +115,20 @@
 	set mousehide
 	set virtualedit=onemore
 	set scrolloff=3
+	
 	"http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 	" Restore cursor to file position in previous editing session
-	" To disable this, add the following: 
-	" let g:spf13_no_restore_cursor = 1
-	if !exists('g:spf13_no_restore_cursor') " {{{
-		function! ResCur()
-			if line("'\"") <= line("$")
-				normal! g`"
-				return 1
-			endif
-		endfunction
+	function! ResCur()
+		if line("'\"") <= line("$")
+			normal! g`"
+			return 1
+		endif
+	endfunction
 
-		augroup resCur
-			autocmd!
-			autocmd BufWinEnter * call ResCur()
-		augroup END
-	endif
-	" }}}
+	augroup resCur
+		autocmd!
+		autocmd BufWinEnter * call ResCur()
+	augroup END
 " }}}
 
 "#### completion ####" {{{
@@ -192,6 +192,7 @@
 " airline {{{
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme = 'solarized'
+	let g:airline#extensions#tabline#enabled = 1
 	set laststatus=2
 	set timeoutlen=1000 ttimeoutlen=0
 	if !exists('g:airline_symbols')
