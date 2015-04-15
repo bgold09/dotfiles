@@ -60,6 +60,11 @@
 		set ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 	endif
+
+	if has("gui_running")
+		set lines=50
+		set columns=120
+	endif
 " }}}
 
 "#### formatting ####" {{{
