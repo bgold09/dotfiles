@@ -142,6 +142,8 @@
 	set wildignore=*.o,*~,*.pyc
 	set wildignore+=*vim/backups
 	set wildignore+=*.png,*.jpg,*.gif
+	set wildignore+=*/tmp/*,*.so
+	set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.dll
 	set omnifunc=syntaxcomplete#Complete
 	" close preview after selection is made
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
