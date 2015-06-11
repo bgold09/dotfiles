@@ -159,7 +159,6 @@
 	set smarttab
 	set ai        " auto indent
 	set si        " smart indent
-	set wrap      " wrap lines
 	nmap <leader>r :set wrap!<CR>
 " }}}
 
