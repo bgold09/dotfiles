@@ -67,6 +67,11 @@
 	endif
 " }}}
 
+"#### buffers #### {{{
+	nmap <leader>m :bn<CR>
+	nmap <leader>n :bp<CR>
+" }}}
+
 "#### formatting ####" {{{
 	set splitright    " puts new vsplit windows to the right of the current 
 	set splitbelow    " puts new split windows below the current
