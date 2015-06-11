@@ -70,6 +70,7 @@
 "#### buffers #### {{{
 	nmap <leader>m :bn<CR>
 	nmap <leader>n :bp<CR>
+	nmap <leader>d :bd<CR>
 " }}}
 
 "#### formatting ####" {{{
