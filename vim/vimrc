@@ -94,6 +94,7 @@
 	filetype plugin indent on
 	autocmd Filetype html setlocal ts=2 sts=2 sw=2
 	autocmd FileType pl set syntax=prolog
+	autocmd FileType xaml set syntax=xml
 	set ffs=unix,dos,mac
 	if has('gui_running') || 
 	   \ ($SOLARIZED == 'on' && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")))		
