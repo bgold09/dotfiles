@@ -207,7 +207,7 @@ bootstrap() {
 
 	echo "Run \`source ~/.bashrc' to reload your bashrc file."
 	echo "Run \`vim +PluginInstall +qall' to install vim plugins."
-	echo Some changes may require a restart to take effect.
+	echo Some changes may require a terminal restart to take effect.
 }
 
 usage() {
