@@ -120,6 +120,7 @@
 	" set the cursor to the first line of the buffer 
 	" when editing a git commit msg
 	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+	autocmd FileType gitcommit setlocal spell textwidth=72
 " }}}
 
 "#### motion & navigation ####" {{{
