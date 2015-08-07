@@ -5,6 +5,14 @@
 [push]
 	default = matching
 
+[rebase]
+	autosquash = true
+
+[diff]
+	# Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+	# instead of a/b/c/d as prefixes for patches
+	mnemonicprefix = true
+
 [color]
 	ui = auto            # covers diff = true, status = auto, branch = auto
 	interactive = auto
@@ -19,6 +27,7 @@
 [alias]
 	# add
 	a = add
+	aa = add -A
 
 	# branch
 	br = branch
@@ -30,6 +39,9 @@
 	# checkout
 	co = checkout
 	nb = checkout -b   # create and switch to new branch
+
+	# cherry-pick
+	ch = cherry-pick
 
 	# commit	
 	ci = commit
@@ -45,12 +57,17 @@
 
 	# pull
 	pl = pull
+	plo = pull origin 
+	plu = pull upstream
+	plr = pull --rebase
 
 	# push
+	p = push
+	po = push origin
 	pom = push origin master
 
-	# remote
-	r = remote -v
+	# rebase
+	r = rebase -i
 
 	# reset
 	u = reset HEAD
@@ -63,6 +80,9 @@
 	# submodule
 	sub = submodule
 	sa = submodule add
+
+[credential]
+	helper = wincred
 
 [url "git@github.com:"]
 	insteadOf = "gh:"
