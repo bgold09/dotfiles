@@ -1,0 +1,5 @@
+[credential]
+	helper = osxkeychain
+
+[include]
+	path = ~/.gitfiles/gitconfig.base
