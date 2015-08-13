@@ -81,9 +81,6 @@
 	sub = submodule
 	sa = submodule add
 
-[credential]
-	helper = wincred
-
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"

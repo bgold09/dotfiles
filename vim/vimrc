@@ -226,6 +226,7 @@
 " ag {{{
 	if executable('ag')
 		nnoremap <leader>a :Ag
+		set grepprg=ag\ --nogroup\ --nocolor
 	endif
 " }}}
 	" closetag {{{
