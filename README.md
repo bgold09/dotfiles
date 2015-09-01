@@ -58,6 +58,7 @@ vim +PluginInstall +qall
     * [DetectIndent] - detect the indentation settings for an open file
     * [fugitive] - git wrapper
     * [Gundo] - visualization of the vim undo tree
+    * [json] - syntax highlighting for JSON
     * [matchit] - match '%' to more than just single characters
     * [NERDTree] - directory tree explorer
     * [ps1] - PowerShell syntax highlighting for vim
@@ -79,6 +80,7 @@ vim +PluginInstall +qall
 [DetectIndent]: https://github.com/ciaranm/detectindent
 [fugitive]: https://github.com/tpope/vim-fugitive
 [Gundo]: https://github.com/sjl/gundo.vim
+[json]: https://github/com/elzr/vim-json
 [matchit]: https://github.com/tmhedberg/matchit
 [NERDTree]: https://github.com/scrooloose/nerdtree
 [ps1]: https://github.com/pprovost/vim-ps1

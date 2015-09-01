@@ -251,6 +251,9 @@
 		\ 'fallback': s:ctrlp_fallback	
 	\ }
 "}}}
+" vim-json {{{
+	let g:vim_json_syntax_conceal = 0
+" }}}
 " Fugitive {{{
 	nnoremap <silent> <leader>gs :Gstatus<CR>
 	nnoremap <silent> <leader>gd :Gdiff<CR>

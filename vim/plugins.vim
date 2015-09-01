@@ -24,6 +24,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'ciaranm/detectindent'
 Plugin 'docunext/closetag.vim'
+Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'gmarik/vundle'
 "" Tabular must come before vim-markdown
