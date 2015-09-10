@@ -74,8 +74,9 @@
 	unstage = reset HEAD
 
 	# status
-	st = status
-	s = status
+	st = status -sb
+	s = status -sb
+	sl = status --long
 
 	# submodule
 	sub = submodule
