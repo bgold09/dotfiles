@@ -19,13 +19,14 @@ place_files() {
 	fi
 
 if [[ "$OSTYPE" =~ ^cygwin ]]; then
-	ln -fs "$(readlink -f gitconfig-windows)" $HOME/.gitconfig
+	ln -fs "$(readlink -f gitconfig-windows)" $HOME/.os.gitconfig
 elif [[ "$OSTYPE" =~ ^darwin ]]; then
-	ln -fs "$(readlink -f gitconfig-osx)" $HOME/.gitconfig
+	ln -fs "$(readlink -f gitconfig-osx)" $HOME/.os.gitconfig
 else
-	ln -fs "$(readlink -f gitconfig-linux)" $HOME/.gitconfig
+	ln -fs "$(readlink -f gitconfig-linux)" $HOME/.os.gitconfig
 fi
 
+	ln -fs "$(readlink -f gitconfig.base)" $HOME/.gitconfig
 	rm -rf $HOME/.gitfiles
 	ln -s $curr $HOME/.gitfiles
 }

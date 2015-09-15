@@ -88,3 +88,6 @@
 	pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
 	insteadOf = "github:"
+
+[include]
+	path=~/.os.gitconfig
