@@ -1,0 +1,27 @@
+..=cd ..\$*
+...=cd ..\.. && cd $*
+....=cd ..\..\.. && cd $*
+
+ls=ls.exe --color -hBG $*
+ll=ls.exe --color -lh $*
+la=ls.exe --color -A $*
+l=ls.exe --color -CF $*
+lla=ls.exe --color -lhA $*
+ld=dir /b /ad $*
+
+a=attrib $*
+c=cd $*
+cc=pushd $*
+-=popd
+gvi=gvim --remote-silent $*
+vi=vim $*
+bb=pushd %USERPROFILE%
+hex=od -A x -t xC -t c -w16 $*
+ff=dir /a-d /b /s $*
+fff=findstr /n /s $*
+home=pushd %USERPROFILE%\$*
+gd=git --no-pager diff --color $*
+gdc=git --no-pager diff --color --cached $*
+gdl=git --no-pager diff $* | less
+gdcl=git --no-pager diff --cached $* | less
+gs=git status -sb

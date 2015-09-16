@@ -42,7 +42,9 @@ vim +PluginInstall +qall
 ## What's Inside
 
 * ```bash``` - aliases, completion, prompt and other tweaks
-* ```bin``` - any executables here will be added to your ```$PATH``` and be available anywhere
+* ```bin``` - any executables here will be added to your ```$PATH``` and be available anywhere (UNIX)
+* ```bin-windows``` - any executables here will be added to your ```$PATH``` and be available anywhere (Windows)
+* ```cygwin``` - configuraton for Cygwin anf Mintty
 * ```git``` - nice gitconfig and global gitignore
 * ```osx``` - set sensible defaults for OS X
 * ```python``` - tab completion for the interpreter, history, command editing
@@ -69,7 +71,7 @@ vim +PluginInstall +qall
     * [tComment] - provides easy to use, file-type sensible comments
     * [Vundle] - runtimepath & plugin manager
     * [yankstack] - provides a history of yank buffers
-* ```windows``` - Windows-specific configurations (Mintty)
+* ```windows``` - environment for Windows CMD
 
 [airline]: https://github.com/bling/vim-airline
 [ag.vim]: https://github.com/rking/ag.vim
@@ -101,6 +103,7 @@ To customize your installation, create any of the following files in your home d
 
 ## Thanks to...
 
+* [David Jenni](https://github.com/davidjenni) for his [dotfiles repository and bootstrapping for Windows CMD](https://github.com/davidjenni/dotfiles)
 * [Ben Alman](http://benalman.com/) for his [dotfiles repository](https://github.com/cowboy/dotfiles) and [spark tool] (https://github.com/holman/spark)
 * [Zach Holman](http://zachholman.com/) for his [dotfiles repository](https://github.com/holman/dotfiles)
 * [Mathias Bynens](http://mathiasbynens.be/) for his [OSX defaults script](https://github.com/mathiasbynens/dotfiles/blob/master/.osx)
