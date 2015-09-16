@@ -11,12 +11,8 @@ endfunction
 com! -nargs=+ UnBundle
 \ call UnBundle(<args>)
 
-
+filetype off
 set rtp+=$HOME/.vim/bundle/vundle
-if WINDOWS()
-	set rtp+=$HOME/vimfiles/bundle/vundle
-	let path="~/vimfiles/bundle"
-endif
 
 call vundle#begin()
 
@@ -58,3 +54,89 @@ if filereadable(expand("~/.plugins.local.vim"))
 endif
 
 call vundle#end()
+
+filetype plugin indent on
+
+" airline {{{
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme = 'solarized'
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#fnamemod = ':t'
+	set laststatus=2
+	set timeoutlen=1000 ttimeoutlen=0
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
+	let g:airline_symbols.space= "\ua0"
+	let g:airline_left_sep = "\u2b80" "use double quotes here
+	let g:airline_left_alt_sep = "\u2b81"
+	let g:airline_right_sep = "\u2b82"
+	let g:airline_right_alt_sep = "\u2b83"
+	let g:airline_symbols.branch = "\u2b60"
+	let g:airline_symbols.readonly = "\u2b64"
+	let g:airline_symbols.linenr = "\u2b61"
+" }}} 
+" ag {{{
+	if executable('ag')
+		nnoremap <leader>a :Ag
+		set grepprg=ag\ --nogroup\ --nocolor
+	endif
+" }}}
+	" closetag {{{
+	autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+	autocmd FileType html,xhtml,xml,htmldjango,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+" }}}
+" CtrlP {{{
+	let g:ctrlp_match_window = 'bottom,order:ttb'
+	if WINDOWS()
+		let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+	elseif executable('ag')
+		let s:ctrlp_fallback = 'ag %s -l --nocolor --hidden -g ""'
+	else
+		let s:ctrlp_fallback = 'find %s -type f'
+	endif
+
+	let g:ctrlp_user_command = {
+		\ 'types': {
+			\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+			\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+		\ },
+		\ 'fallback': s:ctrlp_fallback	
+	\ }
+"}}}
+" vim-json {{{
+	let g:vim_json_syntax_conceal = 0
+" }}}
+" Fugitive {{{
+	nnoremap <silent> <leader>gs :Gstatus<CR>
+	nnoremap <silent> <leader>gd :Gdiff<CR>
+	nnoremap <silent> <leader>gc :Gcommit<CR>
+"}}}
+" Gundo {{{ 
+	if v:version >= '703' || has('python')
+		nnoremap <leader>u :GundoToggle<CR>
+	endif
+" }}}
+" NERDTree {{{
+	map <C-n> :NERDTreeToggle<CR>
+" }}}
+" solarized {{{
+	let g:solarized_termcolors=256
+	let g:solarized_termtrans=1
+	colorscheme solarized
+" }}}
+" SuperTab {{{
+	let g:SuperTabDefaultCompletionType = 'context'
+" }}}
+" Tagbar {{{
+	if executable('ctags-exuberant')
+		let g:tagbar_usearrows = 1
+		nnoremap <leader>l :TagbarToggle<CR>
+	endif
+" }}}
+" Yankstack {{{
+	nmap <leader>p <Plug>yankstack_substitute_older_paste
+	nmap <leader>P <Plug>yankstack_substitute_newer_paste
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0

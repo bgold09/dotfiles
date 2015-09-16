@@ -18,6 +18,7 @@ place_files() {
 		fi
 	fi
 
+	ln -fs "$(readlink -f base.vimrc)" $HOME/.base.vimrc
 	ln -fs "$(readlink -f vimrc)" $HOME/.vimrc
 	rm -rf $HOME/.vim         # remove any symlink to vim config directory
 	ln -s $curr $HOME/.vim
