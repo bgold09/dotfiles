@@ -119,10 +119,10 @@ exit /b 4
     call :saveLink %_HOME%\.dotfiles\git\gitconfig.base %_HOME%\.gitconfig
     call :saveLink %_HOME%\.dotfiles\git\gitconfig-windows %_HOME%\.os.gitconfig
     call :saveLinkDir %_HOME%\.dotfiles\git %_HOME%\.gitfiles
-    call :saveLink %_HOME%\.dotfiles\vim\base.vimrc %_HOME%\base.vimrc
-    call :saveLink %_HOME%\.dotfiles\vim\vimrc %_HOME%\.vimrc
+    call :saveLink %_HOME%\.dotfiles\vim\base.vimrc %_HOME%\.base.vimrc
+    call :saveLink %_HOME%\.dotfiles\vim\vimrc %_HOME%\_vimrc
     call :saveLinkDir %_HOME%\.dotfiles\vim %_HOME%\.vim
-    rem call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
+    call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
     call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin
 
     echo.
