@@ -9,7 +9,8 @@ set _HOME=%USERPROFILE%
 if "%_HOME%" == "" (echo ERROR: Cannot determine home directory for user %USERDOMAIN%\%USER% & exit /b 1)
 set dotPath=%_HOME%\.dotfiles
 
-if /i "%1"=="setup"         goto :doSetup
+if /i "%1"=="/f"            goto :doSetup
+if /i "%1"=="-f"            goto :doSetup
 if /i "%1"=="elevatedSetup" (shift && goto :elevatedSetup)
 if /i "%1"=="restore"       goto :restoreAutorun
 if "%1" NEQ ""              (echo ERROR: unknown verb: '%1'& exit /b 1)
@@ -19,7 +20,7 @@ set _gitExe=%_gitBin%\git.exe
 
 echo Boot strap a console environment at: %_HOME%
 choice /c YN /m "OK to proceed with setup?"
-if %ERRORLEVEL% EQU 1 goto :startSetup
+if %ERRORLEVEL% EQU 1 goto :doSetup
 exit /b 4
 
 :doSetup
@@ -124,6 +125,11 @@ exit /b 4
     call :saveLinkDir %_HOME%\.dotfiles\vim %_HOME%\.vim
     call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
     call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin
+
+    REM PowerShell config
+    call :saveLink %_HOME%\.dotfiles\powershell\profile.ps1 %_HOME%\Documents\WindowsPowerShell\profile.ps1
+    call :saveLink %_HOME%\.dotfiles\powershell\aliases.ps1 %_HOME%\Documents\WindowsPowerShell\aliases.ps1
+    call :saveLink %_HOME%\.dotfiles\powershell\functions.ps1 %_HOME%\Documents\WindowsPowerShell\functions.ps1
 
     echo.
     echo Saved previously sym-linked files in directory: %_bootstrapBackupsDir%
