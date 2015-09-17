@@ -81,9 +81,10 @@
 
 "#### files & colors ####" {{{
 	filetype plugin indent on
-	autocmd Filetype html setlocal ts=2 sts=2 sw=2
-	autocmd FileType pl set syntax=prolog
-	autocmd FileType xaml set syntax=xml
+	autocmd BufNewFile,BufRead *.html setlocal ts=2 sts=2 sw=2
+	autocmd BufNewFile,BufRead *.pl set syntax=prolog
+	autocmd BufNewFile,BufRead *.xaml set syntax=xml
+	autocmd BufNewFile,BufRead *.doskey set syntax=dosbatch
 	set ffs=unix,dos,mac
 	set t_Co=16
 	set background=dark
