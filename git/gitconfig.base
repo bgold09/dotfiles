@@ -89,6 +89,6 @@
 [url "git://github.com/"]
 	insteadOf = "github:"
 
-# [include]
-# 	path = ~/.os.gitconfig
+[include]
+	path = ~/.os.gitconfig
 
