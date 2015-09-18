@@ -31,7 +31,7 @@ set VISUAL=gvim.exe
 call :loadDoskeyIfExists %HOME%\.dotfiles\windows\aliases.doskey
 
 REM set prompt
-prompt %USERNAME%@%COMPUTERNAME% $P $$$S
+prompt %USERNAME%@%COMPUTERNAME% [$+$P] $_$$$S
 goto :eof
 
 :loadDoskeyIfExists
