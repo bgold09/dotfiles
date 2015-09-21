@@ -122,6 +122,7 @@ exit /b 4
     call :saveLinkDir %_HOME%\.dotfiles\git %_HOME%\.gitfiles
     call :saveLink %_HOME%\.dotfiles\vim\base.vimrc %_HOME%\.base.vimrc
     call :saveLink %_HOME%\.dotfiles\vim\vimrc %_HOME%\_vimrc
+    call :saveLink %_HOME%\.dotfiles\vim\gvimrc %_HOME%\_gvimrc
     call :saveLinkDir %_HOME%\.dotfiles\vim %_HOME%\.vim
     call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
     call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin

@@ -1,0 +1,5 @@
+set guioptions-=T  " no toolbar
+set guioptions-=t  " no tearoff menu
+set guioptions+=c  " use console dialog for simple questions
+set guioptions-=m  " don't show GUI menu
+
