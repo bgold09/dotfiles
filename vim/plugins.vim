@@ -39,6 +39,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'wellle/targets.vim'
 
 if executable('ctags-exuberant')
 	Plugin 'majutsushi/tagbar'

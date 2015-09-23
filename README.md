@@ -71,6 +71,7 @@ vim +PluginInstall +qall
     * [supertab] - allows you to use &lt;Tab&gt; for insert completion
     * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
+    * [targets] - provides additional text objects
     * [tComment] - provides easy to use, file-type sensible comments
     * [visual-star-search] - star search for Visual mode
     * [Vundle] - runtimepath & plugin manager
@@ -97,6 +98,7 @@ vim +PluginInstall +qall
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
+[targets] https://github.com/wellle/targets.vim
 [tComment]: https://github.com/tomtom/tcomment_vim
 [visual-star-search]: https://github.com/bronson/vim-visual-star-search
 [Vundle]: https://github.com/gmarik/vundle.vim
