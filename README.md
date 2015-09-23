@@ -59,6 +59,7 @@ vim +PluginInstall +qall
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
     * [fugitive] - git wrapper
+    * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
     * [Gundo] - visualization of the vim undo tree
     * [json] - syntax highlighting for JSON
     * [matchit] - match '%' to more than just single characters
@@ -81,6 +82,7 @@ vim +PluginInstall +qall
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
 [fugitive]: https://github.com/tpope/vim-fugitive
+[gitgutter]: https://github.com/airblade/vim-gitgutter
 [Gundo]: https://github.com/sjl/gundo.vim
 [json]: https://github/com/elzr/vim-json
 [matchit]: https://github.com/tmhedberg/matchit

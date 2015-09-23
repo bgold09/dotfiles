@@ -16,6 +16,7 @@ set rtp+=$HOME/.vim/bundle/vundle
 
 call vundle#begin()
 
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'ciaranm/detectindent'
