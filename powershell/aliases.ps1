@@ -21,3 +21,7 @@ function gc([string]$message) {
 function ga {
 	git add $args
 }
+
+function vup {
+	gvim +PluginUpdate	
+}

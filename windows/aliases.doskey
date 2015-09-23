@@ -15,6 +15,7 @@ cc=pushd $*
 -=popd
 gvi=gvim --remote-silent $*
 vi=vim $*
+vup=gvim +PluginUpdate $*
 bb=pushd %USERPROFILE%
 hex=od -A x -t xC -t c -w16 $*
 ff=dir /a-d /b /s $*
