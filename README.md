@@ -73,6 +73,7 @@ vim +PluginInstall +qall
     * [Tagbar] - browse tags in source code
     * [targets] - provides additional text objects
     * [tComment] - provides easy to use, file-type sensible comments
+    * [unimpaired] - pairs of handy bracket mappings
     * [visual-star-search] - star search for Visual mode
     * [Vundle] - runtimepath & plugin manager
     * [yankstack] - provides a history of yank buffers
@@ -100,6 +101,7 @@ vim +PluginInstall +qall
 [Tagbar]: https://github.com/majutsushi/tagbar
 [targets] https://github.com/wellle/targets.vim
 [tComment]: https://github.com/tomtom/tcomment_vim
+[unimpaired]: https://github.com/tpope/vim-unimpaired
 [visual-star-search]: https://github.com/bronson/vim-visual-star-search
 [Vundle]: https://github.com/gmarik/vundle.vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack

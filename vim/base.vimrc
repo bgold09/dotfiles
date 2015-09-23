@@ -147,7 +147,6 @@
 	set ai        " auto indent
 	set si        " smart indent
 	set nowrap
-	nmap <leader>r :set wrap!<CR>
 " }}}
 
 " #### folding ####" {{{
