@@ -26,6 +26,7 @@ Plugin 'ervandew/supertab'
 Plugin 'gmarik/vundle'
 "" Tabular must come before vim-markdown
 Plugin 'godlygeek/tabular'
+Plugin 'gregsexton/gitv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'plasticboy/vim-markdown'
