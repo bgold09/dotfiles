@@ -44,6 +44,9 @@
 	# cherry-pick
 	ch = cherry-pick
 
+	# cleanup 
+	cleanup = !git remote prune origin && git gc 
+
 	# commit	
 	ci = commit
 	cm = commit -m
