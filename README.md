@@ -55,6 +55,7 @@ vim +PluginInstall +qall
     * [airline] - statusline/tabline for vim
     * [ag.vim] - vim plugin for the [silver_searcher]
     * [better-whitespace] - better whitespace highlighting
+    * [bookmarks] - allows toggling bookmarks per line
     * [closetag] - close open HTML/XML tags
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
     * [delimitMate] - auto-completion for quotes, brackets, etc.
@@ -81,6 +82,7 @@ vim +PluginInstall +qall
 
 [airline]: https://github.com/bling/vim-airline
 [ag.vim]: https://github.com/rking/ag.vim
+[bookmarks]: https://github.com/MattesGroeger/vim-bookmarks
 [better-whitespace]: https://github.com/ntpeters/vim-better-whitespace
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [closetag]: https://github.com/vim-scripts/closetag.vim

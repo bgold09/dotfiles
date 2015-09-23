@@ -29,6 +29,7 @@ Plugin 'gmarik/vundle'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'kien/ctrlp.vim'
+Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'plasticboy/vim-markdown'
@@ -68,6 +69,7 @@ filetype plugin indent on
 	let g:airline_theme = 'solarized'
 	let g:airline#extensions#tabline#enabled = 1
 	let g:airline#extensions#tabline#fnamemod = ':t'
+	let g:airline#extensions#whitespace#enabled = 0
 	set laststatus=2
 	set timeoutlen=1000 ttimeoutlen=0
 	if !exists('g:airline_symbols')
@@ -86,6 +88,13 @@ filetype plugin indent on
 	if executable('ag')
 		nnoremap <leader>a :Ag
 		set grepprg=ag\ --nogroup\ --nocolor
+	endif
+" }}}
+" bookmarks {{{
+ 	if WINDOWS() || has('win32unix')
+		" TODO: remove after signs issue is resolved for Windows
+		let g:bookmark_sign = '>>'
+		let g:bookmark_annotation_sign = '##'
 	endif
 " }}}
 " better-whitespace {{{
