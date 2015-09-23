@@ -19,6 +19,7 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'bronson/vim-visual-star-search'
 Plugin 'ciaranm/detectindent'
 Plugin 'docunext/closetag.vim'
 Plugin 'elzr/vim-json'

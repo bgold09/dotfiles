@@ -71,6 +71,7 @@ vim +PluginInstall +qall
     * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
     * [tComment] - provides easy to use, file-type sensible comments
+    * [visual-star-search] - star search for Visual mode
     * [Vundle] - runtimepath & plugin manager
     * [yankstack] - provides a history of yank buffers
 * ```windows``` - environment for Windows CMD
@@ -95,6 +96,7 @@ vim +PluginInstall +qall
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
 [tComment]: https://github.com/tomtom/tcomment_vim
+[visual-star-search]: https://github.com/bronson/vim-visual-star-search
 [Vundle]: https://github.com/gmarik/vundle.vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
 
