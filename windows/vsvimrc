@@ -1,3 +1,4 @@
 source ~/.base.vimrc
 
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nmap <leader>d :vsc Window.CloseDocumentWindow<CR>
