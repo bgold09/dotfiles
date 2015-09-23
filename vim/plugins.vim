@@ -30,6 +30,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'pprovost/vim-ps1'
 Plugin 'raimondi/delimitmate'
@@ -84,6 +85,9 @@ filetype plugin indent on
 		nnoremap <leader>a :Ag
 		set grepprg=ag\ --nogroup\ --nocolor
 	endif
+" }}}
+" better-whitespace {{{
+	let g:better_whitespace_enabled = 0
 " }}}
 	" closetag {{{
 	autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
