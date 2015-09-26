@@ -23,5 +23,5 @@ function ga {
 }
 
 function vup {
-	gvim +PluginUpdate	
+	gvim +PlugUpdate
 }

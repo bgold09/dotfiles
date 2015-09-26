@@ -2,57 +2,41 @@ silent function! WINDOWS()
 	return (has('win16') || has('win32') || has('win64'))
 endfunction
 
-" Add an UnBundle function 
-function! UnBundle(arg, ...)
-	let bundle = vundle#config#init_bundle(a:arg, a:000)
-	call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-endfunction
+call plug#begin('~/.vim/bundle')
 
-com! -nargs=+ UnBundle
-\ call UnBundle(<args>)
-
-filetype off
-set rtp+=$HOME/.vim/bundle/vundle
-
-call vundle#begin()
-
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'ciaranm/detectindent'
-Plugin 'docunext/closetag.vim'
-Plugin 'elzr/vim-json'
-Plugin 'ervandew/supertab'
-Plugin 'gmarik/vundle'
-"" Tabular must come before vim-markdown
-Plugin 'godlygeek/tabular'
-Plugin 'gregsexton/gitv'
-Plugin 'kien/ctrlp.vim'
-Plugin 'MattesGroeger/vim-bookmarks'
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'pprovost/vim-ps1'
-Plugin 'raimondi/delimitmate'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tmhedberg/matchit'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'wellle/targets.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'bronson/vim-visual-star-search'
+Plug 'ciaranm/detectindent'
+Plug 'docunext/closetag.vim'
+Plug 'elzr/vim-json'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
+Plug 'kien/ctrlp.vim'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'pprovost/vim-ps1'
+Plug 'raimondi/delimitmate'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tmhedberg/matchit'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'wellle/targets.vim'
 
 if executable('ctags-exuberant')
-	Plugin 'majutsushi/tagbar'
+	Plug 'majutsushi/tagbar', { 'on' : 'TagBarToggle'}
 endif
 
 if v:version >= '703' || has('python')
-	Plugin 'sjl/gundo.vim'
+	Plug 'sjl/gundo.vim'
 endif
 
 if executable('ag') 
-	Plugin 'rking/ag.vim'
+	Plug 'rking/ag.vim'
 endif
 
 " Add or unbundle plugins in a local plugin config 
@@ -60,9 +44,7 @@ if filereadable(expand("~/.plugins.local.vim"))
 	source ~/.plugins.local.vim
 endif
 
-call vundle#end()
-
-filetype plugin indent on
+call plug#end()
 
 " airline {{{
 	let g:airline_powerline_fonts = 1

@@ -27,13 +27,15 @@ place_files() {
 	ln -s $curr $HOME/.vim
 }
 
-vundle_clone() {
-	[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+vimplug_clone() {
+	[ -z "$VIMPLUG_URI" ] && VIMPLUG_URI=\
+		"https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-	if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-		git clone $VUNDLE_URI "$HOME/.vim/bundle/vundle" >> /dev/null 2>&1
+	if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
+		curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+			$VIMPLUG_URI >> /dev/null 2>&1
 		if [ ! $? -eq 0 ]; then
-			fail "vim install failed, unable to clone vundle"
+			fail "vim install failed, unable to get vim-plug using curl"
 			exit 1
 		fi
 	fi
@@ -41,6 +43,6 @@ vundle_clone() {
 
 info "Installing $name configuration..."
 place_files $1
-vundle_clone
+vimplug_clone
 success "$name configuration installed"
 exit 0

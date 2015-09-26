@@ -1,4 +1,4 @@
 alias vi=vim
 alias svi='sudo vi'
 alias edit='vim'
-alias vup='vim +PluginUpdate'
+alias vup='vim +PlugUpdate'

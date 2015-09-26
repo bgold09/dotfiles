@@ -36,6 +36,7 @@ vim +PluginInstall +qall
 ### Completing the configuration
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
 * Install the [patched Consolas font for Powerline/Airline](https://github.com/eugeii/consolas-powerline-vim).
+* For parallel installation of vim plugins, install the proper version of python or ruby for your build of vim (see ```:help ruby-dynamic``` or ```:help python-dynamic``` for more information).
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
 * If you plan to use gVim for Windows, install [git](http://git-scm.org) and choose the option 'Use Git from the Windows Command Prompt' during installation.
 
@@ -51,7 +52,7 @@ vim +PluginInstall +qall
 * ```script``` - helpers for installation of these dotfiles
 * ```system``` - files here will not be linked in ```home```
 * ```tmux``` - configuration for tmux
-* ```vim``` - a lot of vimrc tweaks, including the following plugins:
+* ```vim``` - a lot of vimrc tweaks, including the following plugins managed by [vim-plug]:
     * [airline] - statusline/tabline for vim
     * [ag.vim] - vim plugin for the [silver_searcher]
     * [better-whitespace] - better whitespace highlighting
@@ -76,10 +77,10 @@ vim +PluginInstall +qall
     * [tComment] - provides easy to use, file-type sensible comments
     * [unimpaired] - pairs of handy bracket mappings
     * [visual-star-search] - star search for Visual mode
-    * [Vundle] - runtimepath & plugin manager
     * [yankstack] - provides a history of yank buffers
 * ```windows``` - environment for Windows CMD
 
+[vim-plug]: https://github.com/junegunn/vim-plug
 [airline]: https://github.com/bling/vim-airline
 [ag.vim]: https://github.com/rking/ag.vim
 [bookmarks]: https://github.com/MattesGroeger/vim-bookmarks
@@ -105,7 +106,6 @@ vim +PluginInstall +qall
 [tComment]: https://github.com/tomtom/tcomment_vim
 [unimpaired]: https://github.com/tpope/vim-unimpaired
 [visual-star-search]: https://github.com/bronson/vim-visual-star-search
-[Vundle]: https://github.com/gmarik/vundle.vim
 [yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
 
 ## Customization
