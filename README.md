@@ -67,6 +67,7 @@ vim +PluginInstall +qall
     * [Gundo] - visualization of the vim undo tree
     * [json] - syntax highlighting for JSON
     * [matchit] - match '%' to more than just single characters
+    * [multiple-cursors] - Sublime Text style multiple selections
     * [NERDTree] - directory tree explorer
     * [ps1] - PowerShell syntax highlighting for vim
     * [solarized] - precision colorscheme
@@ -96,6 +97,7 @@ vim +PluginInstall +qall
 [Gundo]: https://github.com/sjl/gundo.vim
 [json]: https://github/com/elzr/vim-json
 [matchit]: https://github.com/tmhedberg/matchit
+[multiple-cursors]: https://github.com/terryma/vim-multiple-cursors
 [NERDTree]: https://github.com/scrooloose/nerdtree
 [ps1]: https://github.com/pprovost/vim-ps1
 [solarized]: https://github.com/altercation/vim-colors-solarized

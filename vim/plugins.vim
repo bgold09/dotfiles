@@ -45,6 +45,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
+Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " Add or unbundle plugins in a local plugin config 
