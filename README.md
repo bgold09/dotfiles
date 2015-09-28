@@ -102,7 +102,7 @@ vim +PluginInstall +qall
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
-[targets] https://github.com/wellle/targets.vim
+[targets]: https://github.com/wellle/targets.vim
 [tComment]: https://github.com/tomtom/tcomment_vim
 [unimpaired]: https://github.com/tpope/vim-unimpaired
 [visual-star-search]: https://github.com/bronson/vim-visual-star-search

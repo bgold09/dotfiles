@@ -4,28 +4,21 @@ endfunction
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'airblade/vim-gitgutter'
+" syntax & colors {{{
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
-Plug 'bronson/vim-visual-star-search'
+Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
+Plug 'pprovost/vim-ps1'
 Plug 'ciaranm/detectindent'
 Plug 'docunext/closetag.vim'
-Plug 'elzr/vim-json'
-Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
-Plug 'kien/ctrlp.vim'
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'pprovost/vim-ps1'
-Plug 'raimondi/delimitmate'
+" }}}
+" interface {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tmhedberg/matchit'
-Plug 'tomtom/tcomment_vim'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'ervandew/supertab'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'wellle/targets.vim'
 
 if executable('ctags-exuberant')
 	Plug 'majutsushi/tagbar', { 'on' : 'TagBarToggle'}
@@ -38,6 +31,21 @@ endif
 if executable('ag') 
 	Plug 'rking/ag.vim'
 endif
+" }}}
+" movement {{{
+Plug 'tmhedberg/matchit'
+Plug 'tpope/vim-unimpaired'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'bronson/vim-visual-star-search'
+" }}}
+" editing {{{
+Plug 'tomtom/tcomment_vim'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
+" }}}
 
 " Add or unbundle plugins in a local plugin config 
 if filereadable(expand("~/.plugins.local.vim"))
