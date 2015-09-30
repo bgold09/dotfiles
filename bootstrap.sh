@@ -178,13 +178,11 @@ install_dependencies_cygwin() {
 		exit 1
 	fi
 
-	if [ ! "$(check_installed apt-cyg)" ]; then
+	if [ ! "$(type -P apt-cyg)" ]; then
 		e_arrow "installing apt-cyg..."
-		curl -fLo --create-dirs \
-			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg \
-			> /tmp/apt-cyg
-
-		install /tmp/apt-cyg
+		curl -fL -o /tmp/apt-cyg \
+			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg
+		install /tmp/apt-cyg /bin
 		e_success "apt-cyg installed"
 	fi
 
