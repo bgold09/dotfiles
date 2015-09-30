@@ -67,16 +67,26 @@ array_contains() {
 	done
 }
 
+check_installed() {
+	if [ "$(type -P $1)" ]; then
+		echo 0
+	else
+		echo 1
+	fi
+}
+
 install_dependencies() {
 	e_header "Installing dependencies..."
-	if [ "$(type -P apt-get)" ]; then
+	if [[ "$OSTYPE" =~ ^linux-gnu ]]; then
 		install_dependencies_debian
 	elif [[ "$OSTYPE" =~ ^darwin ]]; then
 		install_dependencies_osx
-	else 
-		dependencies_needed
-		exit 1
+	elif [[ "$OSTYPE" =~ ^cygwin ]]; then 
+		install_dependencies_cygwin
+	else
+		fail "Current platform is not supported for installing dependencies."
 	fi
+	e_success "Dependencies installed"
 }
 
 install_dependencies_debian() {
@@ -87,12 +97,14 @@ install_dependencies_debian() {
 	deps[ctags-exuberant]=exuberant-ctags
 	deps[tmux]=tmux
 	deps[pip]=python-pip
+	deps[ruby]=ruby
+	deps[rubygems]=rubygems
 
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
 	install_python_packages
 
 	# install the_silver_searcher if on a Ubuntu system
-	if [[ ! "$(type -P ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
+	if [[ ! "$(check_installed ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
 		local version="$(lsb_release -r | cut -f2)"
 		e_arrow "Installing ag (the_silver_searcher)..."
 		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
@@ -117,12 +129,12 @@ install_dependencies_debian() {
 install_dependencies_osx() {
 	local install_cmd="brew install"
 
-	if [ ! "$(type -P gcc)" ]; then
+	if [ ! "$(check_installed gcc)" ]; then
 		e_error "XCode or the Command Line Tools for XCode must be installed first"
 		exit 1
 	fi
 	
-	if [ ! "$(type -P brew)" ]; then
+	if [ ! "$(check_installed brew)" ]; then
 		e_arrow "Installing Homebrew (OSX package manager)"
 		ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 		e_success "Homebrew installed"
@@ -132,6 +144,7 @@ install_dependencies_osx() {
 	deps[ctags-exuberant]=ctags-exuberant
 	deps[ag]=the_silver_searcher
 	deps[tmux]=tmux
+	deps[ruby]=ruby
 	
 	install_dependencies_list "$install_cmd" "$(declare -p deps)"
 }
@@ -151,30 +164,51 @@ install_dependencies_list() {
 	local install_cmd="$1"
 	eval "declare -A deps="${2#*=}
 	for key in "${!deps[@]}"; do 
-		if [ ! "$(type -P $key)" ]; then
+		if [ ! "$(check_installed $key)" ]; then
 			e_arrow "Installing $key..."
-			$install_cmd ${deps[$key]}
+			$install_cmd ${deps[$key]} > /dev/null 2>&1
 			e_success "$key installed"
 		fi
 	done
 }
 
-dependencies_needed() {
-	local fail=
-	local pkgs=
-	for pkg in "git" "ctags-exuberant"; do
-		if [ ! "$(type -P $pkg)" ]; then
-			fail=1
-			pkgs="$pkgs $pkg"
-		fi
-	done
-
-	if [ $fail -eq 1 ]; then
-		e_error "You must install the following dependencies:"
-		echo $pkgs
-		echo "Install these, then run this script again."
+install_dependencies_cygwin() {
+	if [ ! "$(cygcheck -dc curl | sed '3q;d')" ]; then
+		e_error "Please install 'curl' and rerun this script."
 		exit 1
 	fi
+
+	if [ ! "$(check_installed apt-cyg)" ]; then
+		e_arrow "installing apt-cyg..."
+		curl -fLo --create-dirs \
+			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg \
+			> /tmp/apt-cyg
+
+		install /tmp/apt-cyg
+		e_success "apt-cyg installed"
+	fi
+
+	local install_cmd="apt-cyg install"
+
+	deps=(  git\
+		vim\
+		mintty\
+		openssh\
+		wget\
+		tmux\
+		ruby\
+		rubygems\
+		python\
+		ctags\
+		)
+	
+	for pkg in "${deps[@]}"; do
+		if [ ! "$(cygcheck -dc $pkg | sed '3q;d')" ]; then
+			e_arrow "Installing $pkg..."
+			$install_cmd $pkg > /dev/null 2>&1
+			e_success "$pkg installed"
+		fi
+	done
 }
 
 update_repo() {
