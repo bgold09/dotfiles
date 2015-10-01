@@ -64,6 +64,7 @@ vim +PluginInstall +qall
     * [bookmarks] - allows toggling bookmarks per line
     * [closetag] - close open HTML/XML tags
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
+    * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
     * [fugitive] - git wrapper
@@ -95,6 +96,7 @@ vim +PluginInstall +qall
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [closetag]: https://github.com/vim-scripts/closetag.vim
 [CtrlP]: https://github.com/kien/ctrlp.vim
+[ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
 [fugitive]: https://github.com/tpope/vim-fugitive
