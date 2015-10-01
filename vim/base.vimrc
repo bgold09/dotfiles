@@ -57,6 +57,7 @@
 " }}}
 
 "#### buffers #### {{{
+	set hidden  " allows modified buffers to be hidden
 	nmap <leader>m :bn<CR>
 	nmap <leader>n :bp<CR>
 	nmap <leader>d :bd<CR>
