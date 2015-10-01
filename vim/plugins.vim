@@ -14,7 +14,7 @@ Plug 'docunext/closetag.vim'
 " }}}
 " interface {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'kien/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
+Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
 Plug 'bling/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'

@@ -95,7 +95,7 @@ vim +PluginInstall +qall
 [better-whitespace]: https://github.com/ntpeters/vim-better-whitespace
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [closetag]: https://github.com/vim-scripts/closetag.vim
-[CtrlP]: https://github.com/kien/ctrlp.vim
+[CtrlP]: https://github.com/ctrlpvim/ctrlp.vim
 [ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
