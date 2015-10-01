@@ -19,6 +19,7 @@ Plug 'bling/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
+Plug 'justinmk/vim-gtfo'
 
 if executable('ctags-exuberant')
 	Plug 'majutsushi/tagbar', { 'on' : 'TagBarToggle'}
@@ -113,6 +114,9 @@ call plug#end()
 		\ 'fallback': s:ctrlp_fallback	
 	\ }
 "}}}
+" gtfo {{{
+	let g:gtfo#terminals = { 'win' : 'cmd' }
+" }}}
 " vim-json {{{
 	let g:vim_json_syntax_conceal = 0
 " }}}
