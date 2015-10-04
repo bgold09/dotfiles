@@ -11,6 +11,7 @@ Plug 'elzr/vim-json'
 Plug 'pprovost/vim-ps1'
 Plug 'ciaranm/detectindent'
 Plug 'docunext/closetag.vim'
+Plug 'OrangeT/vim-csharp'
 " }}}
 " interface {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }

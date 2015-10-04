@@ -63,6 +63,7 @@ vim +PluginInstall +qall
     * [better-whitespace] - better whitespace highlighting
     * [bookmarks] - allows toggling bookmarks per line
     * [closetag] - close open HTML/XML tags
+    * [chsarp] - enhancements to vim C# functionality 
     * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
     * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
     * [delimitMate] - auto-completion for quotes, brackets, etc.
@@ -95,6 +96,7 @@ vim +PluginInstall +qall
 [better-whitespace]: https://github.com/ntpeters/vim-better-whitespace
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher
 [closetag]: https://github.com/vim-scripts/closetag.vim
+[chsarp]: https://github.com/OrangeT/vim-csharp
 [CtrlP]: https://github.com/ctrlpvim/ctrlp.vim
 [ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
