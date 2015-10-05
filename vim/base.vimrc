@@ -28,6 +28,7 @@
 	set history=700
 	syntax on
 	set autoread
+	set autochdir
 	let mapleader=","
 	let g:mapleader=","
 	if has('persistent_undo') " {{{
@@ -141,6 +142,9 @@
 	" close preview after selection is made
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+	" look for ctags files in current directory, then parent
+	set tags=./tags,tags;
 " }}}
 
 "#### tabs & indentation ####" {{{

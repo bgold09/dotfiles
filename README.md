@@ -35,7 +35,7 @@ This script will symlink config files to your home directory and install depende
 Each run of the [bootstrap script](https://github.com/bgold09/dotfiles/blob/master/bootstrap.sh) may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
 
 ```sh
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 ```
 
 ### Completing the configuration
@@ -68,6 +68,7 @@ vim +PluginInstall +qall
     * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
+    * [easytags] - Automated tag file generation and syntax highlighting of tags
     * [fugitive] - git wrapper
     * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
     * [gitv] - Git repository viewer
@@ -101,6 +102,7 @@ vim +PluginInstall +qall
 [ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
+[easytags]: https://github.com/xolox/vim-easytags
 [fugitive]: https://github.com/tpope/vim-fugitive
 [gitgutter]: https://github.com/airblade/vim-gitgutter
 [gitv]: https://github.com/gregsexton/gitv

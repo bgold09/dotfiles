@@ -13,9 +13,8 @@ set _HERE=
 set HOME=%USERPROFILE%
 set MY_BIN=%HOME%\bin
 
-call :addToPath "%MY_BIN%\dotfiles\bin-windows"
+call :addToPath "%USERPROFILE%\.dotfiles\bin-windows"
 call :addToPath "%MY_BIN%\vim\vim74"
-call :addToPath "%ProgramFiles(x86)%\Git\bin"
 call :addToPath "%ProgramFiles%\7-Zip"
 
 PATH=%PATH%;

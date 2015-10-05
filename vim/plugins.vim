@@ -2,6 +2,10 @@ silent function! WINDOWS()
 	return (has('win16') || has('win32') || has('win64'))
 endfunction
 
+silent function! Executable_Ctags()
+	return (executable('ctags') || executable('ctags-exuberant'))
+endfunction
+
 call plug#begin('~/.vim/bundle')
 
 " syntax & colors {{{
@@ -22,9 +26,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
 Plug 'justinmk/vim-gtfo'
 
-if executable('ctags-exuberant')
+if Executable_Ctags()
 	Plug 'majutsushi/tagbar', { 'on' : 'TagBarToggle'}
-endif
+	Plug 'xolox/vim-misc' | Plug 'xolox/vim-shell' | Plug 'xolox/vim-easytags'
+	endif
 
 if v:version >= '703' || has('python')
 	Plug 'sjl/gundo.vim'
@@ -115,6 +120,10 @@ call plug#end()
 		\ 'fallback': s:ctrlp_fallback	
 	\ }
 "}}}
+" easytags {{{
+	let g:easytags_async = 1
+	let g:easytags_dynamic_files = 1
+" }}}
 " gtfo {{{
 	let g:gtfo#terminals = { 'win' : 'cmd' }
 " }}}
@@ -143,7 +152,7 @@ call plug#end()
 	let g:SuperTabDefaultCompletionType = 'context'
 " }}}
 " Tagbar {{{
-	if executable('ctags-exuberant')
+	if Executable_Ctags()
 		let g:tagbar_usearrows = 1
 		nnoremap <leader>l :TagbarToggle<CR>
 	endif
