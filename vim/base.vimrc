@@ -28,7 +28,8 @@
 	set history=700
 	syntax on
 	set autoread
-	set autochdir
+	" alternative to 'set autochdir', works better with plugins 
+	autocmd BufEnter * silent! lcd %:p:h
 	let mapleader=","
 	let g:mapleader=","
 	if has('persistent_undo') " {{{
