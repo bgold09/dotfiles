@@ -88,6 +88,7 @@
 	autocmd BufNewFile,BufRead *.pl set syntax=prolog
 	autocmd BufNewFile,BufRead *.xaml set syntax=xml
 	autocmd BufNewFile,BufRead *.doskey set syntax=dosbatch
+	autocmd BufNewFile,BufRead *gitconfig* set syntax=gitconfig
 	set ffs=unix,dos,mac
 	set t_Co=16
 	set background=dark
