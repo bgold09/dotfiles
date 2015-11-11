@@ -126,6 +126,7 @@ exit /b 4
     call :saveLink %_HOME%\.dotfiles\vim\gvimrc %_HOME%\_gvimrc
     call :saveLinkDir %_HOME%\.dotfiles\vim %_HOME%\.vim
     call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
+    call :saveLink %_HOME%\.dotfiles\windows\ConEmu.xml %APPDATA%\ConEmu.xml
     call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin
 
     REM PowerShell config
