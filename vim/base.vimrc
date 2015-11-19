@@ -202,6 +202,14 @@
 		endif
 	endfunction
 	nmap <leader>k :call ToggleColorColumn()<CR>
+
+	" setup TFS integration
+	if executable('tf')
+		function! Tfcheckout()
+			exe '!tf checkout "' expand('%:p') '"'
+		endfunction
+		command! Tfcheckout :call Tfcheckout()
+	endif
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
