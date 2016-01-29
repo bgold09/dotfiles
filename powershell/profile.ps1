@@ -43,10 +43,18 @@ if (Test-path $histdir\History.csv) {
 	Import-CSV $histfile | Add-History
 }
 
+# PSReadline configuration
+Set-PSReadlineOption -TokenKind Parameter -ForegroundColor DarkMagenta
+Set-PSReadlineOption -TokenKind Operator -ForegroundColor DarkMagenta
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd 
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadlinekeyHandler -Function MenuComplete -Key Ctrl+Q
+
+Install-Module posh-git
+
 # Cleanup for git prompt
 Enable-GitColors
 Pop-Location
 
-# Start-SshAgent -Quiet
-
-Clear-Host
+Start-SshAgent -Quiet
