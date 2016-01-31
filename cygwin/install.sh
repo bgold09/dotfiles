@@ -18,6 +18,8 @@ place_files() {
 
 		ln -fs "$(readlink -f "$file")" $HOME/.$file
 	done
+
+	ln -fs $USERPROFILE/Desktop $HOME/Desktop
 }
 
 info "Installing $name configuration..."
