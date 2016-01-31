@@ -27,7 +27,7 @@ Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
 Plug 'justinmk/vim-gtfo'
 
 if Executable_Ctags()
-	Plug 'majutsushi/tagbar', { 'on' : 'TagBarToggle'}
+	Plug 'majutsushi/tagbar'
 	Plug 'xolox/vim-misc' | Plug 'xolox/vim-shell' | Plug 'xolox/vim-easytags'
 	endif
 
