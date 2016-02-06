@@ -178,15 +178,15 @@ install_dependencies_cygwin() {
 		exit 1
 	fi
 
-	if [ ! "$(type -P apt-cyg)" ]; then
-		e_arrow "installing apt-cyg..."
-		curl -fL -o /tmp/apt-cyg \
-			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg
-		install /tmp/apt-cyg /bin
-		e_success "apt-cyg installed"
+	if [ ! "$(type -P sage)" ]; then
+		e_arrow "installing sage..."
+		curl -fL -o /tmp/sage \
+			http://rawgit.com/svnpenn/sage/master/sage
+		install /tmp/sage /bin
+		e_success "sage installed"
 	fi
 
-	local install_cmd="apt-cyg install"
+	local install_cmd="sage install"
 
 	deps=(  git\
 		vim\
