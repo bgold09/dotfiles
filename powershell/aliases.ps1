@@ -5,6 +5,9 @@
 (new-item alias:gvim -value 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Vim 7.4\gvim.lnk') > Out-Null
 
 # Alias functions
+function dot {
+	 cd $env:USERPROFILE\.dotfiles
+}
 
 function touch([string]$filename) {
 	New-Item -Type file $filename

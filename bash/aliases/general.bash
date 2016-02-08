@@ -24,6 +24,8 @@ alias lda="ls -la ${colorflag} | less"
 alias lf="ls -l ${colorflag} | egrep '^d'"
 
 ## Navigation, directories
+alias dot='cd ~/.dotfiles'
+
 # Tree
 if [ ! -x "$(which tree 2>/dev/null)" ]; then
 	alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
