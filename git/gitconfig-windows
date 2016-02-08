@@ -1,5 +1,5 @@
 [credential]
-	helper = wincred
+	helper = manager
 
 [core]
 	editor = gvim -f
