@@ -9,7 +9,7 @@ These are my dotfiles, which includes configurations for [bash](https://www.gnu.
 Use the [install file](https://github.com/bgold09/dotfiles/blob/master/install.sh):
 
 ```sh
-curl --fsSL https://raw.github.com/bgold09/dotfiles/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/bgold09/dotfiles/master/install.sh | sh
 ```
 
 ### Using Git and the bootstrap script
