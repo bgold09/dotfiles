@@ -20,14 +20,20 @@ Clone this repository:
 git clone https://github.com/bgold09/dotfiles.git ~/.dotfiles 
 ```
 
-Install the configuration:
+Install the configuration for UNIX environments:
 
 ```sh
 cd ~/.dotfiles
 ./bootstrap.sh
 ```
 
-This script will symlink config files to your home directory and install dependent packages using:
+Install the configuration for Windows environments:
+
+```cmd
+bootstrap.cmd
+```
+
+These scripts will symlink config files to your home directory and install dependent packages using:
 * apt-get on Ubuntu
 * [homebrew](https://github.com/Homebrew/homebrew) on OSX
 * [apt-cyg](https://github.com/transcode-open/apt-cyg) on Cygwin
@@ -48,14 +54,15 @@ vim +PlugInstall +qall
 ## What's Inside
 
 * ```bash``` - aliases, completion, prompt and other tweaks
-* ```bin``` - any executables here will be added to your ```$PATH``` and be available anywhere (UNIX)
-* ```bin-windows``` - any executables here will be added to your ```$PATH``` and be available anywhere (Windows)
-* ```cygwin``` - configuraton for Cygwin and Mintty
+* ```bin``` - executables here will be added to your ```$PATH``` and be available anywhere (UNIX)
+* ```bin-windows``` - executables here will be added to your ```$PATH``` and be available anywhere (Windows)
+* ```cygwin``` - configuration for Cygwin and Mintty
 * ```git``` - nice gitconfig and global gitignore
 * ```osx``` - set sensible defaults for OS X
+* ```powershell``` - aliases, functions and custom prompt
 * ```python``` - tab completion for the interpreter, history, command editing
 * ```script``` - helpers for installation of these dotfiles
-* ```system``` - files here will not be linked in ```home```
+* ```system``` - files here will be symlinked to ```home```
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins managed by [vim-plug]:
     * [airline] - statusline/tabline for vim
@@ -80,8 +87,8 @@ vim +PlugInstall +qall
     * [NERDTree] - directory tree explorer
     * [ps1] - PowerShell syntax highlighting for vim
     * [solarized] - precision colorscheme
-    * [supertab] - allows you to use &lt;Tab&gt; for insert completion
-    * [surround] - delete, add, change surroundings (brackets, quotes, etc.)
+    * [supertab] - allows you to use &lt;Tab&gt; for completion
+    * [surround] - delete, add and change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
     * [targets] - provides additional text objects
     * [tComment] - provides easy to use, file-type sensible comments
