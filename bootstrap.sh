@@ -76,7 +76,7 @@ check_installed() {
 }
 
 install_dependencies() {
-	e_header "Installing dependencies..."
+	e_header "Installing/upgrading dependencies..."
 	if [[ "$OSTYPE" =~ ^linux-gnu ]]; then
 		install_dependencies_debian
 	elif [[ "$OSTYPE" =~ ^darwin ]]; then
@@ -86,49 +86,25 @@ install_dependencies() {
 	else
 		fail "Current platform is not supported for installing dependencies."
 	fi
-	e_success "Dependencies installed"
+	e_success "Dependencies installed/upgraded"
 }
 
 install_dependencies_debian() {
-	local install_cmd="sudo apt-get -y -q install"
+	e_arrow "Updating package index files from their sources..."
+	sudo apt-get update &> /dev/null
+	e_success "Package index files updated"
 
-	declare -A deps
-	deps[git]=git-core
-	deps[ctags-exuberant]=exuberant-ctags
-	deps[tmux]=tmux
-	deps[pip]=python-pip
-	deps[ruby]=ruby
-	deps[rubygems]=rubygems
-
-	install_dependencies_list "$install_cmd" "$(declare -p deps)"
-	install_python_packages
-
-	# install the_silver_searcher if on a Ubuntu system
-	if [[ ! "$(check_installed ag)" && "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]]; then
-		local version="$(lsb_release -r | cut -f2)"
-		e_arrow "Installing ag (the_silver_searcher)..."
-		if [ $(echo "$version >= 13.10" | bc) -ne 0 ]; then
-			$install_cmd silversearcher-ag
-		else
-			for pkg in "automake" "pkg-config" "libpcre3-dev" "zlib1g-dev" "liblzma-dev"; do 
-				e_arrow "Installing $pkg..."
-				$install_cmd $pkg
-				e_success "$pkg installed"
-			done
-
-			git clone https://github.com/ggreer/the_silver_searcher /tmp/silver
-			pushd /tmp/silver
-			./build.sh
-			sudo make install
-			popd
-		fi
-		e_success "ag (the_silver_searcher) installed"
+	if [ -z "$UPGRADE" ]; then
+		local install_cmd="sudo apt-get -y -q install"
+	else
+		local install_cmd="sudo apt-get -y -q upgrade"
 	fi
+
+	install_dependencies_list "$install_cmd" "packages-debian"
+	install_python_packages
 }
 
 install_dependencies_osx() {
-	local install_cmd="brew install"
-
 	if [ ! "$(check_installed gcc)" ]; then
 		e_error "XCode or the Command Line Tools for XCode must be installed first"
 		exit 1
@@ -140,13 +116,17 @@ install_dependencies_osx() {
 		e_success "Homebrew installed"
 	fi
 
-	declare -A deps
-	deps[ctags-exuberant]=ctags-exuberant
-	deps[ag]=the_silver_searcher
-	deps[tmux]=tmux
-	deps[ruby]=ruby
-	
-	install_dependencies_list "$install_cmd" "$(declare -p deps)"
+	e_arrow "Updating homebrew and homebrew formulae..."
+	brew update &> /dev/null
+	e_success "Homebrew and formulae updated"
+
+	if [ -z "$UPGRADE" ]; then
+		local install_cmd="brew install"
+	else
+		local install_cmd="brew upgrade"
+	fi
+
+	install_dependencies_list "$install_cmd" packages-osx
 }
 
 install_python_packages() {
@@ -162,14 +142,26 @@ install_python_packages() {
 
 install_dependencies_list() {
 	local install_cmd="$1"
-	eval "declare -A deps="${2#*=}
-	for key in "${!deps[@]}"; do 
-		if [ ! "$(check_installed $key)" ]; then
-			e_arrow "Installing $key..."
-			$install_cmd ${deps[$key]} > /dev/null 2>&1
-			e_success "$key installed"
+	local packages_file="$2"
+
+	if [ -z "$UPGRADE" ]; then
+		local verb1="Installing"
+		local verb2="installed"
+	else
+		local verb1="Upgrading"
+		local verb2="upgraded"
+	fi
+
+	while IFS= read -r line; do
+		exename=$(echo "$line" | cut -d',' -f1)
+		pkgname=$(echo "$line" | cut -d',' -f2)
+
+		if [ ! "$(check_installed $exename)" ]; then
+			e_arrow "$verb1 $exename..."
+			$install_cmd $pkgname &> /dev/null
+			e_success "$exename $verb2"
 		fi
-	done
+	done < "$packages_file"
 }
 
 install_dependencies_cygwin() {
@@ -178,58 +170,39 @@ install_dependencies_cygwin() {
 		exit 1
 	fi
 
-	if [ ! "$(type -P sage)" ]; then
-		e_arrow "installing sage..."
+	if [ -n $UPGRADE ] || [ ! "$(type -P sage)" ]; then
+		e_arrow "Installing the latest version of sage..."
 		curl -fL -o /tmp/sage \
 			http://rawgit.com/svnpenn/sage/master/sage
 		install /tmp/sage /bin
 		e_success "sage installed"
 	fi
 
-	local install_cmd="sage install"
+	e_arrow "Updating Cygwin master package list..."
+	sage update &> /dev/null 
+	e_success "Cygwin package master package list updated"
 
-	deps=(  git\
-		vim\
-		mintty\
-		openssh\
-		wget\
-		tmux\
-		ruby\
-		rubygems\
-		python\
-		ctags\
-		)
-	
-	for pkg in "${deps[@]}"; do
+	if [ -z "$UPGRADE" ]; then
+		local install_cmd="sage install"
+		local verb1="Installing"
+		local verb2="installed"
+	else
+		local install_cmd="sage upgrade"
+		local verb1="Upgrading"
+		local verb2="upgraded"
+	fi
+
+	while IFS= read -r line; do
+		pkg=$line
 		if [ ! "$(cygcheck -dc $pkg | sed '3q;d')" ]; then
-			e_arrow "Installing $pkg..."
-			$install_cmd $pkg > /dev/null 2>&1
-			e_success "$pkg installed"
+			e_arrow "$verb1 $pkg..."
+			$install_cmd $pkg &> /dev/null
+			e_success "$pkg $verb2"
 		fi
-	done
-}
-
-update_repo() {
-	info "Updating the repository..."
-        
-	git pull origin master > /dev/null 2>&1
-	if [ ! $? -eq 0 ]; then
-	 	fail "Something went wrong updating the repository"
-	 	exit 1
-	fi
-	
-	cd "$DOTFILES_REPO/vim/bundle/vundle" && git pull origin master > /dev/null 2>&1
-	if [ ! $? -eq 0 ]; then
-		fail "Something went wrong updating the repo (update vundle)"
-	 	exit 1
-	fi
-	cd $DOTFILES_REPO
-        
-	success "Repository updated to latest version"
+	done < "packages-cygwin"
 }
 
 bootstrap() {
-	[ -n "$UPDATE" ] && update_repo
 	[ -z "$DEP" ] && install_dependencies
 	run_install
 
@@ -238,20 +211,20 @@ bootstrap() {
 	fi
 
 	echo "Run \`source ~/.bashrc' to reload your bashrc file."
-	echo "Run \`vim +PluginInstall +qall' to install vim plugins."
+	echo "Run \`vim +PlugInstall +qall' to install vim plugins."
 	echo Some changes may require a terminal restart to take effect.
 }
 
 usage() {
 	cat << EOF
 Usage: $0 [OPTION]...
-Install configurations for bash, git, python and git.
+Install configurations for bash, git, vim and python.
 
 -b    create a backup of current config files in home directory
 -d    install without checking dependencies
 -f    run install without prompting
 -h    display this help and exit
--u    update the repository before installing
+-u    upgrade package manager and packages (ignored if '-d' is used)
 EOF
 
 	exit 0
@@ -273,7 +246,7 @@ while getopts "bdfhu" o; do
 			usage
 			;;
 		u)
-			UPDATE=1
+			UPGRADE=1
 			;;
 		*)
 			usage
