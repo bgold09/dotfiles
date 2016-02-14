@@ -10,18 +10,15 @@ Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	# Reset color, which can be messed up by Enable-GitColors
-	$Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
-
-	Write-Host($env:USERNAME + "@" + $env:COMPUTERNAME + " ") -nonewline
+	Write-Host($env:USERNAME + "@" + $env:COMPUTERNAME + " ") -nonewline -ForegroundColor Green
 	$parentDir = Split-Path -Path $pwd.ProviderPath -Parent | Split-Path -Leaf
-	Write-Host($parentDir + "\") -nonewline
-	Write-Host(Split-Path -Path $pwd.ProviderPath -Leaf) -nonewline
+	Write-Host($parentDir + "\") -nonewline -ForegroundColor Yellow
+	Write-Host(Split-Path -Path $pwd.ProviderPath -Leaf) -nonewline -ForegroundColor Yellow
 
 	Write-VcsStatus
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
-	return "> "
+	return " $ "
 }
 
 # Enable history 
@@ -54,7 +51,6 @@ Set-PSReadlinekeyHandler -Function MenuComplete -Key Ctrl+Q
 Install-Module posh-git
 
 # Cleanup for git prompt
-Enable-GitColors
 Pop-Location
 
 Start-SshAgent -Quiet
