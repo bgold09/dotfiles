@@ -1,7 +1,8 @@
-ctags-exuberant,exuberant-ctags
-git,git-core
-pip,python-pip
-ruby,ruby
-rubygems,rubygems
-ag,silversearcher-ag
-tmux,tmux
+exuberant-ctags
+git-core
+python-pip
+ruby
+rubygems
+silversearcher-ag
+tmux
+vim

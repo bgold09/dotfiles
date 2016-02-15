@@ -68,7 +68,7 @@ array_contains() {
 }
 
 check_installed() {
-	if [ "$(type -P $1)" ]; then
+	if [ -z "$(type -P $1)" ]; then
 		echo 0
 	else
 		echo 1
@@ -100,7 +100,7 @@ install_dependencies_debian() {
 		local install_cmd="sudo apt-get -y -q upgrade"
 	fi
 
-	install_dependencies_list "$install_cmd" "packages-debian"
+	install_dependencies_list "$install_cmd" "check_installed_debian" "packages-debian"
 	install_python_packages
 }
 
@@ -126,7 +126,7 @@ install_dependencies_osx() {
 		local install_cmd="brew upgrade"
 	fi
 
-	install_dependencies_list "$install_cmd" packages-osx
+	install_dependencies_list "$install_cmd" "check_installed_osx" packages-osx
 }
 
 install_python_packages() {
@@ -140,9 +140,32 @@ install_python_packages() {
 	done
 }
 
+check_installed_debian() {
+	dpkg-query -l $1 &> /dev/null && echo 0 || echo 1
+}
+
+check_installed_osx() {
+	if [ "$(brew ls --versions $1)" ]; then
+		echo 0
+	else
+		echo 1
+	fi
+}
+
+check_installed_cygwin() {
+	if [ "$(cygcheck -dc $pkg | sed '3q;d')" ]; then
+		echo 0
+	else
+		echo 1
+	fi
+}
+
+# Argument 3 must be the name of a function that takes the name 
+# of a package and returns 0 if it is installed and 1 otherwise
 install_dependencies_list() {
 	local install_cmd="$1"
-	local packages_file="$2"
+	local check="$2"
+	local packages_file="$3"
 
 	if [ -z "$UPGRADE" ]; then
 		local verb1="Installing"
@@ -152,14 +175,11 @@ install_dependencies_list() {
 		local verb2="upgraded"
 	fi
 
-	while IFS= read -r line; do
-		exename=$(echo "$line" | cut -d',' -f1)
-		pkgname=$(echo "$line" | cut -d',' -f2)
-
-		if [ ! "$(check_installed $exename)" ]; then
-			e_arrow "$verb1 $exename..."
+	while IFS= read -r pkgname; do
+		if [ -n "$UPGRADE" ] || [ ! "$($check $pkgname)" ]; then
+			e_arrow "$verb1 $pkgname..."
 			$install_cmd $pkgname &> /dev/null
-			e_success "$exename $verb2"
+			e_success "$pkgname $verb2"
 		fi
 	done < "$packages_file"
 }
@@ -184,22 +204,11 @@ install_dependencies_cygwin() {
 
 	if [ -z "$UPGRADE" ]; then
 		local install_cmd="sage install"
-		local verb1="Installing"
-		local verb2="installed"
 	else
 		local install_cmd="sage upgrade"
-		local verb1="Upgrading"
-		local verb2="upgraded"
 	fi
 
-	while IFS= read -r line; do
-		pkg=$line
-		if [ ! "$(cygcheck -dc $pkg | sed '3q;d')" ]; then
-			e_arrow "$verb1 $pkg..."
-			$install_cmd $pkg &> /dev/null
-			e_success "$pkg $verb2"
-		fi
-	done < "packages-cygwin"
+	install_dependencies_list "$install_cmd" "check_installed_cygwin" "packages-cygwin"
 }
 
 bootstrap() {
