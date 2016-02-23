@@ -86,6 +86,7 @@ vim +PlugInstall +qall
     * [multiple-cursors] - Sublime Text style multiple selections
     * [NERDTree] - directory tree explorer
     * [ps1] - PowerShell syntax highlighting for vim
+    * [repeat.vim] - enable repeating supported plugin maps with "."
     * [solarized] - precision colorscheme
     * [supertab] - allows you to use &lt;Tab&gt; for completion
     * [surround] - delete, add and change surroundings (brackets, quotes, etc.)
@@ -120,6 +121,7 @@ vim +PlugInstall +qall
 [multiple-cursors]: https://github.com/terryma/vim-multiple-cursors
 [NERDTree]: https://github.com/scrooloose/nerdtree
 [ps1]: https://github.com/pprovost/vim-ps1
+[repeat.vim]: https://github.com/tpope/vim-repeat
 [solarized]: https://github.com/altercation/vim-colors-solarized
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
