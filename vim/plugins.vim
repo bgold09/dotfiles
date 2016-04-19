@@ -149,6 +149,7 @@ call plug#end()
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans=1
 	colorscheme solarized
+	call togglebg#map("<F5>")
 " }}}
 " SuperTab {{{
 	let g:SuperTabDefaultCompletionType = 'context'
