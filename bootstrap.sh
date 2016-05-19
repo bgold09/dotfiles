@@ -101,7 +101,6 @@ install_dependencies_debian() {
 	fi
 
 	install_dependencies_list "$install_cmd" "check_installed_debian" "packages-debian"
-	install_python_packages
 }
 
 install_dependencies_osx() {
@@ -127,17 +126,6 @@ install_dependencies_osx() {
 	fi
 
 	install_dependencies_list "$install_cmd" "check_installed_osx" packages-osx
-}
-
-install_python_packages() {
-	declare -a pkgs=('git-up')
-	for pkg in "${pkgs[@]}"; do 
-		if [ -z "$(pip show $pkg)" ]; then
-			e_arrow "Installing python package $pkg..."
-			sudo pip install --quiet $pkg
-			e_success "Python package $pkg installed"
-		fi
-	done
 }
 
 check_installed_debian() {
