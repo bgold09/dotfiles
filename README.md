@@ -87,6 +87,7 @@ vim +PlugInstall +qall
     * [NERDTree] - directory tree explorer
     * [ps1] - PowerShell syntax highlighting for vim
     * [repeat.vim] - enable repeating supported plugin maps with "."
+    * [sneak.vim] - jump to any location specified by two characters
     * [solarized] - precision colorscheme
     * [supertab] - allows you to use &lt;Tab&gt; for completion
     * [surround] - delete, add and change surroundings (brackets, quotes, etc.)
@@ -95,7 +96,6 @@ vim +PlugInstall +qall
     * [tComment] - provides easy to use, file-type sensible comments
     * [unimpaired] - pairs of handy bracket mappings
     * [visual-star-search] - star search for Visual mode
-    * [yankstack] - provides a history of yank buffers
 * ```windows``` - environment for Windows CMD
 
 [vim-plug]: https://github.com/junegunn/vim-plug
@@ -123,6 +123,7 @@ vim +PlugInstall +qall
 [ps1]: https://github.com/pprovost/vim-ps1
 [repeat.vim]: https://github.com/tpope/vim-repeat
 [solarized]: https://github.com/altercation/vim-colors-solarized
+[sneak.vim]: https://github.com/justinmk/vim-sneak
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
 [Tagbar]: https://github.com/majutsushi/tagbar
@@ -130,7 +131,6 @@ vim +PlugInstall +qall
 [tComment]: https://github.com/tomtom/tcomment_vim
 [unimpaired]: https://github.com/tpope/vim-unimpaired
 [visual-star-search]: https://github.com/bronson/vim-visual-star-search
-[yankstack]: https://github.com/maxbrunsfeld/vim-yankstack
 
 ## Customization
 

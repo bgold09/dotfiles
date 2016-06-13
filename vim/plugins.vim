@@ -44,10 +44,10 @@ Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-unimpaired'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'bronson/vim-visual-star-search'
+Plug 'justinmk/vim-sneak'
 " }}}
 " editing {{{
 Plug 'tomtom/tcomment_vim'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
@@ -159,10 +159,6 @@ call plug#end()
 		let g:tagbar_usearrows = 1
 		nnoremap <leader>l :TagbarToggle<CR>
 	endif
-" }}}
-" Yankstack {{{
-	nmap <leader>p <Plug>yankstack_substitute_older_paste
-	nmap <leader>P <Plug>yankstack_substitute_newer_paste
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
