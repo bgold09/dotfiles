@@ -66,7 +66,7 @@ vim +PlugInstall +qall
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins managed by [vim-plug]:
     * [airline] - statusline/tabline for vim
-    * [ag.vim] - vim plugin for the [silver_searcher]
+    * [ack.vim] - vim plugin for running alternative search tools, e.g. the [silver_searcher]
     * [better-whitespace] - better whitespace highlighting
     * [bookmarks] - allows toggling bookmarks per line
     * [closetag] - close open HTML/XML tags
@@ -100,7 +100,7 @@ vim +PlugInstall +qall
 
 [vim-plug]: https://github.com/junegunn/vim-plug
 [airline]: https://github.com/bling/vim-airline
-[ag.vim]: https://github.com/rking/ag.vim
+[ack.vim]: https://github.com/mileszs/ack.vim
 [bookmarks]: https://github.com/MattesGroeger/vim-bookmarks
 [better-whitespace]: https://github.com/ntpeters/vim-better-whitespace
 [silver_searcher]: https://github.com/ggreer/the_silver_searcher

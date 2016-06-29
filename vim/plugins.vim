@@ -36,7 +36,7 @@ if v:version >= '703' || has('python')
 endif
 
 if executable('ag') 
-	Plug 'rking/ag.vim'
+	Plug 'mileszs/ack.vim'
 endif
 " }}}
 " movement {{{
@@ -83,9 +83,10 @@ call plug#end()
 	let g:airline_symbols.readonly = "\u2b64"
 	let g:airline_symbols.linenr = "\u2b61"
 " }}} 
-" ag {{{
+" ack.vim {{{
 	if executable('ag')
-		nnoremap <leader>a :Ag
+		let g:ackprg='ag --nogroup --nocolor --column'
+		nnoremap <leader>a :Ack
 		set grepprg=ag\ --nogroup\ --nocolor
 	endif
 " }}}
