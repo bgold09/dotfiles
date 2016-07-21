@@ -190,6 +190,10 @@
 	" Display all lines with keyword under the cursor, 
 	" ask which to jump to
 	nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+	" Copy the full path of the current buffer's file 
+	" to the system clipboard
+	nmap <leader>fp :let @* = expand("%:p")<CR>
 "}}}
 
 "#### functions ####" {{{
