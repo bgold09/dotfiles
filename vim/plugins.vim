@@ -25,6 +25,7 @@ Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
 Plug 'justinmk/vim-gtfo'
+Plug 'junegunn/goyo.vim'
 
 if Executable_Ctags()
 	Plug 'majutsushi/tagbar'

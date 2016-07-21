@@ -79,6 +79,7 @@ vim +PlugInstall +qall
     * [fugitive] - git wrapper
     * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
     * [gitv] - Git repository viewer
+    * [goyo] - distraction-free writing mode
     * [gtfo] - opens the file manager or terminal at the directory of the current file
     * [Gundo] - visualization of the vim undo tree
     * [json] - syntax highlighting for JSON
@@ -114,6 +115,7 @@ vim +PlugInstall +qall
 [fugitive]: https://github.com/tpope/vim-fugitive
 [gitgutter]: https://github.com/airblade/vim-gitgutter
 [gitv]: https://github.com/gregsexton/gitv
+[goyo]: https://github.com/junegunn/goyo.vim
 [gtfo]: https://github.com/justinmk/vim-gtfo
 [Gundo]: https://github.com/sjl/gundo.vim
 [json]: https://github/com/elzr/vim-json
