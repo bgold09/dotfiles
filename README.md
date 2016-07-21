@@ -75,6 +75,7 @@ vim +PlugInstall +qall
     * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
+    * [dispatch] - asynchronous build and test dispatcher
     * [easytags] - Automated tag file generation and syntax highlighting of tags
     * [fugitive] - git wrapper
     * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
@@ -111,6 +112,7 @@ vim +PlugInstall +qall
 [ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
+[dispatch]: https://github.com/tpope/vim-dispatch
 [easytags]: https://github.com/xolox/vim-easytags
 [fugitive]: https://github.com/tpope/vim-fugitive
 [gitgutter]: https://github.com/airblade/vim-gitgutter

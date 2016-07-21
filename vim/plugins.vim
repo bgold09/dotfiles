@@ -40,6 +40,9 @@ if executable('ag')
 	Plug 'mileszs/ack.vim'
 endif
 " }}}
+" integration {{{
+	Plug 'tpope/vim-dispatch'
+" }}}
 " movement {{{
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-unimpaired'
