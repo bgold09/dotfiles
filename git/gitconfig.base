@@ -23,6 +23,7 @@
 	editor = vim
 	pager = less -R
 	excludesfile = ~/.gitfiles/gitignore
+	autocrlf = false
 
 [alias]
 	# add
