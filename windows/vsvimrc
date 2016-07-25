@@ -2,3 +2,7 @@ source ~/.base.vimrc
 
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 nmap <leader>d :vsc Window.CloseDocumentWindow<CR>
+nmap <C-]> :vsc Edit.GoToDefinition<CR>
+nmap <C-P> :vsc Window.Windows
+nmap gcc :vsc Edit.CommentSelection<CR>
+nmap gcu :vsc Edit.CommentSelection<CR>
