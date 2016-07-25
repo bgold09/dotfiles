@@ -28,3 +28,7 @@ function ga {
 function vup {
 	gvim +PlugUpdate
 }
+
+function vi {
+	gvim --remote-silent $args
+}
