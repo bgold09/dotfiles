@@ -90,7 +90,7 @@ call plug#end()
 " ack.vim {{{
 	if executable('ag')
 		let g:ackprg='ag --nogroup --nocolor --column'
-		nnoremap <leader>a :Ack
+		nnoremap <leader>a :Ack 
 		set grepprg=ag\ --nogroup\ --nocolor
 	endif
 " }}}
@@ -150,7 +150,7 @@ call plug#end()
 	endif
 " }}}
 " NERDTree {{{
-	map <C-n> :NERDTreeToggle<CR>
+	map <C-t> :NERDTreeToggle<CR>
 " }}}
 " solarized {{{
 	let g:solarized_termcolors=256
