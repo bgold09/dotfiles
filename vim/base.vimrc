@@ -69,6 +69,8 @@
 	set splitright    " puts new vsplit windows to the right of the current 
 	set splitbelow    " puts new split windows below the current
 	set autoindent    " indent at the same level as previous line
+
+	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " }}}
 
 "#### search ####" {{{
@@ -78,7 +80,7 @@
 	set hlsearch
 	" Use <C-L> to clear the highlighting of :set hlsearch.
 	if maparg('<C-L>', 'n') ==# ''
-		nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+		nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 	endif
 " }}} 
 
@@ -194,6 +196,8 @@
 	" Copy the full path of the current buffer's file 
 	" to the system clipboard
 	nmap <leader>fp :let @* = expand("%:p")<CR>
+
+	map 0 ^
 "}}}
 
 "#### functions ####" {{{
