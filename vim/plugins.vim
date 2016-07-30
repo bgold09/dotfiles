@@ -109,6 +109,8 @@ call plug#end()
 	autocmd FileType html,xhtml,xml,htmldjango,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 " }}}
 " CtrlP {{{
+	nnoremap <C-M> :CtrlPMRUFiles<CR>
+
 	let g:ctrlp_match_window = 'bottom,order:ttb'
 	if WINDOWS()
 		let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
