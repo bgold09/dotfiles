@@ -169,8 +169,8 @@
 " }}}
 
 "#### backups ####" {{{
-	set backupdir=~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp
-	set directory=~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp,$TEMP
+	set backupdir=~/.vim/backups,~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp
+	set directory=~/.vim/backups,~/.vimtmp,~/.tmp,~/tmp,/var/tmp,/tmp,$TEMP
  " }}}
 
 "#### key (re)mappings ####" {{{
