@@ -48,9 +48,8 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlinekeyHandler -Function MenuComplete -Key Ctrl+Q
 
-Install-Module posh-git
+Import-Module posh-git
 
 # Cleanup for git prompt
 Pop-Location
 
-Start-SshAgent -Quiet
