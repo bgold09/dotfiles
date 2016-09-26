@@ -8,13 +8,17 @@ endfunction
 
 call plug#begin('~/.vim/bundle')
 
-" syntax & colors {{{
+" colors {{{
 Plug 'altercation/vim-colors-solarized'
+" }}}
+
+" syntax & languages {{{
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'pprovost/vim-ps1'
 Plug 'ciaranm/detectindent'
 Plug 'docunext/closetag.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'OrangeT/vim-csharp'
 " }}}
 " interface {{{

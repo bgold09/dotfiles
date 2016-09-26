@@ -87,6 +87,7 @@
 "#### files & colors ####" {{{
 	filetype plugin indent on
 	autocmd BufNewFile,BufRead *.html setlocal ts=2 sts=2 sw=2
+	autocmd BufNewFile,BufRead *.ts,*.js setlocal ts=4 sts=4 sw=4 expandtab
 	autocmd BufNewFile,BufRead *.pl set syntax=prolog
 	autocmd BufNewFile,BufRead *.xaml set syntax=xml
 	autocmd BufNewFile,BufRead *.doskey set syntax=dosbatch
