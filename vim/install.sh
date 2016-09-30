@@ -27,19 +27,7 @@ place_files() {
 	ln -s $curr $HOME/.vim
 }
 
-vimplug_clone() {
-	if [ ! -e "$HOME/.vim/autoload/plug.vim" ]; then
-		curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		if [ ! $? -eq 0 ]; then
-			fail "vim install failed, unable to get vim-plug using curl"
-			exit 1
-		fi
-	fi
-}
-
 info "Installing $name configuration..."
 place_files $1
-vimplug_clone
 success "$name configuration installed"
 exit 0
