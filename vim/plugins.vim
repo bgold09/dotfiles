@@ -1,3 +1,8 @@
+function! Cond(cond, ...)
+	let opts = get(a:000, 0, {})
+	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 silent function! WINDOWS()
 	return (has('win16') || has('win32') || has('win64'))
 endfunction
@@ -31,18 +36,11 @@ Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
 
-if Executable_Ctags()
-	Plug 'majutsushi/tagbar'
-	Plug 'xolox/vim-misc' | Plug 'xolox/vim-shell' | Plug 'xolox/vim-easytags'
-	endif
+Plug 'majutsushi/tagbar', Cond(Executable_Ctags())
+Plug 'xolox/vim-misc', Cond(Executable_Ctags()) | Plug 'xolox/vim-shell' | Plug 'xolox/vim-easytags'
 
-if v:version >= '703' || has('python')
-	Plug 'sjl/gundo.vim'
-endif
-
-if executable('ag') 
-	Plug 'mileszs/ack.vim'
-endif
+Plug 'sjl/gundo.vim', Cond(has('python'))
+Plug 'mileszs/ack.vim', Cond(executable('ag'))
 " }}}
 " integration {{{
 	Plug 'tpope/vim-dispatch'
