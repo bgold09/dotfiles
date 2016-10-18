@@ -3,6 +3,6 @@ source ~/.base.vimrc
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 nmap <leader>d :vsc Window.CloseDocumentWindow<CR>
 nmap <C-]> :vsc Edit.GoToDefinition<CR>
-nmap <C-P> :vsc Window.Windows
+nmap <C-P> :vsc Window.Windows<CR>
 nmap gcc :vsc Edit.CommentSelection<CR>
-nmap gcu :vsc Edit.CommentSelection<CR>
+nmap <leader>s :vsc Edit.SortUsings<CR>
