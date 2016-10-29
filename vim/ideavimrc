@@ -1,0 +1,10 @@
+source ~/.base.vimrc
+
+set number
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nmap <C-]> :action GotoDeclaration<CR>
