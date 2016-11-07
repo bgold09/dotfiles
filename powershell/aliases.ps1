@@ -2,7 +2,8 @@
 (new-item alias:npp -value 'C:\Program Files (x86)\Notepad++\notepad++.exe') > Out-Null
 (new-item alias:which -value 'Get-Command') > Out-Null
 (new-item alias:g -value 'git') > Out-Null
-(new-item alias:gvim -value 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Vim 7.4\gvim.lnk') > Out-Null
+(new-item alias:vi -value 'gvim') > Out-Null
+(new-item alias:ll -value 'Get-ChildItem') > Out-Null
 
 # Alias functions
 function dot {

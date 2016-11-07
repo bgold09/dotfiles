@@ -25,3 +25,8 @@ gdc=git --no-pager diff --color --cached $*
 gdl=git --no-pager diff $* | less
 gdcl=git --no-pager diff --cached $* | less
 gs=git status -sb
+
+rm=del $*
+mv=move $*
+cp=copy $*
+cat=type $*
