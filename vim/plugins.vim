@@ -22,7 +22,6 @@ call plug#begin('~/.vim/bundle')
 " colors {{{
 Plug 'altercation/vim-colors-solarized'
 " }}}
-
 " syntax & languages {{{
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
@@ -31,6 +30,7 @@ Plug 'ciaranm/detectindent'
 Plug 'docunext/closetag.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'OrangeT/vim-csharp'
+Plug 'pangloss/vim-javascript'
 " }}}
 " interface {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }

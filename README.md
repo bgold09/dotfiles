@@ -83,6 +83,7 @@ vim +PlugInstall +qall
     * [goyo] - distraction-free writing mode
     * [gtfo] - opens the file manager or terminal at the directory of the current file
     * [Gundo] - visualization of the vim undo tree
+    * [javascript] - Vastly improved Javascript indentation and syntax support in Vim
     * [json] - syntax highlighting for JSON
     * [matchit] - match '%' to more than just single characters
     * [multiple-cursors] - Sublime Text style multiple selections
@@ -96,7 +97,7 @@ vim +PlugInstall +qall
     * [Tagbar] - browse tags in source code
     * [targets] - provides additional text objects
     * [tComment] - provides easy to use, file-type sensible comments
-    * [typescript-vim] - Typescript syntax files for vim
+    * [typescript] - Typescript syntax files for vim
     * [unimpaired] - pairs of handy bracket mappings
     * [visual-star-search] - star search for Visual mode
 * ```windows``` - environment for Windows CMD
@@ -121,6 +122,7 @@ vim +PlugInstall +qall
 [goyo]: https://github.com/junegunn/goyo.vim
 [gtfo]: https://github.com/justinmk/vim-gtfo
 [Gundo]: https://github.com/sjl/gundo.vim
+[javascript]: https://github.com/pangloss/vim-javascript
 [json]: https://github/com/elzr/vim-json
 [matchit]: https://github.com/tmhedberg/matchit
 [multiple-cursors]: https://github.com/terryma/vim-multiple-cursors
