@@ -26,6 +26,10 @@ function ga {
 	git add $args
 }
 
+function gr {
+	cd $(git rev-parse --show-cdup)
+}
+
 function vup {
 	gvim +PlugUpdate
 }
