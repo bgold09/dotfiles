@@ -43,8 +43,6 @@ Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
 
 Plug 'majutsushi/tagbar', Cond(Executable_Ctags())
-Plug 'xolox/vim-misc', Cond(Executable_Ctags()) | Plug 'xolox/vim-shell' | Plug 'xolox/vim-easytags'
-
 Plug 'sjl/gundo.vim', Cond(has('python'))
 Plug 'mileszs/ack.vim', Cond(executable('ag'))
 " }}}
@@ -136,11 +134,6 @@ call plug#end()
 		\ 'fallback': s:ctrlp_fallback	
 	\ }
 "}}}
-" easytags {{{
-	let g:easytags_async = 1
-	let g:easytags_dynamic_files = 1
-	let g:easytags_events = [ 'BufWritePost' ]
-" }}}
 " gtfo {{{
 	let g:gtfo#terminals = { 'win' : 'cmd' }
 " }}}
