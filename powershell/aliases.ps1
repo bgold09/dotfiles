@@ -37,3 +37,23 @@ function vup {
 function vi {
 	gvim --remote-silent $args
 }
+
+function nuke {
+	tf reconcile /clean /noprompt /recursive $args
+}
+
+function nuken {
+	tf reconcile /clean /noprompt /recursive $args > $null
+}
+
+function tfo {
+	tf reconcile /promote /noprompt /recursive . $args
+}
+
+function th([string] $Files, [int] $StopAfter = 10) {
+	if (!$Files) {
+		tf history * /r /noprompt /stopafter:$StopAfter
+	} else {
+		tf history $args /r /noprompt /stopafter:$StopAfter
+	}
+}

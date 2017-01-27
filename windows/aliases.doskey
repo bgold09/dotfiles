@@ -30,3 +30,8 @@ rm=del $*
 mv=move $*
 cp=copy $*
 cat=type $*
+
+nuke=tf reconcile /clean /noprompt /recursive $* 
+nuken=tf reconcile /clean /noprompt /recursive $* > nul 
+tfo=tf reconcile /promote /noprompt /recursive . $*
+th=IF {$1} EQU {} ( start /b tf.exe history * /r /noprompt /stopafter:10)  ELSE ( start /b tf.exe history $* /r /noprompt /stopafter:10)
