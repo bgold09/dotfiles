@@ -1,26 +1,34 @@
 // Place your settings in this file to overwrite the default settings
 {
-   "vim.hlsearch": true, 
-   "vim.incsearch": true,
-   "vim.ignorecase": true,
-   "vim.smartcase": true,
-   "vim.leader": ",",
-   "vim.otherModesKeyBindingsNonRecursive": [
-       {
-           "before": ["leader", "w"],
-           "after": [],
-           "commands": [
-               {
-                   "command": "workbench.action.files.save",
-                   "args": []
-               }
-           ]
-       }
-    ], 
-    "vim.insertModeKeyBindings": [
-       {
-           "before": ["j", "j"],
-           "after": ["<Esc>"]
-       }
-    ]
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true, 
+        "**/msbuild.log": true,
+        "**/TypeScriptCompilerOutput.txt": true
+    },
+    "vim.hlsearch": true, 
+    "vim.incsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.leader": ",",
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["leader", "w"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        }
+     ], 
+     "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+     ]
 }
