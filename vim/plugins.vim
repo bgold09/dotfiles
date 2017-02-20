@@ -66,10 +66,14 @@ Plug 'wellle/targets.vim'
 Plug 'terryma/vim-multiple-cursors'
 " }}}
 
+" The devicons plugin must be loaded after other plugins it integrates with
+Plug 'ryanoasis/vim-devicons'
+
 " Add or unbundle plugins in a local plugin config 
 if filereadable(expand("~/.plugins.local.vim"))
 	source ~/.plugins.local.vim
 endif
+
 
 call plug#end()
 
@@ -84,14 +88,6 @@ call plug#end()
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
 	endif
-	let g:airline_symbols.space= "\ua0"
-	let g:airline_left_sep = "\u2b80" "use double quotes here
-	let g:airline_left_alt_sep = "\u2b81"
-	let g:airline_right_sep = "\u2b82"
-	let g:airline_right_alt_sep = "\u2b83"
-	let g:airline_symbols.branch = "\u2b60"
-	let g:airline_symbols.readonly = "\u2b64"
-	let g:airline_symbols.linenr = "\u2b61"
 " }}} 
 " ack.vim {{{
 	if executable('ag')

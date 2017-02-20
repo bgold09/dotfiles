@@ -46,7 +46,9 @@ vim +PlugInstall +qall
 
 ### Completing the configuration
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
-* Install the [patched Consolas font for Powerline/Airline](https://github.com/eugeii/consolas-powerline-vim).
+* Patch Consolas using the font patcher distributed with 
+  [nerd-fonts](https://github.com/ryanoasis/nerd-fonts). Due to licensing, 
+  Consolas cannot be distributed in its patched form. 
 * For parallel installation of vim plugins, install the proper version of python or ruby for your build of vim (see ```:help ruby-dynamic``` or ```:help python-dynamic``` for more information).
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
 * If you plan to use gVim for Windows, install [git](http://git-scm.org) and choose the option 'Use Git from the Windows Command Prompt' during installation.
@@ -75,6 +77,7 @@ vim +PlugInstall +qall
     * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
+    * [devicons] - Adds file type glyphs/icons to many popular Vim plugins
     * [dispatch] - asynchronous build and test dispatcher
     * [fugitive] - git wrapper
     * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
@@ -113,6 +116,7 @@ vim +PlugInstall +qall
 [ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
+[devicons]: https://github.com/ryanoasis/vim-devicons/
 [dispatch]: https://github.com/tpope/vim-dispatch
 [fugitive]: https://github.com/tpope/vim-fugitive
 [gitgutter]: https://github.com/airblade/vim-gitgutter

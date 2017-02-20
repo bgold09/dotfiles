@@ -98,7 +98,7 @@
 
 	if has("gui_running")
 		set encoding=utf-8
-		set guifont=Consolas\ for\ Powerline\ FixedD:h9 
+		set guifont=Consolas\ NF:h9 
 	endif
 
 	augroup configgroup
