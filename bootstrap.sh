@@ -178,22 +178,22 @@ install_dependencies_cygwin() {
 		exit 1
 	fi
 
-	if [ -n $UPGRADE ] || [ ! "$(type -P sage)" ]; then
-		e_arrow "Installing the latest version of sage..."
-		curl -fL -o /tmp/sage \
-			http://rawgit.com/svnpenn/sage/master/sage
-		install /tmp/sage /bin
-		e_success "sage installed"
+	if [ -n $UPGRADE ] || [ ! "$(type -P apt-cyg)" ]; then
+		e_arrow "Installing the latest version of apt-cyg ..."
+		curl -fL -o /tmp/apt-cyg \
+			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg
+		install /tmp/apt-cyg /bin
+		e_success "apt-cyg installed"
 	fi
 
 	e_arrow "Updating Cygwin master package list..."
-	sage update &> /dev/null 
+	apt-cyg update &> /dev/null 
 	e_success "Cygwin package master package list updated"
 
 	if [ -z "$UPGRADE" ]; then
-		local install_cmd="sage install"
+		local install_cmd="apt-cyg install"
 	else
-		local install_cmd="sage upgrade"
+		local install_cmd="apt-cyg upgrade"
 	fi
 
 	install_dependencies_list "$install_cmd" "check_installed_cygwin" "packages-cygwin"
