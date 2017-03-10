@@ -128,6 +128,8 @@ exit /b 4
     call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
     call :saveLink %_HOME%\.dotfiles\windows\vscode-settings.json %_HOME%\AppData\Roaming\Code\User\settings.json
     call :saveLink %_HOME%\.dotfiles\windows\ConEmu.xml %APPDATA%\ConEmu.xml
+    call :saveLink %_HOME%\.dotfiles\system\inputrc %HOME%\_inputrc
+    call :saveLink %_HOME%\.dotfiles\windows\clink.lua %LOCALAPPDATA%\clink\clink.lua
     call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin
 
     REM PowerShell config
