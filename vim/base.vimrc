@@ -107,6 +107,7 @@
 		autocmd FileType python setlocal shiftwidth=4
 		autocmd FileType python setlocal tabstop=4
 		autocmd FileType python setlocal expandtab
+		autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
 	augroup END
 
 	" set the cursor to the first line of the buffer 
