@@ -38,3 +38,5 @@ if [[ ! "$OSTYPE" =~ ^darwin ]]; then
 	[ -n $SOLARIZED ] && [ -r "$HOME/.dircolors" ] && \
 		eval `dircolors $HOME/.dircolors`
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
