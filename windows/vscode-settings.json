@@ -30,5 +30,7 @@
             "before": ["j", "j"],
             "after": ["<Esc>"]
         }
-     ]
+    ],
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.iconTheme": "vs-seti"
 }
