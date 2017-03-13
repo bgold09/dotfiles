@@ -20,7 +20,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " colors {{{
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 " }}}
 " syntax & languages {{{
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
@@ -150,10 +150,11 @@ call plug#end()
 	map <C-t> :NERDTreeToggle<CR>
 " }}}
 " solarized {{{
-	let g:solarized_termcolors=256
-	let g:solarized_termtrans=1
-	colorscheme solarized
-	call togglebg#map("<F5>")
+	colorscheme solarized8_dark
+	nnoremap <F5> :<c-u>exe "colors" (g:colors_name =~# "dark"
+	\ ? substitute(g:colors_name, 'dark', 'light', '')
+	\ : substitute(g:colors_name, 'light', 'dark', '')
+	\ )<cr><CR>
 " }}}
 " SuperTab {{{
 	let g:SuperTabDefaultCompletionType = 'context'

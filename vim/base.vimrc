@@ -47,6 +47,7 @@
 	set lazyredraw
 	set noerrorbells
 	set novisualbell
+	set cursorline
 	if has('cmdline_info')
 		set ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)

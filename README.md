@@ -93,7 +93,7 @@ vim +PlugInstall +qall
     * [ps1] - PowerShell syntax highlighting for vim
     * [repeat.vim] - enable repeating supported plugin maps with "."
     * [sneak.vim] - jump to any location specified by two characters
-    * [solarized] - precision colorscheme
+    * [solarized8] - optimized Solarized colorschemes with truecolor support
     * [supertab] - allows you to use &lt;Tab&gt; for completion
     * [surround] - delete, add and change surroundings (brackets, quotes, etc.)
     * [Tagbar] - browse tags in source code
@@ -131,7 +131,7 @@ vim +PlugInstall +qall
 [NERDTree]: https://github.com/scrooloose/nerdtree
 [ps1]: https://github.com/pprovost/vim-ps1
 [repeat.vim]: https://github.com/tpope/vim-repeat
-[solarized]: https://github.com/altercation/vim-colors-solarized
+[solarized8]: https://github.com/lifepillar/vim-solarized8
 [sneak.vim]: https://github.com/justinmk/vim-sneak
 [supertab]: https://github.com/ervandew/supertab
 [surround]: https://github.com/tpope/vim-surround
