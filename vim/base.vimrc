@@ -52,11 +52,6 @@
 		set ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 	endif
-
-	if has("gui_running")
-		set lines=50
-		set columns=120
-	endif
 " }}}
 
 "#### buffers #### {{{
@@ -96,11 +91,6 @@
 	set ffs=unix,dos,mac
 	set t_Co=16
 	set background=dark
-
-	if has("gui_running")
-		set encoding=utf-8
-		set guifont=Consolas\ NF:h9 
-	endif
 
 	augroup configgroup
 		autocmd!
