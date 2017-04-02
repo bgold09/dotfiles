@@ -75,6 +75,7 @@
 	# rebase
 	r = rebase -i
 	ri = "!sh -c \"git rebase -i HEAD~$1\" -"
+	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i HEAD~$1\" -"
 	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
 	# reset
