@@ -5,5 +5,4 @@ set guioptions-=m  " don't show GUI menu
 set vb t_vb=       " disable audible bells
 set lines=50
 set columns=120
-set encoding=utf-8
 set guifont=Consolas\ NF:h9 
