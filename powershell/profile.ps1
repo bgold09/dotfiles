@@ -21,26 +21,12 @@ function global:prompt {
 	return " $ "
 }
 
-# Enable history 
-# http://blogs.msdn.com/b/powershell/archive/2006/07/01/perserving-command-history-across-sessions.aspx
-$MaximumHistoryCount = 1KB
-$histdir = "~\Documents\WindowsPowerShell"
-$histfile = "$histdir\history.csv"
-
-if (!(Test-Path $histdir -PathType Container)) {   
-	New-Item $histdir -ItemType Directory
-}
-
-function bye {
-	Get-History -Count 1KB | Export-CSV $histfile
-	exit 
-}
-
-if (Test-path $histdir\History.csv) {
-	Import-CSV $histfile | Add-History
-}
-
 # PSReadline configuration
+Set-PSReadlineOption -EditMode Emacs
+Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord 
+Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord 
+Set-PSReadlineKeyHandler -Key Ctrl+Backspace -Function BackwardKillWord
+Set-PSReadlineKeyHandler -Key Escape -Function RevertLine
 Set-PSReadlineOption -TokenKind Parameter -ForegroundColor DarkMagenta
 Set-PSReadlineOption -TokenKind Operator -ForegroundColor DarkMagenta
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd 
@@ -52,4 +38,3 @@ Import-Module posh-git
 
 # Cleanup for git prompt
 Pop-Location
-
