@@ -47,6 +47,7 @@
 
 	# cleanup 
 	cleanup = !git remote prune origin && git gc 
+	nuke = clean -dfx
 
 	# commit	
 	ci = commit
