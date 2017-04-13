@@ -1,4 +1,4 @@
-Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 # Aliases
 . .\aliases.ps1
@@ -10,15 +10,28 @@ Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	Write-Host($env:USERNAME + "@" + $env:COMPUTERNAME + " ") -nonewline -ForegroundColor Green
-	$parentDir = Split-Path -Path $pwd.ProviderPath -Parent | Split-Path -Leaf
-	Write-Host($parentDir + "\") -nonewline -ForegroundColor Yellow
-	Write-Host(Split-Path -Path $pwd.ProviderPath -Leaf) -nonewline -ForegroundColor Yellow
+	Write-Host("$env:USERNAME@$env:COMPUTERNAME ") -nonewline -ForegroundColor Green
 
+	$path = ""
+	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
+		$path = "~"
+	} else {
+		$childDir = $pwd.ProviderPath | Split-Path -Leaf
+		$parentDirPath = Split-Path -Path $pwd.ProviderPath -Parent
+		if ($parentDirPath -eq $env:USERPROFILE) {
+			$path = "~\$childDir"
+		} else {
+			$path = "$($parentDirPath | Split-Path -Leaf)\$childDir"
+		}
+	}
+
+	Write-Host($path) -NoNewline -ForegroundColor Yellow
 	Write-VcsStatus
+	Write-Host("  ") -ForegroundColor Gray -NoNewline
+	Write-Host("$(Get-Date -uFormat "%H:%M:%S")") -ForegroundColor DarkCyan
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
-	return " $ "
+	return "> "
 }
 
 # PSReadline configuration
