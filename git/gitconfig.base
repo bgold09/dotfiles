@@ -52,6 +52,7 @@
 	# commit	
 	ci = commit
 	cm = commit -m
+	amend = commit --amend
 
 	# diff
 	d = diff --color-words
@@ -80,8 +81,11 @@
 	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
 	# reset
-	u = reset HEAD
 	unstage = reset HEAD
+	back = reset --soft HEAD^
+
+	# show
+	info = show --pretty="fuller" --name-status
 
 	# status
 	st = status -sb
