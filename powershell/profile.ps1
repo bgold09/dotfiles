@@ -47,6 +47,8 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlinekeyHandler -Function MenuComplete -Key Ctrl+Q
 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
 Import-Module posh-git
 
 # Cleanup for git prompt
