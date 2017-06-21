@@ -1,6 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.fontFamily": "'Consolas NF', Consolas, monospace",
+    "editor.minimap.enabled": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -33,5 +34,7 @@
         }
     ],
     "workbench.colorTheme": "Solarized Dark",
-    "workbench.iconTheme": "vs-seti"
+    "workbench.iconTheme": "vs-seti",
+    "typescript.check.tscVersion": false,
+    "vim.disableAnnoyingNeovimMessage": true
 }
