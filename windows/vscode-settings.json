@@ -35,6 +35,7 @@
     ],
     "workbench.colorTheme": "Solarized Dark",
     "workbench.iconTheme": "vs-seti",
+    "workbench.commandPalette.preserveInput": true,
     "typescript.check.tscVersion": false,
     "vim.disableAnnoyingNeovimMessage": true
 }
