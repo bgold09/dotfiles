@@ -150,6 +150,9 @@ call plug#end()
 	map <C-t> :NERDTreeToggle<CR>
 " }}}
 " solarized {{{
+	if (has('win32unix'))
+		let g:solarized_use16 = 1
+	endif
 	colorscheme solarized8_dark
 	nnoremap <F5> :<c-u>exe "colors" (g:colors_name =~# "dark"
 	\ ? substitute(g:colors_name, 'dark', 'light', '')
