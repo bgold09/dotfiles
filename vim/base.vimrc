@@ -33,7 +33,9 @@
 	let mapleader=","
 	let g:mapleader=","
 	if has('persistent_undo') " {{{
-		silent !mkdir ~/.vim/backups > /dev/null 2>&1
+		if (!isdirectory($HOME."/.vim/backups"))
+			call mkdir($HOME."/.vim/backups", "p")
+		endif
 		set undodir=~/.vim/backups
 		set undofile
 	endif
