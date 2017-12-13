@@ -51,5 +51,11 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 Import-Module posh-git
 
+$localConfigPath = ".\\localConfig.ps1"
+if ((Test-Path $localConfigPath))
+{
+	. $localConfigPath
+}
+
 # Cleanup for git prompt
 Pop-Location
