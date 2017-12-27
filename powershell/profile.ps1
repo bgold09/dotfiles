@@ -4,7 +4,9 @@
 . .\aliases.ps1
 
 # Functions
-. .\functions.ps1
+Get-ChildItem -Path .\functions -Recurse -File -Include "*.ps1" | ForEach-Object {
+	. $_.FullName
+}
 
 # Prompt 
 function global:prompt {
