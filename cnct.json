@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bgold09/cnct/develop/schema/v0.1/cnctConfig.json",
+  "actions": [
+    {
+      "actionType": "link",
+      "force": true,
+      "links": {
+        "bash": {
+          "linux": null,
+          "osx": null
+        },
+        "bash/bashrc": {
+          "linux": null,
+          "osx": null
+        },
+        "bash/bash_profile": {
+          "linux": null,
+          "osx": null
+        },
+        "bin-windows": {
+          "windows": "~/bin"
+        },
+        "editors/vscode-settings.json": {
+          "windows": "~/AppData/Roaming/Code/User/settings.json",
+          "linux": "~/.config/Code/User/settings.json",
+          "osx": "~/Library/Application Support/Code/User/settings.json"
+        },
+        "git": "~/.gitfiles",
+        "git/gitconfig.base": "~/.gitconfig",
+        "git/gitignore": null,
+        "git/gitconfig-linux": {
+          "linux": "~/.os.gitconfig"
+        },
+        "git/gitconfig-windows": {
+          "windows": "~/.os.gitconfig"
+        },
+        "git/gitconfig-osx": {
+          "osx": "~/.os.gitconfig"
+        },
+        "powershell/profile.ps1": {
+          "windows": "~/Documents/WindowsPowerShell/profile.ps1"
+        },
+        "powershell/aliases.ps1": {
+          "windows": "~/Documents/WindowsPowerShell/aliases.ps1"
+        },
+        "python/pythonrc.py": null,
+        "system/dircolors": null,
+        "system/inputrc": {
+          "linux": null,
+          "osx": null
+        },
+        "system/wgetrc": {
+          "linux": null,
+          "osx": null
+        },
+        "tmux/tmux.conf": {
+          "linux": null,
+          "osx": null
+        },
+        "vim": null,
+        "vim/base.vimrc": null,
+        "vim/gvimrc": {
+          "windows": "~/_gvimrc"
+        },
+        "vim/vimrc": {
+          "windows": "~/_vimrc",
+          "linux": null,
+          "osx": null
+        },
+        "windows/vsvimrc": {
+          "windows": "~/_vsvimrc"
+        },
+        "windows/ConEmu.xml": {
+          "windows": "~/AppData/Roaming/ConEmu.xml"
+        }
+      }
+    }
+  ]
+}

@@ -91,56 +91,11 @@ exit /b 4
     exit /B 0
     goto :eof
 
-:saveLink
-    :: param1 src file
-    :: param2 target file
-    copy %2 %_bootstrapBackupsDir% > nul 2>&1
-    del /q %2 > nul 2>&1
-    mklink %2 %1
-    exit /B 0
-
-:saveLinkDir
-    :: param1 src directory
-    :: paramm2 target directory
-    copy %2 %_bootstrapBackupsDir% > nul 2>&1
-    rmdir /q %2 > nul 2>&1
-    mklink /d %2 %1
-    exit /B 0
-
 :elevatedSetup
     :: param1 home directory
     echo Continuing bootstrapping with elevated privileges...
     if "%1" == "" (echo ERROR: Must specify home directory as first parameter!& exit 2)
     set _HOME=%1
-
-    for /F "tokens=2,3,4,5,6,7 delims=/: " %%i in ('echo %date%:%time: =0%') do set JULIANDATE=%%k%%i%%j-%%l%%m
-    set _bootstrapBackupsDir=%_HOME%\bootstrapBackups-%JULIANDATE%
-    mkdir %_bootstrapBackupsDir%
-
-    call :saveLink %_HOME%\.dotfiles\git\gitconfig.base %_HOME%\.gitconfig
-    call :saveLink %_HOME%\.dotfiles\git\gitconfig-windows %_HOME%\.os.gitconfig
-    call :saveLink %_HOME%\.dotfiles\git\gitignore %_HOME%\.gitignore
-    call :saveLinkDir %_HOME%\.dotfiles\git %_HOME%\.gitfiles
-    call :saveLink %_HOME%\.dotfiles\vim\base.vimrc %_HOME%\.base.vimrc
-    call :saveLink %_HOME%\.dotfiles\vim\vimrc %_HOME%\_vimrc
-    call :saveLink %_HOME%\.dotfiles\vim\gvimrc %_HOME%\_gvimrc
-    call :saveLinkDir %_HOME%\.dotfiles\vim %_HOME%\.vim
-    call :saveLink %_HOME%\.dotfiles\windows\vsvimrc %_HOME%\_vsvimrc
-    call :saveLink %_HOME%\.dotfiles\windows\vscode-settings.json %_HOME%\AppData\Roaming\Code\User\settings.json
-    call :saveLink %_HOME%\.dotfiles\windows\ConEmu.xml %APPDATA%\ConEmu.xml
-    call :saveLink %_HOME%\.dotfiles\system\inputrc %HOME%\_inputrc
-    call :saveLink %_HOME%\.dotfiles\windows\clink.lua %LOCALAPPDATA%\clink\clink.lua
-    call :saveLinkDir %_HOME%\.dotfiles\bin-windows %_HOME%\bin
-
-    REM PowerShell config
-    call :saveLink %_HOME%\.dotfiles\powershell\profile.ps1 %_HOME%\Documents\WindowsPowerShell\profile.ps1
-    call :saveLink %_HOME%\.dotfiles\powershell\aliases.ps1 %_HOME%\Documents\WindowsPowerShell\aliases.ps1
-    call :saveLink %_HOME%\.dotfiles\powershell\functions.ps1 %_HOME%\Documents\WindowsPowerShell\functions.ps1
-
-    echo.
-    echo Saved previously sym-linked files in directory: %_bootstrapBackupsDir%
-    dir /b %_bootstrapBackupsDir% 2>nul
-    echo.
 
     echo remap CapsLock to LeftCtrl key:
     REM see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
