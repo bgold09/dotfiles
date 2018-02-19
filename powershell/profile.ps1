@@ -4,7 +4,7 @@
 . .\aliases.ps1
 
 # Functions
-Get-ChildItem -Path .\functions -Recurse -File -Include "*.ps1" | ForEach-Object {
+Get-ChildItem -Path .\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
 	. $_.FullName
 }
 
