@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/bgold09/cnct/develop/schema/v0.1/cnctConfig.json",
+  "$schema": "file:///C:/Users/brian/dev/cnct/schema/vNext/cnctConfig.json",
   "actions": [
     {
       "actionType": "link",
@@ -74,6 +74,13 @@
           "windows": "~/AppData/Roaming/ConEmu.xml"
         }
       }
+    },
+    {
+      "actionType": "shell",
+      "os": "windows",
+      "shell": "powershell",
+      "command": "./bootstrap/bootstrap.ps1",
+      "silent": false
     }
   ]
 }
