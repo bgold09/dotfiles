@@ -103,9 +103,6 @@ call plug#end()
 		let g:bookmark_annotation_sign = '##'
 	endif
 " }}}
-" better-whitespace {{{
-	let g:better_whitespace_enabled = 0
-" }}}
 	" closetag {{{
 	autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 	autocmd FileType html,xhtml,xml,htmldjango,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
