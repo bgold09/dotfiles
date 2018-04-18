@@ -55,6 +55,7 @@
 
 	# commit	
 	ci = commit
+	cif = commit --fixup
 	cm = commit -m
 	amend = commit --amend
 
@@ -80,8 +81,11 @@
 
 	# rebase
 	r = rebase -i
+	rc = rebase --continue
+	ra = rebase --abort
 	ri = "!sh -c \"git rebase -i HEAD~$1\" -"
-	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i HEAD~$1\" -"
+	rnn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i HEAD~$1\" -"
+	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i $1\" -"
 	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
 	# reset
