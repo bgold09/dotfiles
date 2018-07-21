@@ -1,3 +1,5 @@
+Install-PackageProvider -Name NuGet -Force
+
 ## Trust the PowerShell Gallery repository
 $psGalleryName = "PSGallery"
 $psGallery = Get-PSRepository -Name $psGalleryName
