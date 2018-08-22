@@ -39,6 +39,7 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
+Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
 

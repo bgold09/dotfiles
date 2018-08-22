@@ -78,6 +78,7 @@ vim +PlugInstall +qall
     * [delimitMate] - auto-completion for quotes, brackets, etc.
     * [DetectIndent] - detect the indentation settings for an open file
     * [devicons] - Adds file type glyphs/icons to many popular Vim plugins
+    * [diffconflicts] - A better Vimdiff Git mergetool
     * [dispatch] - asynchronous build and test dispatcher
     * [fugitive] - git wrapper
     * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
@@ -117,6 +118,7 @@ vim +PlugInstall +qall
 [delimitMate]: https://github.com/raimondi/delimitmate
 [DetectIndent]: https://github.com/ciaranm/detectindent
 [devicons]: https://github.com/ryanoasis/vim-devicons/
+[diffconflicts]: https://github.com/whiteinge/diffconflicts
 [dispatch]: https://github.com/tpope/vim-dispatch
 [fugitive]: https://github.com/tpope/vim-fugitive
 [gitgutter]: https://github.com/airblade/vim-gitgutter

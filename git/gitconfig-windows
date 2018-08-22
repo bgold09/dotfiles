@@ -3,3 +3,7 @@
 
 [core]
 	editor = gvim -f
+
+[mergetool "diffconflicts"]
+	cmd = gvim -c DiffConflicts $MERGED $BASE $LOCAL $REMOTE
+

@@ -29,6 +29,16 @@
 	excludesfile = ~/.gitfiles/gitignore
 	autocrlf = false
 
+[merge]
+	tool = diffconflicts
+
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts $MERGED $BASE $LOCAL $REMOTE
+	trustExitCode = true
+
+[mergetool]
+	keepBackup = false
+
 [alias]
 	# add
 	a = add
