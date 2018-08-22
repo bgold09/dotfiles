@@ -166,5 +166,9 @@ call plug#end()
 		nnoremap <leader>l :TagbarToggle<CR>
 	endif
 " }}}
+" unimpaired {{{
+	nmap co yo
+" }}}
+
 
 " vim:foldmethod=marker:foldlevel=0
