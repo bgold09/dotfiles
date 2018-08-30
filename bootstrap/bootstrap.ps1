@@ -1,3 +1,5 @@
+$dotfiles="$env:HOME/.dotfiles"
+
 Install-PackageProvider -Name NuGet -Force
 
 ## Trust the PowerShell Gallery repository
@@ -9,7 +11,7 @@ if (!$psGallery.Trusted) {
 
 ## Install PowerShell modules
 $psModules = @(
-   "posh-git" 
+   "posh-git"
 )
 
 foreach ($psModuleName in $psModules) {
@@ -33,3 +35,6 @@ foreach ($optionalFeature in $winOptionalFeatures) {
         Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $optionalFeature
     }
 }
+
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /v "Scancode Map" /d 0000000000000000020000001D003A0000000000 /t REG_BINARY /f > $null
+reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "$dotfiles/windows/win32-rc.cmd" /f > $null
