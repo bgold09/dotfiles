@@ -31,6 +31,7 @@ Plug 'docunext/closetag.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'pangloss/vim-javascript'
+Plug 'octol/vim-cpp-enhanced-highlight'
 " }}}
 " interface {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
