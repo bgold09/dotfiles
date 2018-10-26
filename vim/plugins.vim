@@ -151,7 +151,7 @@ call plug#end()
 	if (has('win32unix'))
 		let g:solarized_use16 = 1
 	endif
-	colorscheme solarized8_dark
+	colorscheme solarized8
 	nnoremap <F5> :<c-u>exe "colors" (g:colors_name =~# "dark"
 	\ ? substitute(g:colors_name, 'dark', 'light', '')
 	\ : substitute(g:colors_name, 'light', 'dark', '')
