@@ -98,6 +98,7 @@
 	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i $1\" -"
 	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
+	newbranch = "!sh -c \"git fetch && git checkout -b $1 origin/master --no-track\" -"
 	# reset
 	unstage = reset HEAD
 	back = reset --soft HEAD^
