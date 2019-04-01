@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2018-05-05 15:21:42" build="180503">
+		<key name=".Vanilla" modified="2019-03-26 12:01:12" build="190310">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -88,15 +88,15 @@
 			<value name="SaveCmdHistory" type="hex" data="01"/>
 			<value name="CmdLineHistory" type="multi">
 				<line data="{PowerShell::PowerShell}"/>
+				<line data="{PowerShell::PowerShell (Admin)}"/>
+				<line data="{cmd::cmd}"/>
 				<line data="{dev::VS Dev}"/>
+				<line data="{cmd::cmd (Admin)}"/>
 				<line data="{CBT::dp-main-2}"/>
 				<line data="{CBT::dp-main}"/>
 				<line data="{bash::cygwin}"/>
 				<line data="{CBT::dp-main-4}"/>
 				<line data="{CBT::dp-main-3}"/>
-				<line data="{cmd::cmd}"/>
-				<line data="{cmd::cmd (Admin)}"/>
-				<line data="{PowerShell::PowerShell (Admin)}"/>
 				<line data="{PowerShell}"/>
 				<line data="{bash::Git bash}"/>
 				<line data="{PowerShell (Admin)}"/>
@@ -228,7 +228,7 @@
 			<value name="SendAltPrintScrn" type="hex" data="00"/>
 			<value name="SendPrintScrn" type="hex" data="00"/>
 			<value name="SendCtrlEsc" type="hex" data="00"/>
-			<value name="Min2Tray" type="hex" data="00"/>
+			<value name="Min2Tray" type="hex" data="01"/>
 			<value name="AlwaysShowTrayIcon" type="hex" data="00"/>
 			<value name="SafeFarClose" type="hex" data="01"/>
 			<value name="SafeFarCloseMacro" type="string" data=""/>
@@ -737,8 +737,8 @@
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="DefaultTerminalDebugLog" type="hex" data="00"/>
-			<value name="LastMonitor" type="string" data="0,0,2256,1444"/>
-			<value name="Restore2ActiveMon" type="hex" data="00"/>
+			<value name="LastMonitor" type="string" data="0,0,2560,1400"/>
+			<value name="Restore2ActiveMon" type="hex" data="01"/>
 			<value name="DownShowExOnTopMessage" type="hex" data="00"/>
 			<value name="EnvironmentSet" type="multi">
 				<line data="set PATH=%ConEmuBaseDir%\Scripts;%PATH%"/>
