@@ -1,2 +1,5 @@
+[include]
+	path = ~/.local.gitconfig
+
 [credential]
 	helper = manager
