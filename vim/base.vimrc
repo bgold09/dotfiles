@@ -20,7 +20,8 @@
 
 	" Use '.vim' instead of '.vimfiles' on Windows 
 	if WINDOWS()
-		set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME
+		set runtimepath^=~/.vim runtimepath+=~/.vim/after
+		let &packpath = &runtimepath
 	endif
 " }}}
 

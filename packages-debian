@@ -1,8 +1,12 @@
 exuberant-ctags
 git-core
+nvim
+python
+python-dev
 python-pip
 ruby
 rubygems
 silversearcher-ag
 tmux
 vim
+xclip

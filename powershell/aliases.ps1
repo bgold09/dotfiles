@@ -1,4 +1,4 @@
-# Aliases
+﻿# Aliases
 (new-item alias:npp -value 'C:\Program Files (x86)\Notepad++\notepad++.exe') > Out-Null
 (new-item alias:which -value 'Get-Command') > Out-Null
 (new-item alias:g -value 'git') > Out-Null
@@ -36,6 +36,10 @@ function vup {
 
 function vi {
 	gvim --remote-silent $args
+}
+
+function nvi {
+	Invoke-Expression "$env:ChocolateyToolsLocation\neovim\Neovim\bin\nvim-qt.exe --qwindowgeometry 615x575 $args"
 }
 
 function nuke {

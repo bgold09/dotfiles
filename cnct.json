@@ -60,10 +60,10 @@
         "vim": null,
         "vim/base.vimrc": null,
         "vim/gvimrc": {
-          "windows": "~/_gvimrc"
+          "windows": [ "~/_gvimrc", "~/Appdata/Local/nvim/ginit.vim" ]
         },
         "vim/vimrc": {
-          "windows": "~/_vimrc",
+          "windows": [ "~/_vimrc", "~/Appdata/Local/nvim/init.vim" ],
           "linux": null,
           "osx": null
         },

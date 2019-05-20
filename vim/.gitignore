@@ -2,3 +2,5 @@ autoload/
 backups/
 bundle/
 .netrwhist
+init.vim
+ginit.vim
