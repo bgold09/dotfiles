@@ -1,0 +1,11 @@
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set visualbell
+set noerrorbells
+
+nnoremap <silent> <C-L> :nohlsearch<CR>
+
+set surround
+set multiple-cursors

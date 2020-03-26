@@ -67,6 +67,7 @@
           "linux": null,
           "osx": null
         },
+	"vim/ideavimrc": null,
         "windows/vsvimrc": {
           "windows": "~/_vsvimrc"
         },
