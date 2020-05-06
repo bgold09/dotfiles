@@ -201,9 +201,9 @@
 	" Highlight characters past 80 characters
 	function ToggleColorColumn()
 		if &colorcolumn == ""
-			execute "set colorcolumn=" . join(range(81, 335), ',')
+			execute "setlocal colorcolumn=" . join(range(81, 335), ',')
 		else
-			set colorcolumn=
+			setlocal colorcolumn=
 		endif
 	endfunction
 	nmap <leader>k :call ToggleColorColumn()<CR>
