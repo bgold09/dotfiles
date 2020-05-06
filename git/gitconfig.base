@@ -50,16 +50,16 @@
 
 	# checkout
 	co = checkout
-	nb = checkout -b   # create and switch to new branch
+	nb = "!sh -c \"git fetch && git checkout -b $1 origin/master --no-track\" -"
 
 	# cherry-pick
 	ch = cherry-pick
 
-	# cleanup 
-	cleanup = !git remote prune origin && git gc 
+	# cleanup
+	cleanup = !git remote prune origin && git gc
 	nuke = clean -dfx
 
-	# commit	
+	# commit
 	ci = commit
 	cif = commit --fixup
 	cm = commit -m
@@ -70,13 +70,17 @@
 	dc = diff --color-words --cached
 	last = diff HEAD^
 
+	# flow
+	feature = flow feature start
+	fix = flow bugfix start
+
 	# log
 	h = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 	hist = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 
 	# pull
 	pl = pull
-	plo = pull origin 
+	plo = pull origin
 	plu = pull upstream
 	plr = pull --rebase
 
@@ -94,7 +98,6 @@
 	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i $1\" -"
 	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
-	newbranch = "!sh -c \"git fetch && git checkout -b $1 origin/master --no-track\" -"
 	# reset
 	unstage = reset HEAD
 	back = reset --soft HEAD^
