@@ -42,12 +42,22 @@ Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord
 Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+Backspace -Function BackwardKillWord
 Set-PSReadlineKeyHandler -Key Escape -Function RevertLine
-Set-PSReadlineOption -TokenKind Parameter -ForegroundColor DarkMagenta
-Set-PSReadlineOption -TokenKind Operator -ForegroundColor DarkMagenta
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd 
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-Set-PSReadlinekeyHandler -Function MenuComplete -Key Ctrl+Q
+
+if ((Get-Module -Name PSReadline).Version.Major -lt 2)
+{
+    Set-PSReadlineOption -TokenKind Parameter -ForegroundColor DarkMagenta
+    Set-PSReadlineOption -TokenKind Operator -ForegroundColor DarkMagenta
+}
+else
+{
+    Set-PSReadLineOption -Colors @{
+        "Parameter" = [System.ConsoleColor]::DarkMagenta;
+        "Operator" = [System.ConsoleColor]::DarkMagenta;
+    }
+}
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
