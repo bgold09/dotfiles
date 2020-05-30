@@ -43,9 +43,12 @@
         "powershell/aliases.ps1": {
           "windows": "~/Documents/WindowsPowerShell/aliases.ps1"
         },
-	"~/Documents/WindowsPowerShell": {
+        "~/Documents/WindowsPowerShell": {
           "windows": "~/Documents/PowerShell"
-	},
+        },
+        "windows/windowsterminal-settings.json": {
+          "windows": "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+        },
         "python/pythonrc.py": null,
         "system/dircolors": null,
         "system/inputrc": {
