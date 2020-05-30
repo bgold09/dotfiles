@@ -7,9 +7,9 @@ alias fgrep='fgrep --color=auto'              # show differences in color
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then eval "`dircolors -b`"; fi
 
 # detect which `ls` flavor to use
-if ls --color > /dev/null 2>&1; then  # GNU `ls`
+if [[ ! "$OSTYPE" =~ ^darwin ]]; then
 	colorflag="--color"
-else                                  # OS X `ls`
+else
 	colorflag="-G"
 fi
 
