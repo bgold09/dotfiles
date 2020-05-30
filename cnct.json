@@ -43,6 +43,9 @@
         "powershell/aliases.ps1": {
           "windows": "~/Documents/WindowsPowerShell/aliases.ps1"
         },
+	"~/Documents/WindowsPowerShell": {
+          "windows": "~/Documents/PowerShell"
+	},
         "python/pythonrc.py": null,
         "system/dircolors": null,
         "system/inputrc": {
