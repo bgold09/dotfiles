@@ -30,13 +30,12 @@ cd ~/.dotfiles
 Install the configuration for Windows environments:
 
 ```cmd
-bootstrap.cmd
+bootstrap.ps1
 ```
 
 These scripts will symlink config files to your home directory and install dependent packages using:
 * apt-get on Ubuntu
 * [homebrew](https://github.com/Homebrew/homebrew) on OSX
-* [apt-cyg](https://github.com/transcode-open/apt-cyg) on Cygwin
 
 Each run of the [bootstrap script](https://github.com/bgold09/dotfiles/blob/master/bootstrap.sh) may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
 
@@ -58,7 +57,6 @@ vim +PlugInstall +qall
 * ```bash``` - aliases, completion, prompt and other tweaks
 * ```bin``` - executables here will be added to your ```$PATH``` and be available anywhere (UNIX)
 * ```bin-windows``` - executables here will be added to your ```$PATH``` and be available anywhere (Windows)
-* ```cygwin``` - configuration for Cygwin and Mintty
 * ```git``` - nice gitconfig and global gitignore
 * ```osx``` - set sensible defaults for OS X
 * ```powershell``` - aliases, functions and custom prompt

@@ -81,8 +81,6 @@ install_dependencies() {
 		install_dependencies_debian
 	elif [[ "$OSTYPE" =~ ^darwin ]]; then
 		install_dependencies_osx
-	elif [[ "$OSTYPE" =~ ^cygwin ]]; then 
-		install_dependencies_cygwin
 	else
 		fail "Current platform is not supported for installing dependencies."
 	fi
@@ -140,14 +138,6 @@ check_installed_osx() {
 	fi
 }
 
-check_installed_cygwin() {
-	if [ "$(cygcheck -dc $pkg | sed '3q;d')" ]; then
-		echo 0
-	else
-		echo 1
-	fi
-}
-
 # Argument 3 must be the name of a function that takes the name 
 # of a package and returns 0 if it is installed and 1 otherwise
 install_dependencies_list() {
@@ -170,33 +160,6 @@ install_dependencies_list() {
 			e_success "$pkgname $verb2"
 		fi
 	done < "$packages_file"
-}
-
-install_dependencies_cygwin() {
-	if [ ! "$(cygcheck -dc curl | sed '3q;d')" ]; then
-		e_error "Please install 'curl' and rerun this script."
-		exit 1
-	fi
-
-	if [ -n $UPGRADE ] || [ ! "$(type -P apt-cyg)" ]; then
-		e_arrow "Installing the latest version of apt-cyg ..."
-		curl -fL -o /tmp/apt-cyg \
-			http://rawgit.com/transcode-open/apt-cyg/master/apt-cyg
-		install /tmp/apt-cyg /bin
-		e_success "apt-cyg installed"
-	fi
-
-	e_arrow "Updating Cygwin master package list..."
-	apt-cyg update &> /dev/null 
-	e_success "Cygwin package master package list updated"
-
-	if [ -z "$UPGRADE" ]; then
-		local install_cmd="apt-cyg install"
-	else
-		local install_cmd="apt-cyg upgrade"
-	fi
-
-	install_dependencies_list "$install_cmd" "check_installed_cygwin" "packages-cygwin"
 }
 
 bootstrap() {
