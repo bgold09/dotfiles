@@ -15,7 +15,7 @@
     "vim.ignorecase": true,
     "vim.smartcase": true,
     "vim.leader": ",",
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["leader", "w"],
             "after": [],
@@ -34,6 +34,10 @@
         }
     ],
     "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorCustomizations": {
+        "editorCursor.background": "#fdf6e3",
+        "editorCursor.foreground": "#268bd2"
+    },
     "workbench.iconTheme": "vs-seti",
     "workbench.commandPalette.preserveInput": true,
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
