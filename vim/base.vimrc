@@ -69,6 +69,9 @@
 	set splitright    " puts new vsplit windows to the right of the current 
 	set splitbelow    " puts new split windows below the current
 	set autoindent    " indent at the same level as previous line
+	set tabstop=4
+	set shiftwidth=4
+	set expandtab
 
 	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " }}}
@@ -98,9 +101,6 @@
 
 	augroup configgroup
 		autocmd!
-		autocmd FileType python setlocal shiftwidth=4
-		autocmd FileType python setlocal tabstop=4
-		autocmd FileType python setlocal expandtab
 		autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
 	augroup END
 
