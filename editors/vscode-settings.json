@@ -42,4 +42,14 @@
     "workbench.commandPalette.preserveInput": true,
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "window.zoomLevel": 0,
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+    "azureResourceManagerTools.parameterFiles": {
+        "d:\\gitrepos\\security-dscm\\src\\devops\\deployment\\newtemplates\\testoutputs.json": "testparams.json",
+        "d:\\gitrepos\\security-dscm\\src\\devops\\deployment\\newtemplates\\templates\\cluster.json": "..\\parameters\\cluster.parameters.json",
+        "d:\\gitrepos\\security-dscm\\src\\devops\\deployment\\newtemplates\\templates\\subscriptionresources.json": "..\\parameters\\subscriptionresources.parameters.json"
+    },
+    "azureResourceManagerTools.autoDetectJsonTemplates": true,
+    "files.associations": {
+        "*.azrm": "arm-template"
+    },
 }
