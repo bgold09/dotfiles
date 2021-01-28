@@ -17,6 +17,10 @@
     "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
+            "before": [ "<C-L>" ],
+            "commands": [ ":nohl" ]
+        },
+        {
             "before": ["leader", "w"],
             "after": [],
             "commands": [
@@ -33,6 +37,9 @@
             "after": ["<Esc>"]
         }
     ],
+    "vim.handleKeys": {
+        "<C-r>": true
+    },
     "workbench.colorTheme": "Solarized Dark",
     "workbench.colorCustomizations": {
         "editorCursor.background": "#fdf6e3",
