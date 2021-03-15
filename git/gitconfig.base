@@ -50,7 +50,7 @@
 
 	# checkout
 	co = checkout
-	nb = "!sh -c \"git fetch && git checkout -b $1 origin/master --no-track\" -"
+	nb = "!sh -c \"git fetch && git checkout -b $1 origin/develop --no-track\" -"
 
 	# cherry-pick
 	ch = cherry-pick
