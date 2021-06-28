@@ -1,5 +1,4 @@
 ﻿# Aliases
-(new-item alias:npp -value 'C:\Program Files (x86)\Notepad++\notepad++.exe') > Out-Null
 (new-item alias:which -value 'Get-Command') > Out-Null
 (new-item alias:g -value 'git') > Out-Null
 (new-item alias:vi -value 'gvim') > Out-Null
@@ -7,7 +6,7 @@
 
 # Alias functions
 function dot {
-	 cd $env:USERPROFILE\.dotfiles
+	 Set-Location $env:USERPROFILE\.dotfiles
 }
 
 function touch([string]$filename) {
@@ -27,7 +26,10 @@ function ga {
 }
 
 function gr {
-	cd $(git rev-parse --show-cdup)
+	$repoRoot = git rev-parse --show-cdup
+	if ($repoRoot -ne '') {
+		Set-Location $repoRoot
+	}
 }
 
 function vup {
@@ -40,24 +42,4 @@ function vi {
 
 function nvi {
 	Invoke-Expression "$env:ChocolateyToolsLocation\neovim\Neovim\bin\nvim-qt.exe --qwindowgeometry 615x575 $args"
-}
-
-function nuke {
-	tf reconcile /clean /noprompt /recursive $args
-}
-
-function nuken {
-	tf reconcile /clean /noprompt /recursive $args > $null
-}
-
-function tfo {
-	tf reconcile /promote /noprompt /recursive . $args
-}
-
-function th([string] $Files, [int] $StopAfter = 10) {
-	if (!$Files) {
-		tf history * /r /noprompt /stopafter:$StopAfter
-	} else {
-		tf history $args /r /noprompt /stopafter:$StopAfter
-	}
 }
