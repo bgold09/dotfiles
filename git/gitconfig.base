@@ -50,7 +50,7 @@
 
 	# checkout
 	co = checkout
-	nb = "!sh -c \"git fetch && git checkout -b $1 origin/develop --no-track\" -"
+	nb = "!sh -c \"git fetch && git checkout -b $1 origin/$(git config gitflow.branch.develop) --no-track\" -"
 
 	# cherry-pick
 	ch = cherry-pick
@@ -78,6 +78,7 @@
 	h = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 	hist = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 	ht = !git --no-pager h --max-count
+	hn = h origin/develop..HEAD
 
 	# pull
 	pl = pull
