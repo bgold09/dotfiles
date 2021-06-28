@@ -1,9 +1,6 @@
 [include]
 	path = ~/.local.gitconfig
 
-[credential]
-	helper = manager
-
 [core]
 	editor = gvim -f
 
