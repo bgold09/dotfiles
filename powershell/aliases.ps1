@@ -1,8 +1,8 @@
 ﻿# Aliases
-(new-item alias:which -value 'Get-Command') > Out-Null
-(new-item alias:g -value 'git') > Out-Null
-(new-item alias:vi -value 'gvim') > Out-Null
-(new-item alias:ll -value 'Get-ChildItem') > Out-Null
+New-Alias -Name g -Value git
+New-Alias -Name which -Value Get-Command
+New-Alias -Name vi -Value gvim
+New-Alias -Name ll -Value Get-ChildItem
 
 # Alias functions
 function dot {
