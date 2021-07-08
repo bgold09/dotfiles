@@ -26,15 +26,15 @@
           "osx": "~/Library/Application Support/Code/User/settings.json"
         },
         "git": "~/.gitfiles",
-        "git/gitconfig.base": "~/.gitconfig",
+        "git/base.gitconfig": "~/.gitconfig",
         "git/gitignore": null,
-        "git/gitconfig-linux": {
+        "git/os-linux.gitconfig": {
           "linux": "~/.os.gitconfig"
         },
-        "git/gitconfig-windows": {
+        "git/os-windows.gitconfig": {
           "windows": "~/.os.gitconfig"
         },
-        "git/gitconfig-osx": {
+        "git/os-osx.gitconfig": {
           "osx": "~/.os.gitconfig"
         },
         "powershell/profile.ps1": {
