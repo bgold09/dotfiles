@@ -12,7 +12,7 @@ Get-ChildItem -Path .\functions -Recurse -File -Include "*.ps1" -ErrorAction Sil
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	Write-Host("$env:USERNAME@$env:COMPUTERNAME ") -nonewline -ForegroundColor Green
+	$prompt = Write-Prompt "$env:USERNAME@$env:COMPUTERNAME " -ForegroundColor DarkCyan
 
 	$path = ""
 	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
@@ -27,13 +27,14 @@ function global:prompt {
 		}
 	}
 
-	Write-Host($path) -NoNewline -ForegroundColor Yellow
-	Write-VcsStatus
-	Write-Host("  ") -ForegroundColor Gray -NoNewline
-	Write-Host("$(Get-Date -uFormat "%H:%M:%S")") -ForegroundColor DarkCyan
+	$prompt += Write-Prompt $path -ForegroundColor Yellow
+	$prompt += Write-Prompt "  " -ForegroundColor Gray
+	$prompt += Write-Prompt "$(Get-Date -uFormat "%H:%M:%S")" -ForegroundColor DarkCyan
+	$prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
-	return "> "
+
+	return $prompt
 }
 
 # PSReadline configuration
@@ -62,6 +63,9 @@ else
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 Import-Module posh-git
+
+$GitPromptSettings.DefaultPromptPath = ""
+$GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
 $localConfigPath = ".\\localConfig.ps1"
 if ((Test-Path $localConfigPath))
