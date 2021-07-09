@@ -4,6 +4,9 @@
 [core]
 	editor = gvim -f
 
+[credential]
+    helper = manager-core
+
 [mergetool "diffconflicts"]
 	cmd = gvim -c DiffConflicts $MERGED $BASE $LOCAL $REMOTE
 
