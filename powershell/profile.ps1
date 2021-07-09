@@ -1,12 +1,7 @@
-﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+﻿$scriptDir = [System.IO.Path]::GetDirectoryName("$($script:MyInvocation.MyCommand.Definition)")
 
 # Aliases
-. .\aliases.ps1
-
-# Functions
-Get-ChildItem -Path .\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
-	. $_.FullName
-}
+. "$scriptDir\aliases.ps1"
 
 # Prompt 
 function global:prompt {
@@ -72,6 +67,3 @@ if ((Test-Path $localConfigPath))
 {
 	. $localConfigPath
 }
-
-# Cleanup for git prompt
-Pop-Location
