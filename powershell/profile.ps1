@@ -3,6 +3,11 @@
 # Aliases
 . "$scriptDir\aliases.ps1"
 
+# Functions
+Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
+    . $_.FullName
+}
+
 # Prompt 
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
