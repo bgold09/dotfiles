@@ -18,12 +18,12 @@ function global:prompt {
 	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
 		$path = "~"
 	} else {
-		$childDir = $pwd.ProviderPath | Split-Path -Leaf
-		$parentDirPath = Split-Path -Path $pwd.ProviderPath -Parent
+		$parentDirPath = [System.IO.Path]::GetDirectoryName($pwd.ProviderPath)
+		$childDir = [System.IO.Path]::GetFileName($pwd.ProviderPath)
 		if ($parentDirPath -eq $env:USERPROFILE) {
 			$path = "~\$childDir"
 		} else {
-			$path = "$($parentDirPath | Split-Path -Leaf)\$childDir"
+			$path = "$([System.IO.Path]::GetFileName($parentDirPath))\$childDir"
 		}
 	}
 
