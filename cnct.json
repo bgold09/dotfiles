@@ -49,6 +49,9 @@
         "windows/windowsterminal-settings.json": {
           "windows": "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
         },
+        "windows/winget.json": {
+          "windows": "~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json"
+        },
         "python/pythonrc.py": null,
         "system/dircolors": null,
         "system/inputrc": {
