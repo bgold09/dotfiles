@@ -38,8 +38,8 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky' | Plug 'sgur/ctrlp-extensions.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv'
+Plug 'airblade/vim-gitgutter', Cond(executable('git'))
+Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', Cond(executable('git'))
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
