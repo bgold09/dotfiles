@@ -8,6 +8,39 @@ Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorA
     . $_.FullName
 }
 
+function getTermColor {
+    param ($value)
+
+    return "`e[38;5;$($value)m"
+}
+
+function coloredText {
+    param ($color, $text)
+
+    return "$color$text`e[m"
+}
+
+$colors = [PSCustomObject]@{
+    Red = getTermColor 160
+    Orange = getTermColor 166
+    Yellow = getTermColor 136
+    Green = getTermColor 64
+    Blue = getTermColor 33
+    Cyan = getTermColor 37
+    Violet = getTermColor 61
+    Magenta = getTermColor 125
+
+    Base00 = getTermColor 241
+    Base01 = getTermColor 240
+    Base02 = getTermColor 235
+    Base03 = getTermColor 234
+
+    Base0 = getTermColor 244
+    Base1 = getTermColor 245
+    Base2 = getTermColor 254
+    Base3 = getTermColor 230
+}
+
 # Prompt 
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
@@ -57,6 +90,24 @@ else
     Set-PSReadLineOption -Colors @{
         "Parameter" = [System.ConsoleColor]::DarkMagenta;
         "Operator" = [System.ConsoleColor]::DarkMagenta;
+    }
+}
+
+if ($env:WT_SESSION) {
+    Set-PSReadLineOption -Colors @{
+        Command = $colors.Yellow
+        Comment = $colors.Base00
+        Error = $colors.Red
+        Operator = $colors.Magenta
+        Parameter = $colors.Magenta
+        String = $colors.Blue
+        Variable = $colors.Green
+    }
+} else {
+    Set-PSReadLineOption -Colors @{
+        Command = "`e[93m";
+        Parameter = "`e[35m";
+        Operator = "`e[35m";
     }
 }
 
