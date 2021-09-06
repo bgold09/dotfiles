@@ -8,25 +8,16 @@ Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorA
     . $_.FullName
 }
 
-$script:WindowsPowerShell = $PSVersionTable.PSEdition -eq "Desktop"
 $script:ansiEscape = "$([char]27)["
 
 function getTermColor {
     param ($hex, $xterm, $fg, $consoleColor) 
 
-    if ($env:WT_SESSION)  {
-        $x = "$($ansiEscape)38;5;$($xterm)m"
-    } else {
-        $x = "$($ansiEscape)$($fg)m"
-    }
-
     return [PSCustomObject]@{
-        xterm =  $x
+        xterm = "$($ansiEscape)$($fg)m"
         hex = $hex
         termColor = $consoleColor
     }
-
-    return
 }
 
 function colorPromptText {
@@ -38,12 +29,12 @@ function colorPromptText {
 $colors = [PSCustomObject]@{
     Red     = getTermColor 0xdc322f 160 31 Red
     Orange  = getTermColor 0xcb4b16 166
-    Yellow  = getTermColor 0xb58900 136 93 DarkYellow
-    Green   = getTermColor 0x859900 64  33 Green
-    Blue    = getTermColor 0x268bd2 33  94 DarkBlue
-    Cyan    = getTermColor 0x2aa198 37  94 DarkCyan
+    Yellow  = getTermColor 0xb58900 136 33 DarkYellow
+    Green   = getTermColor 0x859900 64  32 Green
+    Blue    = getTermColor 0x268bd2 33  34 DarkBlue
+    Cyan    = getTermColor 0x2aa198 37  36 DarkCyan
     Violet  = getTermColor 0x6c71c4 61  35
-    Magenta = getTermColor 0xd33682 125 95 DarkMagenta
+    Magenta = getTermColor 0xd33682 125 35 DarkMagenta
 
     Base00  = getTermColor 0x657b83 241
     Base01  = getTermColor 0x586e75 240
@@ -95,57 +86,25 @@ Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-if ((Get-Module -Name PSReadline).Version.Major -lt 2)
-{
-    Set-PSReadlineOption -TokenKind Parameter -ForegroundColor DarkMagenta
-    Set-PSReadlineOption -TokenKind Operator -ForegroundColor DarkMagenta
-}
-else
-{
-    Set-PSReadLineOption -Colors @{
-        "Parameter" = [System.ConsoleColor]::DarkMagenta;
-        "Operator" = [System.ConsoleColor]::DarkMagenta;
-    }
+Set-PSReadLineOption -Colors @{
+    Command = $colors.Yellow.xterm
+    Comment = $colors.Base00.xterm
+    Error = $colors.Red.xterm
+    Keyword = $colors.Green.xterm
+    Operator = $colors.Magenta.xterm
+    Parameter = $colors.Magenta.xterm
+    String = $colors.Blue.xterm
+    Variable = $colors.Green.xterm
 }
 
 Import-Module posh-git
-
-if ($null -ne $env:WT_SESSION -and -not $script:WindowsPowerShell) {
-    Set-PSReadLineOption -Colors @{
-        Command = $colors.Yellow.xterm
-        Comment = $colors.Base00.xterm
-        Error = $colors.Red.xterm
-        Keyword = $colors.Green.xterm
-        Operator = $colors.Magenta.xterm
-        Parameter = $colors.Magenta.xterm
-        String = $colors.Blue.xterm
-        Variable = $colors.Green.xterm
-    }
-
-    $GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.hex
-    $GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
-    $GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
-} else {
-    if (-not $script:WindowsPowerShell) {
-        Set-PSReadLineOption -Colors @{
-            Command = "`e[93m";
-            Parameter = "`e[35m";
-            Operator = "`e[35m";
-        }
-    } else {
-        Set-PSReadLineOption -Colors @{
-            Command = [ConsoleColor]::DarkYellow
-            Parameter = [ConsoleColor]::DarkMagenta
-            Operator = [ConsoleColor]::DarkMagenta
-        }
-
-    }
-}
-
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-
+$GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.hex
+$GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
+$GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     param($wordToComplete, $commandAst, $cursorPosition)
