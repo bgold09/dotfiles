@@ -8,18 +8,22 @@ Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorA
     . $_.FullName
 }
 
-function getTermColor {
-    param ($hex, $xterm, $fg)
+$script:WindowsPowerShell = $PSVersionTable.PSEdition -eq "Desktop"
+$script:ansiEscape = "$([char]27)["
 
-    if ($env:WT_SESSION) {
-        $x = "`e[38;5;$($xterm)m"
+function getTermColor {
+    param ($hex, $xterm, $fg, $consoleColor) 
+
+    if ($env:WT_SESSION)  {
+        $x = "$($ansiEscape)38;5;$($xterm)m"
     } else {
-        $x = "`e[$($fg)m"
+        $x = "$($ansiEscape)$($fg)m"
     }
 
     return [PSCustomObject]@{
         xterm =  $x
         hex = $hex
+        termColor = $consoleColor
     }
 
     return
@@ -28,18 +32,18 @@ function getTermColor {
 function colorPromptText {
     param ($color, $text)
 
-    return Write-Prompt "$color$text`e[m"
+    return Write-Prompt "$($color.xterm)$text$($ansiEscape)m"
 }
 
 $colors = [PSCustomObject]@{
-    Red     = getTermColor 0xdc322f 160 31
+    Red     = getTermColor 0xdc322f 160 31 Red
     Orange  = getTermColor 0xcb4b16 166
-    Yellow  = getTermColor 0xb58900 136 93
-    Green   = getTermColor 0x859900 64  33
-    Blue    = getTermColor 0x268bd2 33  94
-    Cyan    = getTermColor 0x2aa198 37  94
+    Yellow  = getTermColor 0xb58900 136 93 DarkYellow
+    Green   = getTermColor 0x859900 64  33 Green
+    Blue    = getTermColor 0x268bd2 33  94 DarkBlue
+    Cyan    = getTermColor 0x2aa198 37  94 DarkCyan
     Violet  = getTermColor 0x6c71c4 61  35
-    Magenta = getTermColor 0xd33682 125 95
+    Magenta = getTermColor 0xd33682 125 95 DarkMagenta
 
     Base00  = getTermColor 0x657b83 241
     Base01  = getTermColor 0x586e75 240
@@ -56,7 +60,7 @@ $colors = [PSCustomObject]@{
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-    $prompt = colorPromptText $colors.Blue.xterm "$env:USERNAME@$env:COMPUTERNAME "
+    $prompt = colorPromptText $colors.Blue "$env:USERNAME@$env:COMPUTERNAME "
 
 	$path = ""
 	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
@@ -71,9 +75,9 @@ function global:prompt {
 		}
 	}
 
-    $prompt += colorPromptText $colors.Yellow.xterm "$path"
-    $prompt += colorPromptText $colors.Base1.xterm "  "
-    $prompt += colorPromptText $colors.Blue.xterm "$(Get-Date -uFormat "%H:%M:%S")"
+    $prompt += colorPromptText $colors.Yellow "$path"
+    $prompt += colorPromptText $colors.Base1 "  "
+    $prompt += colorPromptText $colors.Blue "$(Get-Date -uFormat "%H:%M:%S")"
     $prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
@@ -106,7 +110,7 @@ else
 
 Import-Module posh-git
 
-if ($env:WT_SESSION) {
+if ($null -ne $env:WT_SESSION -and -not $script:WindowsPowerShell) {
     Set-PSReadLineOption -Colors @{
         Command = $colors.Yellow.xterm
         Comment = $colors.Base00.xterm
@@ -122,10 +126,19 @@ if ($env:WT_SESSION) {
     $GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
     $GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
 } else {
-    Set-PSReadLineOption -Colors @{
-        Command = "`e[93m";
-        Parameter = "`e[35m";
-        Operator = "`e[35m";
+    if (-not $script:WindowsPowerShell) {
+        Set-PSReadLineOption -Colors @{
+            Command = "`e[93m";
+            Parameter = "`e[35m";
+            Operator = "`e[35m";
+        }
+    } else {
+        Set-PSReadLineOption -Colors @{
+            Command = [ConsoleColor]::DarkYellow
+            Parameter = [ConsoleColor]::DarkMagenta
+            Operator = [ConsoleColor]::DarkMagenta
+        }
+
     }
 }
 
