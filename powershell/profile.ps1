@@ -9,9 +9,20 @@ Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorA
 }
 
 function getTermColor {
-    param ($value)
+    param ($hex, $xterm, $fg)
 
-    return "`e[38;5;$($value)m"
+    if ($env:WT_SESSION) {
+        $x = "`e[38;5;$($xterm)m"
+    } else {
+        $x = "`e[$($fg)m"
+    }
+
+    return [PSCustomObject]@{
+        xterm =  $x
+        hex = $hex
+    }
+
+    return
 }
 
 function coloredText {
@@ -21,31 +32,31 @@ function coloredText {
 }
 
 $colors = [PSCustomObject]@{
-    Red = getTermColor 160
-    Orange = getTermColor 166
-    Yellow = getTermColor 136
-    Green = getTermColor 64
-    Blue = getTermColor 33
-    Cyan = getTermColor 37
-    Violet = getTermColor 61
-    Magenta = getTermColor 125
+    Red     = getTermColor 0xdc322f 160 31
+    Orange  = getTermColor 0xcb4b16 166
+    Yellow  = getTermColor 0xb58900 136 93
+    Green   = getTermColor 0x859900 64  33
+    Blue    = getTermColor 0x268bd2 33  94
+    Cyan    = getTermColor 0x2aa198 37  94
+    Violet  = getTermColor 0x6c71c4 61  35
+    Magenta = getTermColor 0xd33682 125 95
 
-    Base00 = getTermColor 241
-    Base01 = getTermColor 240
-    Base02 = getTermColor 235
-    Base03 = getTermColor 234
+    Base00  = getTermColor 0x657b83 241
+    Base01  = getTermColor 0x586e75 240
+    Base02  = getTermColor 0x073642 235
+    Base03  = getTermColor 0x002b36 234
 
-    Base0 = getTermColor 244
-    Base1 = getTermColor 245
-    Base2 = getTermColor 254
-    Base3 = getTermColor 230
+    Base0   = getTermColor 0x839496 244
+    Base1   = getTermColor 0x93a1a1 245
+    Base2   = getTermColor 0xeee8d5 254
+    Base3   = getTermColor 0xfdf6e3 230
 }
 
 # Prompt 
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	$prompt = Write-Prompt "$env:USERNAME@$env:COMPUTERNAME " -ForegroundColor DarkCyan
+    $prompt = Write-Prompt (coloredText $colors.Blue.xterm "$env:USERNAME@$env:COMPUTERNAME ")
 
 	$path = ""
 	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
@@ -60,10 +71,10 @@ function global:prompt {
 		}
 	}
 
-	$prompt += Write-Prompt $path -ForegroundColor Yellow
-	$prompt += Write-Prompt "  " -ForegroundColor Gray
-	$prompt += Write-Prompt "$(Get-Date -uFormat "%H:%M:%S")" -ForegroundColor DarkCyan
-	$prompt += & $GitPromptScriptBlock
+    $prompt += Write-Prompt (coloredText $colors.Yellow.xterm "$path")
+    $prompt += Write-Prompt (coloredText $colors.Base1.xterm "  ")
+    $prompt += Write-Prompt (coloredText $colors.Blue.xterm "$(Get-Date -uFormat "%H:%M:%S")")
+    $prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
@@ -93,16 +104,22 @@ else
     }
 }
 
+Import-Module posh-git
+
 if ($env:WT_SESSION) {
     Set-PSReadLineOption -Colors @{
-        Command = $colors.Yellow
-        Comment = $colors.Base00
-        Error = $colors.Red
-        Operator = $colors.Magenta
-        Parameter = $colors.Magenta
-        String = $colors.Blue
-        Variable = $colors.Green
+        Command = $colors.Yellow.xterm
+        Comment = $colors.Base00.xterm
+        Error = $colors.Red.xterm
+        Operator = $colors.Magenta.xterm
+        Parameter = $colors.Magenta.xterm
+        String = $colors.Blue.xterm
+        Variable = $colors.Green.xterm
     }
+
+    $GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.hex
+    $GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
+    $GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
 } else {
     Set-PSReadLineOption -Colors @{
         Command = "`e[93m";
@@ -112,8 +129,6 @@ if ($env:WT_SESSION) {
 }
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-
-Import-Module posh-git
 
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
