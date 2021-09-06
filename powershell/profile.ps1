@@ -25,10 +25,10 @@ function getTermColor {
     return
 }
 
-function coloredText {
+function colorPromptText {
     param ($color, $text)
 
-    return "$color$text`e[m"
+    return Write-Prompt "$color$text`e[m"
 }
 
 $colors = [PSCustomObject]@{
@@ -56,7 +56,7 @@ $colors = [PSCustomObject]@{
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-    $prompt = Write-Prompt (coloredText $colors.Blue.xterm "$env:USERNAME@$env:COMPUTERNAME ")
+    $prompt = colorPromptText $colors.Blue.xterm "$env:USERNAME@$env:COMPUTERNAME "
 
 	$path = ""
 	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
@@ -71,9 +71,9 @@ function global:prompt {
 		}
 	}
 
-    $prompt += Write-Prompt (coloredText $colors.Yellow.xterm "$path")
-    $prompt += Write-Prompt (coloredText $colors.Base1.xterm "  ")
-    $prompt += Write-Prompt (coloredText $colors.Blue.xterm "$(Get-Date -uFormat "%H:%M:%S")")
+    $prompt += colorPromptText $colors.Yellow.xterm "$path"
+    $prompt += colorPromptText $colors.Base1.xterm "  "
+    $prompt += colorPromptText $colors.Blue.xterm "$(Get-Date -uFormat "%H:%M:%S")"
     $prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
@@ -111,6 +111,7 @@ if ($env:WT_SESSION) {
         Command = $colors.Yellow.xterm
         Comment = $colors.Base00.xterm
         Error = $colors.Red.xterm
+        Keyword = $colors.Green.xterm
         Operator = $colors.Magenta.xterm
         Parameter = $colors.Magenta.xterm
         String = $colors.Blue.xterm
