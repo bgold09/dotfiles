@@ -6,6 +6,15 @@
     "keybindings": 
     [
         {
+            "command": {
+                "action": "globalSummon",
+                "monitor": "any",
+                "desktop": "any"
+            },
+            "keys": "win+`"
+
+        },
+        {
             "command": 
             {
                 "action": "copy",
@@ -39,6 +48,7 @@
             "colorScheme": "Solarized Dark",
             "cursorColor": "#268BD2",
             "cursorShape": "filledBox",
+            "fontSize": 11,
             "fontFace": "Consolas NF"
         },
         "list": 
