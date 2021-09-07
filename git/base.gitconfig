@@ -23,7 +23,7 @@
 	editor = vim
 	pager = less -RFSX
 	excludesfile = ~/.gitfiles/gitignore
-	autocrlf = false
+	autocrlf = true
 
 [merge]
 	tool = diffconflicts

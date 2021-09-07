@@ -1,6 +1,17 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "actions": [
+        {
+            "command": {
+                "action": "globalSummon",
+                "monitor": "any",
+                "desktop": "any"
+            },
+            "keys": "win+`"
+        },
         {
             "command": {
                 "action": "copy",
@@ -9,12 +20,12 @@
             "keys": "ctrl+c"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": "paste",
             "keys": "ctrl+v"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": {
@@ -25,14 +36,13 @@
             "keys": "alt+shift+d"
         }
     ],
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "profiles": {
         "defaults": {
+            "bellStyle": "none",
             "colorScheme": "Solarized Dark",
             "cursorColor": "#268BD2",
             "cursorShape": "filledBox",
+            "fontSize": 11,
             "fontFace": "Consolas NF"
         },
         "list": [
