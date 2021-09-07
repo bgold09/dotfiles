@@ -97,14 +97,14 @@ Set-PSReadLineOption -Colors @{
     Variable = $colors.Green.xterm
 }
 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
 Import-Module posh-git
 $GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.hex
 $GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
 $GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
-
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     param($wordToComplete, $commandAst, $cursorPosition)

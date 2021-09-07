@@ -89,27 +89,8 @@
 			<value name="CmdLineHistory" type="multi">
 				<line data="{PowerShell::PowerShell}"/>
 				<line data="{PowerShell::Core}"/>
-				<line data="{dev::VS Dev}"/>
 				<line data="{PowerShell::Core (Admin)}"/>
 				<line data="{PowerShell::PowerShell (Admin)}"/>
-				<line data="{cmd::cmd}"/>
-				<line data="{cmd::cmd (Admin)}"/>
-				<line data="{CBT::dp-main-2}"/>
-				<line data="{CBT::dp-main}"/>
-				<line data="{bash::cygwin}"/>
-				<line data="{CBT::dp-main-4}"/>
-				<line data="{CBT::dp-main-3}"/>
-				<line data="{PowerShell}"/>
-				<line data="{bash::Git bash}"/>
-				<line data="{PowerShell (Admin)}"/>
-				<line data="{bash}"/>
-				<line data="{VS Dev}"/>
-				<line data="{cmd}"/>
-				<line data="{cmd (Admin)}"/>
-				<line data="cmd.exe"/>
-				<line data="\"/>
-				<line data="C:\windows\system32\cmd.exe"/>
-				<line data='powershell.exe -noexit -command "set-location c:\\users\\brgold"'/>
 			</value>
 			<value name="SingleInstance" type="hex" data="00"/>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
@@ -728,29 +709,6 @@
 					<value name="ColorTable29" type="dword" data="00ff00ff"/>
 					<value name="ColorTable30" type="dword" data="0000ffff"/>
 					<value name="ColorTable31" type="dword" data="00ffffff"/>
-				</key>
-				<key name="Palette2" modified="2015-03-19 13:53:09" build="150310">
-					<value name="Name" type="string" data="Solarized Dark"/>
-					<value name="TextColorIdx" type="hex" data="10"/>
-					<value name="BackColorIdx" type="hex" data="10"/>
-					<value name="PopTextColorIdx" type="hex" data="10"/>
-					<value name="PopBackColorIdx" type="hex" data="10"/>
-					<value name="ColorTable00" type="dword" data="00362b00"/>
-					<value name="ColorTable01" type="dword" data="00756e58"/>
-					<value name="ColorTable02" type="dword" data="00009985"/>
-					<value name="ColorTable03" type="dword" data="0098a12a"/>
-					<value name="ColorTable04" type="dword" data="002f32dc"/>
-					<value name="ColorTable05" type="dword" data="00c4716c"/>
-					<value name="ColorTable06" type="dword" data="00164bcb"/>
-					<value name="ColorTable07" type="dword" data="00969483"/>
-					<value name="ColorTable08" type="dword" data="00586e75"/>
-					<value name="ColorTable09" type="dword" data="00d28b26"/>
-					<value name="ColorTable10" type="dword" data="00009985"/>
-					<value name="ColorTable11" type="dword" data="0098a12a"/>
-					<value name="ColorTable12" type="dword" data="002f32dc"/>
-					<value name="ColorTable13" type="dword" data="008236d3"/>
-					<value name="ColorTable14" type="dword" data="000089b5"/>
-					<value name="ColorTable15" type="dword" data="00a1a193"/>
 				</key>
 				<key name="Palette3" modified="2021-09-06 13:31:26" build="210905">
 					<value name="Name" type="string" data="Solarized fixed"/>
