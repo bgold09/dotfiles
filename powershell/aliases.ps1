@@ -26,10 +26,7 @@ function ga {
 }
 
 function gr {
-	$repoRoot = git rev-parse --show-cdup
-	if ($repoRoot -ne '') {
-		Set-Location $repoRoot
-	}
+    Set-Location (git rev-parse --show-toplevel)
 }
 
 function vup {
