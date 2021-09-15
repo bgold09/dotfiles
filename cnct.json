@@ -1,5 +1,5 @@
 {
-  "$schema": "file:///C:/Users/brian/dev/cnct/schema/vNext/cnctConfig.json",
+  "$schema": "https://raw.githubusercontent.com/bgold09/cnct/develop/schema/vNext/cnctConfig.json",
   "actions": [
     {
       "actionType": "link",
@@ -76,7 +76,7 @@
           "linux": null,
           "osx": null
         },
-	"vim/ideavimrc": null,
+      	"vim/ideavimrc": null,
         "windows/vsvimrc": {
           "windows": "~/_vsvimrc"
         },
