@@ -1,4 +1,3 @@
-// Place your settings in this file to overwrite the default settings
 {
     "editor.fontFamily": "'Consolas NF', Consolas, monospace",
     "editor.minimap.enabled": false,
@@ -29,6 +28,10 @@
         {
             "before": [ "<C-L>" ],
             "commands": [ ":nohl" ]
+        },
+        {
+            "before": [ "<C-R>" ],
+            "commands": [ "redo" ]
         },
         {
             "before": ["leader", "w"],
