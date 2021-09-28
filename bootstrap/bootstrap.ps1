@@ -39,6 +39,7 @@ foreach ($psModuleName in $psModules) {
 ## Install Windows optional features
 $winOptionalFeatures = @(
    "Microsoft-Windows-Subsystem-Linux",
+   # don't enable hyper-v if we're on a VM already
    "Microsoft-Hyper-V-All"
 )
 
@@ -52,6 +53,12 @@ foreach ($optionalFeature in $winOptionalFeatures) {
 }
 
 $dotPath = "$env:HOME\.dotfiles"
+
+# should probably do this before symlink step so that any paths to dotfiles already exist
+Write-Host "Installing packages with winget..."
+winget install $dotPath\windows\winget-packages.json
+
+# install vs code extensions 
 
 # Set up aliases if we ever need a cmd prompt
 New-ItemProperty -Force -PropertyType REG_SZ -Path "HKCU\Software\Microsoft\Command Processor" `

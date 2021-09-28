@@ -4,38 +4,23 @@ These are my dotfiles, which includes configurations for [bash](https://www.gnu.
 
 ## Installation
 
-### Quick installation:
+### Windows
+
+prereq: winget
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force && `
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072 && `
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/bgold09/dotfiles/master/install.ps1'))
+```
+
+### Linux/OSX
 
 Use the [install file](https://github.com/bgold09/dotfiles/blob/master/install.sh):
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/bgold09/dotfiles/master/install.sh | sh
 ```
-
-### Using Git and the bootstrap script
-
-Clone this repository:
-
-```sh
-git clone https://github.com/bgold09/dotfiles.git ~/.dotfiles 
-```
-
-Install the configuration for UNIX environments:
-
-```sh
-cd ~/.dotfiles
-./bootstrap.sh
-```
-
-Install the configuration for Windows environments:
-
-```cmd
-bootstrap.ps1
-```
-
-These scripts will symlink config files to your home directory and install dependent packages using:
-* apt-get on Ubuntu
-* [homebrew](https://github.com/Homebrew/homebrew) on OSX
 
 Each run of the [bootstrap script](https://github.com/bgold09/dotfiles/blob/master/bootstrap.sh) may also require you to re-source your ```bashrc``` and run the following to install vim plugins:
 
@@ -44,6 +29,7 @@ vim +PlugInstall +qall
 ```
 
 ### Completing the configuration
+
 * Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
 * Patch Consolas using the font patcher distributed with 
   [nerd-fonts](https://github.com/ryanoasis/nerd-fonts). Due to licensing, 
