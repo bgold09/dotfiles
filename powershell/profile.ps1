@@ -1,16 +1,16 @@
-﻿$scriptDir = [System.IO.Path]::GetDirectoryName("$($script:MyInvocation.MyCommand.Definition)")
+﻿$script:scriptDir = [System.IO.Path]::GetDirectoryName("$($script:MyInvocation.MyCommand.Definition)")
 
 # Aliases
-. "$scriptDir\aliases.ps1"
+. "$script:scriptDir\aliases.ps1"
 
 # Functions
-Get-ChildItem -Path $scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
+Get-ChildItem -Path $script:scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
     . $_.FullName
 }
 
 $script:ansiEscape = "$([char]27)["
 
-function getTermColor {
+function script:getTermColor {
     param ($hex, $xterm, $fg, $consoleColor) 
 
     return [PSCustomObject]@{
@@ -20,13 +20,13 @@ function getTermColor {
     }
 }
 
-function colorPromptText {
+function script:colorPromptText {
     param ($color, $text)
 
     return Write-Prompt "$($color.xterm)$text$($ansiEscape)m"
 }
 
-$colors = [PSCustomObject]@{
+$script:colors = [PSCustomObject]@{
     Red     = getTermColor 0xdc322f 160 31 Red
     Orange  = getTermColor 0xcb4b16 166
     Yellow  = getTermColor 0xb58900 136 33 DarkYellow
@@ -116,7 +116,7 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
         }
 }
 
-$localConfigPath = ".\\localConfig.ps1"
+$script:localConfigPath = ".\\localConfig.ps1"
 if ((Test-Path $localConfigPath))
 {
 	. $localConfigPath
