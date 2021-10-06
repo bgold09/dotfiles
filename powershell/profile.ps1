@@ -30,10 +30,10 @@ $script:colors = [PSCustomObject]@{
     Red     = getTermColor 0xdc322f 160 31 Red
     Orange  = getTermColor 0xcb4b16 166
     Yellow  = getTermColor 0xb58900 136 33 DarkYellow
-    Green   = getTermColor 0x859900 64  32 Green
+    Green   = getTermColor 0x859900 64  32 DarkGreen
     Blue    = getTermColor 0x268bd2 33  34 DarkBlue
     Cyan    = getTermColor 0x2aa198 37  36 DarkCyan
-    Violet  = getTermColor 0x6c71c4 61  35
+    Violet  = getTermColor 0x6c71c4 61  95 Magenta
     Magenta = getTermColor 0xd33682 125 35 DarkMagenta
 
     Base00  = getTermColor 0x657b83 241
@@ -87,22 +87,27 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-PSReadLineOption -Colors @{
-    Command = $colors.Yellow.xterm
+    Command = $colors.Yellow.termColor
     Comment = $colors.Base00.xterm
-    Error = $colors.Red.xterm
-    Keyword = $colors.Green.xterm
-    Operator = $colors.Magenta.xterm
-    Parameter = $colors.Magenta.xterm
-    String = $colors.Blue.xterm
-    Variable = $colors.Green.xterm
+    Error = $colors.Red.termColor
+    Keyword = $colors.Green.termColor
+    Operator = $colors.Magenta.termColor
+    Parameter = $colors.Magenta.termColor
+    String = $colors.Blue.termColor
+    Variable = $colors.Green.termColor
 }
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 Import-Module posh-git
-$GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.hex
-$GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.hex
-$GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.hex
+$GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.xterm
+$GitPromptSettings.BranchAheadStatusSymbol.ForegroundColor = $colors.Green.xterm
+$GitPromptSettings.BranchBehindAndAheadStatusSymbol.ForegroundColor = $colors.Yellow.xterm
+$GitPromptSettings.IndexColor.ForegroundColor = $colors.Cyan.xterm
+$GitPromptSettings.BeforeStatus.ForegroundColor = [ConsoleColor]::Gray
+$GitPromptSettings.AfterStatus.ForegroundColor = [ConsoleColor]::Gray
+$GitPromptSettings.DelimStatus.ForegroundColor = [ConsoleColor]::Gray
+
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
