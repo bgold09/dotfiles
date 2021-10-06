@@ -1,3 +1,20 @@
+function setRegistryDword {
+    param([string]$path, [string]$name, $value)
+
+    Set-ItemProperty -Force -PropertyType REG_DWORD `
+        -Path $path -Name $name -Value $value 
+}
+
+function createRegKeyInfo {
+    param([string]$path, [string]$name, [int]$value)
+
+    return [PSCustomObject]@{
+        Path = $path
+        Name = $name
+        Value = $value
+    }
+}
+
 Install-PackageProvider -Name NuGet -Force
 
 ## Trust the PowerShell Gallery repository
@@ -44,3 +61,19 @@ New-ItemProperty -Force -PropertyType REG_SZ -Path "HKCU\Software\Microsoft\Comm
 # http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
 New-ItemProperty -Force -PropertyType REG_BINARY -Path "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
     -Name "Scancode Map" -Value 0000000000000000020000001D003A0000000000
+
+$explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+$virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
+$regKeys = @(
+    createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
+    createRegKeyInfo $explorerRegPath "HideFileExt" 0
+    createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
+    createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
+)
+
+foreach ($item in $regKeys) {
+    setRegistryDword $item.Path $item.Name $item.Value
+}
