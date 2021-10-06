@@ -34,6 +34,10 @@
             "commands": [ "redo" ]
         },
         {
+            "before": [ "leader", "l" ],
+            "commands": [ "editor.action.toggleRenderWhitespace" ]
+        },
+        {
             "before": ["leader", "w"],
             "after": [],
             "commands": [
