@@ -15,6 +15,17 @@ function createRegKeyInfo {
     }
 }
 
+function enableWindowsFeature {
+    param([string]$name)
+
+    $featureInfo = Get-WindowsOptionalFeature -Online -FeatureName $name
+    if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
+            $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
+
+        Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $name
+    }
+}
+
 Install-PackageProvider -Name NuGet -Force
 
 ## Trust the PowerShell Gallery repository
@@ -38,18 +49,16 @@ foreach ($psModuleName in $psModules) {
 
 ## Install Windows optional features
 $winOptionalFeatures = @(
-   "Microsoft-Windows-Subsystem-Linux",
-   # don't enable hyper-v if we're on a VM already
-   "Microsoft-Hyper-V-All"
+   "Microsoft-Windows-Subsystem-Linux"
 )
 
 foreach ($optionalFeature in $winOptionalFeatures) {
-    $featureInfo = Get-WindowsOptionalFeature -Online -FeatureName $optionalFeature
-    if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
-            $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
+    enableWindowsFeature $optionalFeature
+}
 
-        Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $optionalFeature
-    }
+$computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
+if ($computerInfo.Model -eq "Virtual Machine") {
+    enableWindowsFeature "Microsoft-Hyper-V-All"
 }
 
 $dotPath = "$env:HOME\.dotfiles"
