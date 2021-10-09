@@ -1,7 +1,7 @@
 function setRegistryDword {
     param([string]$path, [string]$name, $value)
 
-    Set-ItemProperty -Force -PropertyType REG_DWORD `
+    New-ItemProperty -Force -PropertyType DWord `
         -Path $path -Name $name -Value $value 
 }
 
@@ -22,13 +22,14 @@ function enableWindowsFeature {
     if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
             $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
 
+        Write-Host "Enable Windows feature '$name'"
         Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $name
     }
 }
 
-$dotPath = "$env:HOME\.dotfiles"
+$dotPath = "$HOME\.dotfiles"
 
-Install-PackageProvider -Name NuGet -Force
+# Install-PackageProvider -Name NuGet -Force
 
 ## Trust the PowerShell Gallery repository
 $psGalleryName = "PSGallery"
@@ -56,12 +57,14 @@ if ($IsWindows) {
 
     # Install chocolatey
     if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
+        Write-Host "Installing chocolatey CLI"
         Set-ExecutionPolicy Bypass -Scope Process -Force
         [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
         Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
     }
 
     # install choco packages
+    Write-Host "Installing packages with chocolatey..."
     choco install -y $dotPath\windows\chocolatey-packages.config
 
     # is this still needed if installing WSL via wsl.exe?
@@ -71,13 +74,14 @@ if ($IsWindows) {
     }
 
     # Set up aliases if we ever need a cmd prompt
-    New-ItemProperty -Force -PropertyType REG_SZ -Path "HKCU\Software\Microsoft\Command Processor" `
+    New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
         -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd"
 
     # see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
     # http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
-    New-ItemProperty -Force -PropertyType REG_BINARY -Path "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
-        -Name "Scancode Map" -Value 0000000000000000020000001D003A0000000000
+    $scancodeMapHex = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | ForEach-Object { "0x$_" }
+    New-ItemProperty -Force -PropertyType Binary -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
+        -Name "Scancode Map" -Value ([byte[]]$scancodeMapHex)
 
     $explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
     $virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
