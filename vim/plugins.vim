@@ -7,10 +7,6 @@ silent function! WINDOWS()
 	return (has('win16') || has('win32') || has('win64'))
 endfunction
 
-silent function! Executable_Ctags()
-	return (executable('ctags') || executable('ctags-exuberant'))
-endfunction
-
 if empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 	    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -45,7 +41,6 @@ Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', Cond(executable('git'))
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
-Plug 'majutsushi/tagbar', Cond(Executable_Ctags())
 endif
 Plug 'sjl/gundo.vim', Cond(has('python'))
 Plug 'mileszs/ack.vim', Cond(executable('ag'))
@@ -56,7 +51,6 @@ Plug 'mileszs/ack.vim', Cond(executable('ag'))
 " movement {{{
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-unimpaired'
-Plug 'MattesGroeger/vim-bookmarks'
 Plug 'bronson/vim-visual-star-search'
 Plug 'justinmk/vim-sneak'
 " }}}
@@ -162,12 +156,6 @@ call plug#end()
 " }}}
 " SuperTab {{{
 	let g:SuperTabDefaultCompletionType = 'context'
-" }}}
-" Tagbar {{{
-	if Executable_Ctags()
-		let g:tagbar_usearrows = 1
-		nnoremap <leader>l :TagbarToggle<CR>
-	endif
 " }}}
 " unimpaired {{{
 	nmap co yo

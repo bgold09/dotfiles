@@ -203,7 +203,7 @@
 
 "#### functions ####" {{{
 	" Highlight characters past 80 characters
-	function ToggleColorColumn()
+	function! ToggleColorColumn()
 		if &colorcolumn == ""
 			execute "setlocal colorcolumn=" . join(range(81, 335), ',')
 		else
@@ -211,14 +211,6 @@
 		endif
 	endfunction
 	nmap <leader>k :call ToggleColorColumn()<CR>
-
-	" setup TFS integration
-	if executable('tf')
-		function! Tfcheckout()
-			exe '!tf checkout "' expand('%:p') '"'
-		endfunction
-		command! Tfcheckout :call Tfcheckout()
-	endif
 "}}}
 
 "#### VS Code #### {{{
