@@ -62,7 +62,11 @@
 	set hidden  " allows modified buffers to be hidden
 	nmap <leader>m :bn<CR>
 	nmap <leader>n :bp<CR>
-	nmap <leader>d :bd<CR>
+    if !exists('g:vscode')
+        nmap <leader>d :bd<CR>
+    else
+        nmap <leader>d <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+    endif
 " }}}
 
 "#### formatting ####" {{{

@@ -71,7 +71,7 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " The devicons plugin must be loaded after other plugins it integrates with
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons', Cond(!exists('g:vscode'))
 
 " Add or unbundle plugins in a local plugin config 
 if filereadable(expand("~/.plugins.local.vim"))
