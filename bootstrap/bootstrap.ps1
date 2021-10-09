@@ -43,7 +43,7 @@ $psModules = @(
 
 foreach ($psModuleName in $psModules) {
     $module = Get-Module -Name $psModuleName
-    if ($module -eq $null) {
+    if ($null -eq $module) {
         Install-Module -Name $psModuleName
     }
 }
