@@ -99,3 +99,20 @@ if ($IsWindows) {
 }
 
 # install vs code extensions 
+$vscodeExtensions = @(
+    'DavidAnson.vscode-markdownlint'
+    'donjayamanne.githistory'
+    'eamodio.gitlens'
+    'James-Yu.latex-workshop'
+    'ms-dotnettools.csharp'
+    'ms-vscode.powershell'
+    'streetsidesoftware.code-spell-checker'
+    'vscodevim.vim'
+)
+
+$vscodeInstalledExtensions = code --list-extensions
+foreach ($extensionName in $vscodeExtensions) {
+    if ($vscodeInstalledExtensions -notcontains $extensionName) {
+        code --install-extension $extensionName
+    }
+}
