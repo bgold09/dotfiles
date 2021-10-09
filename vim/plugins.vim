@@ -37,13 +37,13 @@ Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky' | Plug 'sgur/ctrlp-exte
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter', Cond(executable('git'))
-Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', Cond(executable('git'))
+Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'", { 'on': 'Goyo' }
 endif
 Plug 'sjl/gundo.vim', Cond(has('python'))
-Plug 'mileszs/ack.vim', Cond(executable('ag'))
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 " }}}
 " integration {{{
 	Plug 'tpope/vim-dispatch'
