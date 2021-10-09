@@ -23,17 +23,19 @@ silent! call plug#begin('~/.vim/bundle')
 Plug 'lifepillar/vim-solarized8'
 " }}}
 " syntax & languages {{{
+if !exists('g:vscode')
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'pprovost/vim-ps1'
-Plug 'ciaranm/detectindent'
-Plug 'docunext/closetag.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'OrangeT/vim-csharp'
 Plug 'pangloss/vim-javascript'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'leafgarland/typescript-vim'
+Plug 'OrangeT/vim-csharp'
+endif
+Plug 'docunext/closetag.vim'
 " }}}
 " interface {{{
+if !exists('g:vscode')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky' | Plug 'sgur/ctrlp-extensions.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -43,8 +45,8 @@ Plug 'tpope/vim-fugitive' | Plug 'gregsexton/gitv', Cond(executable('git'))
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'
-
 Plug 'majutsushi/tagbar', Cond(Executable_Ctags())
+endif
 Plug 'sjl/gundo.vim', Cond(has('python'))
 Plug 'mileszs/ack.vim', Cond(executable('ag'))
 " }}}

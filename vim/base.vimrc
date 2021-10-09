@@ -217,4 +217,13 @@
 	endif
 "}}}
 
+"#### VS Code #### {{{
+if exists('g:vscode')
+
+nmap col <Cmd>call VSCodeNotify('editor.action.toggleRenderWhitespace')<CR>
+nmap cow <Cmd>call VSCodeNotify('editor.action.toggleWordWrap')<CR>
+
+endif
+"}}}
+
 " vim:foldmethod=marker:foldlevel=0
