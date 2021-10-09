@@ -144,6 +144,9 @@ call plug#end()
 " NERDTree {{{
 	map <C-t> :NERDTreeToggle<CR>
 " }}}
+" sneak {{{
+    let g:sneak#use_ic_scs = 1
+" }}}
 " solarized {{{
 	if (has('win32unix'))
 		let g:solarized_use16 = 1
