@@ -40,7 +40,7 @@ Plug 'airblade/vim-gitgutter', Cond(executable('git'))
 Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
-Plug 'junegunn/goyo.vim'", { 'on': 'Goyo' }
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 endif
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 " }}}
