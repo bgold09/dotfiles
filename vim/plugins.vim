@@ -16,7 +16,7 @@ endif
 silent! call plug#begin('~/.vim/bundle')
 
 " colors {{{
-Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-solarized8', Cond(!exists('g:vscode'))
 " }}}
 " syntax & languages {{{
 if !exists('g:vscode')
@@ -45,7 +45,7 @@ endif
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 " }}}
 " integration {{{
-	Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch', Cond(!exists('g:vscode'))
 " }}}
 " movement {{{
 Plug 'tmhedberg/matchit'
@@ -54,7 +54,7 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'justinmk/vim-sneak'
 " }}}
 " editing {{{
-Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim', Cond(!exists('g:vscode'))
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-repeat'
@@ -129,7 +129,9 @@ call plug#end()
 	nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
 " NERDTree {{{
-	map <C-t> :NERDTreeToggle<CR>
+if !exists('g:vscode')
+    map <C-t> :NERDTreeToggle<CR>
+endif
 " }}}
 " sneak {{{
     let g:sneak#use_ic_scs = 1
@@ -138,11 +140,13 @@ call plug#end()
 	if (has('win32unix'))
 		let g:solarized_use16 = 1
 	endif
-	colorscheme solarized8
-	nnoremap <F5> :<c-u>exe "colors" (g:colors_name =~# "dark"
-	\ ? substitute(g:colors_name, 'dark', 'light', '')
-	\ : substitute(g:colors_name, 'light', 'dark', '')
-	\ )<cr><CR>
+    if !exists('g:vscode')
+        colorscheme solarized8
+        nnoremap <F5> :<c-u>exe "colors" (g:colors_name =~# "dark"
+            \ ? substitute(g:colors_name, 'dark', 'light', '')
+            \ : substitute(g:colors_name, 'light', 'dark', '')
+            \ )<cr><CR>
+    endif
 " }}}
 " SuperTab {{{
 	let g:SuperTabDefaultCompletionType = 'context'

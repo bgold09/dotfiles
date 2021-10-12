@@ -197,9 +197,12 @@
 	" ask which to jump to
 	nmap <leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
-	" Copy the full path of the current buffer's file 
-	" to the system clipboard
-	nmap <leader>fp :let @* = expand("%:p")<CR>
+    " Copy the full path of the current buffer's file to the system clipboard
+    if exists('g:vscode')
+        nmap <leader>fp <Cmd>call VSCodeNotify('workbench.action.files.copyPathOfActiveFile')<CR>
+    else
+        nmap <leader>fp :let @* = expand("%:p")<CR>
+    endif
 
 	map 0 ^
 "}}}
@@ -221,6 +224,10 @@ if exists('g:vscode')
 
 nmap col <Cmd>call VSCodeNotify('editor.action.toggleRenderWhitespace')<CR>
 nmap cow <Cmd>call VSCodeNotify('editor.action.toggleWordWrap')<CR>
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
 
 endif
 "}}}
