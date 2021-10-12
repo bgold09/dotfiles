@@ -1,7 +1,6 @@
 ﻿# Aliases
 New-Alias -Name g -Value git
 New-Alias -Name which -Value Get-Command
-New-Alias -Name vi -Value gvim
 New-Alias -Name ll -Value Get-ChildItem
 
 # Alias functions
@@ -30,13 +29,9 @@ function gr {
 }
 
 function vup {
-	gvim +PlugUpdate
+    nvim-qt.exe +PlugUpdate
 }
 
 function vi {
-	gvim --remote-silent $args
-}
-
-function nvi {
-	Invoke-Expression "$env:ChocolateyToolsLocation\neovim\Neovim\bin\nvim-qt.exe --qwindowgeometry 615x575 $args"
+    nvim-qt.exe --qwindowgeometry 875x750 $args
 }
