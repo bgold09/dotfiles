@@ -189,7 +189,9 @@
 	endif
 
 	" For when you forget to sudo
-	cmap w!! w !sudo tee % > /dev/null
+    if !exists('g:vscode') && !WINDOWS()
+        cmap w!! w !sudo tee % > /dev/null
+    endif
 
 	" Display all lines with keyword under the cursor, 
 	" ask which to jump to
