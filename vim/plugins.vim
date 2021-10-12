@@ -42,7 +42,6 @@ Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
 Plug 'junegunn/goyo.vim'", { 'on': 'Goyo' }
 endif
-Plug 'sjl/gundo.vim', Cond(has('python'))
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 " }}}
 " integration {{{
@@ -94,13 +93,6 @@ call plug#end()
 		set grepprg=ag\ --nogroup\ --nocolor
 	endif
 " }}}
-" bookmarks {{{
- 	if WINDOWS() || has('win32unix')
-		" TODO: remove after signs issue is resolved for Windows
-		let g:bookmark_sign = '>>'
-		let g:bookmark_annotation_sign = '##'
-	endif
-" }}}
 	" closetag {{{
 	autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 	autocmd FileType html,xhtml,xml,htmldjango,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
@@ -136,11 +128,6 @@ call plug#end()
 	nnoremap <silent> <leader>gd :Gdiff<CR>
 	nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
-" Gundo {{{ 
-	if v:version >= '703' || has('python')
-		nnoremap <leader>u :GundoToggle<CR>
-	endif
-" }}}
 " NERDTree {{{
 	map <C-t> :NERDTreeToggle<CR>
 " }}}
