@@ -67,7 +67,7 @@ if ($IsWindows) {
 
     # is this still needed if installing WSL via wsl.exe?
     $computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
-    if ($computerInfo.Model -eq "Virtual Machine") {
+    if ($computerInfo.Model -ne "Virtual Machine") {
         enableWindowsFeature "Microsoft-Hyper-V-All"
     }
 
