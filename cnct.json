@@ -45,13 +45,22 @@
           "osx": "~/.os.gitconfig"
         },
         "powershell/profile.ps1": {
-          "windows": "~/Documents/WindowsPowerShell/profile.ps1"
+          "windows": [
+            "~/Documents/WindowsPowerShell/profile.ps1",
+            "~/Documents/PowerShell/profile.ps1"
+          ]
         },
         "powershell/aliases.ps1": {
-          "windows": "~/Documents/WindowsPowerShell/aliases.ps1"
+          "windows": [
+            "~/Documents/WindowsPowerShell/aliases.ps1",
+            "~/Documents/PowerShell/aliases.ps1"
+          ]
         },
-        "~/Documents/WindowsPowerShell": {
-          "windows": "~/Documents/PowerShell"
+        "powershell/functions": {
+          "windows": [
+            "~/Documents/WindowsPowerShell/functions",
+            "~/Documents/PowerShell/functions"
+          ]
         },
         "windows/windowsterminal-settings.json": {
           "windows": "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
