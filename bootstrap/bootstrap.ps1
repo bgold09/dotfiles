@@ -1,6 +1,12 @@
 function setRegistryDword {
     param([string]$path, [string]$name, $value)
 
+    if (-not (Test-Path -Path $path))
+    {
+        New-Item -Path (Split-Path -Path $path -Parent) `
+            -Name (Split-Path -Path $path -Leaf)
+    }
+
     New-ItemProperty -Force -PropertyType DWord `
         -Path $path -Name $name -Value $value 
 }
