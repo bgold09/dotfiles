@@ -51,7 +51,7 @@ foreach ($psModuleName in $psModules) {
 if ($IsWindows) {
     # should probably do this before symlink step so that any paths to dotfiles already exist
     Write-Host "Installing packages with winget..."
-    winget install $dotPath\windows\winget-packages.json
+    winget import $dotPath\windows\winget-packages.json --accept-package-agreements
 
     # Install chocolatey
     if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
