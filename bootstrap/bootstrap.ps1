@@ -1,7 +1,12 @@
 function setRegistryDword {
     param([string]$path, [string]$name, $value)
 
-    Set-ItemProperty -Force -PropertyType REG_DWORD `
+    if (-not (Test-Path -Path $path)) {
+        New-Item -Path (Split-Path -Path $path -Parent) `
+            -Name (Split-Path -Path $path -Leaf)
+    }
+
+    New-ItemProperty -Force -PropertyType DWord `
         -Path $path -Name $name -Value $value 
 }
 
@@ -15,7 +20,19 @@ function createRegKeyInfo {
     }
 }
 
-Install-PackageProvider -Name NuGet -Force
+function enableWindowsFeature {
+    param([string]$name)
+
+    $featureInfo = Get-WindowsOptionalFeature -Online -FeatureName $name
+    if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
+            $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
+
+        Write-Host "Enable Windows feature '$name'"
+        Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $name
+    }
+}
+
+$dotPath = "$HOME\.dotfiles"
 
 ## Trust the PowerShell Gallery repository
 $psGalleryName = "PSGallery"
@@ -31,36 +48,40 @@ $psModules = @(
 
 foreach ($psModuleName in $psModules) {
     $module = Get-Module -Name $psModuleName
-    if ($module -eq $null) {
+    if ($null -eq $module) {
         Install-Module -Name $psModuleName
     }
 }
 
-## Install Windows optional features
-$winOptionalFeatures = @(
-   "Microsoft-Windows-Subsystem-Linux",
-   "Microsoft-Hyper-V-All"
-)
+Write-Host "Installing packages with winget..."
+winget import $dotPath\windows\winget-packages.json --accept-package-agreements
 
-foreach ($optionalFeature in $winOptionalFeatures) {
-    $featureInfo = Get-WindowsOptionalFeature -Online -FeatureName $optionalFeature
-    if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
-            $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
-
-        Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $optionalFeature
-    }
+# Install chocolatey
+if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
+    Write-Host "Installing chocolatey CLI"
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
 
-$dotPath = "$env:HOME\.dotfiles"
+# install choco packages
+Write-Host "Installing packages with chocolatey..."
+choco install -y $dotPath\windows\chocolatey-packages.config
+
+$computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
+if ($computerInfo.Model -ne "Virtual Machine") {
+    enableWindowsFeature "Microsoft-Hyper-V-All"
+}
 
 # Set up aliases if we ever need a cmd prompt
-New-ItemProperty -Force -PropertyType REG_SZ -Path "HKCU\Software\Microsoft\Command Processor" `
+New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
     -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd"
 
 # see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
 # http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
-New-ItemProperty -Force -PropertyType REG_BINARY -Path "HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
-    -Name "Scancode Map" -Value 0000000000000000020000001D003A0000000000
+$scancodeMapHex = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | ForEach-Object { "0x$_" }
+New-ItemProperty -Force -PropertyType Binary -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
+    -Name "Scancode Map" -Value ([byte[]]$scancodeMapHex)
 
 $explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 $virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
@@ -68,7 +89,10 @@ $regKeys = @(
     createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
     createRegKeyInfo $explorerRegPath "HideFileExt" 0
     createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
-    createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
+    createRegKeyInfo $explorerRegPath "MultiTaskingAltTabFilter" 3
+    createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "SearchboxTaskbarMode" 0
+    createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" "PenWorkspaceButtonDesiredVisibility " 0
+    createRegKeyInfo "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" 2
     createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
     createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
     createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
@@ -76,4 +100,24 @@ $regKeys = @(
 
 foreach ($item in $regKeys) {
     setRegistryDword $item.Path $item.Name $item.Value
+}
+
+# install VS Code extensions 
+$vscodeExtensions = @(
+    'asvetliakov.vscode-neovim'
+    'DavidAnson.vscode-markdownlint'
+    'donjayamanne.githistory'
+    'eamodio.gitlens'
+    'James-Yu.latex-workshop'
+    'ms-dotnettools.csharp'
+    'ms-vscode.powershell'
+    'streetsidesoftware.code-spell-checker'
+    'vscodevim.vim'
+)
+
+$vscodeInstalledExtensions = code --list-extensions
+foreach ($extensionName in $vscodeExtensions) {
+    if ($vscodeInstalledExtensions -notcontains $extensionName) {
+        code --install-extension $extensionName
+    }
 }
