@@ -1,12 +1,11 @@
 # dotfiles
 
-These are my dotfiles, which includes configurations for [bash](https://www.gnu.org/software/bash/bash.html), [vim](http://vim.org), [git](http://git-scm.org), [python](http://python.org) and [tmux](http://tmux.sourceforge.net).
+These are my dotfiles, which includes configurations for [bash](https://www.gnu.org/software/bash/bash.html),
+[vim](http://vim.org), [git](http://git-scm.org), and [powershell](https://docs.microsoft.com/en-us/powershell/scripting/overview).
 
 ## Installation
 
 ### Windows
-
-prereq: winget
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force && `
@@ -30,13 +29,9 @@ vim +PlugInstall +qall
 
 ### Completing the configuration
 
-* Install the [solarized](http://ethanschoonover.com/solarized) colorscheme for your terminal emulator of choice.
-* Patch Consolas using the font patcher distributed with 
-  [nerd-fonts](https://github.com/ryanoasis/nerd-fonts). Due to licensing, 
-  Consolas cannot be distributed in its patched form. 
-* For parallel installation of vim plugins, install the proper version of python or ruby for your build of vim (see ```:help ruby-dynamic``` or ```:help python-dynamic``` for more information).
+* Patch Consolas using the font patcher distributed with [nerd-fonts](https://github.com/ryanoasis/nerd-fonts).
+  Due to licensing, Consolas cannot be distributed in its patched form.
 * Add the following line to your ```.localrc```: ```export SOLARIZED='on'```
-* If you plan to use gVim for Windows, install [git](http://git-scm.org) and choose the option 'Use Git from the Windows Command Prompt' during installation.
 
 ## What's Inside
 
@@ -51,84 +46,7 @@ vim +PlugInstall +qall
 * ```system``` - files here will be symlinked to ```home```
 * ```tmux``` - configuration for tmux
 * ```vim``` - a lot of vimrc tweaks, including the following plugins managed by [vim-plug]:
-    * [airline] - statusline/tabline for vim
-    * [ack.vim] - vim plugin for running alternative search tools, e.g. the [silver_searcher]
-    * [better-whitespace] - better whitespace highlighting
-    * [bookmarks] - allows toggling bookmarks per line
-    * [closetag] - close open HTML/XML tags
-    * [chsarp] - enhancements to vim C# functionality 
-    * [cpp-enhanced-highlight] - additional Vim syntax highlighting for C++ (including C++11/14) 
-    * [CtrlP] - full path fuzzy file, buffer, mru, tag, ... finder
-    * [ctrlp-funky] - navigate and jump to function definitions using CtrlP
-    * [delimitMate] - auto-completion for quotes, brackets, etc.
-    * [DetectIndent] - detect the indentation settings for an open file
-    * [devicons] - Adds file type glyphs/icons to many popular Vim plugins
-    * [diffconflicts] - A better Vimdiff Git mergetool
-    * [dispatch] - asynchronous build and test dispatcher
-    * [fugitive] - git wrapper
-    * [gitgutter] - shows a git diff in the gutter (sign column) and stages/reverts hunks
-    * [gitv] - Git repository viewer
-    * [goyo] - distraction-free writing mode
-    * [gtfo] - opens the file manager or terminal at the directory of the current file
-    * [Gundo] - visualization of the vim undo tree
-    * [javascript] - Vastly improved Javascript indentation and syntax support in Vim
-    * [json] - syntax highlighting for JSON
-    * [matchit] - match '%' to more than just single characters
-    * [multiple-cursors] - Sublime Text style multiple selections
-    * [NERDTree] - directory tree explorer
-    * [ps1] - PowerShell syntax highlighting for vim
-    * [repeat.vim] - enable repeating supported plugin maps with "."
-    * [sneak.vim] - jump to any location specified by two characters
-    * [solarized8] - optimized Solarized colorschemes with truecolor support
-    * [supertab] - allows you to use &lt;Tab&gt; for completion
-    * [surround] - delete, add and change surroundings (brackets, quotes, etc.)
-    * [Tagbar] - browse tags in source code
-    * [targets] - provides additional text objects
-    * [tComment] - provides easy to use, file-type sensible comments
-    * [typescript] - Typescript syntax files for vim
-    * [unimpaired] - pairs of handy bracket mappings
-    * [visual-star-search] - star search for Visual mode
 * ```windows``` - environment for Windows CMD
-
-[vim-plug]: https://github.com/junegunn/vim-plug
-[airline]: https://github.com/bling/vim-airline
-[ack.vim]: https://github.com/mileszs/ack.vim
-[bookmarks]: https://github.com/MattesGroeger/vim-bookmarks
-[better-whitespace]: https://github.com/ntpeters/vim-better-whitespace
-[silver_searcher]: https://github.com/ggreer/the_silver_searcher
-[closetag]: https://github.com/vim-scripts/closetag.vim
-[chsarp]: https://github.com/OrangeT/vim-csharp
-[cpp-enhanced-highlight]: https://github.com/octol/vim-cpp-enhanced-highlight
-[CtrlP]: https://github.com/ctrlpvim/ctrlp.vim
-[ctrlp-funky]: https://github.com/tacahiroy/ctrlp-funky
-[delimitMate]: https://github.com/raimondi/delimitmate
-[DetectIndent]: https://github.com/ciaranm/detectindent
-[devicons]: https://github.com/ryanoasis/vim-devicons/
-[diffconflicts]: https://github.com/whiteinge/diffconflicts
-[dispatch]: https://github.com/tpope/vim-dispatch
-[fugitive]: https://github.com/tpope/vim-fugitive
-[gitgutter]: https://github.com/airblade/vim-gitgutter
-[gitv]: https://github.com/gregsexton/gitv
-[goyo]: https://github.com/junegunn/goyo.vim
-[gtfo]: https://github.com/justinmk/vim-gtfo
-[Gundo]: https://github.com/sjl/gundo.vim
-[javascript]: https://github.com/pangloss/vim-javascript
-[json]: https://github/com/elzr/vim-json
-[matchit]: https://github.com/tmhedberg/matchit
-[multiple-cursors]: https://github.com/terryma/vim-multiple-cursors
-[NERDTree]: https://github.com/scrooloose/nerdtree
-[ps1]: https://github.com/pprovost/vim-ps1
-[repeat.vim]: https://github.com/tpope/vim-repeat
-[solarized8]: https://github.com/lifepillar/vim-solarized8
-[sneak.vim]: https://github.com/justinmk/vim-sneak
-[supertab]: https://github.com/ervandew/supertab
-[surround]: https://github.com/tpope/vim-surround
-[Tagbar]: https://github.com/majutsushi/tagbar
-[targets]: https://github.com/wellle/targets.vim
-[tComment]: https://github.com/tomtom/tcomment_vim
-[typescript]: https://github.com/leafgarland/typescript-vim
-[unimpaired]: https://github.com/tpope/vim-unimpaired
-[visual-star-search]: https://github.com/bronson/vim-visual-star-search
 
 ## Customization
 
