@@ -53,60 +53,56 @@ foreach ($psModuleName in $psModules) {
     }
 }
 
-if ($IsWindows) {
-    # should probably do this before symlink step so that any paths to dotfiles already exist
-    Write-Host "Installing packages with winget..."
-    winget import $dotPath\windows\winget-packages.json --accept-package-agreements
+Write-Host "Installing packages with winget..."
+winget import $dotPath\windows\winget-packages.json --accept-package-agreements
 
-    # Install chocolatey
-    if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
-        Write-Host "Installing chocolatey CLI"
-        Set-ExecutionPolicy Bypass -Scope Process -Force
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    }
-
-    # install choco packages
-    Write-Host "Installing packages with chocolatey..."
-    choco install -y $dotPath\windows\chocolatey-packages.config
-
-    # is this still needed if installing WSL via wsl.exe?
-    $computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
-    if ($computerInfo.Model -ne "Virtual Machine") {
-        enableWindowsFeature "Microsoft-Hyper-V-All"
-    }
-
-    # Set up aliases if we ever need a cmd prompt
-    New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
-        -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd"
-
-    # see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
-    # http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
-    $scancodeMapHex = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | ForEach-Object { "0x$_" }
-    New-ItemProperty -Force -PropertyType Binary -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
-        -Name "Scancode Map" -Value ([byte[]]$scancodeMapHex)
-
-    $explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
-    $virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
-    $regKeys = @(
-        createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
-        createRegKeyInfo $explorerRegPath "HideFileExt" 0
-        createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
-        createRegKeyInfo $explorerRegPath "MultiTaskingAltTabFilter" 3
-        createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "SearchboxTaskbarMode" 0
-        createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" "PenWorkspaceButtonDesiredVisibility " 0
-        createRegKeyInfo "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" 2
-        createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
-        createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
-        createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
-    )
-
-    foreach ($item in $regKeys) {
-        setRegistryDword $item.Path $item.Name $item.Value
-    }
+# Install chocolatey
+if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
+    Write-Host "Installing chocolatey CLI"
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
 
-# install vs code extensions 
+# install choco packages
+Write-Host "Installing packages with chocolatey..."
+choco install -y $dotPath\windows\chocolatey-packages.config
+
+$computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
+if ($computerInfo.Model -ne "Virtual Machine") {
+    enableWindowsFeature "Microsoft-Hyper-V-All"
+}
+
+# Set up aliases if we ever need a cmd prompt
+New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
+    -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd"
+
+# see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
+# http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
+$scancodeMapHex = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | ForEach-Object { "0x$_" }
+New-ItemProperty -Force -PropertyType Binary -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layout" `
+    -Name "Scancode Map" -Value ([byte[]]$scancodeMapHex)
+
+$explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
+$virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
+$regKeys = @(
+    createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
+    createRegKeyInfo $explorerRegPath "HideFileExt" 0
+    createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
+    createRegKeyInfo $explorerRegPath "MultiTaskingAltTabFilter" 3
+    createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "SearchboxTaskbarMode" 0
+    createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" "PenWorkspaceButtonDesiredVisibility " 0
+    createRegKeyInfo "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" 2
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
+    createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
+)
+
+foreach ($item in $regKeys) {
+    setRegistryDword $item.Path $item.Name $item.Value
+}
+
+# install VS Code extensions 
 $vscodeExtensions = @(
     'asvetliakov.vscode-neovim'
     'DavidAnson.vscode-markdownlint'
