@@ -1,8 +1,7 @@
 function setRegistryDword {
     param([string]$path, [string]$name, $value)
 
-    if (-not (Test-Path -Path $path))
-    {
+    if (-not (Test-Path -Path $path)) {
         New-Item -Path (Split-Path -Path $path -Parent) `
             -Name (Split-Path -Path $path -Leaf)
     }
@@ -109,6 +108,7 @@ if ($IsWindows) {
 
 # install vs code extensions 
 $vscodeExtensions = @(
+    'asvetliakov.vscode-neovim'
     'DavidAnson.vscode-markdownlint'
     'donjayamanne.githistory'
     'eamodio.gitlens'
