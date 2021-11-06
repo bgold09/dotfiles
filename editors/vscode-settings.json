@@ -59,6 +59,12 @@
     },
     "workbench.iconTheme": "vs-seti",
     "workbench.commandPalette.preserveInput": true,
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
     "window.zoomLevel": 0,
 }
