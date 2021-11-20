@@ -64,6 +64,7 @@
                 "name": "Windows PowerShell"
             },
             {
+                "commandline": "ubuntu2004.exe",
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
