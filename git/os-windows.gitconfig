@@ -2,11 +2,11 @@
 	path = ~/.local.gitconfig
 
 [core]
-	editor = gvim -f
+	editor = nvim-qt
 
 [credential]
     helper = manager-core
 
 [mergetool "diffconflicts"]
-	cmd = gvim -c DiffConflicts $MERGED $BASE $LOCAL $REMOTE
+	cmd = nvim-qt +DiffConflicts $MERGED $BASE $LOCAL $REMOTE
 
