@@ -6,6 +6,7 @@ set vb t_vb=       " disable audible bells
 let s:font='Consolas\ NF:h9'
 if has('nvim')
 	GuiTabline 0
+    GuiScrollBar 1
     execute 'GuiFont! ' . s:font
 else
     execute 'set guifont=' . s:font
