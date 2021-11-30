@@ -26,6 +26,7 @@
 	autocrlf = true
 
 [merge]
+    autostash = true
 	tool = diffconflicts
 
 [mergetool "diffconflicts"]
