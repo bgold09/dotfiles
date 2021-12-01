@@ -4,9 +4,6 @@
 [core]
 	editor = nvim-qt
 
-[credential]
-    helper = manager-core
-
 [mergetool "diffconflicts"]
 	cmd = nvim-qt +DiffConflicts $MERGED $BASE $LOCAL $REMOTE
 
