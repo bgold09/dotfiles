@@ -1,10 +1,10 @@
 ﻿$script:scriptDir = [System.IO.Path]::GetDirectoryName("$($script:MyInvocation.MyCommand.Definition)")
 
 # Aliases
-. "$script:scriptDir\aliases.ps1"
+. "$script:scriptDir/aliases.ps1"
 
 # Functions
-Get-ChildItem -Path $script:scriptDir\functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
+Get-ChildItem -Path $script:scriptDir/functions -Recurse -File -Include "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
     . $_.FullName
 }
 
@@ -48,21 +48,22 @@ $script:colors = [PSCustomObject]@{
 }
 
 # Prompt 
+$dirSep = [System.IO.Path]::DirectorySeparatorChar
 function global:prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-    $prompt = colorPromptText $colors.Blue "$env:USERNAME@$env:COMPUTERNAME "
+    $prompt = colorPromptText $colors.Blue "$([Environment]::UserName)@$([Environment]::MachineName) "
 
 	$path = ""
-	if ($pwd.ProviderPath -eq $env:USERPROFILE) {
+    if ($pwd.ProviderPath -eq $HOME) {
 		$path = "~"
 	} else {
 		$parentDirPath = [System.IO.Path]::GetDirectoryName($pwd.ProviderPath)
 		$childDir = [System.IO.Path]::GetFileName($pwd.ProviderPath)
-		if ($parentDirPath -eq $env:USERPROFILE) {
-			$path = "~\$childDir"
-		} else {
-			$path = "$([System.IO.Path]::GetFileName($parentDirPath))\$childDir"
+        if ($parentDirPath -eq $HOME) {
+            $path = "~$dirSep$childDir"
+        } else {
+            $path = "$([System.IO.Path]::GetFileName($parentDirPath))$dirSep$childDir"
 		}
 	}
 
@@ -97,7 +98,9 @@ Set-PSReadLineOption -Colors @{
     Variable = $colors.Green.termColor
 }
 
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+if ($IsWindows) {
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+}
 
 Import-Module posh-git
 $GitPromptSettings.BranchColor.ForegroundColor = $colors.Cyan.xterm
@@ -111,17 +114,19 @@ $GitPromptSettings.DelimStatus.ForegroundColor = [ConsoleColor]::Gray
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
-Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
-    param($wordToComplete, $commandAst, $cursorPosition)
-        [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
-        $Local:word = $wordToComplete.Replace('"', '""')
-        $Local:ast = $commandAst.ToString().Replace('"', '""')
-        winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
-            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-        }
+if ($IsWindows) {
+    Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+        param($wordToComplete, $commandAst, $cursorPosition)
+            [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+            $Local:word = $wordToComplete.Replace('"', '""')
+            $Local:ast = $commandAst.ToString().Replace('"', '""')
+            winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+                [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+            }
+    }
 }
 
-$script:localConfigPath = ".\\localConfig.ps1"
+$script:localConfigPath = "./localConfig.ps1"
 if ((Test-Path $localConfigPath))
 {
 	. $localConfigPath

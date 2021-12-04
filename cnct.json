@@ -45,18 +45,21 @@
           "osx": "~/.os.gitconfig"
         },
         "powershell/profile.ps1": {
+          "linux": "~/.config/powershell/profile.ps1",
           "windows": [
             "~/Documents/WindowsPowerShell/profile.ps1",
             "~/Documents/PowerShell/profile.ps1"
           ]
         },
         "powershell/aliases.ps1": {
+          "linux": "~/.config/powershell/aliases.ps1",
           "windows": [
             "~/Documents/WindowsPowerShell/aliases.ps1",
             "~/Documents/PowerShell/aliases.ps1"
           ]
         },
         "powershell/functions": {
+          "linux": "~/.config/powershell/functions",
           "windows": [
             "~/Documents/WindowsPowerShell/functions",
             "~/Documents/PowerShell/functions"

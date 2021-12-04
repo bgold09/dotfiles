@@ -5,7 +5,7 @@ New-Alias -Name ll -Value Get-ChildItem
 
 # Alias functions
 function dot {
-	 Set-Location $env:USERPROFILE\.dotfiles
+	 Set-Location $HOME/.dotfiles
 }
 
 function touch([string]$filename) {
@@ -28,10 +28,28 @@ function gr {
     Set-Location (git rev-parse --show-toplevel)
 }
 
-function vup {
-    nvim-qt.exe +PlugUpdate
+if ($IsWindows) {
+    function vi {
+        nvim-qt.exe --qwindowgeometry 875x750 $args
+    }
+
+    function vup {
+        nvim-qt.exe +PlugUpdate
+    }
+} else {
+    New-Alias -Name vi -Value nvim
+
+    function vup {
+        nvim +PlugUpdate
+    }
 }
 
-function vi {
-    nvim-qt.exe --qwindowgeometry 875x750 $args
+if ($IsLinux) {
+    function apt-get {
+        sudo apt-get $args
+    }
+
+    function update {
+        sudo apt-get update && sudo apt-get upgrade
+    }
 }
