@@ -81,7 +81,6 @@ call plug#end()
 	let g:airline#extensions#tabline#fnamemod = ':t'
 	let g:airline#extensions#whitespace#enabled = 0
 	set laststatus=2
-	set timeoutlen=1000 ttimeoutlen=0
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
 	endif

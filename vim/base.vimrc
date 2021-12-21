@@ -29,6 +29,7 @@
 	set history=700
 	syntax on
 	set autoread
+    set notimeout ttimeout ttimeoutlen=10
     au FocusGained * :checktime
 	" alternative to 'set autochdir', works better with plugins 
 	autocmd BufEnter * silent! lcd %:p:h
