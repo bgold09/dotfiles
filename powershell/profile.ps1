@@ -98,7 +98,7 @@ Set-PSReadLineOption -Colors @{
     Variable = $colors.Green.termColor
 }
 
-if ($IsWindows) {
+if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 }
 
@@ -114,7 +114,7 @@ $GitPromptSettings.DelimStatus.ForegroundColor = [ConsoleColor]::Gray
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
-if ($IsWindows) {
+if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
         param($wordToComplete, $commandAst, $cursorPosition)
             [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()

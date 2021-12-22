@@ -28,7 +28,7 @@ function gr {
     Set-Location (git rev-parse --show-toplevel)
 }
 
-if ($IsWindows) {
+if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     function vi {
         nvim-qt.exe --qwindowgeometry 875x750 $args
     }
@@ -50,6 +50,6 @@ if ($IsLinux) {
     }
 
     function update {
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update ; sudo apt-get upgrade
     }
 }
