@@ -1,7 +1,15 @@
+function reloadPath() {
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
+        + ";" `
+        + [System.Environment]::GetEnvironmentVariable("Path", "User")
+}
+
 winget install --source winget --id Microsoft.PowerShell
+reloadPath
 
 pwsh -NoProfile -NoLogo -Command {
     winget install --source winget --id Microsoft.dotnet
+    reloadPath
 
     Write-Host "Opening browser; create a GitHub PAT with 'read:packages' scope."
     Start-Process "https://github.com/settings/tokens/new"
