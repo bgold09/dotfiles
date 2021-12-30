@@ -13,16 +13,13 @@
       "force": true,
       "links": {
         "bash": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "bash/bashrc": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "bash/bash_profile": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "bin-windows": {
           "windows": "~/bin"
@@ -74,16 +71,13 @@
         "python/pythonrc.py": null,
         "system/dircolors": null,
         "system/inputrc": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "system/wgetrc": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "tmux/tmux.conf": {
-          "linux": null,
-          "osx": null
+          "unix": null
         },
         "vim": null,
         "vim/base.vimrc": null,
@@ -92,8 +86,7 @@
         },
         "vim/vimrc": {
           "windows": [ "~/_vimrc", "~/Appdata/Local/nvim/init.vim" ],
-          "linux": null,
-          "osx": null
+          "unix": null
         },
       	"vim/ideavimrc": null,
         "windows/vsvimrc": {

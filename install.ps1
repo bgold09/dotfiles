@@ -1,7 +1,7 @@
 winget install --source winget --id Microsoft.PowerShell
 
 pwsh -NoProfile -NoLogo -Command {
-    winget install --source winget --id Microsoft.dotnet --version 3.1.410.15736
+    winget install --source winget --id Microsoft.dotnet
 
     Write-Host "Opening browser; create a GitHub PAT with 'read:packages' scope."
     Start-Process "https://github.com/settings/tokens/new"
