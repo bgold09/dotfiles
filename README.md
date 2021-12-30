@@ -8,8 +8,8 @@ These are my dotfiles, which includes configurations for [bash](https://www.gnu.
 ### Windows
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force && `
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072 && `
+Set-ExecutionPolicy Bypass -Scope Process -Force ; `
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072 ; `
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/bgold09/dotfiles/master/install.ps1'))
 ```
 
