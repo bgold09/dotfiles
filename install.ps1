@@ -1,4 +1,4 @@
-if (-not [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544') {
+if (-not ([Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544')) {
     Write-Host "Not running as an administrator; this script should be run in an admin session to avoid excessive UAC prompts."
     $answer = Read-Host -Prompt "Run anyway? (Y/n)"
     if ($answer -eq "n") {
