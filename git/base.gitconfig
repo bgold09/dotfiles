@@ -46,10 +46,6 @@
 	# branch
 	br = branch
 
-	# cat-file
-	type = cat-file -t
-	dump = cat-file -p
-
 	# checkout
 	co = checkout
 	nb = "!sh -c \"git fetch && git checkout -b $1 origin/$(git config gitflow.branch.develop) --no-track\" -"
@@ -78,7 +74,6 @@
 
 	# log
 	h = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
-	hist = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
 	ht = !git --no-pager h --max-count
 	hn = h origin/develop..HEAD
 
@@ -100,7 +95,6 @@
 	ri = "!sh -c \"git rebase -i HEAD~$1\" -"
 	rnn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i HEAD~$1\" -"
 	rn = "!sh -c \"GIT_SEQUENCE_EDITOR=true git rebase -i $1\" -"
-	up = "!git fetch && git rebase --autostash FETCH_HEAD"
 
 	# reset
 	unstage = reset HEAD
@@ -113,17 +107,6 @@
 	st = status -sb
 	s = status -sb
 	sl = status --long
-
-	# submodule
-	sub = submodule
-	sa = submodule add
-
-[url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-	insteadOf = "github:"
 
 [include]
 	path = ~/.os.gitconfig
