@@ -51,7 +51,7 @@
     "vim.handleKeys": {
         "<C-r>": true
     },
-    "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\nvim-win64\\bin\\nvim.exe",
     "workbench.colorTheme": "Solarized Dark",
     "workbench.colorCustomizations": {
         "editorCursor.background": "#fdf6e3",
