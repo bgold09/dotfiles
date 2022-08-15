@@ -59,6 +59,7 @@
     },
     "workbench.iconTheme": "vs-seti",
     "workbench.commandPalette.preserveInput": true,
+    "workbench.tree.indent": 24,
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
