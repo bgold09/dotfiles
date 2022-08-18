@@ -13,6 +13,7 @@
         { "PackageIdentifier": "Microsoft.VisualStudio.2019.Enterprise" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
+        { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "vim.vim" }
       ],
       "SourceDetails": {
