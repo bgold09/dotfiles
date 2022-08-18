@@ -5,6 +5,7 @@
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
         { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "JFLarvoire.Ag" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.dotnet" },
         { "PackageIdentifier": "Microsoft.GitCredentialManagerCore" },
