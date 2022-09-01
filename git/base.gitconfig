@@ -37,6 +37,9 @@
 [mergetool]
 	keepBackup = false
 
+[pull]
+    twohead = ort
+
 [alias]
 	# add
 	a = add
