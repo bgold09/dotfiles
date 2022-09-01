@@ -57,7 +57,7 @@
 	ch = cherry-pick
 
 	# cleanup
-	cleanup = !git remote prune origin && git gc
+	cleanup = !git remote prune origin && git gc --auto
 	nuke = clean -dfx
 
 	# commit
