@@ -115,6 +115,10 @@ $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
 Import-Module Terminal-Icons
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook --cmd cd powershell | Out-String)
+})
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
