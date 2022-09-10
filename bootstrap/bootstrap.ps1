@@ -44,11 +44,12 @@ if (!$psGallery.Trusted) {
 ## Install PowerShell modules
 $psModules = @(
    "posh-git" 
+   "Terminal-Icons"
 )
 
 Write-Host "Installing PowerShell modules"
 foreach ($psModuleName in $psModules) {
-    $module = Get-Module -Name $psModuleName
+    $module = Get-InstalledModule -Name $psModuleName
     if ($null -eq $module) {
         Install-Module -Name $psModuleName
     }

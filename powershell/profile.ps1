@@ -114,6 +114,8 @@ $GitPromptSettings.DelimStatus.ForegroundColor = [ConsoleColor]::Gray
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
+Import-Module Terminal-Icons
+
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
         param($wordToComplete, $commandAst, $cursorPosition)
