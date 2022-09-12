@@ -1,18 +1,19 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "copyFormatting": "none",
-    "copyOnSelect": true,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    "keybindings": [
+    "actions": 
+    [
         {
-            "command": {
+            "command": 
+            {
                 "action": "globalSummon",
                 "monitor": "toCurrent"
             },
             "keys": "win+`"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -27,7 +28,8 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -35,26 +37,36 @@
             "keys": "alt+shift+d"
         }
     ],
-    "tabSwitcherMode": false,
-    "disabledProfileSources": [
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "disabledProfileSources": 
+    [
         "Windows.Terminal.Azure"
     ],
-    "profiles": {
-        "defaults": {
+    "minimizeToNotificationArea": true,
+    "profiles": 
+    {
+        "defaults": 
+        {
             "bellStyle": "none",
             "colorScheme": "Solarized Dark",
             "cursorColor": "#268BD2",
             "cursorShape": "filledBox",
-            "fontSize": 11,
-            "fontFace": "Consolas NF"
+            "font": 
+            {
+                "face": "Consolas NF",
+                "size": 11
+            }
         },
-        "list": [
+        "list": 
+        [
             {
                 "colorScheme": "Solarized Dark",
+                "commandline": "pwsh.exe -nologo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "commandline": "pwsh.exe -nologo",
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
@@ -64,21 +76,38 @@
                 "name": "Windows PowerShell"
             },
             {
-                "commandline": "ubuntu2004.exe",
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
+            },
+            {
+                "guid": "{0584b62d-bd61-5d71-87c7-b9c8f22ff0f7}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{e67a2317-0752-598b-8255-8d0496a15ca5}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{df8eb523-fba5-5a56-9000-517fc4af1411}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{f6ce0aa5-5c95-5a87-9b05-2ff7362cdb05}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
-    "schemes": [
+    "schemes": 
+    [
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -286,5 +315,6 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ]
+    ],
+    "tabSwitcherMode": "disabled"
 }
