@@ -83,9 +83,13 @@ Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord
 Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+Backspace -Function BackwardKillWord
 Set-PSReadlineKeyHandler -Key Escape -Function RevertLine
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd 
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+if ($PSVersionTable.PSEdition -ne 'Desktop') {
+    Set-PSReadLineOption -PredictionSource None
+}
 
 Set-PSReadLineOption -Colors @{
     Command = $colors.Yellow.termColor
