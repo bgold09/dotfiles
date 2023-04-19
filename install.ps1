@@ -14,7 +14,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
     + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 pwsh -NoProfile -NoLogo -Command {
-    winget install --source winget --id Microsoft.dotnet
+    winget install --source winget --id "Microsoft.DotNet.SDK.6"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
         + ";" `
         + [System.Environment]::GetEnvironmentVariable("Path", "User")
@@ -27,7 +27,7 @@ pwsh -NoProfile -NoLogo -Command {
         --username $c.UserName --password $c.GetNetworkCredential().Password
 
     dotnet tool install --global cnct
-    dotnet tool install --global dotnet-suggest
+    dotnet tool install --global dotnet-suggest --version '1.1.327201'
 
     winget install --source winget --id Git.Git
     git clone --recursive https://github.com/bgold09/dotfiles.git $HOME\.dotfiles

@@ -5,12 +5,9 @@
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
         { "PackageIdentifier": "Git.Git" },
-        { "PackageIdentifier": "JFLarvoire.Ag" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
-        { "PackageIdentifier": "Microsoft.dotnet" },
-        { "PackageIdentifier": "Microsoft.GitCredentialManagerCore" },
+        { "PackageIdentifier": "Microsoft.DotNet.SDK.6" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
-        { "PackageIdentifier": "Microsoft.VisualStudio.2019.Enterprise" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },

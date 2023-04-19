@@ -71,6 +71,10 @@ if ($IsWindows) {
     Write-Host "Installing packages with chocolatey..."
     choco install -y $dotPath\windows\chocolatey-packages.config
 
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
+        + ";" `
+        + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
     $computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
     if ($computerInfo.Model -ne "Virtual Machine") {
         enableWindowsFeature "Microsoft-Hyper-V-All"
@@ -78,7 +82,8 @@ if ($IsWindows) {
 
     # Set up aliases if we ever need a cmd prompt
     New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
-        -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd"
+        -Name AutoRun -Value "$dotPath\windows\win32-rc.cmd" `
+        -ErrorAction Ignore
 
     # see http://www.experts-exchange.com/OS/Microsoft_Operating_Systems/Windows/A_2155-Keyboard-Remapping-CAPSLOCK-to-Ctrl-and-Beyond.html
     # http://msdn.microsoft.com/en-us/windows/hardware/gg463447.aspx
