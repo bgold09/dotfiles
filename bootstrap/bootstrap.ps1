@@ -93,7 +93,14 @@ if ($IsWindows) {
 
     $explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
     $virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
+    $themesRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
     $regKeys = @(
+        # Taskbar alignment
+        createRegKeyInfo $explorerRegPath "TaskbarAl" 0
+
+        # Taskbar chat
+        createRegKeyInfo $explorerRegPath "TaskbarMn" 0
+        
         createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
         createRegKeyInfo $explorerRegPath "HideFileExt" 0
         createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
@@ -105,6 +112,8 @@ if ($IsWindows) {
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
+        createRegKeyInfo $themesRegPath AppsUseLightTheme 0
+        createRegKeyInfo $themesRegPath SystemUsesLightTheme 0
     )
 
     foreach ($item in $regKeys) {
