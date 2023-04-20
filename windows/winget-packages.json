@@ -11,6 +11,7 @@
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },
+        { "PackageIdentifier": "sharkdp.bat" },
         { "PackageIdentifier": "vim.vim" }
       ],
       "SourceDetails": {
