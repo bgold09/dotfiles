@@ -4,6 +4,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
+        { "PackageIdentifier": "ajeetdsouza.zoxide" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.6" },
