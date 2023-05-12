@@ -92,7 +92,7 @@
 				<line data="{PowerShell::Core (Admin)}"/>
 				<line data="{PowerShell::PowerShell (Admin)}"/>
 			</value>
-			<value name="SingleInstance" type="hex" data="00"/>
+			<value name="SingleInstance" type="hex" data="01"/>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
 			<value name="Multi" type="hex" data="01"/>
 			<value name="Multi.ShowButtons" type="hex" data="01"/>
@@ -293,7 +293,7 @@
 			<value name="TabDblClick" type="ulong" data="1"/>
 			<value name="TabBtnDblClick" type="ulong" data="0"/>
 			<value name="TabsOnTaskBar" type="hex" data="02"/>
-			<value name="TaskBarOverlay" type="hex" data="01"/>
+			<value name="TaskBarOverlay" type="hex" data="00"/>
 			<value name="TaskbarProgress" type="hex" data="01"/>
 			<value name="TabCloseMacro" type="string" data=""/>
 			<value name="TabFontFace" type="string" data="Segoe UI"/>
