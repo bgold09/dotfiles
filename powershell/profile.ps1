@@ -78,7 +78,7 @@ function global:prompt {
 }
 
 # PSReadline configuration
-Set-PSReadlineOption -EditMode Emacs
+Set-PSReadlineOption -EditMode Emacs -BellStyle None
 Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+Backspace -Function BackwardKillWord
