@@ -15,30 +15,46 @@
         "**/*.projhash": true,
         "**/*.userData": true,
         "**/*.assemblies": true,
-        "**/.DS_Store": true, 
+        "**/.DS_Store": true,
         "**/msbuild.log": true,
         "**/TypeScriptCompilerOutput.txt": true
     },
-    "vim.hlsearch": true, 
+    "vim.hlsearch": true,
     "vim.incsearch": true,
     "vim.ignorecase": true,
     "vim.smartcase": true,
     "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [ "<C-L>" ],
-            "commands": [ ":nohl" ]
+            "before": [
+                "<C-L>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
         },
         {
-            "before": [ "<C-R>" ],
-            "commands": [ "redo" ]
+            "before": [
+                "<C-R>"
+            ],
+            "commands": [
+                "redo"
+            ]
         },
         {
-            "before": [ "leader", "l" ],
-            "commands": [ "editor.action.toggleRenderWhitespace" ]
+            "before": [
+                "leader",
+                "l"
+            ],
+            "commands": [
+                "editor.action.toggleRenderWhitespace"
+            ]
         },
         {
-            "before": ["leader", "w"],
+            "before": [
+                "leader",
+                "w"
+            ],
             "after": [],
             "commands": [
                 {
@@ -47,7 +63,7 @@
                 }
             ]
         }
-     ], 
+    ],
     "vim.handleKeys": {
         "<C-r>": true
     },
