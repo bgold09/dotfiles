@@ -5,7 +5,9 @@
       "Packages": [
         { "PackageIdentifier": "7zip.7zip" },
         { "PackageIdentifier": "ajeetdsouza.zoxide" },
+        { "PackageIdentifier": "BurntSushi.ripgrep.MSVC" },
         { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "jftuga.less" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.6" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
