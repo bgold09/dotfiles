@@ -59,17 +59,6 @@ if ($IsWindows) {
     Write-Host "Installing packages with winget..."
     winget import $dotPath\windows\winget-packages.json --accept-package-agreements
 
-    # Install chocolatey
-    if ($null -eq (Get-Command -ErrorAction SilentlyContinue -Name choco)) {
-        Write-Host "Installing chocolatey CLI"
-        Set-ExecutionPolicy Bypass -Scope Process -Force
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    }
-
-    # install choco packages
-    Write-Host "Installing packages with chocolatey..."
-    choco install -y $dotPath\windows\chocolatey-packages.config
 
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
         + ";" `
