@@ -86,6 +86,9 @@ Set-PSReadlineKeyHandler -Key Escape -Function RevertLine
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+if ((Get-Module PSReadLine).Version -ge [version]::new(2, 2, 6)) {
+    Set-PSReadLineOption -PredictionSource None
+}
 
 if ($PSVersionTable.PSEdition -ne 'Desktop') {
     Set-PSReadLineOption -PredictionSource None
