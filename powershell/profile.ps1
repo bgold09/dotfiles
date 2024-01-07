@@ -107,6 +107,7 @@ Set-PSReadLineOption -Colors @{
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+    $env:PATH = "$env:PATH;$env:LOCALAPPDATA\Microsoft\WinGet\Links"
 }
 
 Import-Module posh-git
