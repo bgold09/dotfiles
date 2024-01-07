@@ -49,7 +49,7 @@ $psModules = @(
 
 Write-Host "Installing PowerShell modules"
 foreach ($psModuleName in $psModules) {
-    $module = Get-InstalledModule -Name $psModuleName
+    $module = Get-Module -ListAvailable -Name $psModuleName
     if ($null -eq $module) {
         Install-Module -Name $psModuleName
     }
