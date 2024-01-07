@@ -8,8 +8,13 @@ silent function! WINDOWS()
 endfunction
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-	    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    if WINDOWS()
+        silent !curl -fLo \%HOME\%/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    else
+        silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    endif
 	autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
