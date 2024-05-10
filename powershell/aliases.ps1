@@ -12,6 +12,10 @@ function touch([string]$filename) {
 	New-Item -Type file $filename
 }
 
+function bat {
+    bat.exe --pager="less --RAW-CONTROL-CHARS --ignore-case" $args
+}
+
 function gs {
 	git status -sb $args
 }

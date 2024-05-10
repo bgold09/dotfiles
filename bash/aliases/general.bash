@@ -3,6 +3,8 @@ alias grep='grep --color'                     # show differences in color
 alias egrep='egrep --color=auto'              # show differences in color
 alias fgrep='fgrep --color=auto'              # show differences in color
 
+alias bat='bat --pager="less --RAW-CONTROL-CHARS --ignore-case"'
+
 ## Listing files with `ls`
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then eval "`dircolors -b`"; fi
 
