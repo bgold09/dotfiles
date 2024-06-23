@@ -37,11 +37,18 @@ Plug 'docunext/closetag.vim'
 " }}}
 " interface {{{
 if !exists('g:vscode')
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky' | Plug 'sgur/ctrlp-extensions.vim'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+    if has('nvim')
+        Plug 'nvim-lualine/lualine.nvim'
+        Plug 'MunifTanjim/nui.nvim' | Plug 'nvim-neo-tree/neo-tree.nvim'
+        Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim' | Plug 'nvim-telescope/telescope-frecency.nvim'
+        Plug 'lewis6991/gitsigns.nvim'
+    else
+        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+        Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky' | Plug 'sgur/ctrlp-extensions.vim'
+        Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+        Plug 'airblade/vim-gitgutter'
+    endif
 Plug 'ervandew/supertab'
-Plug 'airblade/vim-gitgutter', Cond(executable('git'))
 Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
@@ -64,13 +71,18 @@ Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " The devicons plugin must be loaded after other plugins it integrates with
-Plug 'ryanoasis/vim-devicons', Cond(!exists('g:vscode'))
+if !exists('g:vscode')
+    if has('nvim') 
+        Plug 'nvim-tree/nvim-web-devicons'
+    else
+        Plug 'ryanoasis/vim-devicons', Cond(!exists('g:vscode'))
+    endif
+endif
 
 " Add or unbundle plugins in a local plugin config 
 if filereadable(expand("~/.plugins.local.vim"))
 	source ~/.plugins.local.vim
 endif
-
 
 call plug#end()
 
@@ -90,7 +102,12 @@ call plug#end()
 	autocmd FileType html,xhtml,xml,htmldjango,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 " }}}
 " CtrlP {{{
-	nnoremap <C-M> :CtrlPMRUFiles<CR>
+    if has('nvim')
+        nnoremap <C-M> :Telescope frecency theme=ivy<CR>
+        nnoremap <C-P> :Telescope find_files theme=ivy<CR>
+    else
+        nnoremap <C-M> :CtrlPMRUFiles<CR>
+    endif
 
 	let g:ctrlp_match_window = 'bottom,order:ttb'
 	if WINDOWS()
@@ -120,9 +137,13 @@ call plug#end()
 	nnoremap <silent> <leader>gd :Gdiff<CR>
 	nnoremap <silent> <leader>gc :Gcommit<CR>
 "}}}
-" NERDTree {{{
+" Tree {{{
 if !exists('g:vscode')
-    map <C-t> :NERDTreeToggle<CR>
+    if has('nvim')
+        map <C-t> :Neotree toggle<CR>
+    else
+        map <C-t> :NERDTreeToggle<CR>
+    endif
 endif
 " }}}
 " sneak {{{
@@ -147,5 +168,8 @@ endif
 	nmap co yo
 " }}}
 
+lua << EOF
+    require('plugins')
+EOF
 
 " vim:foldmethod=marker:foldlevel=0
