@@ -45,12 +45,7 @@ Plug 'airblade/vim-gitgutter', Cond(executable('git'))
 Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 Plug 'whiteinge/diffconflicts'
 Plug 'justinmk/vim-gtfo'
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 endif
-Plug 'mileszs/ack.vim', { 'on': 'Ack' }
-" }}}
-" integration {{{
-Plug 'tpope/vim-dispatch', Cond(!exists('g:vscode'))
 " }}}
 " movement {{{
 Plug 'tmhedberg/matchit'
@@ -88,13 +83,6 @@ call plug#end()
 	set laststatus=2
 	if !exists('g:airline_symbols')
 		let g:airline_symbols = {}
-	endif
-" }}} 
-" ack.vim {{{
-	if executable('ag')
-		let g:ackprg='ag --nogroup --nocolor --column'
-		nnoremap <leader>a :Ack 
-		set grepprg=ag\ --nogroup\ --nocolor
 	endif
 " }}}
 	" closetag {{{
