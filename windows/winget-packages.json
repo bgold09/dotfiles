@@ -15,8 +15,7 @@
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "sharkdp.bat" },
-        { "PackageIdentifier": "sharkdp.fd" },
-        { "PackageIdentifier": "vim.vim" }
+        { "PackageIdentifier": "sharkdp.fd" }
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",
