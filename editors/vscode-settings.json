@@ -46,6 +46,14 @@
         },
         {
             "before": [
+                "<C-P>"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
                 "leader",
                 "l"
             ],
