@@ -25,7 +25,10 @@
           "windows": "~/bin"
         },
         "editors/vscode-settings.json": {
-          "windows": "~/AppData/Roaming/Code/User/settings.json",
+          "windows": [
+            "~/AppData/Roaming/Code - Insiders/User/settings.json",
+            "~/AppData/Roaming/Code/User/settings.json"
+          ],
           "linux": "~/.config/Code/User/settings.json",
           "osx": "~/Library/Application Support/Code/User/settings.json"
         },
