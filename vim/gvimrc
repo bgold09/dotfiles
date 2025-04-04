@@ -1,7 +1,3 @@
-set guioptions-=T  " no toolbar
-set guioptions-=t  " no tearoff menu
-set guioptions+=c  " use console dialog for simple questions
-set guioptions-=m  " don't show GUI menu
 set vb t_vb=       " disable audible bells
 let s:font='Consolas\ NF:h9'
 if has('nvim')
@@ -12,4 +8,8 @@ else
     execute 'set guifont=' . s:font
 	set lines=50
 	set columns=120
+    set guioptions-=T  " no toolbar
+    set guioptions-=t  " no tearoff menu
+    set guioptions-=m  " don't show GUI menu
+    set guioptions+=c  " use console dialog for simple questions
 endif
