@@ -1,0 +1,3 @@
+[include]
+    path = ~/.gitfiles/base.gitconfig
+    path = ~/.os.gitconfig

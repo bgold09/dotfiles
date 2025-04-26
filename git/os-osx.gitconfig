@@ -1,5 +1,2 @@
-[include]
-	path = ~/.local.gitconfig
-
 [credential]
 	helper = osxkeychain

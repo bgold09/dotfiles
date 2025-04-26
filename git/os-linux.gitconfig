@@ -1,6 +1,3 @@
-[include]
-	path = ~/.local.gitconfig
-
 [credential]
 	# set the cache timeout to 1 hour
 	helper = cache --timeout=3600

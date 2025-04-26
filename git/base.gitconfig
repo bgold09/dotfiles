@@ -110,7 +110,3 @@
 	st = status -sb
 	s = status -sb
 	sl = status --long
-
-[include]
-	path = ~/.os.gitconfig
-

@@ -1,6 +1,3 @@
-[include]
-	path = ~/.local.gitconfig
-
 [core]
 	editor = nvim-qt
 
