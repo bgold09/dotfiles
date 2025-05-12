@@ -59,6 +59,7 @@
 	# cleanup
 	cleanup = !git remote prune origin && git gc --auto
 	nuke = clean -dfx
+	prune-branches = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D"
 
 	# commit
 	ci = commit
