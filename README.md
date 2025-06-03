@@ -45,15 +45,14 @@ vim +PlugInstall +qall
 * ```script``` - helpers for installation of these dotfiles
 * ```system``` - files here will be symlinked to ```home```
 * ```tmux``` - configuration for tmux
-* ```vim``` - a lot of vimrc tweaks, including the following plugins managed by [vim-plug]:
+* ```vim``` - vim and Neovim customizations
 * ```windows``` - environment for Windows CMD
 
 ## Customization
 
 To customize your installation, create any of the following files in your home directory and make the desired changes:
-* ```.bootstrap.exclusions```: add the names of any configurations you would like to skip during installation (one per line)
 * ```.localrc```: configure bash; add/remove aliases, define functions, etc. 
-* ```.plugins.local.vim```: add Vundle ```Plugin``` lines to add more vim plugins, or use the ```UnBundle``` command defined in [```plugins.vim```](https://github.com/bgold09/dotfiles/blob/master/vim/plugins.vim) to disable plugins 
+* `.plugins.local.vim`: add `Plug` lines to add more vim plugins.
 
 ## Thanks to...
 
