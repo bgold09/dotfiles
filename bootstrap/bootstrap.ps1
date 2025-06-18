@@ -96,7 +96,6 @@ if ($IsWindows) {
         createRegKeyInfo $explorerRegPath "MultiTaskingAltTabFilter" 3
         createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" "SearchboxTaskbarMode" 0
         createRegKeyInfo "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" "PenWorkspaceButtonDesiredVisibility " 0
-        createRegKeyInfo "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" "ShellFeedsTaskbarViewMode" 2
         createRegKeyInfo "HKCU:\Control Panel\Desktop" "CaretWidth" 2
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "{6D809377-6AF0-444B-8957-A3773F02200E}\ConEmu\ConEmu64.exe" 0
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "com.squirrel.Teams.Teams" 0
