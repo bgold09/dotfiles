@@ -27,7 +27,7 @@ pwsh -NoProfile -NoLogo -Command {
         --username $c.UserName --password $c.GetNetworkCredential().Password
 
     dotnet tool install --global cnct
-    dotnet tool install --global dotnet-suggest --version '1.1.327201'
+    dotnet tool install --global dotnet-suggest --allow-roll-forward
 
     winget install --source winget --id Git.Git
     git clone --recursive https://github.com/bgold09/dotfiles.git $HOME\.dotfiles
