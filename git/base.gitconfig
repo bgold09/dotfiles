@@ -91,6 +91,7 @@
 	p = push
 	po = push origin
 	pom = push origin master
+	pu = push -u
 
 	# rebase
 	r = rebase -i
