@@ -14,6 +14,7 @@
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },
+        { "PackageIdentifier": "equalsraf.neovim-qt" },
         { "PackageIdentifier": "sharkdp.bat" },
         { "PackageIdentifier": "sharkdp.fd" }
       ],
