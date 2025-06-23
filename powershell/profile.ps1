@@ -122,6 +122,14 @@ $GitPromptSettings.DelimStatus.ForegroundColor = [ConsoleColor]::Gray
 $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
+if ($env:WT_SESSION) {
+    $gitEditor = "nvim"
+} else {
+    $gitEditor = "nvim-qt"
+}
+
+$env:GIT_EDITOR = $gitEditor
+
 Import-Module Terminal-Icons
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
