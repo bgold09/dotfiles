@@ -16,6 +16,11 @@
 	set nocompatible
 	if !WINDOWS()
 		set shell=/bin/sh
+    else
+        set shell=pwsh.exe
+        set shellcmdflag=-NoLogo\ -NoProfile\ -Command
+        set shellquote=
+        set shellxquote=
 	endif
 
 	" Use '.vim' instead of '.vimfiles' on Windows 
