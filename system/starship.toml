@@ -1,0 +1,152 @@
+# Starship configuration to match the PowerShell prompt format
+# Disable default format to use custom
+format = """
+$username\
+[@](fg:blue)\
+$hostname\
+[ ](fg:blue)\
+$directory\
+[  ](fg:bright-black)\
+$time\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Username in blue
+[username]
+style_user = "fg:blue"
+style_root = "fg:red"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+# Hostname in blue
+[hostname]
+ssh_only = false
+format = "[$hostname](fg:blue)"
+disabled = false
+
+# Custom directory display to match PowerShell logic
+[directory]
+style = "fg:yellow"
+format = "[$path]($style)"
+truncation_length = 2
+truncate_to_repo = false
+truncation_symbol = ""
+
+# Time in HH:MM:SS format (blue)
+[time]
+disabled = false
+format = "[$time](fg:blue)"
+time_format = "%H:%M:%S"
+
+# Git branch and status combined to match posh-git format exactly
+[git_branch]
+format = "[ \\[[$branch](fg:cyan)$git_status\\]](fg:gray)"
+style = "fg:cyan"
+
+# Git status to match posh-git behavior as closely as possible
+[git_status]
+format = '( $ahead_behind [+$staged](fg:cyan) [~$modified](fg:red) [-$deleted](fg:red)$conflicted)'
+ahead = "≡+${count}"
+behind = "≡-${count}"
+up_to_date = "≡"
+diverged = "≡+${ahead_count}-${behind_count}"
+conflicted = " [!${count}](fg:red)"
+deleted = "${count}"
+renamed = ""
+modified = "${count}"
+staged = "${count}"
+untracked = " [?${count}](fg:red)"
+stashed = " [*${count}](fg:red)"
+style = "fg:red"
+
+# Line break and character
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[❯](fg:green)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:green)"
+
+# Disable modules that aren't in the original prompt
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[battery]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[conda]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[env_var]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+disabled = true
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+
+[jobs]
+disabled = true
+
+[julia]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true

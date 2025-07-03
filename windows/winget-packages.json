@@ -6,6 +6,7 @@
         { "PackageIdentifier": "7zip.7zip" },
         { "PackageIdentifier": "ajeetdsouza.zoxide" },
         { "PackageIdentifier": "BurntSushi.ripgrep.MSVC" },
+        { "PackageIdentifier": "dandavison.delta" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "jftuga.less" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
@@ -16,7 +17,8 @@
         { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "equalsraf.neovim-qt" },
         { "PackageIdentifier": "sharkdp.bat" },
-        { "PackageIdentifier": "sharkdp.fd" }
+        { "PackageIdentifier": "sharkdp.fd" },
+        { "PackageIdentifier": "Starship.Starship" },
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",
