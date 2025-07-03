@@ -20,7 +20,8 @@
         { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "Neovide.Neovide" },
         { "PackageIdentifier": "sharkdp.bat" },
-        { "PackageIdentifier": "sharkdp.fd" }
+        { "PackageIdentifier": "sharkdp.fd" },
+        { "PackageIdentifier": "Starship.Starship" },
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",
