@@ -78,6 +78,7 @@
         "system/inputrc": {
           "unix": null
         },
+        "system/starship.toml": "~/.config/starship.toml",
         "system/wgetrc": {
           "unix": null
         },
