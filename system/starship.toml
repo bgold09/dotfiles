@@ -84,9 +84,9 @@ style = "bright-black"
 disabled = false
 
 [character]
-success_symbol = "[❯](fg:green)"
-error_symbol = "[❯](fg:red)"
-vimcmd_symbol = "[❮](fg:green)"
+success_symbol = "[>](fg:green)"
+error_symbol = "[>](fg:red)"
+vimcmd_symbol = "[<](fg:green)"
 
 # Disable modules that aren't in the original prompt
 [aws]
