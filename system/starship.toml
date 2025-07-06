@@ -6,8 +6,6 @@ $username\
 $hostname\
 [ ](fg:blue)\
 $directory\
-[  ](fg:bright-black)\
-$time\
 [ ](fg:bright-black)\
 $git_branch\
 $git_state\
@@ -101,7 +99,8 @@ disabled = true
 disabled = true
 
 [cmd_duration]
-disabled = true
+format = " [\\(took $duration\\)]($style) "
+style = "blue bold"
 
 [conda]
 disabled = true
