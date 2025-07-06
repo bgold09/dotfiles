@@ -62,7 +62,7 @@ style = "bright-black"
 disabled = false
 
 [character]
-success_symbol = "[>](fg:green)"
+success_symbol = ">"
 error_symbol = "[>](fg:red)"
 vimcmd_symbol = "[<](fg:green)"
 
