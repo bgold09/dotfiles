@@ -38,15 +38,9 @@ truncation_length = 2
 truncate_to_repo = false
 truncation_symbol = ""
 
-# Time in HH:MM:SS format (blue)
-[time]
-disabled = false
-format = "[$time](fg:blue)"
-time_format = "%H:%M:%S"
-
 [git_branch]
-# format = "[\\[](fg:gray)[$branch]($fg:cyan)[\\]](fg:gray)"
-format = "[\\[[$branch](cyan)\\]](fg:gray)"
+format = "[\\[[$symbol$branch](cyan)\\]](fg:gray)"
+symbol =" "
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](purple) ($ahead_behind$stashed)]($style)"
