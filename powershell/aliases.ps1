@@ -34,11 +34,7 @@ function gr {
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     function vi {
-        nvim-qt.exe --qwindowgeometry 875x750 $args
-    }
-
-    function vup {
-        nvim-qt.exe +PlugUpdate
+        neovide.exe --size 1400x1200 $args
     }
 } else {
     New-Alias -Name vi -Value nvim
