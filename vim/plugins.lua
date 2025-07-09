@@ -41,4 +41,17 @@ if type(vim.g.vscode) == "nil" then
         untracked    = { text = '┆' },
       },
     }
+
+    require("scrollbar").setup({
+      marks = {
+        Cursor = {
+          text = "●",
+          priority = 0,
+          color = nil,
+          cterm = nil,
+          highlight = "ScrollbarCursorHandle",
+        },
+      },
+    })
+    require("scrollbar.handlers.gitsigns").setup()
 end

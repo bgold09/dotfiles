@@ -36,6 +36,7 @@ if !exists('g:vscode')
         Plug 'nvim-lualine/lualine.nvim'
         Plug 'MunifTanjim/nui.nvim' | Plug 'nvim-neo-tree/neo-tree.nvim'
         Plug 'nvim-lua/plenary.nvim' | Plug 'nvim-telescope/telescope.nvim' | Plug 'nvim-telescope/telescope-frecency.nvim'
+        Plug 'petertriho/nvim-scrollbar'
         Plug 'lewis6991/gitsigns.nvim'
     else
         Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
