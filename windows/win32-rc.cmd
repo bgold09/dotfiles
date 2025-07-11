@@ -23,7 +23,7 @@ PATH=%PATH%;
 set LESS=-i -M -N -q -x4
 set LESSBINFMT=*d[%02x]
 
-set VISUAL=nvim-qt.exe
+set VISUAL=neovide.exe
 :: interacts badly with SD and windiff -lo
 ::set PAGER=vim.exe -R
 

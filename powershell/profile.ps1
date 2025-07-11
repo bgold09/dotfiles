@@ -125,7 +125,7 @@ $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 if ($env:WT_SESSION) {
     $gitEditor = "nvim"
 } else {
-    $gitEditor = "nvim-qt"
+    $gitEditor = "neovide"
 }
 
 $env:GIT_EDITOR = $gitEditor
