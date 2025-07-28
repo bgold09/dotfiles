@@ -119,6 +119,7 @@
 	" when editing a git commit msg
 	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 	autocmd FileType gitcommit setlocal spell textwidth=72
+	autocmd FileType gitcommit setlocal colorcolumn=73
 " }}}
 
 "#### motion & navigation ####" {{{
