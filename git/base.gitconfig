@@ -48,6 +48,7 @@
 
 	# branch
 	br = branch
+    add-fetch-branch = "!f() { git config --add remote.origin.fetch \"+refs/heads/$1:refs/remotes/origin/$1\"; }; f"
 
 	# checkout
 	co = checkout
