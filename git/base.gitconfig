@@ -13,6 +13,9 @@
 	# instead of a/b/c/d as prefixes for patches
 	mnemonicprefix = true
 
+[delta]
+    line-numbers = true
+
 [color]
 	ui = auto            # covers diff = true, status = auto, branch = auto
 	interactive = auto
@@ -21,7 +24,7 @@
 
 [core]
 	editor = vim
-	pager = less -RFSX
+	pager = delta --syntax-theme=\"Solarized (dark)\"
 	excludesfile = ~/.gitfiles/gitignore
 	autocrlf = true
 
