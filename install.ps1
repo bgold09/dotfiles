@@ -14,7 +14,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
     + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 pwsh -NoProfile -NoLogo -Command {
-    winget install --source winget --id "Microsoft.DotNet.SDK.6"
+    winget install --source winget --id "Microsoft.DotNet.SDK.8"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") `
         + ";" `
         + [System.Environment]::GetEnvironmentVariable("Path", "User")
