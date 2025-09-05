@@ -20,18 +20,6 @@ function createRegKeyInfo {
     }
 }
 
-function enableWindowsFeature {
-    param([string]$name)
-
-    $featureInfo = Get-WindowsOptionalFeature -Online -FeatureName $name
-    if ($featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::Enabled -and
-            $featureInfo.State -ne [Microsoft.Dism.Commands.FeatureState]::EnablePending) {
-
-        Write-Host "Enable Windows feature '$name'"
-        Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName $name
-    }
-}
-
 $dotPath = "$HOME/.dotfiles"
 
 ## Trust the PowerShell Gallery repository
@@ -64,10 +52,6 @@ if ($IsWindows) {
         + ";" `
         + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
-    $computerInfo = Get-CimInstance -ClassName Win32_ComputerSystem
-    if ($computerInfo.Model -ne "Virtual Machine") {
-        enableWindowsFeature "Microsoft-Hyper-V-All"
-    }
 
     # Set up aliases if we ever need a cmd prompt
     New-ItemProperty -Force -PropertyType String -Path "HKCU:\Software\Microsoft\Command Processor" `
