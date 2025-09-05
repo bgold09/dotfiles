@@ -10,7 +10,7 @@
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "jftuga.less" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
-        { "PackageIdentifier": "Microsoft.DotNet.SDK.6" },
+        { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
