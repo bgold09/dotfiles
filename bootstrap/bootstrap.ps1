@@ -67,13 +67,18 @@ if ($IsWindows) {
     $explorerRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
     $virtualDesktopPinnedAppsRegPath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VirtualDesktops\PinnedApps"
     $themesRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+
+    # https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-windows-11
     $regKeys = @(
         # Taskbar alignment
         createRegKeyInfo $explorerRegPath "TaskbarAl" 0
 
         # Taskbar chat
         createRegKeyInfo $explorerRegPath "TaskbarMn" 0
-        
+
+        # Disable widgets button
+        createRegKeyInfo $explorerRegPath "TaskbarDa" 0
+
         createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
         createRegKeyInfo $explorerRegPath "HideFileExt" 0
         createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
