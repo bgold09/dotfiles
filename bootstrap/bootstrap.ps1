@@ -103,12 +103,10 @@ $vscodeExtensions = @(
     'asvetliakov.vscode-neovim'
     'DavidAnson.vscode-markdownlint'
     'donjayamanne.githistory'
-    'eamodio.gitlens'
     'James-Yu.latex-workshop'
     'ms-dotnettools.csharp'
     'ms-vscode.powershell'
     'streetsidesoftware.code-spell-checker'
-    'vscodevim.vim'
 )
 
 if (-not $IsLinux -or ($null -eq $env:WSL_DISTRO_NAME)) {
