@@ -1,6 +1,6 @@
 [core]
-	editor = nvim-qt
+	editor = neovide
 
 [mergetool "diffconflicts"]
-	cmd = nvim-qt +DiffConflicts $MERGED $BASE $LOCAL $REMOTE
+	cmd = neovide +DiffConflicts $MERGED $BASE $LOCAL $REMOTE
 
