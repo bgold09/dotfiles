@@ -15,7 +15,6 @@
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "Neovide.Neovide" },
-        { "PackageIdentifier": "equalsraf.neovim-qt" },
         { "PackageIdentifier": "sharkdp.bat" },
         { "PackageIdentifier": "sharkdp.fd" }
       ],
