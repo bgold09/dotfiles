@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/bgold09/cnct/develop/schema/vNext/cnctConfig.json",
+  "$schema": "https://raw.githubusercontent.com/bgold09/cnct-net/develop/schema/cnctConfig.vnext.json",
   "actions": [
     {
       "actionType": "shell",
@@ -111,6 +111,21 @@
       "files": {
           "git/gitconfig": "~/.gitconfig"
       }
+    },
+    {
+      "actionType": "link",
+      "links": {
+        "windows/powertoys/settings.json": {
+          "windows": "~/AppData/Local/PowerToys/settings.json"
+        }
+      }
+    },
+    {
+      "actionType": "shell",
+      "os": "windows",
+      "shell": "powershell",
+      "command": "./bootstrap/bootstrap-powertoys.ps1",
+      "silent": false
     }
   ]
 }

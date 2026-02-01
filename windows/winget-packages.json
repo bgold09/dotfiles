@@ -12,6 +12,7 @@
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
+        { "PackageIdentifier": "Microsoft.PowerToys" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" },
         { "PackageIdentifier": "Neovim.Neovim" },
