@@ -116,7 +116,7 @@
       "actionType": "link",
       "links": {
         "windows/powertoys/settings.json": {
-          "windows": "~/AppData/Local/PowerToys/settings.json"
+          "windows": "~/AppData/Local/Microsoft/PowerToys/settings.json"
         }
       }
     },
