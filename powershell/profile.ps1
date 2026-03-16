@@ -123,12 +123,13 @@ $GitPromptSettings.DefaultPromptPath = ""
 $GitPromptSettings.DefaultPromptBeforeSuffix.Text = "`n"
 
 if ($env:WT_SESSION) {
-    $gitEditor = "nvim"
+    $editor = "nvim"
 } else {
-    $gitEditor = "neovide"
+    $editor = "neovide"
 }
 
-$env:GIT_EDITOR = $gitEditor
+$env:GIT_EDITOR = $editor
+$env:EDITOR = $editor
 
 Import-Module Terminal-Icons
 Invoke-Expression (& {
