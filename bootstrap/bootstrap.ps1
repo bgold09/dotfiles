@@ -76,9 +76,6 @@ if ($IsWindows) {
         # Taskbar chat
         createRegKeyInfo $explorerRegPath "TaskbarMn" 0
 
-        # Disable widgets button
-        createRegKeyInfo $explorerRegPath "TaskbarDa" 0
-
         createRegKeyInfo $explorerRegPath "ShowCortanaButton" 0
         createRegKeyInfo $explorerRegPath "HideFileExt" 0
         createRegKeyInfo $explorerRegPath "ShowTaskViewButton" 0
