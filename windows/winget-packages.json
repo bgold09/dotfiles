@@ -8,6 +8,7 @@
         { "PackageIdentifier": "BurntSushi.ripgrep.MSVC" },
         { "PackageIdentifier": "dandavison.delta" },
         { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "jftuga.less" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
