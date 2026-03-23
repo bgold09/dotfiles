@@ -6,10 +6,26 @@
         {
             "command": 
             {
+                "action": "sendInput",
+                "input": "\u001b\r"
+            },
+            "id": "User.sendInput.8F63D3A9"
+        },
+        {
+            "command": 
+            {
                 "action": "globalSummon",
                 "monitor": "toCurrent"
             },
             "id": "User.globalSummon.101CF403"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u0017"
+            },
+            "id": "User.sendInput.ctrlW"
         }
     ],
     "copyFormatting": "none",
@@ -22,6 +38,14 @@
     "keybindings": 
     [
         {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.sendInput.8F63D3A9",
+            "keys": "shift+enter"
+        },
+        {
             "id": "User.globalSummon.101CF403",
             "keys": "win+`"
         },
@@ -30,16 +54,16 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "Terminal.FindText",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "id": "Terminal.PasteFromClipboard",
             "keys": "ctrl+v"
         },
         {
-            "id": "Terminal.DuplicatePaneAuto",
-            "keys": "alt+shift+d"
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.sendInput.ctrlW",
+            "keys": "ctrl+backspace"
         }
     ],
     "minimizeToNotificationArea": true,
