@@ -126,6 +126,17 @@
       "shell": "powershell",
       "command": "./bootstrap/bootstrap-powertoys.ps1",
       "silent": false
+    },
+    {
+      "actionType": "cloneGitRepository",
+      "repos": {
+        "https://github.com/bgold09/scripts-pr": "~/dev/scripts-pr"
+      }
+    },
+    {
+      "actionType": "linkExpand",
+      "source": "~/dev/scripts-pr/skills",
+      "target": "~/.github/skills"
     }
   ]
 }
