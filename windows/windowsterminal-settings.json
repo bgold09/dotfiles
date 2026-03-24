@@ -78,7 +78,7 @@
         "defaults": 
         {
             "bellStyle": "none",
-            "colorScheme": "Solarized Dark",
+            "colorScheme": "Solarized Dark (Fixed)",
             "cursorColor": "#268BD2",
             "cursorShape": "filledBox",
             "font": 
@@ -90,7 +90,7 @@
         "list": 
         [
             {
-                "colorScheme": "Solarized Dark",
+                "colorScheme": "Solarized Dark (Fixed)",
                 "commandline": "pwsh.exe -nologo",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
@@ -134,7 +134,32 @@
             }
         ]
     },
-    "schemes": [],
+    "schemes": 
+    [
+        {
+            "background": "#002B36",
+            "black": "#002B36",
+            "blue": "#268BD2",
+            "brightBlack": "#073642",
+            "brightBlue": "#268BD2",
+            "brightCyan": "#2AA198",
+            "brightGreen": "#859900",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#CB4B16",
+            "brightWhite": "#FDF6E3",
+            "brightYellow": "#B58900",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#2AA198",
+            "foreground": "#839496",
+            "green": "#859900",
+            "name": "Solarized Dark (Fixed)",
+            "purple": "#D33682",
+            "red": "#DC322F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#EEE8D5",
+            "yellow": "#B58900"
+        }
+    ],
     "tabSwitcherMode": "disabled",
     "themes": []
 }
