@@ -9,6 +9,7 @@
         { "PackageIdentifier": "dandavison.delta" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "GitHub.cli" },
+        { "PackageIdentifier": "GitHub.Copilot" },
         { "PackageIdentifier": "jftuga.less" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
