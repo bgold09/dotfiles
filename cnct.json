@@ -129,12 +129,14 @@
     },
     {
       "actionType": "cloneGitRepository",
+      "tags": "personal",
       "repos": {
         "https://github.com/bgold09/scripts-pr": "~/dev/scripts-pr"
       }
     },
     {
       "actionType": "linkExpand",
+      "tags": "personal",
       "source": "~/dev/scripts-pr/skills",
       "target": "~/.github/skills"
     }
