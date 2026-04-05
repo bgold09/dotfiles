@@ -138,7 +138,7 @@
       "actionType": "linkExpand",
       "tags": "personal",
       "source": "~/dev/scripts-pr/skills",
-      "target": "~/.github/skills"
+      "target": "~/.agents/skills"
     }
   ]
 }
