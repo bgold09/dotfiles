@@ -74,15 +74,11 @@ install_flatpak_packages() {
     if ! command -v flatpak &>/dev/null; then
         sudo apt-get install -y flatpak
         success "flatpak installed"
-    else
-        success "flatpak already installed"
     fi
 
     if ! flatpak remotes | grep -q flathub; then
         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
         success "flathub remote added"
-    else
-        success "flathub remote already configured"
     fi
 
     local count
