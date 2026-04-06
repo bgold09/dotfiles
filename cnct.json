@@ -91,7 +91,7 @@
         },
         "vim/vimrc": {
           "windows": [ "~/_vimrc", "~/Appdata/Local/nvim/init.vim" ],
-          "unix": null
+          "unix": "~/.config/nvim/init.vim"
         },
         "vim/plugins.lua": {
           "windows": "~/Appdata/Local/nvim/lua/plugins.lua",
