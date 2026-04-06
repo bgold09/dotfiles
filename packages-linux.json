@@ -1,6 +1,7 @@
 {
   "apt": [
     "bat",
+    "curl",
     "git",
     "git-delta",
     "pass",
