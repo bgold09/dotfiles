@@ -245,6 +245,20 @@ install_fonts() {
 }
 
 ###############################################################################
+# zoxide                                                                      #
+###############################################################################
+
+install_zoxide() {
+    if command -v zoxide &>/dev/null; then
+        return
+    fi
+
+    info "Installing zoxide...\n"
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    success "zoxide installed"
+}
+
+###############################################################################
 # Main                                                                        #
 ###############################################################################
 
@@ -254,6 +268,7 @@ install_apt_packages
 install_snap_packages
 install_flatpak_packages
 install_copilot_cli
+install_zoxide
 configure_gnome
 setup_gcm
 install_fonts
