@@ -4,7 +4,7 @@
     {
       "actionType": "shell",
       "os": "linux",
-      "shell": "bash",
+      "shell": "sh",
       "command": "./bootstrap/bootstrap.sh",
       "silent": false
     },

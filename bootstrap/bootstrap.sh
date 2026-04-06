@@ -149,17 +149,37 @@ configure_gnome() {
 
     info "Configuring GNOME settings...\n"
 
+    # When running under sudo, gsettings/dconf need the original
+    # user's D-Bus session. Run these commands as the real user
+    # with the correct bus address.
+    local run_as=""
+    if [ -n "$SUDO_USER" ]; then
+        local uid
+        uid=$(id -u "$SUDO_USER")
+        local bus="unix:path=/run/user/${uid}/bus"
+        run_as="sudo -u $SUDO_USER DBUS_SESSION_BUS_ADDRESS=$bus"
+    fi
+
     # Dark mode
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    $run_as gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     success "Dark mode enabled"
 
     # Caps Lock → Ctrl
-    gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+    $run_as gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
     success "Caps Lock remapped to Ctrl"
 
     # Clock format (24h)
-    gsettings set org.gnome.desktop.interface clock-format '24h'
+    $run_as gsettings set org.gnome.desktop.interface clock-format '24h'
     success "Clock format set to 24h"
+
+    # Ptyxis terminal settings
+    local ptyxis_dconf="$DOTFILES_DIR/system/ptyxis.dconf"
+    if [ -f "$ptyxis_dconf" ]; then
+        $run_as dconf load /org/gnome/Ptyxis/ < "$ptyxis_dconf"
+        success "Ptyxis terminal settings restored"
+    else
+        warn "Ptyxis settings file not found at $ptyxis_dconf"
+    fi
 }
 
 ###############################################################################
