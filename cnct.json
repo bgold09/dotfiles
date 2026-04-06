@@ -3,16 +3,15 @@
   "actions": [
     {
       "actionType": "shell",
-      "os": "windows",
-      "shell": "powershell",
-      "command": "./bootstrap/bootstrap.ps1",
+      "os": "linux",
+      "shell": "bash",
+      "command": "./bootstrap/bootstrap.sh",
       "silent": false
     },
     {
       "actionType": "shell",
-      "os": "linux",
-      "shell": "bash",
-      "command": "./bootstrap/bootstrap.sh",
+      "shell": "powershell",
+      "command": "./bootstrap/bootstrap.ps1",
       "silent": false
     },
     {

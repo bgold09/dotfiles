@@ -106,7 +106,7 @@ $vscodeExtensions = @(
     'streetsidesoftware.code-spell-checker'
 )
 
-if (-not $IsLinux -or ($null -eq $env:WSL_DISTRO_NAME)) {
+if ($null -eq $env:WSL_DISTRO_NAME) {
     $vscodeInstalledExtensions = code --list-extensions
     foreach ($extensionName in $vscodeExtensions) {
         if ($vscodeInstalledExtensions -notcontains $extensionName) {
