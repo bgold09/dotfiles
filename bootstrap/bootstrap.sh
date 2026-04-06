@@ -248,12 +248,8 @@ setup_gcm() {
     fi
 
     if ! git config --global credential.credentialStore &>/dev/null; then
-        if command -v git-credential-manager &>/dev/null; then
-            git-credential-manager configure
-            success "git-credential-manager configured"
-        else
-            warn "git-credential-manager not found, skipping"
-        fi
+        git-credential-manager configure
+        success "git-credential-manager configured"
     fi
 }
 
