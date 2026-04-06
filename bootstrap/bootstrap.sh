@@ -26,9 +26,7 @@ install_apt_packages() {
 
     local to_install=()
     while IFS= read -r pkg; do
-        if dpkg -s "$pkg" &>/dev/null; then
-            success "$pkg already installed"
-        else
+        if ! dpkg -s "$pkg" &>/dev/null; then
             to_install+=("$pkg")
         fi
     done <<< "$packages"
@@ -39,8 +37,6 @@ install_apt_packages() {
         for pkg in "${to_install[@]}"; do
             success "$pkg installed"
         done
-    else
-        success "All apt packages already installed"
     fi
 }
 
@@ -55,9 +51,7 @@ install_snap_packages() {
         name=$(jq -r ".snap[$i] | if type == \"string\" then . else .name end" "$PACKAGES_FILE")
         classic=$(jq -r ".snap[$i] | if type == \"string\" then \"true\" else (.classic // true | tostring) end" "$PACKAGES_FILE")
 
-        if snap list "$name" &>/dev/null; then
-            success "$name already installed (snap)"
-        else
+        if ! snap list "$name" &>/dev/null; then
             local flags=""
             if [ "$classic" = "true" ]; then
                 flags="--classic"
@@ -89,9 +83,7 @@ install_flatpak_packages() {
         name=$(jq -r ".flatpak[$i] | if type == \"string\" then . else .name end" "$PACKAGES_FILE")
         remote=$(jq -r ".flatpak[$i] | if type == \"string\" then \"flathub\" else (.remote // \"flathub\") end" "$PACKAGES_FILE")
 
-        if flatpak list --app | grep -q "$name"; then
-            success "$name already installed (flatpak)"
-        else
+        if ! flatpak list --app | grep -q "$name"; then
             flatpak install -y "$remote" "$name"
             success "$name installed (flatpak)"
         fi
@@ -164,18 +156,13 @@ install_npm_packages() {
     if [ ! -d "$NVM_DIR" ]; then
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
         success "nvm installed"
-    else
-        success "nvm already installed"
     fi
 
-    # Load nvm for this session
     \. "$NVM_DIR/nvm.sh"
 
     if ! nvm ls 24 &>/dev/null; then
         nvm install 24
         success "Node.js 24 installed"
-    else
-        success "Node.js 24 already installed"
     fi
 
     nvm use 24
@@ -187,9 +174,7 @@ install_npm_packages() {
         local pkg
         pkg=$(jq -r ".npm[$i]" "$PACKAGES_FILE")
 
-        if npm list -g "$pkg" &>/dev/null; then
-            success "$pkg already installed (npm)"
-        else
+        if ! npm list -g "$pkg" &>/dev/null; then
             npm install -g "$pkg"
             success "$pkg installed (npm)"
         fi
@@ -288,7 +273,6 @@ install_fonts() {
     local font_dir="$HOME/.local/share/fonts"
 
     if ls "$font_dir"/Inconsolata*.ttf &>/dev/null; then
-        success "Inconsolata Nerd Font already installed"
         return
     fi
 
@@ -335,7 +319,5 @@ install_zoxide
 configure_gnome
 setup_gcm
 install_fonts
-
-e_header "Bootstrap complete!"
 
 kill "$SUDO_KEEPALIVE_PID" 2>/dev/null
