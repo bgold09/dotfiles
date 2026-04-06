@@ -26,7 +26,7 @@
 	editor = vim
 	pager = delta --syntax-theme=\"Solarized (dark)\"
 	excludesfile = ~/.gitfiles/gitignore
-	autocrlf = true
+	autocrlf = input
 
 [merge]
     autostash = true
