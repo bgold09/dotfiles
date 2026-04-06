@@ -17,5 +17,8 @@
   ],
   "github": [
     { "repo": "BurntSushi/ripgrep", "asset": "ripgrep_.*_amd64\\.deb" }
+  ],
+  "npm": [
+    "@github/copilot"
   ]
 }

@@ -153,11 +153,11 @@ install_github_packages() {
 }
 
 ###############################################################################
-# Copilot CLI                                                                 #
+# npm packages                                                                #
 ###############################################################################
 
-install_copilot_cli() {
-    info "Installing Copilot CLI...\n"
+install_npm_packages() {
+    info "Installing npm packages...\n"
 
     export NVM_DIR="$HOME/.nvm"
 
@@ -180,12 +180,20 @@ install_copilot_cli() {
 
     nvm use 24
 
-    if ! npm list -g @github/copilot &>/dev/null; then
-        npm install -g @github/copilot
-        success "@github/copilot installed"
-    else
-        success "@github/copilot already installed"
-    fi
+    local count
+    count=$(jq '.npm // [] | length' "$PACKAGES_FILE")
+
+    for ((i = 0; i < count; i++)); do
+        local pkg
+        pkg=$(jq -r ".npm[$i]" "$PACKAGES_FILE")
+
+        if npm list -g "$pkg" &>/dev/null; then
+            success "$pkg already installed (npm)"
+        else
+            npm install -g "$pkg"
+            success "$pkg installed (npm)"
+        fi
+    done
 }
 
 ###############################################################################
@@ -322,7 +330,7 @@ install_apt_packages
 install_snap_packages
 install_flatpak_packages
 install_github_packages
-install_copilot_cli
+install_npm_packages
 install_zoxide
 configure_gnome
 setup_gcm
