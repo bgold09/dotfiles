@@ -72,8 +72,8 @@
 	amend = commit --amend
 
 	# diff
-	d = diff --color-words
-	dc = diff --color-words --cached
+	d = diff
+	dc = diff --cached
 	last = diff HEAD^
 
 	# flow

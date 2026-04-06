@@ -126,6 +126,7 @@ if ($env:WT_SESSION) {
     $editor = "nvim"
 } else {
     $editor = "neovide"
+    $env:GIT_PAGER = 'less -RFSX'
 }
 
 $env:GIT_EDITOR = $editor
