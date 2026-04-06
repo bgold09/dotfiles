@@ -98,6 +98,60 @@ install_flatpak_packages() {
     done
 }
 
+install_github_packages() {
+    info "Installing GitHub release packages...\n"
+
+    local count
+    count=$(jq '.github // [] | length' "$PACKAGES_FILE")
+
+    for ((i = 0; i < count; i++)); do
+        local repo asset name
+        repo=$(jq -r ".github[$i].repo" "$PACKAGES_FILE")
+        asset=$(jq -r ".github[$i].asset" "$PACKAGES_FILE")
+        name=$(jq -r ".github[$i].name // \"\"" "$PACKAGES_FILE")
+        if [ -z "$name" ]; then
+            name="${repo##*/}"
+        fi
+
+        local release_json latest_version asset_url
+        release_json=$(curl -fsSL "https://api.github.com/repos/${repo}/releases" | \
+            jq '[.[] | select(.prerelease == false)] | first')
+
+        latest_version=$(echo "$release_json" | jq -r '.tag_name | ltrimstr("v")')
+
+        if [ -z "$latest_version" ] || [ "$latest_version" = "null" ]; then
+            warn "Could not determine latest version for $name"
+            continue
+        fi
+
+        if dpkg -s "$name" &>/dev/null; then
+            local installed_version
+            installed_version=$(dpkg-query -W -f='${Version}' "$name" 2>/dev/null | sed 's/-.*//')
+            if [ "$installed_version" = "$latest_version" ]; then
+                continue
+            fi
+            info "Upgrading $name $installed_version -> $latest_version...\n"
+        fi
+
+        asset_url=$(echo "$release_json" | \
+            jq -r --arg pattern "$asset" \
+            '.assets[] | select(.name | test($pattern)) | .browser_download_url' | \
+            head -1)
+
+        if [ -z "$asset_url" ] || [ "$asset_url" = "null" ]; then
+            warn "No matching asset found for $name"
+            continue
+        fi
+
+        local tmp_dir
+        tmp_dir=$(mktemp -d)
+        curl -fsSL -o "$tmp_dir/package.deb" "$asset_url"
+        sudo dpkg -i "$tmp_dir/package.deb"
+        rm -rf "$tmp_dir"
+        success "$name $latest_version installed (github)"
+    done
+}
+
 ###############################################################################
 # Copilot CLI                                                                 #
 ###############################################################################
@@ -267,6 +321,7 @@ e_header "Linux bootstrap"
 install_apt_packages
 install_snap_packages
 install_flatpak_packages
+install_github_packages
 install_copilot_cli
 install_zoxide
 configure_gnome

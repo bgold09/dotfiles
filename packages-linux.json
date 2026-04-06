@@ -14,5 +14,8 @@
   ],
   "flatpak": [
     "com.bitwarden.desktop"
+  ],
+  "github": [
+    { "repo": "BurntSushi/ripgrep", "asset": "ripgrep_.*_amd64\\.deb" }
   ]
 }
