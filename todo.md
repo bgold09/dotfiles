@@ -36,6 +36,10 @@ vim
   - install from snap: sudo snap install nvim --classic
 
 
+## vscode
+
+sudo snap install --classic code
+
 ## copilot
 
 curl -fsSL https://gh.io/copilot-install | bash

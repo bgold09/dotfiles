@@ -23,5 +23,3 @@ git clone --recursive https://github.com/bgold09/dotfiles.git $HOME/.dotfiles
 cd $HOME/.dotfiles
 
 pwsh -NoProfile -NoLogo -Command "& { cnct }"
-
-sudo ./bootstrap.sh

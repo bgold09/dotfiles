@@ -1,0 +1,17 @@
+{
+  "apt": [
+    "bat",
+    "git",
+    "git-delta",
+    "pass",
+    "tmux",
+    "xclip"
+  ],
+  "snap": [
+    { "name": "nvim", "classic": true },
+    { "name": "code", "classic": true }
+  ],
+  "flatpak": [
+    { "name": "com.bitwarden.desktop", "remote": "flathub" }
+  ]
+}

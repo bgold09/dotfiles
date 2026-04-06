@@ -9,6 +9,13 @@
       "silent": false
     },
     {
+      "actionType": "shell",
+      "os": "linux",
+      "shell": "bash",
+      "command": "./bootstrap/bootstrap.sh",
+      "silent": false
+    },
+    {
       "actionType": "link",
       "force": true,
       "links": {
