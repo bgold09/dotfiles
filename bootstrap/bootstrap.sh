@@ -227,33 +227,6 @@ configure_gnome() {
 }
 
 ###############################################################################
-# GPG + pass + git-credential-manager                                         #
-###############################################################################
-
-setup_gcm() {
-    info "Setting up GPG, pass, and git-credential-manager...\n"
-
-    if ! gpg --list-keys "bgold09@users.noreply.github.com" &>/dev/null; then
-        warn "No GPG key found for bgold09@users.noreply.github.com"
-        info "Run manually:\n"
-        info "  gpg --quick-generate-key --batch \"Brian Golden <bgold09@users.noreply.github.com>\"\n"
-        info "  pass init \"Brian Golden <bgold09@users.noreply.github.com>\"\n"
-        info "  git-credential-manager configure\n"
-        return
-    fi
-
-    if [ ! -d "$HOME/.password-store" ]; then
-        pass init "Brian Golden <bgold09@users.noreply.github.com>"
-        success "pass store initialized"
-    fi
-
-    if ! git config --global credential.credentialStore &>/dev/null; then
-        git-credential-manager configure
-        success "git-credential-manager configured"
-    fi
-}
-
-###############################################################################
 # Fonts                                                                       #
 ###############################################################################
 
@@ -306,7 +279,6 @@ install_github_packages
 install_npm_packages
 install_zoxide
 configure_gnome
-setup_gcm
 install_fonts
 
 kill "$SUDO_KEEPALIVE_PID" 2>/dev/null

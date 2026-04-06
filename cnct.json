@@ -119,6 +119,13 @@
       }
     },
     {
+      "actionType": "shell",
+      "os": "linux",
+      "shell": "sh",
+      "command": "./bootstrap/setup-gcm.sh",
+      "silent": false
+    },
+    {
       "actionType": "link",
       "links": {
         "windows/powertoys/settings.json": {
