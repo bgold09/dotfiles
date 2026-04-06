@@ -1,4 +1,4 @@
-alias vi=vim
-alias svi='sudo vi'
-alias edit='vim'
-alias vup='vim +PlugUpdate'
+alias vi=nvim
+alias svi='sudo nvim'
+alias edit='nvim'
+alias vup='nvim +PlugUpdate'
