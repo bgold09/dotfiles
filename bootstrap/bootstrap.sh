@@ -11,7 +11,8 @@ PACKAGES_FILE="$DOTFILES_DIR/packages-linux.json"
 ###############################################################################
 
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done >/dev/null 2>&1 &
+SUDO_KEEPALIVE_PID=$!
 
 ###############################################################################
 # Package installation from packages-linux.json                               #
@@ -262,3 +263,5 @@ setup_gcm
 install_fonts
 
 e_header "Bootstrap complete!"
+
+kill "$SUDO_KEEPALIVE_PID" 2>/dev/null
