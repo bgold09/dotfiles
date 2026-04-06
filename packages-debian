@@ -1,12 +1,6 @@
-exuberant-ctags
-git-core
-nvim
-python
-python-dev
-python-pip
-ruby
-rubygems
-silversearcher-ag
+bat
+git
+git-delta
+pass
 tmux
-vim
 xclip
