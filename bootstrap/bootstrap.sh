@@ -169,9 +169,9 @@ configure_gnome() {
     $run_as gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
     success "Caps Lock remapped to Ctrl"
 
-    # Clock format (24h)
-    $run_as gsettings set org.gnome.desktop.interface clock-format '24h'
-    success "Clock format set to 24h"
+    # Clock format (12h)
+    $run_as gsettings set org.gnome.desktop.interface clock-format '12h'
+    success "Clock format set to 12h"
 
     # Ptyxis terminal settings
     local ptyxis_dconf="$DOTFILES_DIR/system/ptyxis.dconf"
