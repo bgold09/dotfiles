@@ -52,8 +52,8 @@ install_snap_packages() {
 
     for ((i = 0; i < count; i++)); do
         local name classic
-        name=$(jq -r ".snap[$i].name" "$PACKAGES_FILE")
-        classic=$(jq -r ".snap[$i].classic // false" "$PACKAGES_FILE")
+        name=$(jq -r ".snap[$i] | if type == \"string\" then . else .name end" "$PACKAGES_FILE")
+        classic=$(jq -r ".snap[$i] | if type == \"string\" then \"true\" else (.classic // true | tostring) end" "$PACKAGES_FILE")
 
         if snap list "$name" &>/dev/null; then
             success "$name already installed (snap)"
@@ -86,8 +86,8 @@ install_flatpak_packages() {
 
     for ((i = 0; i < count; i++)); do
         local name remote
-        name=$(jq -r ".flatpak[$i].name" "$PACKAGES_FILE")
-        remote=$(jq -r ".flatpak[$i].remote // \"flathub\"" "$PACKAGES_FILE")
+        name=$(jq -r ".flatpak[$i] | if type == \"string\" then . else .name end" "$PACKAGES_FILE")
+        remote=$(jq -r ".flatpak[$i] | if type == \"string\" then \"flathub\" else (.remote // \"flathub\") end" "$PACKAGES_FILE")
 
         if flatpak list --app | grep -q "$name"; then
             success "$name already installed (flatpak)"

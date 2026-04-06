@@ -8,10 +8,10 @@
     "xclip"
   ],
   "snap": [
-    { "name": "nvim", "classic": true },
-    { "name": "code", "classic": true }
+    "code",
+    "nvim"
   ],
   "flatpak": [
-    { "name": "com.bitwarden.desktop", "remote": "flathub" }
+    "com.bitwarden.desktop"
   ]
 }
