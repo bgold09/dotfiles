@@ -233,9 +233,7 @@ configure_gnome() {
 setup_gcm() {
     info "Setting up GPG, pass, and git-credential-manager...\n"
 
-    if gpg --list-keys "bgold09@users.noreply.github.com" &>/dev/null; then
-        success "GPG key already exists"
-    else
+    if ! gpg --list-keys "bgold09@users.noreply.github.com" &>/dev/null; then
         warn "No GPG key found for bgold09@users.noreply.github.com"
         info "Run manually:\n"
         info "  gpg --quick-generate-key --batch \"Brian Golden <bgold09@users.noreply.github.com>\"\n"
@@ -244,16 +242,12 @@ setup_gcm() {
         return
     fi
 
-    if [ -d "$HOME/.password-store" ]; then
-        success "pass store already initialized"
-    else
+    if [ ! -d "$HOME/.password-store" ]; then
         pass init "Brian Golden <bgold09@users.noreply.github.com>"
         success "pass store initialized"
     fi
 
-    if git config --global credential.credentialStore &>/dev/null; then
-        success "git-credential-manager already configured"
-    else
+    if ! git config --global credential.credentialStore &>/dev/null; then
         if command -v git-credential-manager &>/dev/null; then
             git-credential-manager configure
             success "git-credential-manager configured"
@@ -268,14 +262,13 @@ setup_gcm() {
 ###############################################################################
 
 install_fonts() {
-    info "Installing Inconsolata Nerd Font...\n"
-
     local font_dir="$HOME/.local/share/fonts"
 
     if ls "$font_dir"/Inconsolata*.ttf &>/dev/null; then
         return
     fi
 
+    info "Installing Inconsolata Nerd Font...\n"
     mkdir -p "$font_dir"
     local tmp_dir
     tmp_dir=$(mktemp -d)
