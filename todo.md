@@ -1,15 +1,28 @@
-TODO
+# TODO
 
+## Shell
 
+- clear alias
+- other shells?
+- starship
 
-shell?
+## GNOME
+
+- config file
+- map cltr+tab to next tab
+- ctrl backspace mapping
+- escape mapping
+
+## vim
+
+- fix plug.vim install
+
+## other
 
 steam?
 
+skip certain pkgs on WSL
 
-vim
-  - fix plug.vim install
-  - install from snap: sudo snap install nvim --classic
+passkey support
 
-
-
+face ID
