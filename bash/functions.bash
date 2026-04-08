@@ -13,16 +13,3 @@ updir() {
 	fi
 }
 alias ..=updir
-
-# finds the last two directories in the current working 
-# directory (expands $HOME to '~')
-last_two_dirs() {
-	if [ "$(pwd)" == $HOME ]; then
-		echo "~"
-	else
-		t="$(pwd | sed -e "s|$HOME|~|g")"
-		p1="$(echo "$t" | awk -F\/ '{print $(NF-1)}')"
-		p2="$(echo "$t" | awk -F\/ '{print $(NF)}')"
-		echo "$p1/$p2"
-	fi
-}
