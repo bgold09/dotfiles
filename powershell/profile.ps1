@@ -74,6 +74,12 @@ function global:prompt {
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
+    # Emit OSC 9;9 so Windows Terminal tracks the current directory.
+    # This enables new panes/tabs to inherit the current working directory.
+    if ($env:WT_SESSION -and $pwd.Provider.Name -eq "FileSystem") {
+        $Host.UI.Write("$([char]27)]9;9;`"$($pwd.ProviderPath)`"`a")
+    }
+
 	return $prompt
 }
 
