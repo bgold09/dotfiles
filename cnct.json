@@ -49,6 +49,10 @@
         "git/os-osx.gitconfig": {
           "osx": "~/.os.gitconfig"
         },
+        "nushell/config.nu": {
+          "windows": "~/AppData/Roaming/nushell/config.nu",
+          "unix": "~/.config/nushell/config.nu"
+        },
         "powershell/profile.ps1": {
           "linux": "~/.config/powershell/profile.ps1",
           "windows": [

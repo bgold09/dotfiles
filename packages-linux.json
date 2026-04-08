@@ -18,6 +18,9 @@
   "github": [
     { "repo": "BurntSushi/ripgrep", "asset": "ripgrep_.*_amd64\\.deb" }
   ],
+  "brew": [
+    "nushell"
+  ],
   "npm": [
     "@github/copilot"
   ]

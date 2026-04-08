@@ -177,6 +177,28 @@ install_npm_packages() {
     done
 }
 
+install_brew_packages() {
+    info "Installing brew packages...\n"
+
+    if ! command -v brew &>/dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        success "Homebrew installed"
+    fi
+
+    local count
+    count=$(jq '.brew // [] | length' "$PACKAGES_FILE")
+
+    for ((i = 0; i < count; i++)); do
+        local pkg
+        pkg=$(jq -r ".brew[$i]" "$PACKAGES_FILE")
+
+        if ! brew list "$pkg" &>/dev/null; then
+            brew install "$pkg"
+            success "$pkg installed (brew)"
+        fi
+    done
+}
+
 ###############################################################################
 # Main                                                                        #
 ###############################################################################
@@ -187,6 +209,7 @@ install_apt_packages
 install_snap_packages
 install_flatpak_packages
 install_github_packages
+install_brew_packages
 install_npm_packages
 
 kill "$SUDO_KEEPALIVE_PID" 2>/dev/null
