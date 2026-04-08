@@ -158,7 +158,6 @@ $env:GIT_EDITOR = $editor
 $env:EDITOR = $editor
 
 Import-Module Terminal-Icons
-Invoke-Expression (&starship init powershell)
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
     (zoxide init --hook $hook --cmd cd powershell | Out-String)
