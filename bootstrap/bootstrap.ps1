@@ -95,7 +95,7 @@ if ($IsWindows) {
     }
 }
 
-# install VS Code extensions 
+# install VS Code extensions
 $vscodeExtensions = @(
     'asvetliakov.vscode-neovim'
     'DavidAnson.vscode-markdownlint'
@@ -106,11 +106,23 @@ $vscodeExtensions = @(
     'streetsidesoftware.code-spell-checker'
 )
 
-if (-not $IsLinux -or ($null -eq $env:WSL_DISTRO_NAME)) {
-    $vscodeInstalledExtensions = code --list-extensions
+if ($null -eq $env:WSL_DISTRO_NAME) {
+    # When running under sudo on Linux, run code as the real user
+    $runAs = if ($IsLinux -and $env:SUDO_USER) { "sudo -u $env:SUDO_USER" } else { "" }
+
+    $vscodeInstalledExtensions = if ($runAs) {
+        & /bin/sh -c "$runAs code --list-extensions"
+    } else {
+        code --list-extensions
+    }
+
     foreach ($extensionName in $vscodeExtensions) {
         if ($vscodeInstalledExtensions -notcontains $extensionName) {
-            code --install-extension $extensionName
+            if ($runAs) {
+                & /bin/sh -c "$runAs code --install-extension $extensionName"
+            } else {
+                code --install-extension $extensionName
+            }
         }
     }
 }

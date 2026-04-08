@@ -1,0 +1,9 @@
+[/]
+default-profile-uuid='6be0fb65aff2e27448c2e74a69d2cf2a'
+profile-uuids=['6be0fb65aff2e27448c2e74a69d2cf2a']
+window-size=(uint32 180, uint32 44)
+
+[Profiles/6be0fb65aff2e27448c2e74a69d2cf2a]
+custom-font='Inconsolata Nerd Font 12'
+palette='solarized'
+use-custom-font=true

@@ -3,7 +3,13 @@
   "actions": [
     {
       "actionType": "shell",
-      "os": "windows",
+      "os": "linux",
+      "shell": "sh",
+      "command": "./bootstrap/bootstrap.sh",
+      "silent": false
+    },
+    {
+      "actionType": "shell",
       "shell": "powershell",
       "command": "./bootstrap/bootstrap.ps1",
       "silent": false
@@ -72,6 +78,7 @@
         },
         "python/pythonrc.py": null,
         "system/bat.config": {
+          "linux": "~/.config/bat/config",
           "windows": "~/AppData/Roaming/bat/config"
         },
         "system/dircolors": null,
@@ -91,7 +98,7 @@
         },
         "vim/vimrc": {
           "windows": [ "~/_vimrc", "~/Appdata/Local/nvim/init.vim" ],
-          "unix": null
+          "unix": "~/.config/nvim/init.vim"
         },
         "vim/plugins.lua": {
           "windows": "~/Appdata/Local/nvim/lua/plugins.lua",
@@ -111,6 +118,13 @@
       "files": {
           "git/gitconfig": "~/.gitconfig"
       }
+    },
+    {
+      "actionType": "shell",
+      "os": "linux",
+      "shell": "sh",
+      "command": "./bootstrap/setup-gcm.sh",
+      "silent": false
     },
     {
       "actionType": "link",

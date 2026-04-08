@@ -1,0 +1,24 @@
+{
+  "apt": [
+    "bat",
+    "curl",
+    "git",
+    "git-delta",
+    "pass",
+    "tmux",
+    "xclip"
+  ],
+  "snap": [
+    "code",
+    "nvim"
+  ],
+  "flatpak": [
+    "com.bitwarden.desktop"
+  ],
+  "github": [
+    { "repo": "BurntSushi/ripgrep", "asset": "ripgrep_.*_amd64\\.deb" }
+  ],
+  "npm": [
+    "@github/copilot"
+  ]
+}
