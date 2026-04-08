@@ -78,6 +78,7 @@
         },
         "python/pythonrc.py": null,
         "system/bat.config": {
+          "linux": "~/.config/bat/config",
           "windows": "~/AppData/Roaming/bat/config"
         },
         "system/dircolors": null,
