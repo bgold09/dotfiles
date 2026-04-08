@@ -51,7 +51,7 @@ configure_gnome() {
     # Ptyxis terminal settings
     local ptyxis_dconf="$DOTFILES_DIR/system/ptyxis.dconf"
     if [ -f "$ptyxis_dconf" ]; then
-        $run_as bash -c "dconf load /org/gnome/Ptyxis/ < '$ptyxis_dconf'"
+        $run_as dconf load /org/gnome/Ptyxis/ < "$ptyxis_dconf"
         success "Ptyxis terminal settings restored"
     else
         warn "Ptyxis settings file not found at $ptyxis_dconf"

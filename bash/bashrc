@@ -35,7 +35,7 @@ export PYTHONSTARTUP="$HOME/.pythonrc.py"
 
 ## Directory Colors ##
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
-	[ -n "$SOLARIZED" ] && [ -r "$HOME/.dircolors" ] && \
+	[ -n $SOLARIZED ] && [ -r "$HOME/.dircolors" ] && \
 		eval `dircolors $HOME/.dircolors`
 fi
 
