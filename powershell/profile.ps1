@@ -82,11 +82,19 @@ Set-PSReadlineOption -EditMode Emacs -BellStyle None
 Set-PSReadlineKeyHandler -Key Ctrl+LeftArrow -Function BackwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord 
 Set-PSReadlineKeyHandler -Key Ctrl+Backspace -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 Set-PSReadlineKeyHandler -Key Escape -Function RevertLine
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Ctrl+g -Function ViEditVisually
+
+# Map Alt+Enter to AddLine so that Shift+Enter works for multi-line editing
+# in PSReadLine. Windows Terminal sends \e\r (ESC + CR) for Shift+Enter via
+# sendInput action (configured by Copilot CLI's /terminal-setup), and
+# PSReadLine interprets \e<key> as Alt+<key>.
+Set-PSReadLineKeyHandler -Key Alt+Enter -Function AddLine
+
 if ((Get-Module PSReadLine).Version -ge [version]::new(2, 2, 6)) {
     Set-PSReadLineOption -PredictionSource None
 }
