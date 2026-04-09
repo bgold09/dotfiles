@@ -19,7 +19,7 @@ dotnet tool install --global cnct
 
 echo 'Cloning and installing dotfiles...'
 
-git clone --recursive https://github.com/bgold09/dotfiles.git $HOME/.dotfiles
+git clone --recursive https://bgold09@github.com/bgold09/dotfiles.git $HOME/.dotfiles
 cd $HOME/.dotfiles
 
 pwsh -NoProfile -NoLogo -Command "& { cnct }"

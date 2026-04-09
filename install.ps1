@@ -36,7 +36,7 @@ pwsh -NoProfile -NoLogo -Command {
     }
 
     winget install --source winget --id Git.Git
-    git clone --recursive https://github.com/bgold09/dotfiles.git $HOME\.dotfiles
+    git clone --recursive https://bgold09@github.com/bgold09/dotfiles.git $HOME\.dotfiles
     Set-Location $HOME\.dotfiles
     cnct
 } -args $Personal.IsPresent

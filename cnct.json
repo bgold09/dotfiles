@@ -148,7 +148,7 @@
       "actionType": "cloneGitRepository",
       "tags": "personal",
       "repos": {
-        "https://github.com/bgold09/scripts-pr": "~/dev/scripts-pr"
+        "https://bgold09@github.com/bgold09/scripts-pr": "~/dev/scripts-pr"
       }
     },
     {
