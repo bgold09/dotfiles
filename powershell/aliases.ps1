@@ -32,10 +32,12 @@ function gr {
     Set-Location (git rev-parse --show-toplevel)
 }
 
-if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
-    function vi {
-        neovide.exe --size 1400x1200 $args
-    }
+function nvi {
+    neovide.exe --size 1400x1200 $args
+}
+
+if (($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") -and -not $env:WT_SESSION) {
+    New-Alias -Name vi -Value nvi
 } else {
     New-Alias -Name vi -Value nvim
 
