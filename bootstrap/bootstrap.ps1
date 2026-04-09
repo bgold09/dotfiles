@@ -93,6 +93,16 @@ if ($IsWindows) {
     foreach ($item in $regKeys) {
         setRegistryDword $item.Path $item.Name $item.Value
     }
+
+    # Set Windows Terminal as the default terminal application
+    $consoleStartupPath = "HKCU:\Console\%%Startup"
+    if (-not (Test-Path -Path $consoleStartupPath)) {
+        New-Item -Path "HKCU:\Console" -Name "%%Startup" -Force
+    }
+    New-ItemProperty -Force -PropertyType String -Path $consoleStartupPath `
+        -Name DelegationConsole -Value "{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}"
+    New-ItemProperty -Force -PropertyType String -Path $consoleStartupPath `
+        -Name DelegationTerminal -Value "{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}"
 }
 
 # install VS Code extensions
