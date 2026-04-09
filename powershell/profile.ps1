@@ -1,5 +1,15 @@
 ﻿$script:scriptDir = [System.IO.Path]::GetDirectoryName("$($script:MyInvocation.MyCommand.Definition)")
 
+# When Windows PowerShell 5.1 is launched from PowerShell 7 (pwsh), it inherits
+# PSModulePath entries pointing to PS7-only modules compiled for .NET Core.
+# Windows PowerShell cannot load those assemblies, which breaks core modules
+# like Microsoft.PowerShell.Security (Cert: drive, Set-ExecutionPolicy) and
+# Microsoft.PowerShell.Utility (Import-PowerShellDataFile). Strip them early.
+if ($PSVersionTable.PSEdition -eq 'Desktop') {
+    $env:PSModulePath = ($env:PSModulePath -split ';' |
+        Where-Object { $_ -notmatch '[\\\/]powershell[\\\/]7[\\\/]' }) -join ';'
+}
+
 # Aliases
 . "$script:scriptDir/aliases.ps1"
 
