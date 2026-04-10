@@ -4,6 +4,8 @@
     "extensions.experimental.affinity": {
        "asvetliakov.vscode-neovim": 1
     },
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.ignoreTrimWhitespace": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
