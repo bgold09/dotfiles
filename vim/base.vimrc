@@ -120,6 +120,9 @@
 	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 	autocmd FileType gitcommit setlocal spell textwidth=72
 	autocmd FileType gitcommit setlocal colorcolumn=73
+
+    " Wrap text when editing Copilot CLI prompts
+    autocmd BufNewFile,BufRead COPILOT_PROMPT.md setlocal wrap
 " }}}
 
 "#### motion & navigation ####" {{{
@@ -165,6 +168,7 @@
 	set ai        " auto indent
 	set si        " smart indent
 	set nowrap
+	set linebreak
 " }}}
 
 " #### folding ####" {{{
