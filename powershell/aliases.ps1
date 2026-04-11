@@ -45,13 +45,3 @@ if (($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") -and -not $env:WT_S
         nvim +PlugUpdate
     }
 }
-
-if ($IsLinux) {
-    function apt-get {
-        sudo apt-get $args
-    }
-
-    function update {
-        sudo apt-get update ; sudo apt-get upgrade
-    }
-}
