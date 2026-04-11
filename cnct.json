@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/bgold09/cnct-net/develop/schema/cnctConfig.vnext.json",
+  "$schema": "https://raw.githubusercontent.com/bgold09/cnct-net/develop/schema/v0.6.0/cnctConfig.json",
   "actions": [
     {
       "actionType": "shell",
@@ -128,13 +128,10 @@
     },
     {
       "actionType": "link",
+      "os": "windows",
       "links": {
-        "windows/powertoys/settings.json": {
-          "windows": "~/AppData/Local/Microsoft/PowerToys/settings.json"
-        },
-        "windows/powertoys/cmdpal-settings.json": {
-          "windows": "~/AppData/Local/Packages/Microsoft.CommandPalette_8wekyb3d8bbwe/LocalState/settings.json"
-        }
+        "windows/powertoys/settings.json": "~/AppData/Local/Microsoft/PowerToys/settings.json",
+        "windows/powertoys/cmdpal-settings.json": "~/AppData/Local/Packages/Microsoft.CommandPalette_8wekyb3d8bbwe/LocalState/settings.json"
       }
     },
     {
