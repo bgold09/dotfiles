@@ -59,6 +59,7 @@
 	set novisualbell
 	set cursorline
 	set encoding=utf-8
+	set shortmess+=I
 	if has('cmdline_info')
 		set ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
