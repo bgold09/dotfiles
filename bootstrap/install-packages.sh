@@ -144,6 +144,32 @@ install_github_packages() {
     done
 }
 
+install_dotnet_packages() {
+    info "Installing .NET tools...\n"
+
+    local dotnet_install_dir="$HOME/.dotnet"
+    export DOTNET_ROOT="$dotnet_install_dir"
+    export PATH="$dotnet_install_dir:$dotnet_install_dir/tools:$PATH"
+
+    if ! command -v dotnet &>/dev/null || ! dotnet --list-sdks | grep -q '^8\.'; then
+        curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel 8.0 --install-dir "$dotnet_install_dir"
+        success ".NET SDK 8.0 installed"
+    fi
+
+    local count
+    count=$(jq '.dotnet // [] | length' "$PACKAGES_FILE")
+
+    for ((i = 0; i < count; i++)); do
+        local pkg
+        pkg=$(jq -r ".dotnet[$i]" "$PACKAGES_FILE")
+
+        if ! dotnet tool list -g | grep -q "^$pkg "; then
+            dotnet tool install -g "$pkg"
+            success "$pkg installed (dotnet tool)"
+        fi
+    done
+}
+
 install_npm_packages() {
     info "Installing npm packages...\n"
 
@@ -187,6 +213,7 @@ install_apt_packages
 install_snap_packages
 install_flatpak_packages
 install_github_packages
+install_dotnet_packages
 install_npm_packages
 
 kill "$SUDO_KEEPALIVE_PID" 2>/dev/null
