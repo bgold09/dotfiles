@@ -26,6 +26,15 @@
                 "input": "\u0017"
             },
             "id": "User.sendInput.ctrlW"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "left",
+                "profile": "GitHub Copilot"
+            },
+            "id": "User.splitPane.copilotCli"
         }
     ],
     "copyFormatting": "none",
@@ -64,6 +73,10 @@
         {
             "id": "User.sendInput.ctrlW",
             "keys": "ctrl+backspace"
+        },
+        {
+            "id": "User.splitPane.copilotCli",
+            "keys": "shift+alt+c"
         }
     ],
     "minimizeToNotificationArea": true,
@@ -131,6 +144,13 @@
                 "hidden": true,
                 "name": "Developer PowerShell for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; copilot.exe\"",
+                "guid": "{b5e17ed5-5a11-4c1a-9e6f-40a2c0e890a1}",
+                "hidden": false,
+                "icon": "\ud83e\udd16",
+                "name": "GitHub Copilot"
             }
         ]
     },
