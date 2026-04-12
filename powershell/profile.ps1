@@ -21,7 +21,7 @@ Get-ChildItem -Path $script:scriptDir/functions -Recurse -File -Include "*.ps1" 
 $script:ansiEscape = "$([char]27)["
 
 function script:getTermColor {
-    param ($hex, $xterm, $fg, $consoleColor) 
+    param ($hex, $fg, $consoleColor)
 
     return [PSCustomObject]@{
         xterm = "$($ansiEscape)$($fg)m"
@@ -37,24 +37,24 @@ function script:colorPromptText {
 }
 
 $script:colors = [PSCustomObject]@{
-    Red     = getTermColor 0xdc322f 160 31 Red
-    Orange  = getTermColor 0xcb4b16 166
-    Yellow  = getTermColor 0xb58900 136 33 DarkYellow
-    Green   = getTermColor 0x859900 64  32 DarkGreen
-    Blue    = getTermColor 0x268bd2 33  34 DarkBlue
-    Cyan    = getTermColor 0x2aa198 37  36 DarkCyan
-    Violet  = getTermColor 0x6c71c4 61  95 Magenta
-    Magenta = getTermColor 0xd33682 125 35 DarkMagenta
+    Red     = getTermColor 0xdc322f 31 Red
+    Orange  = getTermColor 0xcb4b16
+    Yellow  = getTermColor 0xb58900 33 DarkYellow
+    Green   = getTermColor 0x859900 32 DarkGreen
+    Blue    = getTermColor 0x268bd2 34 DarkBlue
+    Cyan    = getTermColor 0x2aa198 36 DarkCyan
+    Violet  = getTermColor 0x6c71c4 95 Magenta
+    Magenta = getTermColor 0xd33682 35 DarkMagenta
 
-    Base00  = getTermColor 0x657b83 241
-    Base01  = getTermColor 0x586e75 240
-    Base02  = getTermColor 0x073642 235
-    Base03  = getTermColor 0x002b36 234
+    Base00  = getTermColor 0x657b83
+    Base01  = getTermColor 0x586e75
+    Base02  = getTermColor 0x073642
+    Base03  = getTermColor 0x002b36
 
-    Base0   = getTermColor 0x839496 244
-    Base1   = getTermColor 0x93a1a1 245
-    Base2   = getTermColor 0xeee8d5 254
-    Base3   = getTermColor 0xfdf6e3 230
+    Base0   = getTermColor 0x839496
+    Base1   = getTermColor 0x93a1a1
+    Base2   = getTermColor 0xeee8d5
+    Base3   = getTermColor 0xfdf6e3
 }
 
 # Prompt 
