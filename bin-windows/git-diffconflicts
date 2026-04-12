@@ -1,0 +1,14 @@
+#!/bin/sh
+# Wrapper for git mergetool diffconflicts on Windows.
+# Uses nvim in Windows Terminal, neovide otherwise.
+
+MERGED="$1"
+BASE="$2"
+LOCAL="$3"
+REMOTE="$4"
+
+if [ -n "$WT_SESSION" ] && command -v nvim >/dev/null 2>&1; then
+    nvim +DiffConflicts "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+else
+    neovide --no-fork -- +DiffConflicts "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+fi
