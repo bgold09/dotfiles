@@ -111,6 +111,22 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
+                "colorScheme": "Solarized Dark (Fixed)",
+                "commandline": "pwsh.exe -nologo",
+                "elevate": true,
+                "guid": "{3b3b1e55-801a-4bf2-b532-15e825e22564}",
+                "hidden": false,
+                "icon": "\ud83d\udee1\ufe0f",
+                "name": "PowerShell (Admin)"
+            },
+            {
+                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; copilot.exe\"",
+                "guid": "{b5e17ed5-5a11-4c1a-9e6f-40a2c0e890a1}",
+                "hidden": false,
+                "icon": "\ud83e\udd16",
+                "name": "GitHub Copilot"
+            },
+            {
                 "commandline": "powershell.exe -nologo",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
@@ -144,13 +160,6 @@
                 "hidden": true,
                 "name": "Developer PowerShell for VS 2019",
                 "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; copilot.exe\"",
-                "guid": "{b5e17ed5-5a11-4c1a-9e6f-40a2c0e890a1}",
-                "hidden": false,
-                "icon": "\ud83e\udd16",
-                "name": "GitHub Copilot"
             }
         ]
     },
