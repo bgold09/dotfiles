@@ -57,6 +57,23 @@ $script:colors = [PSCustomObject]@{
     Base3   = getTermColor 0xfdf6e3
 }
 
+function Format-Duration {
+    param([TimeSpan]$duration)
+
+    $minutes = [math]::Floor($duration.TotalMinutes)
+    $seconds = $duration.Seconds
+
+    if ($minutes -gt 0) {
+        return "${minutes}m${seconds}s"
+    }
+
+    if ($seconds -gt 0) {
+        return "${seconds}s"
+    }
+
+    return "$([math]::Round($duration.TotalMilliseconds))ms"
+}
+
 # Prompt 
 $dirSep = [System.IO.Path]::DirectorySeparatorChar
 function global:prompt {
@@ -78,8 +95,15 @@ function global:prompt {
 	}
 
     $prompt += colorPromptText $colors.Yellow "$path"
-    $prompt += colorPromptText $colors.Base1 "  "
-    $prompt += colorPromptText $colors.Blue "$(Get-Date -uFormat "%H:%M:%S")"
+
+    $lastCmd = Get-History -Count 1
+    if ($lastCmd -and $lastCmd.Id -ne $script:LastHistoryId) {
+        $script:LastHistoryId = $lastCmd.Id
+        if ($lastCmd.Duration.TotalMilliseconds -ge 2000) {
+            $prompt += colorPromptText $colors.Blue " ($(Format-Duration $lastCmd.Duration))"
+        }
+    }
+
     $prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
