@@ -22,8 +22,8 @@ When adding a new dotfile, add the appropriate `link`/`copy` entry to `cnct.json
 |-----------|---------|
 | `bash/` | `bashrc`, `bash_profile`, `exports.bash`, `functions.bash`, `prompt.bash`, `aliases/`, `completions/` |
 | `bootstrap/` | `bootstrap.sh` (Linux), `bootstrap.ps1` (Windows), `install-packages.sh` (Linux packages) |
-| `bin/` | UNIX executables added to `$PATH` |
-| `bin-windows/` | Windows executables added to `$PATH`; only `.exe`/`.dll` committed |
+| `bin/unix/` | UNIX executables added to `$PATH` |
+| `bin/windows/` | Windows executables added to `$PATH`; only `.exe`/`.dll` committed |
 | `editors/` | VS Code settings |
 | `git/` | `gitconfig` (includes `base.gitconfig` + `~/.os.gitconfig`), `gitignore` |
 | `powershell/` | `profile.ps1`, `aliases.ps1`, `functions.ps1`, `functions/` |
