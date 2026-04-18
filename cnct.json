@@ -76,7 +76,7 @@
         "windows/winget.json": {
           "windows": "~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json"
         },
-        "python/pythonrc.py": null,
+        "lang/python/pythonrc.py": null,
         "system/bat.config": {
           "linux": "~/.config/bat/config",
           "windows": "~/AppData/Roaming/bat/config"
