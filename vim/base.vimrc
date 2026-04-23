@@ -123,7 +123,7 @@
 	autocmd FileType gitcommit setlocal colorcolumn=73
 
     " Wrap text when editing Copilot CLI prompts
-    autocmd BufNewFile,BufRead COPILOT_PROMPT.md setlocal wrap
+    autocmd BufNewFile,BufRead COPILOT_PROMPT.md setlocal wrap spell
 " }}}
 
 "#### motion & navigation ####" {{{
