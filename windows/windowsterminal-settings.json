@@ -120,7 +120,7 @@
                 "name": "PowerShell (Admin)"
             },
             {
-                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; copilot.exe\"",
+                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; $env:EDITOR = 'nvim'; copilot.exe\"",
                 "guid": "{b5e17ed5-5a11-4c1a-9e6f-40a2c0e890a1}",
                 "hidden": false,
                 "icon": "\ud83e\udd16",
