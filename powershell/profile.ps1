@@ -113,7 +113,7 @@ function global:prompt {
     if ($env:WT_SESSION -and $pwd.Provider.Name -eq "FileSystem") {
         $Host.UI.Write("$([char]27)]9;9;`"$($pwd.ProviderPath)`"`a")
         # Write CWD to temp file so split panes with different profiles can inherit it.
-        [System.IO.File]::WriteAllText((Join-Path $env:TEMP '.terminal-cwd'), $pwd.ProviderPath)
+        [System.IO.File]::WriteAllText([System.IO.Path]::Combine($env:TEMP, '.terminal-cwd'), $pwd.ProviderPath)
     }
 
 	return $prompt
@@ -158,7 +158,6 @@ Set-PSReadLineOption -Colors @{
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-    $env:PATH = "$env:PATH;$env:LOCALAPPDATA\Microsoft\WinGet\Links"
 }
 
 Import-Module posh-git
