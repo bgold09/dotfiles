@@ -11,6 +11,7 @@
         { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "GitHub.Copilot" },
         { "PackageIdentifier": "jftuga.less" },
+        { "PackageIdentifier": "junegunn.fzf" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
@@ -20,7 +21,8 @@
         { "PackageIdentifier": "Neovim.Neovim" },
         { "PackageIdentifier": "Neovide.Neovide" },
         { "PackageIdentifier": "sharkdp.bat" },
-        { "PackageIdentifier": "sharkdp.fd" }
+        { "PackageIdentifier": "sharkdp.fd" },
+        { "PackageIdentifier": "sxyazi.yazi" }
       ],
       "SourceDetails": {
         "Argument": "https://winget.azureedge.net/cache",

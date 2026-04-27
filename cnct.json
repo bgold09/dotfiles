@@ -110,6 +110,14 @@
         },
         "windows/ConEmu.xml": {
           "windows": "~/AppData/Roaming/ConEmu.xml"
+        },
+        "terminal/yazi/yazi.toml": {
+          "linux": "~/.config/yazi/yazi.toml",
+          "windows": "~/AppData/Roaming/yazi/config/yazi.toml"
+        },
+        "terminal/yazi/keymap.toml": {
+          "linux": "~/.config/yazi/keymap.toml",
+          "windows": "~/AppData/Roaming/yazi/config/keymap.toml"
         }
       }
     },
@@ -140,6 +148,12 @@
       "shell": "powershell",
       "command": "./bootstrap/bootstrap-powertoys.ps1",
       "silent": false
+    },
+    {
+      "actionType": "environmentVariable",
+      "os": "windows",
+      "name": "YAZI_FILE_ONE",
+      "value": "C:\\Program Files\\git\\usr\\bin\\file.exe"
     },
     {
       "actionType": "cloneGitRepository",
