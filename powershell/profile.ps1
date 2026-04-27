@@ -181,6 +181,7 @@ if ($env:WT_SESSION) {
 
 $env:GIT_EDITOR = $editor
 $env:EDITOR = $editor
+$env:GLAMOUR_STYLE = "$HOME\.dotfiles\terminal\glamour\solarized-dark.json"
 
 Import-Module Terminal-Icons
 Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })

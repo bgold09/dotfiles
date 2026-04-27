@@ -36,6 +36,10 @@ function nvi {
     neovide.exe --size 1400x1200 $args
 }
 
+function glow {
+    glow.exe -s $env:GLAMOUR_STYLE @args
+}
+
 if (($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") -and -not $env:WT_SESSION) {
     New-Alias -Name vi -Value nvi
 } else {
