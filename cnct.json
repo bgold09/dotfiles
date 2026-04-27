@@ -88,8 +88,12 @@
         "system/wgetrc": {
           "unix": null
         },
-        "tmux/tmux.conf": {
+        "tmux/base.tmux.conf": null,
+        "terminal/tmux/tmux.conf": {
           "unix": null
+        },
+        "tmux/psmux.conf": {
+          "windows": "~/.psmux.conf"
         },
         "vim": null,
         "vim/base.vimrc": null,
