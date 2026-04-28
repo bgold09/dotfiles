@@ -27,7 +27,7 @@
         "bash/bash_profile": {
           "unix": null
         },
-        "bin-windows": {
+        "bin/windows": {
           "windows": "~/bin"
         },
         "editors/vscode-settings.json": {
