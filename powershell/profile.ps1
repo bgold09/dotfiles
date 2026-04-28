@@ -182,8 +182,17 @@ if ($env:WT_SESSION) {
 $env:GIT_EDITOR = $editor
 $env:EDITOR = $editor
 
-Import-Module Terminal-Icons
-Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
+if (Get-Module -ListAvailable -Name Terminal-Icons) {
+    Import-Module Terminal-Icons
+} else {
+    Write-Warning "Terminal-Icons module not found; skipping import."
+}
+
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
+} else {
+    Write-Warning "zoxide not found; skipping initialization."
+}
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
