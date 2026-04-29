@@ -11,6 +11,7 @@
         { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "GitHub.Copilot" },
         { "PackageIdentifier": "jftuga.less" },
+        { "PackageIdentifier": "marlocarlo.psmux" },
         { "PackageIdentifier": "Maximus5.ConEmu" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.8" },
         { "PackageIdentifier": "Microsoft.PowerShell" },
