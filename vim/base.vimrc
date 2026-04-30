@@ -59,6 +59,7 @@
 	set novisualbell
 	set cursorline
 	set encoding=utf-8
+	set shortmess+=I
 	if has('cmdline_info')
 		set ruler
 		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
@@ -120,6 +121,9 @@
 	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 	autocmd FileType gitcommit setlocal spell textwidth=72
 	autocmd FileType gitcommit setlocal colorcolumn=73
+
+    " Wrap text when editing Copilot CLI prompts
+    autocmd BufNewFile,BufRead COPILOT_PROMPT.md setlocal wrap spell
 " }}}
 
 "#### motion & navigation ####" {{{
@@ -165,6 +169,7 @@
 	set ai        " auto indent
 	set si        " smart indent
 	set nowrap
+	set linebreak
 " }}}
 
 " #### folding ####" {{{

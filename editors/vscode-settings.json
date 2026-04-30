@@ -4,6 +4,8 @@
     "extensions.experimental.affinity": {
        "asvetliakov.vscode-neovim": 1
     },
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.ignoreTrimWhitespace": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -95,4 +97,14 @@
     },
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "window.zoomLevel": 0,
+    "json.schemaDownload.trustedDomains": {
+        "https://developer.microsoft.com/json-schemas/": true,
+        "https://json-schema.org/": true,
+        "https://json.schemastore.org/": true,
+        "https://raw.githubusercontent.com/devcontainers/spec/": true,
+        "https://raw.githubusercontent.com/microsoft/vscode/": true,
+        "https://schemastore.azurewebsites.net/": true,
+        "https://www.schemastore.org/": true,
+        "https://raw.githubusercontent.com/bgold09/cnct-net/": true
+    },
 }

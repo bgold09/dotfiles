@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get install -y powershell
 
 # Install cnct
-sudo apt-get install -y dotnet-runtime-8.0
+sudo apt-get install -y dotnet-sdk-8.0
 
 dotnet tool install --global cnct
 

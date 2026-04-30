@@ -21,7 +21,7 @@ Get-ChildItem -Path $script:scriptDir/functions -Recurse -File -Include "*.ps1" 
 $script:ansiEscape = "$([char]27)["
 
 function script:getTermColor {
-    param ($hex, $xterm, $fg, $consoleColor) 
+    param ($hex, $fg, $consoleColor)
 
     return [PSCustomObject]@{
         xterm = "$($ansiEscape)$($fg)m"
@@ -37,24 +37,41 @@ function script:colorPromptText {
 }
 
 $script:colors = [PSCustomObject]@{
-    Red     = getTermColor 0xdc322f 160 31 Red
-    Orange  = getTermColor 0xcb4b16 166
-    Yellow  = getTermColor 0xb58900 136 33 DarkYellow
-    Green   = getTermColor 0x859900 64  32 DarkGreen
-    Blue    = getTermColor 0x268bd2 33  34 DarkBlue
-    Cyan    = getTermColor 0x2aa198 37  36 DarkCyan
-    Violet  = getTermColor 0x6c71c4 61  95 Magenta
-    Magenta = getTermColor 0xd33682 125 35 DarkMagenta
+    Red     = getTermColor 0xdc322f 31 Red
+    Orange  = getTermColor 0xcb4b16
+    Yellow  = getTermColor 0xb58900 33 DarkYellow
+    Green   = getTermColor 0x859900 32 DarkGreen
+    Blue    = getTermColor 0x268bd2 34 DarkBlue
+    Cyan    = getTermColor 0x2aa198 36 DarkCyan
+    Violet  = getTermColor 0x6c71c4 95 Magenta
+    Magenta = getTermColor 0xd33682 35 DarkMagenta
 
-    Base00  = getTermColor 0x657b83 241
-    Base01  = getTermColor 0x586e75 240
-    Base02  = getTermColor 0x073642 235
-    Base03  = getTermColor 0x002b36 234
+    Base00  = getTermColor 0x657b83
+    Base01  = getTermColor 0x586e75
+    Base02  = getTermColor 0x073642
+    Base03  = getTermColor 0x002b36
 
-    Base0   = getTermColor 0x839496 244
-    Base1   = getTermColor 0x93a1a1 245
-    Base2   = getTermColor 0xeee8d5 254
-    Base3   = getTermColor 0xfdf6e3 230
+    Base0   = getTermColor 0x839496
+    Base1   = getTermColor 0x93a1a1
+    Base2   = getTermColor 0xeee8d5
+    Base3   = getTermColor 0xfdf6e3
+}
+
+function Format-Duration {
+    param([TimeSpan]$duration)
+
+    $minutes = [math]::Floor($duration.TotalMinutes)
+    $seconds = $duration.Seconds
+
+    if ($minutes -gt 0) {
+        return "${minutes}m${seconds}s"
+    }
+
+    if ($seconds -gt 0) {
+        return "${seconds}s"
+    }
+
+    return "$([math]::Round($duration.TotalMilliseconds))ms"
 }
 
 # Prompt 
@@ -78,8 +95,15 @@ function global:prompt {
 	}
 
     $prompt += colorPromptText $colors.Yellow "$path"
-    $prompt += colorPromptText $colors.Base1 "  "
-    $prompt += colorPromptText $colors.Blue "$(Get-Date -uFormat "%H:%M:%S")"
+
+    $lastCmd = Get-History -Count 1
+    if ($lastCmd -and $lastCmd.Id -ne $script:LastHistoryId) {
+        $script:LastHistoryId = $lastCmd.Id
+        if ($lastCmd.Duration.TotalMilliseconds -ge 2000) {
+            $prompt += colorPromptText $colors.Blue " ($(Format-Duration $lastCmd.Duration))"
+        }
+    }
+
     $prompt += & $GitPromptScriptBlock
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
@@ -88,6 +112,8 @@ function global:prompt {
     # This enables new panes/tabs to inherit the current working directory.
     if ($env:WT_SESSION -and $pwd.Provider.Name -eq "FileSystem") {
         $Host.UI.Write("$([char]27)]9;9;`"$($pwd.ProviderPath)`"`a")
+        # Write CWD to temp file so split panes with different profiles can inherit it.
+        [System.IO.File]::WriteAllText([System.IO.Path]::Combine($env:TEMP, '.terminal-cwd'), $pwd.ProviderPath)
     }
 
 	return $prompt
@@ -132,7 +158,6 @@ Set-PSReadLineOption -Colors @{
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-    $env:PATH = "$env:PATH;$env:LOCALAPPDATA\Microsoft\WinGet\Links"
 }
 
 Import-Module posh-git
@@ -157,11 +182,17 @@ if ($env:WT_SESSION) {
 $env:GIT_EDITOR = $editor
 $env:EDITOR = $editor
 
-Import-Module Terminal-Icons
-Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook --cmd cd powershell | Out-String)
-})
+if (Get-Module -ListAvailable -Name Terminal-Icons) {
+    Import-Module Terminal-Icons
+} else {
+    Write-Warning "Terminal-Icons module not found; skipping import."
+}
+
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
+} else {
+    Write-Warning "zoxide not found; skipping initialization."
+}
 
 if ($IsWindows -or $PSVersionTable.PSEdition -eq "Desktop") {
     Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {

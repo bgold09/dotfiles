@@ -1,6 +1,3 @@
-[core]
-	editor = neovide
-
 [mergetool "diffconflicts"]
-	cmd = neovide +DiffConflicts $MERGED $BASE $LOCAL $REMOTE
+	cmd = git-diffconflicts $MERGED $BASE $LOCAL $REMOTE
 

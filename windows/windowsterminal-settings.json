@@ -26,6 +26,15 @@
                 "input": "\u0017"
             },
             "id": "User.sendInput.ctrlW"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "left",
+                "profile": "GitHub Copilot"
+            },
+            "id": "User.splitPane.copilotCli"
         }
     ],
     "copyFormatting": "none",
@@ -64,6 +73,10 @@
         {
             "id": "User.sendInput.ctrlW",
             "keys": "ctrl+backspace"
+        },
+        {
+            "id": "User.splitPane.copilotCli",
+            "keys": "shift+alt+c"
         }
     ],
     "minimizeToNotificationArea": true,
@@ -96,6 +109,22 @@
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "colorScheme": "Solarized Dark (Fixed)",
+                "commandline": "pwsh.exe -nologo",
+                "elevate": true,
+                "guid": "{3b3b1e55-801a-4bf2-b532-15e825e22564}",
+                "hidden": false,
+                "icon": "\ud83d\udee1\ufe0f",
+                "name": "PowerShell (Admin)"
+            },
+            {
+                "commandline": "pwsh -NoProfile -Command \"$f = Join-Path $env:TEMP '.terminal-cwd'; if (Test-Path $f) { Set-Location (Get-Content $f -Raw) }; $env:EDITOR = 'nvim'; copilot.exe\"",
+                "guid": "{b5e17ed5-5a11-4c1a-9e6f-40a2c0e890a1}",
+                "hidden": false,
+                "icon": "\ud83e\udd16",
+                "name": "GitHub Copilot"
             },
             {
                 "commandline": "powershell.exe -nologo",

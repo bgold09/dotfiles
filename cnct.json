@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/bgold09/cnct-net/develop/schema/cnctConfig.vnext.json",
+  "$schema": "https://raw.githubusercontent.com/bgold09/cnct-net/develop/schema/v0.6.0/cnctConfig.json",
   "actions": [
     {
       "actionType": "shell",
@@ -27,7 +27,7 @@
         "bash/bash_profile": {
           "unix": null
         },
-        "bin-windows": {
+        "bin/windows": {
           "windows": "~/bin"
         },
         "editors/vscode-settings.json": {
@@ -76,7 +76,7 @@
         "windows/winget.json": {
           "windows": "~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json"
         },
-        "python/pythonrc.py": null,
+        "lang/python/pythonrc.py": null,
         "system/bat.config": {
           "linux": "~/.config/bat/config",
           "windows": "~/AppData/Roaming/bat/config"
@@ -129,13 +129,10 @@
     },
     {
       "actionType": "link",
+      "os": "windows",
       "links": {
-        "windows/powertoys/settings.json": {
-          "windows": "~/AppData/Local/Microsoft/PowerToys/settings.json"
-        },
-        "windows/powertoys/cmdpal-settings.json": {
-          "windows": "~/AppData/Local/Packages/Microsoft.CommandPalette_8wekyb3d8bbwe/LocalState/settings.json"
-        }
+        "windows/powertoys/settings.json": "~/AppData/Local/Microsoft/PowerToys/settings.json",
+        "windows/powertoys/cmdpal-settings.json": "~/AppData/Local/Packages/Microsoft.CommandPalette_8wekyb3d8bbwe/LocalState/settings.json"
       }
     },
     {

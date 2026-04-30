@@ -20,5 +20,8 @@
   ],
   "npm": [
     "@github/copilot"
+  ],
+  "dotnet": [
+    "git-credential-manager"
   ]
 }

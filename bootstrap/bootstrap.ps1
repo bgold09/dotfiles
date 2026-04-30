@@ -88,6 +88,9 @@ if ($IsWindows) {
         createRegKeyInfo $virtualDesktopPinnedAppsRegPath "Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" 0
         createRegKeyInfo $themesRegPath AppsUseLightTheme 0
         createRegKeyInfo $themesRegPath SystemUsesLightTheme 0
+
+        # Disable Windows Narrator shortcut (Win+Enter)
+        createRegKeyInfo "HKCU:\Software\Microsoft\Narrator\NoRoam" "WinEnterLaunchEnabled" 0
     )
 
     foreach ($item in $regKeys) {
