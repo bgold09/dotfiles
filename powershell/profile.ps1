@@ -152,7 +152,7 @@ Set-PSReadLineOption -Colors @{
     Keyword = $colors.Green.termColor
     Operator = $colors.Magenta.termColor
     Parameter = $colors.Magenta.termColor
-    String = $colors.Blue.termColor
+    String = $colors.Cyan.termColor
     Variable = $colors.Green.termColor
 }
 
