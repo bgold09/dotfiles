@@ -1,3 +1,6 @@
 [include]
     path = ~/.gitfiles/base.gitconfig
     path = ~/.os.gitconfig
+
+[user]
+    name = Brian Golden
