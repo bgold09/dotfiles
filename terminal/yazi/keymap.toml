@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+  { on = "u", run = "leave", desc = "Go to the parent directory" },
+]

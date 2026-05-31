@@ -11,7 +11,8 @@
   "snap": [
     "code",
     "glow",
-    "nvim"
+    "nvim",
+    "yazi"
   ],
   "flatpak": [
     "com.bitwarden.desktop"
