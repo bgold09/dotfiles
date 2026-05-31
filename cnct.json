@@ -110,6 +110,10 @@
         },
         "windows/ConEmu.xml": {
           "windows": "~/AppData/Roaming/ConEmu.xml"
+        },
+        "terminal/glow/glow.yml": {
+          "linux": "~/.config/glow/glow.yml",
+          "windows": "~/AppData/Local/glow/Config/glow.yml"
         }
       }
     },

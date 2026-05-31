@@ -181,6 +181,7 @@ if ($env:WT_SESSION) {
 
 $env:GIT_EDITOR = $editor
 $env:EDITOR = $editor
+$env:GLAMOUR_STYLE = "$HOME\.dotfiles\terminal\glamour\solarized-dark.json"
 
 if (Get-Module -ListAvailable -Name Terminal-Icons) {
     Import-Module Terminal-Icons

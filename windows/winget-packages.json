@@ -6,6 +6,7 @@
         { "PackageIdentifier": "7zip.7zip" },
         { "PackageIdentifier": "ajeetdsouza.zoxide" },
         { "PackageIdentifier": "BurntSushi.ripgrep.MSVC" },
+        { "PackageIdentifier": "charmbracelet.glow" },
         { "PackageIdentifier": "dandavison.delta" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "GitHub.cli" },
